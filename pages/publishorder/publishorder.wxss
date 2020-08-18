@@ -1,0 +1,398 @@
+/* pages/publishorder/publishorder.wxss */
+page {
+  background: #f5f5f5;
+}
+
+.publishAddress {
+  width: 100%;
+  height: 270rpx;
+  background: #ffffff;
+  margin: 20rpx 0 0;
+}
+
+.faaddress {
+  width: 100%;
+  height: 180rpx;
+}
+
+.faaddress>image {
+  width: 36rpx;
+  height: 44rpx;
+  float: left;
+  margin: 23rpx 29rpx 23rpx 25rpx;
+}
+
+.faaddress>view {
+  width: 660rpx;
+  height: 180rpx;
+  float: right;
+}
+
+.faaddress>view>view {
+  height: 90rpx;
+  border-bottom: 1rpx solid #e2e2e2;
+}
+
+.fadate>image {
+  width: 30rpx;
+  height: 30rpx;
+  margin: 30rpx 32rpx 30rpx 28rpx;
+  float: left;
+}
+
+.orderSelcet {
+  width: 660rpx;
+  height: 90rpx;
+  background: #ffffff;
+  font-size: 28rpx;
+  color: #333333;
+  line-height: 90rpx;
+  text-align: left;
+}
+
+.faaddress2 {
+  height: 90rpx;
+  border: 0;
+  outline: none;
+  font-size: 28rpx;
+  font-family: PingFangSC, PingFangSC-Regular;
+  font-weight: 400;
+  text-align: left;
+  color: #333333;
+  line-height: 90rpx;
+}
+
+.fadate {
+  width: 100%;
+  height: 90rpx;
+}
+
+.fadateThis,
+.zhongliangView {
+  width: 660rpx;
+  height: 90rpx;
+  float: left;
+}
+
+.fadateThis>picker {
+  width: 660rpx;
+  height: 90rpx;
+  line-height: 90rpx;
+  font-size: 28rpx;
+}
+
+.getaddressItem {
+  width: 100%;
+  height: 360rpx;
+  background: #ffffff;
+  margin-top: 20rpx;
+}
+
+.getaddressList .fadateThis {
+  border-bottom: 1rpx solid #e2e2e2;
+}
+
+.zhongliang {
+  width: 100%;
+  height: 90rpx;
+}
+
+.zhongliang>image {
+  width: 30rpx;
+  height: 30rpx;
+  margin: 30rpx 32rpx 30rpx 28rpx;
+  float: left;
+}
+
+.zhongliangView>input {
+  width: 300rpx;
+  height: 90rpx;
+  border: 0;
+  outline: none;
+  float: left;
+}
+
+.zhongliangView>text {
+  display: inline-block;
+  height: 90rpx;
+  line-height: 90rpx;
+  color: #999;
+  width: 50rpx;
+  text-align: center;
+  float: left;
+}
+
+.getaddressList .orderSelcet {
+  width: 460rpx;
+  display: inline-block;
+}
+
+.addNewaddress {
+  width: 112rpx;
+  height: 90rpx;
+  font-size: 28rpx;
+  font-family: PingFangSC, PingFangSC-Regular;
+  font-weight: 400;
+  text-align: right;
+  color: #ff932e;
+  line-height: 90rpx;
+  float: right;
+  margin-right: 24rpx;
+}
+
+/* 货物详情 */
+.shopDetail {
+  width: 100%;
+  height: 270rpx;
+  margin-top: 20rpx;
+  background: #ffffff;
+}
+
+.shopDetailItem {
+  width: 100%;
+  height: 90rpx;
+}
+
+.shopDetailItem>text {
+  display: inline-block;
+  width: 186rpx;
+  height: 90rpx;
+  line-height: 90rpx;
+  text-align: center;
+  font-size: 28rpx;
+  color: #333333;
+  float: left;
+}
+
+.shopDetailItem>input {
+  width: 564rpx;
+  height: 90rpx;
+  box-sizing: border-box;
+  padding: 0 20rpx 0 0;
+  border-bottom: 1rpx solid #e2e2e2;
+  line-height: 90rpx;
+  float: left;
+}
+
+.shopItem {
+  width: 564rpx;
+  height: 90rpx;
+  box-sizing: border-box;
+  border-bottom: 1rpx solid #e2e2e2;
+  line-height: 90rpx;
+  float: left;
+  font-size: 28rpx;
+  color: #333333;
+}
+
+.shopItem>input:nth-child(1) {
+  width: 200rpx;
+  height: 90rpx;
+  display: inline-block;
+  float: left;
+}
+
+.shopItem>input:nth-child(3) {
+  width: 174rpx;
+  height: 90rpx;
+  display: inline-block;
+  float: left;
+}
+
+.shopItem>text {
+  width: 112rpx;
+  height: 90rpx;
+  color: #333333;
+  float: left;
+  margin-left: 18rpx;
+  margin-right: 50rpx;
+}
+
+.requirements {
+  width: 100%;
+  height: 180rpx;
+  background: #ffffff;
+  margin-top: 20rpx;
+}
+
+.requirements>view {
+  width: 100%;
+  height: 90rpx;
+  line-height: 90rpx;
+}
+
+.requirementsTitle>text {
+  width: 186rpx;
+  height: 90rpx;
+  float: left;
+  font-size: 28rpx;
+  font-family: PingFangSC, PingFangSC-Medium;
+  font-weight: 500;
+  text-align: left;
+  color: #333333;
+  line-height: 90rpx;
+  text-align: center;
+}
+
+.requirementsTitle>view {
+  width: 564rpx;
+  height: 90rpx;
+  line-height: 90rpx;
+  border-bottom: 1rpx solid #e2e2e2;
+  float: left;
+}
+
+.guizi {
+  width: 100%;
+  height: 90rpx;
+  line-height: 90rpx;
+}
+
+.guizilabel {
+  width: 188rpx;
+  height: 90rpx;
+  float: left;
+}
+
+.guizilabelView {
+  float: left;
+
+}
+
+.guizilabelName {
+  float: left;
+  color: #333333;
+  font-size: 28rpx;
+  line-height: 90rpx;
+}
+
+radio .wx-radio-input {
+  /* flex: none; */
+  width: 24rpx;
+  height: 24rpx;
+  line-height: 90rpx;
+  float: left;
+  margin-top: -5rpx;
+}
+
+.guizitype {
+  width: 100%;
+  height: 90rpx;
+}
+
+.guizitype>text {
+  width: 186rpx;
+  height: 90rpx;
+  float: left;
+  font-size: 28rpx;
+  font-family: PingFangSC, PingFangSC-Medium;
+  font-weight: 500;
+  text-align: left;
+  color: #333333;
+  line-height: 90rpx;
+  text-align: center;
+}
+
+.remark {
+  width: 100%;
+  height: 90rpx;
+  line-height: 90rpx;
+  background: #ffffff;
+  margin-top: 20rpx;
+}
+
+.remark>text {
+  width: 186rpx;
+  height: 90rpx;
+  float: left;
+  font-size: 28rpx;
+  font-family: PingFangSC, PingFangSC-Medium;
+  font-weight: 500;
+  text-align: left;
+  color: #333333;
+  line-height: 90rpx;
+  text-align: center;
+}
+
+.remark>input {
+  width: 564rpx;
+  height: 90rpx;
+  line-height: 90rpx;
+  float: left;
+  font-size: 28rpx;
+}
+
+.send {
+  width: 670rpx;
+  height: 90rpx;
+  background: #0e4090;
+  border-radius: 50rpx;
+  margin: 50rpx 40rpx;
+  font-size: 38rpx;
+  color: #ffffff;
+  line-height: 90rpx;
+  text-align: center;
+}
+
+
+/* 箱型要求后补 */
+.xxrequire{
+  width: 100%;
+  height: 270rpx;
+  background: #ffffff;
+  margin-top: 20rpx;
+}
+.xxrequireItem{
+  width: 100%;
+  height: 90rpx;
+  line-height: 90rpx;
+}
+.xxrequireItem>text{
+  width: 186rpx;
+  float: left;
+font-size: 28rpx;
+font-family: PingFangSC, PingFangSC-Medium;
+font-weight: 500;
+text-align: left;
+color: #333333;
+padding-left: 24rpx;
+box-sizing: border-box;
+}
+.xxrequireItem>view{
+  width: 564rpx;
+  height: 90rpx;
+  border-bottom: 1rpx solid #e2e2e2;
+  float: left;
+  position: relative;
+  font-size: 28rpx;
+}
+.xxrequireItem>view image{
+  width: 14rpx;
+  height: 8rpx;
+  /* float: right; */
+  position: absolute;
+  top: 41rpx;
+  right: 24rpx;
+  /* margin: 41rpx 24rpx 41rpx 0; */
+}
+.xxrequireItemEve{
+  width: 50%;
+  float: left;
+  position: relative;
+  font-size: 28rpx;
+  line-height: 90rpx;
+}
+
+.xxrequireItemEve>input{
+  width: 230rpx;
+  height: 34rpx !important;
+  min-height: 34rpx !important;
+  line-height: 34rpx  !important;
+  margin-top: 28rpx;
+  border-left: 2rpx solid #999999;
+  padding-left: 24rpx;
+  padding-right: 12rpx;
+  float: left;
+  box-sizing: border-box;
+  text-align: right;
+}

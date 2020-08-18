@@ -1,0 +1,84 @@
+<!--pages/orderDetail/orderDetail.wxml-->
+<view class="topMain">
+	<view class="type1">
+		<image class="faIcon" src="../img/fa.svg"></image>
+		<view class="lineOne">四川省锦江区某某街道某某单位201仓库</view>
+	</view>
+	<view class="type1">
+		<image class="faIcon1" src="../img/date.svg"></image>
+		<view class="lineOne">2020-02-04</view>
+	</view>
+	<view class="type1">
+		<image class="faIcon" src="../img/shou.svg"></image>
+		<view class="lineOne">江苏省南京市六合区某街道某小区301</view>
+	</view>
+	<view class="type1">
+		<image class="faIcon1" src="../img/riqi2.svg"></image>
+		<view class="lineOne ">2020-08-10</view>
+	</view>
+	<view class="type1">
+		<image class="faIcon1" src="../img/zhongliang.svg"></image>
+		<view class="lineOne lineOne">50kg；2688L</view>
+	</view>
+
+	<view class="type2">
+		<text class="type2title">货物类型</text>
+		<text class="type2Detail lineOne">服装</text>
+	</view>
+	<view class="type2 ">
+		<text class="type2title">货物重量</text>
+		<text class="type2Detail1 lineOne">230g</text>
+		<text class="type2title">货物重量</text>
+		<text class="type2Detail1 lineOne">230g230g230g230g230g</text>
+	</view>
+	<view class="type2">
+		<text class="type2title">包装方式</text>
+		<text class="type2Detail lineOne">纸箱</text>
+	</view>
+	<view class="type2">
+		<text class="type2title">箱型要求</text>
+		<text class="type2Detail lineOne">小柜</text>
+	</view>
+	<view class="type2">
+		<text class="type2title">小柜</text>
+		<text class="type2Detail lineOne">短板</text>
+	</view>
+	<view class="type2">
+		<text class="type2title">备注信息</text>
+		<text class="type2Detail lineOne">封闭性要好，不能受潮</text>
+	</view>
+</view>
+<!-- 报价 -->
+<view class="getPrice">
+	<view class="title">我的报价</view>
+	<view class="priceEve" wx:for='{{priceList}}'>
+		<view class="priceEveTitle">
+			<text class="lineOne">慢慢慢慢慢慢慢慢</text>
+			<input placeholder="请输入价格" placeholder-class="placeholder"></input>
+		</view>
+		<view>
+			<text class="fahuodate">装船日期</text>
+			<view class="pickTimeFahuo">
+				<picker mode="date" value="{{date}}" style="color:{{colorTime}}" start="2015-09-01" end="2050-09-01" bindchange="bindDateChange">
+					<view class="picker">
+						{{date}}
+					</view>
+				</picker>
+        <image src="../img/xiala.svg"></image>
+			</view>
+		</view>
+		<view>
+			<text class="fahuodate">装船日期</text>
+			<view class="pickTimeshouhuo">
+				<picker mode="date" value="{{date}}" style="color:{{colorTime}}" start="2015-09-01" end="2050-09-01" bindchange="bindDateChange">
+					<view class="picker">
+						{{date}}
+					</view>
+				</picker>
+        <image src="../img/xiala.svg"></image>
+			</view>
+		</view>
+	</view>
+</view>
+
+<view class="sendPrice">提交报价</view>

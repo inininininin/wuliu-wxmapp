@@ -1,0 +1,77 @@
+<!--pages/orderDetail/orderDetail.wxml-->
+<view class="optProvider">
+	<view class="title">服务商的报价</view>
+	<view >
+		<checkbox-group class=' providerItemLf' bindchange="checkboxChange">
+			<label class="weui-cell weui-check__label" class="providerItem" wx:for="{{items}}" wx:key="{{item.value}}">
+				<view class="weui-cell__hd">
+					<checkbox value="{{item.value}}" color='#FF932E'  checked="{{item.checked}}" />
+					<text>{{item.name}}</text>
+				</view>
+				<view class="weui-cell__bd">
+					<view class="lineOne">慢******  287元asdasdasdsa</view>
+					<view class="lineOne">慢******  287元</view>
+					<view class="lineOne">慢******  287元</view>
+					<view class="lineOne">慢******  287元</view>
+				</view>
+			</label>
+		</checkbox-group>
+		<view class="providerItemRt">
+			<text></text>
+			<text></text>
+			<text></text>
+			<text></text>
+		</view>
+	</view>
+</view>
+
+<view class="topMain">
+	<view class="type1">
+		<image class="faIcon" src="../img/fa.svg"></image>
+		<view class="lineOne">四川省锦江区某某街道某某单位201仓库</view>
+	</view>
+	<view class="type1">
+		<image class="faIcon1" src="../img/date.svg"></image>
+		<view class="lineOne">2020-02-04</view>
+	</view>
+	<view class="type1">
+		<image class="faIcon" src="../img/shou.svg"></image>
+		<view class="lineOne">江苏省南京市六合区某街道某小区301</view>
+	</view>
+	<view class="type1">
+		<image class="faIcon1" src="../img/riqi2.svg"></image>
+		<view class="lineOne ">2020-08-10</view>
+	</view>
+	<view class="type1">
+		<image class="faIcon1" src="../img/zhongliang.svg"></image>
+		<view class="lineOne lineOne">50kg；2688L</view>
+	</view>
+
+	<view class="type2">
+		<text class="type2title">货物类型</text>
+		<text class="type2Detail lineOne">服装</text>
+	</view>
+	<view class="type2 ">
+		<text class="type2title">货物重量</text>
+		<text class="type2Detail1 lineOne">230g</text>
+		<text class="type2title">货物重量</text>
+		<text class="type2Detail1 lineOne">230g230g230g230g230g</text>
+	</view>
+	<view class="type2">
+		<text class="type2title">包装方式</text>
+		<text class="type2Detail lineOne">纸箱</text>
+	</view>
+	<view class="type2">
+		<text class="type2title">箱型要求</text>
+		<text class="type2Detail lineOne">小柜</text>
+	</view>
+	<view class="type2">
+		<text class="type2title">小柜</text>
+		<text class="type2Detail lineOne">短板</text>
+	</view>
+	<view class="type2">
+		<text class="type2title">备注信息</text>
+		<text class="type2Detail lineOne">封闭性要好，不能受潮</text>
+	</view>
+</view>
+<view class="sendPrice">提交报价</view>

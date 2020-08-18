@@ -1,0 +1,153 @@
+/* pages/orderDetail/orderDetail.wxss */
+page {
+  background: #f5f5f5;
+}
+
+.topMain {
+  width: 750rpx;
+  height: 730rpx;
+  background: #ffffff;
+  margin-top: 20rpx;
+}
+
+.topMain .type1 {
+  width: 100%;
+  height: 44rpx;
+  line-height: 44rpx;
+  margin-top: 24rpx;
+  float: left;
+}
+
+.topMain .type1 .faIcon {
+  width: 35rpx;
+  height: 44rpx;
+  float: left;
+  margin: 0 30rpx 0 25rpx;
+}
+
+.faIcon1 {
+  width: 29rpx;
+  height: 30rpx;
+  margin: 7rpx 33rpx 0 29rpx;
+  float: left;
+}
+
+.topMain .type1>view {
+  width: 600rpx;
+  height: 44rpx;
+  line-height: 44rpx;
+  /* margin-top: 22rpx; */
+  float: left;
+}
+
+.type2 {
+  width: 100%;
+  height: 40rpx;
+  line-height: 40rpx;
+  float: left;
+  margin-top: 23rpx;
+}
+
+.type2 text {
+  /* display: inline-block; */
+  float: left;
+  font-size: 28rpx;
+  color: #333333;
+}
+
+.type2title {
+  width: 216rpx;
+  box-sizing: border-box;
+  padding-left: 24rpx;
+  text-align: left;
+}
+
+.type2Detail {
+  width: 532rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+}
+
+.type2Detail1 {
+  width: 130rpx;
+  margin-right: 29rpx;
+}
+
+.type2Detail {
+  width: 510rpx;
+}
+
+
+.sendPrice {
+  width: 670rpx;
+  height: 90rpx;
+  background: #0e4090;
+  border-radius: 50rpx;
+  margin: 40rpx;
+  font-size: 38rpx;
+  text-align: center;
+  line-height: 90rpx;
+  color: #ffffff;
+}
+.optProvider{
+  width: 100%;
+  height: auto;
+  background: #ffffff;
+  margin-top: 20rpx;
+}
+.optProvider .title{
+  height: 80rpx;
+  width: 100%;
+  line-height: 80rpx;
+  font-size: 28rpx;
+  color: #FF932E;
+  padding-left: 24rpx;
+  border-bottom: 1rpx solid #e2e2e2;
+}
+.optProvider .providerItem:last-child{
+  border-bottom: 0;
+}
+.providerItem{
+  width: 726rpx;
+  display: block;
+  height: 150rpx !important; 
+  margin-left: 24rpx;
+  border-bottom: 1rpx solid #e2e2e2;
+
+}
+.providerItem .weui-cell__hd{
+  display: inline-block;
+  width: 212rpx;
+  height: 100%;
+  float: left;
+  font-size: 28rpx;
+}
+
+.providerItem .weui-cell__bd{
+  width: 514rpx;
+  display: inline-block;
+  float: left;
+  height: 100%;
+}
+.providerItem checkbox{
+  transform: scale(0.7);
+  padding: 0;
+  margin: 0;
+  margin: 25rpx 0 0 0;
+  float: left;
+}
+.providerItem .weui-cell__hd text{
+  float: left;
+  margin-top: 31rpx;
+}
+.providerItem .weui-cell__bd view{
+  /* display: block; */
+  line-height:40rpx ;
+  margin-top: 25rpx;
+  width: 50%;
+  float: left;
+  text-align: left;
+}
+.providerItem .weui-cell__bd view:nth-child(3),.providerItem .weui-cell__bd view:last-child{
+  margin-top: 20rpx;
+}

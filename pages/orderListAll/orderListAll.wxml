@@ -1,0 +1,73 @@
+<!--pages/orderList/orderList.wxml-->
+<!-- 筛选顶部 -->
+<view class="searchBox">
+	<view class="navbar">
+		<view wx:for="{{navbar}}" data-idx="{{index}}" class="item {{currentTab==index ? 'active' : ''}}" wx:key="unique" bindtap="navbarTap">{{item}}</view>
+	</view>
+</view>
+<!-- 订单列表 -->
+<view class="orderList">
+	<view class="orderItem" wx:for='{{orderList}}'>
+		<view class="orderItemOne">
+			<text>发货日期：2020-04-09</text>
+			<text wx:if='{{item.status==0}}'>报价中-已有20人报价</text>
+			<text wx:if='{{item.status==1}}'>订单已完成</text>
+		</view>
+		<view class="orderItemTwo">
+			<view>
+				<view class="fahuo">
+					<image class="fashou" src="../img/fa.svg"></image>
+					<text class="lineOne">杭州市西湖区</text>
+				</view>
+				<view class="pointLine"></view>
+				<view class="shouhuo">
+					<image class="fashou" src="../img/shou.svg"></image>
+					<text class="lineOne">南京市六合区</text>
+				</view>
+			</view>
+			<view class="toPrice">去报价</view>
+		</view>
+		<view class="orderItemThree lineOne">
+			货物：衣服，230g，纸箱
+		</view>
+	</view>
+</view>
+
+<!-- 筛选弹窗 -->
+<view class="screenView" wx:if='{{showIs}}'>
+	<view class="screenUserView">
+		<text class="title" style="padding-top: 100rpx;">订单选择</text>
+		<picker class="orderSelcet" bindchange="bindPickerChange" value="{{index}}" range="{{selectDatas}}">
+			<view class="picker">
+				{{selectDatas[index]}}
+			</view>
+		</picker>
+		<text class="title">发货地</text>
+		<picker class="orderSelcet" wx:if='{{picker}}' mode="region" style="color:#999" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
+			<view class="picker">
+				{{region[0]}}{{region[1]}}{{region[2]}}
+			</view>
+		</picker>
+		<picker class="orderSelcet" wx:if='{{!picker}}' mode="region" style="color:#333" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
+			<view class="picker">
+				{{region[0]}}，{{region[1]}}，{{region[2]}}
+			</view>
+		</picker>
+		<text class="title">收货地</text>
+		<picker class="orderSelcet" wx:if='{{pickers}}' mode="region" style="color:#999" bindchange="bindRegionChange2" value="{{regions}}" custom-item="{{customItem}}">
+			<view class="picker">
+				{{regions[0]}}{{regions[1]}}{{regions[2]}}
+			</view>
+		</picker>
+		<picker class="orderSelcet" wx:if='{{!pickers}}' mode="region" style="color:#333" bindchange="bindRegionChange2" value="{{regions}}" custom-item="{{customItem}}">
+			<view class="picker">
+				{{regions[0]}}，{{regions[1]}}，{{regions[2]}}
+			</view>
+		</picker>
+
+    <view class="screenbtn">
+      <view class="selectAgain" bindtap="selectAgain">重选</view>
+      <view class="makesure" bindtap="makesure">确定</view>
+    </view>
+	</view>
+</view>

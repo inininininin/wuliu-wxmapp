@@ -1,0 +1,40 @@
+<!--pages/shopping/shopping.wxml-->
+<view class="container" style="padding-top:{{statusBarHeight+titleBarHeight}}px">
+	<view class="header">
+		<view class="status-bar" style="height:{{statusBarHeight}}px"></view>
+		<view class="title-bar" style="height:{{titleBarHeight}}px">
+			<view>
+				<view class="searchBox">
+					<image src="../img/sousuo.svg"></image>
+					<input disabled="disabled" placeholder-class="placeholder" placeholder="商品名称/订单编号"></input>
+				</view>
+			</view>
+		</view>
+	</view>
+</view>
+<view class="navbarList" style="position:fixed;top:{{statusBarHeight+titleBarHeight}}px">
+	<scroll-view scroll-x='true' bindscroll="scroll" style="width: 100%" class="scroll-header navbar">
+		<view wx:for="{{navbar}}" data-idx="{{index}}" class="scroll-view-item item {{currentTab==index ? 'active' : ''}}" wx:key="unique" bindtap="navbarTap">{{item.name}}</view>
+	</scroll-view>
+	<scroll-view scroll-x='true' bindscroll="scroll" style="width: 100%" class="scroll-header-this navbarEve">
+		<view wx:for="{{navbarEve}}" data-idx="{{index}}" class="scroll-view-item item {{currentTabEve==index ? 'active' : ''}}" wx:key="unique" bindtap="navbarTapEve">{{item}}</view>
+	</scroll-view>
+</view>
+<view class="shopList" style="margin-top:176rpx;">
+	<view class="shopItem" wx:for='{{shopList}}'>
+		<image mode='aspectFill' src="../img/peitu.jpg"></image>
+		<view class="detail">
+			<view class="title">医疗器械</view>
+			<view class="address"><text>装货地：</text><text>南京市</text></view>
+			<view class="position">
+				<view>规格：</view>
+				<view>
+					<view class="lineOne">小柜-5吨-380ml-<text>¥2083</text></view>
+					<view class="lineOne">大柜-8吨-1200ml-<text>¥20933</text></view>
+					<view class="lineOne">**柜-<text>¥38772</text></view>
+					<view class="lineOne">拼柜：-(同收货港可拼,满柜可售)</view>
+				</view>
+			</view>
+		</view>
+	</view>
+</view>

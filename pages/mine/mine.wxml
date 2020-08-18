@@ -1,0 +1,26 @@
+<!--pages/mine/mine.wxml-->
+<view>
+	<include src="../common/common.wxml" />
+</view>
+<view class="indexTitle">
+  <image mode="acpectFill" src="{{avator}}"></image>
+  <text>昵称</text>
+</view>
+<view class="linkList">
+    <view bindtap="myorder">
+      <text>我的订单</text>
+      <image src="../img/rightIcon.svg"></image>
+    </view>
+    <view bindtap="myoffer">
+      <text>我的报价</text>
+      <image src="../img/rightIcon.svg"></image>
+    </view>
+    <view>
+      <text>联系客服</text>
+      <image src="../img/rightIcon.svg"></image>
+    </view>
+    <view bindtap="guanli">
+      <text>账号管理</text>
+      <image src="../img/rightIcon.svg"></image>
+    </view>
+</view>

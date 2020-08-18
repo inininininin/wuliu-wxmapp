@@ -1,0 +1,60 @@
+<!--page/index/index.wxml-->
+<view>
+	<include src="../common/common.wxml" />
+</view>
+<image class="adPic" src="../img/peitu.jpg" mode="aspectFill"></image>
+<view class="orderAndPrice">
+	<view bindtap="sendorder">
+		<image class="fahuo" src="../img/fahuo.svg"></image>
+		<text>发布订单</text>
+	</view>
+	<view>
+		<image class="baojia" bindtap="baojia" src="../img/baojia.svg"></image>
+		<text>我要报价</text>
+	</view>
+</view>
+<view class="articleBox">
+	<view class="title">
+		<image src="../img/xinxi.svg"></image>
+		<text>行业信息</text>
+	</view>
+
+	<view class="articleList">
+		<view class="articleEve">
+			<view class="articleLf">
+				<view class="lineTwo">邦德物流南京货运公司主管：行李托运、电动车托运、航空速,电动车托运、航空速</view>
+				<view class="lineOne">
+          <image src="../img/time.png"></image>
+        2019-02-19 12:39</view>
+			</view>
+			<image mode="aspectFill" src="../img/peitu.jpg"></image>
+		</view>
+    <view class="articleEve">
+			<view class="articleLf">
+				<view class="lineTwo">邦德物流南京货运公司主管：行李托运、电动车托运、航空速,电动车托运、航空速</view>
+				<view class="lineOne">
+          <image src="../img/time.png"></image>
+        2019-02-19 12:39</view>
+			</view>
+			<image mode="aspectFill" src="../img/peitu.jpg"></image>
+		</view>
+    <view class="articleEve">
+			<view class="articleLf">
+				<view class="lineTwo">邦德物流南京货运公司主管：行李托运、电动车托运、航空速,电动车托运、航空速</view>
+				<view class="lineOne">
+          <image src="../img/time.png"></image>
+        2019-02-19 12:39</view>
+			</view>
+			<image mode="aspectFill" src="../img/peitu.jpg"></image>
+		</view>
+    <view class="articleEve">
+			<view class="articleLf">
+				<view class="lineTwo">邦德物流南京货运公司主管：行李托运、电动车托运、航空速,电动车托运、航空速</view>
+				<view class="lineOne">
+          <image src="../img/time.png"></image>
+        2019-02-19 12:39</view>
+			</view>
+			<image mode="aspectFill" src="../img/peitu.jpg"></image>
+		</view>
+	</view>
+</view>

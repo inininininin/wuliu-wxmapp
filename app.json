@@ -1,0 +1,66 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/login/login",
+    "pages/shopping/shopping",
+    "pages/publishorder/publishorder",
+  
+    "pages/providerDetail/providerDetail",
+    "pages/demo/demo",
+    "pages/selectprovider/selectprovider",
+    "pages/myoffer/myoffer",
+    "pages/orderListAll/orderListAll",
+    "pages/orderDetail/orderDetail",
+   
+    "pages/orderList/orderList",
+    "pages/mine/mine",
+    "pages/common/common"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black",
+    "enablePullDownRefresh": true,
+    "navigationStyle": "default"
+  },
+  "tabBar": {
+    "color": "#7A7E83",
+    "selectedColor": "#2B77EF",
+    "borderStyle": "white",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "pages/img/shouye1.png",
+        "selectedIconPath": "pages/img/shouye2.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/orderList/orderList",
+        "iconPath": "pages/img/dingdanchi1.png",
+        "selectedIconPath": "pages/img/dingdanchi2.png",
+        "text": "订单池"
+      },
+      {
+        "pagePath": "pages/shopping/shopping",
+        "iconPath": "pages/img/shangcheng1.png",
+        "selectedIconPath": "pages/img/shangcheng2.png",
+        "text": "商城"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "iconPath": "pages/img/wode1.png",
+        "selectedIconPath": "pages/img/wode2.png",
+        "text": "我的"
+      }
+    ]
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
+    }
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

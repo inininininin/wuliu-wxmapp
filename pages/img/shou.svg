@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="36px" height="44px" viewBox="0 0 36 44" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 63.1 (92452) - https://sketch.com -->
+    <title>地址备份</title>
+    <desc>Created with Sketch.</desc>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="iPhone-8-Copy-12" transform="translate(-24.000000, -371.000000)">
+            <g id="地址备份" transform="translate(24.000000, 371.000000)">
+                <g id="编组" transform="translate(0.400005, 0.000000)">
+                    <path d="M17.6330205,44.0000512 L17.6000204,44.0000512 L17.6000205,44.0000512 C16.8326751,43.9992951 16.0988711,43.6854311 15.5683267,43.1310502 C15.1525176,42.6965497 11.3817047,38.7200451 7.63070029,33.6820392 C2.5673858,26.8840313 1.0658141e-14,21.461025 1.0658141e-14,17.570329 C1.0658141e-14,7.88150917 7.89581778,-1.0658141e-14 17.6000205,-1.0658141e-14 C27.3042232,-1.0658141e-14 35.200041,7.88150917 35.200041,17.5692119 C35.200041,19.9232146 34.2925399,22.8074094 32.5039206,26.139339 C30.7780358,29.352417 28.18315,33.0847299 24.789646,37.2339261 L24.762146,37.2669262 L19.7120229,43.0419329 L19.7120231,43.0419327 C19.1891487,43.6455455 18.4315958,43.994667 17.6330207,44.0000512 L17.6330205,44.0000512 Z" id="形状" fill="#FF932E" fill-rule="nonzero"></path>
+                    <text id="收" font-family="PingFangSC-Regular, PingFang SC" font-size="20" font-weight="normal" fill="#FFFFFF">
+                        <tspan x="7.59999481" y="25">收</tspan>
+                    </text>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

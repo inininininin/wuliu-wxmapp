@@ -1,0 +1,123 @@
+<!--pages/orderDetail/orderDetail.wxml-->
+<view class="topMain">
+	<view class="type1">
+		<image class="faIcon" src="../img/fa.svg"></image>
+		<view class="lineOne">四川省锦江区某某街道某某单位201仓库</view>
+	</view>
+	<view class="type1">
+		<image class="faIcon1" src="../img/date.svg"></image>
+		<view class="lineOne">2020-02-04</view>
+	</view>
+	<view class="type1">
+		<image class="faIcon" src="../img/shou.svg"></image>
+		<view class="lineOne">江苏省南京市六合区某街道某小区301</view>
+	</view>
+	<view class="type1">
+		<image class="faIcon1" src="../img/riqi2.svg"></image>
+		<view class="lineOne ">2020-08-10</view>
+	</view>
+	<view class="type1">
+		<image class="faIcon1" src="../img/zhongliang.svg"></image>
+		<view class="lineOne lineOne">50kg；2688L</view>
+	</view>
+
+	<view class="type2">
+		<text class="type2title">货物类型</text>
+		<text class="type2Detail lineOne">服装</text>
+	</view>
+	<view class="type2 ">
+		<text class="type2title">货物重量</text>
+		<text class="type2Detail1 lineOne">230g</text>
+		<text class="type2title">货物重量</text>
+		<text class="type2Detail1 lineOne">230g230g230g230g230g</text>
+	</view>
+	<view class="type2">
+		<text class="type2title">包装方式</text>
+		<text class="type2Detail lineOne">纸箱</text>
+	</view>
+	<view class="type2">
+		<text class="type2title">箱型要求</text>
+		<text class="type2Detail lineOne">小柜</text>
+	</view>
+	<view class="type2">
+		<text class="type2title">小柜</text>
+		<text class="type2Detail lineOne">短板</text>
+	</view>
+	<view class="type2">
+		<text class="type2title">备注信息</text>
+		<text class="type2Detail lineOne">封闭性要好，不能受潮</text>
+	</view>
+</view>
+<view class="providerDetail">
+	<view class="title">服务商详情</view>
+	<view class="detail">
+		<view class="intro">
+			<image src="../img/peitu.jpg" mode="aspectFill"></image>
+			<view>
+				<view class="providername">服务商二</view>
+				<view class="providertel">联系电话：18225635244</view>
+			</view>
+			<view class="linePhone">拨号</view>
+		</view>
+
+		<view class="hisprice">
+			<view class="hispriceTitle">他的报价：</view>
+			<view class="hisprriceDetail">
+				<text>方式</text>
+				<text>价格</text>
+				<text>装船日期</text>
+				<text>到港日期</text>
+			</view>
+		</view>
+		<view>
+			<view class="hispriceItem">
+				<view class="hispriceItemName">慢******</view>
+				<view class="hispriceItemDate">
+					<view>¥2918</view>
+					<view>2020-02-01</view>
+					<view>2020-02-04</view>
+				</view>
+			</view>
+			<view class="hispriceItem">
+				<view class="hispriceItemName">慢******</view>
+				<view class="hispriceItemDate">
+					<view>¥2918</view>
+					<view>2020-02-01</view>
+					<view>2020-02-04</view>
+				</view>
+			</view>
+			<view class="hispriceItem">
+				<view class="hispriceItemName">慢******</view>
+				<view class="hispriceItemDate">
+					<view>¥2918</view>
+					<view>2020-02-01</view>
+					<view>2020-02-04</view>
+				</view>
+			</view>
+			<view class="hispriceItem">
+				<view class="hispriceItemName">慢******</view>
+				<view class="hispriceItemDate">
+					<view>¥2918</view>
+					<view>2020-02-01</view>
+					<view>2020-02-04</view>
+				</view>
+			</view>
+		</view>
+	</view>
+		<view class="hisevalute">
+				<view class="titles">他的评价：</view>
+				<view class="starAll" style="width:300rpx;margin-left:24rpx">
+            <view style="display:flex;">        
+                <view class="star"><view class="icon icon_yellow"></view></view>
+                <view class="star"><view class="icon icon_yellow"></view></view>
+                <view class="star"><view class="icon icon_yellow"></view></view>
+                <view class="star"><view class="icon icon_yellow"></view></view>
+                <view class="star half_star"><view class="icon icon_gray"><view class="icon icon_yellow"></view></view></view>
+            </view> 
+        </view>
+				<view class="point">4.65分</view>
+				<view class="gopoint">去评价</view>
+		</view>
+</view>
+
+<view class="sendPrice">重新选择服务商</view>

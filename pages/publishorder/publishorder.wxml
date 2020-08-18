@@ -1,0 +1,201 @@
+<!--pages/publishorder/publishorder.wxml-->
+<view class="publishAddress">
+	<view class="faaddress">
+		<image src="../img/fa.svg"></image>
+		<view>
+			<view>
+				<picker class="orderSelcet" wx:if='{{picker}}' mode="region" style="color:#999" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
+					<view class="picker">
+						{{region[0]}}{{region[1]}}{{region[2]}}
+					</view>
+				</picker>
+				<picker class="orderSelcet" wx:if='{{!picker}}' mode="region" style="color:#333" bindchange="faaddress1" value="{{region}}" custom-item="{{customItem}}">
+					<view class="picker">
+						{{region[0]}}，{{region[1]}}，{{region[2]}}
+					</view>
+				</picker>
+			</view>
+			<view>
+				<input class="faaddress2" placeholder-class="placeholder" placeholder="详细地址（详细到门牌、街道）" bindinput="faaddress2" value="{{faaddress2}}"></input>
+			</view>
+		</view>
+	</view>
+	<view class="fadate">
+		<image src="../img/date.svg"></image>
+		<view class="fadateThis">
+			<picker mode="date" value="{{date}}" style="color:{{colorTime}}" start="2015-09-01" end="2050-09-01" bindchange="bindDateChange">
+				<view class="picker">
+					{{date}}
+				</view>
+			</picker>
+		</view>
+	</view>
+</view>
+<!-- 收货地址 -->
+<view class="getaddressList" wx:for='{{getAddressList}}'>
+	<view class="getaddressItem">
+		<view class="faaddress">
+			<image src="../img/shou.svg"></image>
+			<view>
+				<view>
+					<picker class="orderSelcet" wx:if='{{picker}}' mode="region" style="color:#999" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
+						<view class="picker">
+							{{region[0]}}{{region[1]}}{{region[2]}}
+						</view>
+					</picker>
+					<picker class="orderSelcet" wx:if='{{!picker}}' mode="region" style="color:#333" bindchange="faaddress1" value="{{region}}" custom-item="{{customItem}}">
+						<view class="picker">
+							{{region[0]}}，{{region[1]}}，{{region[2]}}
+						</view>
+					</picker>
+
+					<text class="addNewaddress">添加地址</text>
+				</view>
+				<view>
+					<input class="faaddress2" placeholder-class="placeholder" placeholder="详细地址（详细到门牌、街道）" bindinput="faaddress2" value="{{faaddress2}}"></input>
+				</view>
+			</view>
+		</view>
+		<view class="fadate">
+			<image src="../img/riqi2.svg"></image>
+			<view class="fadateThis">
+				<picker mode="date" value="{{date}}" style="color:{{colorTime}}" start="2015-09-01" end="2050-09-01" bindchange="bindDateChange">
+					<view class="picker">
+						{{date}}
+					</view>
+				</picker>
+			</view>
+		</view>
+		<view class="zhongliang">
+			<image src="../img/zhongliang.svg"></image>
+			<view class="zhongliangView">
+				<input placeholder-class="placeholder" placeholder="请输入货物重量"></input>
+				<text>;</text>
+				<input placeholder-class="placeholder" placeholder="请输入货物体积"></input>
+			</view>
+		</view>
+	</view>
+</view>
+
+<!-- 货物详情 -->
+<view class="shopDetail">
+	<view class="shopDetailItem">
+		<text>货物类型</text>
+		<input placeholder="如证件、服装等" placeholder-class="placeholder"></input>
+	</view>
+	<view class="shopDetailItem">
+		<text>货物重量</text>
+		<view class="shopItem">
+			<input placeholder="如230g等" placeholder-class="placeholder"></input>
+			<text>货物体积</text>
+			<input placeholder="如5L等" placeholder-class="placeholder"></input>
+		</view>
+	</view>
+	<view class="shopDetailItem">
+		<text>包装方式</text>
+		<input style="border-bottom:0" placeholder="如纸箱、木箱等" placeholder-class="placeholder"></input>
+	</view>
+</view>
+<!-- 箱型要求 -->
+<!-- <view class="requirements">
+	<view class="requirementsTitle">
+		<text>箱型要求</text>
+		<view>
+			<radio-group class='guizi' bindchange="selectBz">
+				<label class="guizilabel" wx:for="{{itemsOne}}" wx:key="{{item.value}}">
+					<view class="guizilabelView">
+						<radio color="#FF932E" value="{{item.value}}" checked="true" />
+					</view>
+					<view class="guizilabelName">{{item.name}}</view>
+				</label>
+			</radio-group>
+		</view>
+	</view>
+	<view class="guizitype">
+		<text>小柜</text>
+		<view>
+			<radio-group class='guizi' bindchange="selectBz">
+				<label wx:if='{{showIf==1}}' class="guizilabel" wx:for="{{itemsOne1}}" wx:key="{{item.value}}">
+					<view class="guizilabelView">
+						<radio color="#FF932E" value="{{item.value}}" checked="true" />
+					</view>
+					<view class="guizilabelName">{{item.name}}</view>
+				</label>
+			</radio-group>
+			<radio-group  wx:if='{{showIf==2}}'  class='guizi' bindchange="selectBz">
+				<label class="guizilabel" wx:for="{{itemsOne2}}" wx:key="{{item.value}}">
+					<view class="guizilabelView">
+						<radio color="#FF932E" value="{{item.value}}" checked="true" />
+					</view>
+					<view class="guizilabelName">{{item.name}}</view>
+				</label>
+			</radio-group>
+			<radio-group  wx:if='{{showIf==3}}'  class='guizi' bindchange="selectBz">
+				<label class="guizilabel" wx:for="{{itemsOne3}}" wx:key="{{item.value}}">
+					<view class="guizilabelView">
+						<radio color="#FF932E" value="{{item.value}}" checked="true" />
+					</view>
+					<view class="guizilabelName">{{item.name}}</view>
+				</label>
+			</radio-group>
+		</view>
+	</view>
+</view> -->
+<view class="xxrequire">
+	<view class="xxrequireItem">
+		<text>箱型</text>
+		<view>
+			<picker bindchange="xxrequire" value="{{index1}}" range="{{array1}}">
+				<view class="picker" wx:if='{{index1==0}}' style="color:#999999">
+					{{array1[index1]}}
+				</view>
+				<view class="picker" wx:if='{{index1!=0}}' style="color:#333333">
+					{{array1[index1]}}
+				</view>
+			</picker>
+			<image src="../img/xiala.svg"></image>
+		</view>
+	</view>
+	<view class="xxrequireItem">
+		<text>功能</text>
+		<view>
+			<picker bindchange="gnrequire" value="{{index2}}" range="{{array2}}">
+				<view class="picker" wx:if='{{index2==0}}' style="color:#999999">
+					{{array2[index2]}}
+				</view>
+				<view class="picker" wx:if='{{index2!=0}}' style="color:#333333">
+					{{array2[index2]}}
+				</view>
+			</picker>
+			<image src="../img/xiala.svg"></image>
+		</view>
+	</view>
+	<view class="xxrequireItem">
+		<text>箱数</text>
+		<view>
+			<view class="xxrequireItemEve">
+				<picker bindchange="xsrequire" value="{{index3}}" range="{{array3}}">
+					<view class="picker" wx:if='{{index3==0}}' style="color:#999999">
+						{{array3[index3]}}
+					</view>
+					<view class="picker" wx:if='{{index3!=0}}' style="color:#333333">
+						{{array3[index3]}}
+					</view>
+				</picker>
+				<image src="../img/xiala.svg"></image>
+			</view>
+			<view  class="xxrequireItemEve">
+				<input type="number" placeholder="请输入数量"></input>
+				<text>个</text>
+			</view>
+
+		</view>
+	</view>
+</view>
+<!-- 备注信息 -->
+<view class="remark">
+	<text>备注信息</text>
+	<input placeholder-class="" placeholder="填写个性需求及需注意因素"></input>
+</view>
+
+<view class="send" bindtap="send">发布</view>
