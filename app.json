@@ -1,17 +1,15 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/publishorder/publishorder",
     "pages/login/login",
     "pages/shopping/shopping",
-    "pages/publishorder/publishorder",
-  
     "pages/providerDetail/providerDetail",
     "pages/demo/demo",
     "pages/selectprovider/selectprovider",
     "pages/myoffer/myoffer",
     "pages/orderListAll/orderListAll",
     "pages/orderDetail/orderDetail",
-   
     "pages/orderList/orderList",
     "pages/mine/mine",
     "pages/common/common"

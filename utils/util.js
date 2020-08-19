@@ -14,6 +14,20 @@ const formatNumber = n => {
   return n[1] ? n : '0' + n
 }
 
+const formatTimecuo = dates => {
+  const repTime= dates.replace(/-/g, '/');
+  const timeTamp = Date.parse(repTime);
+  return timeTamp
+}
+// var repTime = time.replace(/-/g, '/');//用正则主要是把“2019-05-20 00:00:00”转换成“2019/05/0 00:00:00”兼容ios
+
+// console.log("返回时间：" + repTime);
+
+// var timeTamp = Date.parse(repTime);
+
+// console.log("返回时间戳：" + timeTamp)
+
 module.exports = {
-  formatTime: formatTime
+  formatTime: formatTime,
+  formatTimecuo:formatTimecuo
 }

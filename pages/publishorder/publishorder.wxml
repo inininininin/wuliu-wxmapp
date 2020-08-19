@@ -4,96 +4,258 @@
 		<image src="../img/fa.svg"></image>
 		<view>
 			<view>
-				<picker class="orderSelcet" wx:if='{{picker}}' mode="region" style="color:#999" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
-					<view class="picker">
-						{{region[0]}}{{region[1]}}{{region[2]}}
+				<picker class="orderSelcet" wx:if='{{fahuoList.picker}}' mode="region" style="color:#999" bindchange="bindRegionChange" value="{{fahuoList.region}}" custom-item="{{customItem}}">
+					<view class="picker lineOne">
+						请选择发货地址：省-市-区
 					</view>
 				</picker>
-				<picker class="orderSelcet" wx:if='{{!picker}}' mode="region" style="color:#333" bindchange="faaddress1" value="{{region}}" custom-item="{{customItem}}">
-					<view class="picker">
-						{{region[0]}}，{{region[1]}}，{{region[2]}}
+				<picker class="orderSelcet" wx:if='{{!fahuoList.picker}}' mode="region" style="color:#333" bindchange="bindRegionChange" value="{{fahuoList.region}}" custom-item="{{customItem}}">
+					<view class="picker lineOne">
+						{{fahuoList.faHuoArea1Name}}，{{fahuoList.faHuoArea2Name}}，{{fahuoList.faHuoArea3Name}}
 					</view>
 				</picker>
 			</view>
 			<view>
-				<input class="faaddress2" placeholder-class="placeholder" placeholder="详细地址（详细到门牌、街道）" bindinput="faaddress2" value="{{faaddress2}}"></input>
+				<input class="faaddress2" placeholder-class="placeholder" placeholder="详细地址（详细到门牌、街道）" bindinput="faHuoAddress" value="{{fahuoList.faHuoAddress}}"></input>
 			</view>
 		</view>
 	</view>
 	<view class="fadate">
 		<image src="../img/date.svg"></image>
 		<view class="fadateThis">
-			<picker mode="date" value="{{date}}" style="color:{{colorTime}}" start="2015-09-01" end="2050-09-01" bindchange="bindDateChange">
+			<picker mode="date" value="{{fahuoList.faHuoTime}}" style="color:{{fahuoList.colorTime}}" start="2015-09-01" end="2050-09-01" bindchange="faHuoTime">
 				<view class="picker">
-					{{date}}
+					{{fahuoList.faHuoTime}}
 				</view>
 			</picker>
 		</view>
 	</view>
 </view>
 <!-- 收货地址 -->
-<view class="getaddressList" wx:for='{{getAddressList}}'>
-	<view class="getaddressItem">
-		<view class="faaddress">
-			<image src="../img/shou.svg"></image>
-			<view>
+<view class="getaddressList">
+	<view class="getaddressItem" wx:for='{{getAddressList}}'>
+		<view wx:if='{{item.type==""}}'>
+			<view class="faaddress">
+				<image src="../img/shou.svg"></image>
 				<view>
-					<picker class="orderSelcet" wx:if='{{picker}}' mode="region" style="color:#999" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
-						<view class="picker">
-							{{region[0]}}{{region[1]}}{{region[2]}}
-						</view>
-					</picker>
-					<picker class="orderSelcet" wx:if='{{!picker}}' mode="region" style="color:#333" bindchange="faaddress1" value="{{region}}" custom-item="{{customItem}}">
-						<view class="picker">
-							{{region[0]}}，{{region[1]}}，{{region[2]}}
-						</view>
-					</picker>
+					<view>
+						<!-- value="{{item.region}}" -->
+						<picker class="orderSelcet" wx:if='{{item.picker}}' mode="region" style="color:#999" bindchange="faaddress" custom-item="{{customItem}}">
+							<view class="picker lineOne">
+								请选择发货地址：省-市-区
+							</view>
+						</picker>
+						<!-- value="{{item.region}}"  -->
+						<picker class="orderSelcet" wx:if='{{!item.picker}}' mode="region" style="color:#333" bindchange="faaddress" custom-item="{{customItem}}">
+							<view class="picker lineOne">
+								{{item.shouHuoArea1Name}}，{{item.shouHuoArea2Name}}，{{item.shouHuoArea3Name}}
+							</view>
+						</picker>
 
-					<text class="addNewaddress">添加地址</text>
-				</view>
-				<view>
-					<input class="faaddress2" placeholder-class="placeholder" placeholder="详细地址（详细到门牌、街道）" bindinput="faaddress2" value="{{faaddress2}}"></input>
-				</view>
-			</view>
-		</view>
-		<view class="fadate">
-			<image src="../img/riqi2.svg"></image>
-			<view class="fadateThis">
-				<picker mode="date" value="{{date}}" style="color:{{colorTime}}" start="2015-09-01" end="2050-09-01" bindchange="bindDateChange">
-					<view class="picker">
-						{{date}}
+						<text class="addNewaddress" bindtap="addNewaddress" wx:if='{{getAddressList.length==1}}'>添加地址</text>
 					</view>
-				</picker>
+					<view>
+						<input class="faaddress2" placeholder-class="placeholder" placeholder="详细地址（详细到门牌、街道）" bindinput="shouHuoAddress" value="{{shouHuoAddress}}"></input>
+					</view>
+				</view>
 			</view>
+			<view class="fadate">
+				<image src="../img/riqi2.svg"></image>
+				<view class="fadateThis">
+					<picker mode="date" value="{{item.shouHuoTime}}" style="color:{{item.colorTime}}" start="2015-09-01" end="2050-09-01" bindchange="shouHuoTime">
+						<view class="picker">
+							{{item.shouHuoTime}}
+						</view>
+					</picker>
+				</view>
+			</view>
+			<view class="zhongliang">
+				<image src="../img/zhongliang.svg"></image>
+				<view class="zhongliangView">
+					<input placeholder-class="placeholder" type="number" bindinput="shouHuoWeight" placeholder="请输入货物重量"></input>
+					<text>;</text>
+					<input placeholder-class="placeholder" type="number" bindinput="shouHuoVolume" placeholder="请输入货物体积"></input>
+				</view>
+			</view>
+
 		</view>
-		<view class="zhongliang">
-			<image src="../img/zhongliang.svg"></image>
-			<view class="zhongliangView">
-				<input placeholder-class="placeholder" placeholder="请输入货物重量"></input>
-				<text>;</text>
-				<input placeholder-class="placeholder" placeholder="请输入货物体积"></input>
+		<view wx:if='{{item.type==1}}'>
+			<view class="faaddress">
+				<image src="../img/shou.svg"></image>
+				<view>
+					<view>
+						<!-- value="{{item.region}}" -->
+						<picker class="orderSelcet" wx:if='{{item.picker}}' mode="region" style="color:#999" bindchange="faaddress1" custom-item="{{customItem}}">
+							<view class="picker lineOne">
+								请选择发货地址：省-市-区
+							</view>
+						</picker>
+						<!-- value="{{item.region}}"  -->
+						<picker class="orderSelcet" wx:if='{{!item.picker}}' mode="region" style="color:#333" bindchange="faaddress1" custom-item="{{customItem}}">
+							<view class="picker lineOne">
+								{{item.shouHuo1Area1Name}}，{{item.shouHuo1Area2Name}}，{{item.shouHuo1Area3Name}}
+							</view>
+						</picker>
+
+						<text class="addNewaddress" bindtap="addNewaddress" wx:if='{{getAddressList.length==2}}'>添加地址</text>
+					</view>
+					<view>
+						<input class="faaddress2" placeholder-class="placeholder" placeholder="详细地址（详细到门牌、街道）" bindinput="shouHuo1Address" value="{{shouHuo1Address}}"></input>
+					</view>
+				</view>
 			</view>
+			<view class="fadate">
+				<image src="../img/riqi2.svg"></image>
+				<view class="fadateThis">
+					<picker mode="date" value="{{item.shouHuo1Time}}" style="color:{{item.colorTime}}" start="2015-09-01" end="2050-09-01" bindchange="shouHuo1Time">
+						<view class="picker">
+							{{item.shouHuo1Time}}
+						</view>
+					</picker>
+				</view>
+			</view>
+			<view class="zhongliang">
+				<image src="../img/zhongliang.svg"></image>
+				<view class="zhongliangView">
+					<input placeholder-class="placeholder" type="number" bindinput="shouHuo1Weight" placeholder="请输入货物重量"></input>
+					<text>;</text>
+					<input placeholder-class="placeholder" type="number" bindinput="shouHuo1Volume" placeholder="请输入货物体积"></input>
+				</view>
+			</view>
+
+		</view>
+		<view wx:if='{{item.type==2}}'>
+			<view class="faaddress">
+				<image src="../img/shou.svg"></image>
+				<view>
+					<view>
+						<!-- value="{{item.region}}" -->
+						<picker class="orderSelcet" wx:if='{{item.picker}}' mode="region" style="color:#999" bindchange="faaddress2" custom-item="{{customItem}}">
+							<view class="picker lineOne">
+								请选择发货地址：省-市-区
+							</view>
+						</picker>
+						<!-- value="{{item.region}}"  -->
+						<picker class="orderSelcet" wx:if='{{!item.picker}}' mode="region" style="color:#333" bindchange="faaddress2" custom-item="{{customItem}}">
+							<view class="picker lineOne">
+								{{item.shouHuo2Area1Name}}，{{item.shouHuo2Area2Name}}，{{item.shouHuo2Area3Name}}
+							</view>
+						</picker>
+
+						<text class="addNewaddress" bindtap="addNewaddress" wx:if='{{getAddressList.length==3}}'>添加地址</text>
+					</view>
+					<view>
+						<input class="faaddress2" placeholder-class="placeholder" placeholder="详细地址（详细到门牌、街道）" bindinput="shouHuo2Address" value="{{shouHuo2Address}}"></input>
+					</view>
+				</view>
+			</view>
+			<view class="fadate">
+				<image src="../img/riqi2.svg"></image>
+				<view class="fadateThis">
+					<picker mode="date" value="{{item.shouHuo2Time}}" style="color:{{item.colorTime}}" start="2015-09-01" end="2050-09-01" bindchange="shouHuo2Time">
+						<view class="picker">
+							{{item.shouHuo2Time}}
+						</view>
+					</picker>
+				</view>
+			</view>
+			<view class="zhongliang">
+				<image src="../img/zhongliang.svg"></image>
+				<view class="zhongliangView">
+					<input placeholder-class="placeholder" type="number" bindinput="shouHuo2Weight" placeholder="请输入货物重量"></input>
+					<text>;</text>
+					<input placeholder-class="placeholder" type="number" bindinput="shouHuo2Volume" placeholder="请输入货物体积"></input>
+				</view>
+			</view>
+
+		</view>
+		<view wx:if='{{item.type==3}}'>
+			<view class="faaddress">
+				<image src="../img/shou.svg"></image>
+				<view>
+					<view>
+						<!-- value="{{item.region}}" -->
+						<picker class="orderSelcet" wx:if='{{item.picker}}' mode="region" style="color:#999" bindchange="faaddress3" custom-item="{{customItem}}">
+							<view class="picker lineOne">
+								请选择发货地址：省-市-区
+							</view>
+						</picker>
+						<!-- value="{{item.region}}"  -->
+						<picker class="orderSelcet" wx:if='{{!item.picker}}' mode="region" style="color:#333" bindchange="faaddress3" custom-item="{{customItem}}">
+							<view class="picker lineOne">
+								{{item.shouHuo3Area1Name}}，{{item.shouHuo3Area2Name}}，{{item.shouHuo3Area3Name}}
+							</view>
+						</picker>
+
+						<text class="addNewaddress" bindtap="addNewaddress" wx:if='{{getAddressList.length==4}}'>添加地址</text>
+					</view>
+					<view>
+						<input class="faaddress2" placeholder-class="placeholder" placeholder="详细地址（详细到门牌、街道）" bindinput="shouHuo3Address" value="{{shouHuo3Address}}"></input>
+					</view>
+				</view>
+			</view>
+			<view class="fadate">
+				<image src="../img/riqi2.svg"></image>
+				<view class="fadateThis">
+					<picker mode="date" value="{{item.shouHuo3Time}}" style="color:{{item.colorTime}}" start="2015-09-01" end="2050-09-01" bindchange="shouHuo3Time">
+						<view class="picker">
+							{{item.shouHuo3Time}}
+						</view>
+					</picker>
+				</view>
+			</view>
+			<view class="zhongliang">
+				<image src="../img/zhongliang.svg"></image>
+				<view class="zhongliangView">
+					<input placeholder-class="placeholder" type="number" bindinput="shouHuo3Weight" placeholder="请输入货物重量"></input>
+					<text>;</text>
+					<input placeholder-class="placeholder" type="number" bindinput="shouHuo3Volume" placeholder="请输入货物体积"></input>
+				</view>
+			</view>
+
 		</view>
 	</view>
 </view>
 
 <!-- 货物详情 -->
 <view class="shopDetail">
-	<view class="shopDetailItem">
+	<view class="shopDetailItem xxrequireItem">
 		<text>货物类型</text>
-		<input placeholder="如证件、服装等" placeholder-class="placeholder"></input>
+		<view>
+			<picker bindchange="huoWuLeiXing" value="{{huoWuLeiXingIndex}}" range="{{huoWuLeiXingList}}">
+				<view class="picker" wx:if='{{huoWuLeiXingIndex==0}}' style="color:#999999">
+					{{huoWuLeiXingList[huoWuLeiXingIndex]}}
+				</view>
+				<view class="picker" wx:if='{{huoWuLeiXingIndex!=0}}' style="color:#333333">
+					{{huoWuLeiXingList[huoWuLeiXingIndex]}}
+				</view>
+			</picker>
+			<image src="../img/xiala.svg"></image>
+		</view>
+		<!-- <input bindinput="huoWuLeiXing" placeholder="如证件、服装等" placeholder-class="placeholder"></input> -->
 	</view>
 	<view class="shopDetailItem">
 		<text>货物重量</text>
 		<view class="shopItem">
-			<input placeholder="如230g等" placeholder-class="placeholder"></input>
+			<input bindinput="huoWuWeight" type="number" placeholder="如230g等" placeholder-class="placeholder"></input>
 			<text>货物体积</text>
-			<input placeholder="如5L等" placeholder-class="placeholder"></input>
+			<input bindinput="huoWuVolume" type="number" placeholder="如5L等" placeholder-class="placeholder"></input>
 		</view>
 	</view>
-	<view class="shopDetailItem">
+	<view class="shopDetailItem xxrequireItem">
 		<text>包装方式</text>
-		<input style="border-bottom:0" placeholder="如纸箱、木箱等" placeholder-class="placeholder"></input>
+		<view>
+			<picker bindchange="baoZhuangFangShi" value="{{baoZhuangFangShiIndex}}" range="{{baoZhuangFangShiList}}">
+				<view class="picker" wx:if='{{baoZhuangFangShiIndex==0}}' style="color:#999999">
+					{{baoZhuangFangShiList[baoZhuangFangShiIndex]}}
+				</view>
+				<view class="picker" wx:if='{{baoZhuangFangShiIndex!=0}}' style="color:#333333">
+					{{baoZhuangFangShiList[baoZhuangFangShiIndex]}}
+				</view>
+			</picker>
+			<image src="../img/xiala.svg"></image>
+		</view>
+		<!-- <input bindinput="baoZhuangFangShi" style="border-bottom:0" placeholder="如纸箱、木箱等" placeholder-class="placeholder"></input> -->
 	</view>
 </view>
 <!-- 箱型要求 -->
@@ -145,7 +307,7 @@
 	<view class="xxrequireItem">
 		<text>箱型</text>
 		<view>
-			<picker bindchange="xxrequire" value="{{index1}}" range="{{array1}}">
+			<picker bindchange="xiangXing" value="{{index1}}" range="{{array1}}">
 				<view class="picker" wx:if='{{index1==0}}' style="color:#999999">
 					{{array1[index1]}}
 				</view>
@@ -159,7 +321,7 @@
 	<view class="xxrequireItem">
 		<text>功能</text>
 		<view>
-			<picker bindchange="gnrequire" value="{{index2}}" range="{{array2}}">
+			<picker bindchange="gongNeng" value="{{index2}}" range="{{array2}}">
 				<view class="picker" wx:if='{{index2==0}}' style="color:#999999">
 					{{array2[index2]}}
 				</view>
@@ -174,7 +336,7 @@
 		<text>箱数</text>
 		<view>
 			<view class="xxrequireItemEve">
-				<picker bindchange="xsrequire" value="{{index3}}" range="{{array3}}">
+				<picker bindchange="xiangShu" value="{{index3}}" range="{{array3}}">
 					<view class="picker" wx:if='{{index3==0}}' style="color:#999999">
 						{{array3[index3]}}
 					</view>
@@ -184,8 +346,8 @@
 				</picker>
 				<image src="../img/xiala.svg"></image>
 			</view>
-			<view  class="xxrequireItemEve">
-				<input type="number" placeholder="请输入数量"></input>
+			<view class="xxrequireItemEve">
+				<input type="number" bindinput="xiangShuUnit" placeholder="请输入数量"></input>
 				<text>个</text>
 			</view>
 
@@ -195,7 +357,7 @@
 <!-- 备注信息 -->
 <view class="remark">
 	<text>备注信息</text>
-	<input placeholder-class="" placeholder="填写个性需求及需注意因素"></input>
+	<input placeholder-class="" bindinput="note" placeholder="填写个性需求及需注意因素"></input>
 </view>
 
 <view class="send" bindtap="send">发布</view>

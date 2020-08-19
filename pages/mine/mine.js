@@ -39,7 +39,40 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    wx.request({
+      url: app.globalData.url + '/wuliu/login-refresh',
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded",
+        'cookie': wx.getStorageSync('cookie')
+      },
+      method: 'post',
+      success: function (res) {
+        wx.hideToast()
+        if (res.data.code == 0) {
+          // debugger
+          app.globalData.userInfoDetail = res.data.data
+        } else if(res.data.code==20){
+          wx.showToast({
+            title: '请登录',
+            icon: 'none',
+            duration: 2000,
+            mask: true,
+            complete: function complete(res) {
+              setTimeout(function () {   
+                  wx.navigateTo({
+                    url: '../login/login',
+                  })   
+              }, 100);
+            }
+          });
+        }else{
+          wx.showToast({
+            title: res.data.codeMsg,
+            icon: 'none'
+          })
+        }
+      }
+    })
   },
 
   /**

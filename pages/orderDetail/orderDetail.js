@@ -8,7 +8,7 @@ Page({
   data: {
     date: '请选择',
     colorTime:'#999999',
-    priceList:[{},{},{},{}]
+    priceList:[{'name':'中远','zhongYuanMoney':'','zhongYuanZhuangChuanTime':'','zhongYuanDaoGangTime':''},{'name':'中谷','zhongGuMoney':'','zhongGuZhuangChuanTime':'','zhongGuDaoGangTime':''},{'name':'信封','xinFengMoney':'','xinFengZhuangChuanTime':'','xinFengDaoGangTime':''},{'name':'安通','anTongMoney':'','anTongZhuangChuanTime':'','anTongDaoGangTime':''}]
   },
   bindDateChange: function(e) {
     console.log('picker发送选择改变，携带值为', e.detail.value)

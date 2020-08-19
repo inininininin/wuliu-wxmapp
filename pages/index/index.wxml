@@ -8,8 +8,8 @@
 		<image class="fahuo" src="../img/fahuo.svg"></image>
 		<text>发布订单</text>
 	</view>
-	<view>
-		<image class="baojia" bindtap="baojia" src="../img/baojia.svg"></image>
+	<view bindtap="baojia">
+		<image class="baojia"  src="../img/baojia.svg"></image>
 		<text>我要报价</text>
 	</view>
 </view>

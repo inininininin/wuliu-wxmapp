@@ -16,8 +16,8 @@ Page({
     })
   },
   baojia(){
-    wx.navigateTo({
-      url: '../publishorder/publishorder',
+    wx.reLaunch({
+      url: '../orderList/orderList',
     })
   },
   /**

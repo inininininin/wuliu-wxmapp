@@ -129,6 +129,7 @@ background: #ffffff;
   line-height: 80rpx;
 }
 .orderItemOne>text:first-child{
+  max-width: 450rpx;
 font-size: 28rpx;
 font-family: PingFangSC, PingFangSC-Regular;
 font-weight: 400;
@@ -276,4 +277,16 @@ line-height: 60rpx;
 color: #ffffff;
 font-size: 26rpx;
 text-align: center;
+}
+
+.totalCount{
+  font-size: 26rpx;
+  color: #999999;
+  padding: 20rpx 0;
+  width: 100%;
+  text-align: center;
+  /* margin: 10rpx 0; */
+}
+.title-bar view text{
+  width: auto !important;
 }

@@ -126,7 +126,7 @@ page {
   border-bottom: 1rpx solid #e2e2e2;
 }
 
-.priceEve>view {
+.priceEve>view >view{
   width: 350rpx;
   /* display: inline-block; */
   float: left;

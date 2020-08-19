@@ -52,30 +52,116 @@
 <view class="getPrice">
 	<view class="title">我的报价</view>
 	<view class="priceEve" wx:for='{{priceList}}'>
-		<view class="priceEveTitle">
-			<text class="lineOne">慢慢慢慢慢慢慢慢</text>
-			<input placeholder="请输入价格" placeholder-class="placeholder"></input>
-		</view>
-		<view>
-			<text class="fahuodate">装船日期</text>
-			<view class="pickTimeFahuo">
-				<picker mode="date" value="{{date}}" style="color:{{colorTime}}" start="2015-09-01" end="2050-09-01" bindchange="bindDateChange">
-					<view class="picker">
-						{{date}}
-					</view>
-				</picker>
-        <image src="../img/xiala.svg"></image>
+		<view wx:if='{{item.name=="中远"}}'>
+			<view class="priceEveTitle">
+				<text class="lineOne">{{item.name}}</text>
+				<input placeholder="请输入价格" placeholder-class="placeholder"></input>
+			</view>
+			<view>
+				<text class="fahuodate">装船日期</text>
+				<view class="pickTimeFahuo">
+					<picker mode="date" value="{{date}}" style="color:{{colorTime}}" start="2015-09-01" end="2050-09-01" bindchange="bindDateChange">
+						<view class="picker">
+							{{date}}
+						</view>
+					</picker>
+					<image src="../img/xiala.svg"></image>
+				</view>
+			</view>
+			<view>
+				<text class="fahuodate">装船日期</text>
+				<view class="pickTimeshouhuo">
+					<picker mode="date" value="{{date}}" style="color:{{colorTime}}" start="2015-09-01" end="2050-09-01" bindchange="bindDateChange">
+						<view class="picker">
+							{{date}}
+						</view>
+					</picker>
+					<image src="../img/xiala.svg"></image>
+				</view>
 			</view>
 		</view>
-		<view>
-			<text class="fahuodate">装船日期</text>
-			<view class="pickTimeshouhuo">
-				<picker mode="date" value="{{date}}" style="color:{{colorTime}}" start="2015-09-01" end="2050-09-01" bindchange="bindDateChange">
-					<view class="picker">
-						{{date}}
-					</view>
-				</picker>
-        <image src="../img/xiala.svg"></image>
+		<view wx:if='{{item.name=="中谷"}}'>
+			<view class="priceEveTitle">
+				<text class="lineOne">{{item.name}}</text>
+				<input placeholder="请输入价格" placeholder-class="placeholder"></input>
+			</view>
+			<view>
+				<text class="fahuodate">装船日期</text>
+				<view class="pickTimeFahuo">
+					<picker mode="date" value="{{date}}" style="color:{{colorTime}}" start="2015-09-01" end="2050-09-01" bindchange="bindDateChange">
+						<view class="picker">
+							{{date}}
+						</view>
+					</picker>
+					<image src="../img/xiala.svg"></image>
+				</view>
+			</view>
+			<view>
+				<text class="fahuodate">装船日期</text>
+				<view class="pickTimeshouhuo">
+					<picker mode="date" value="{{date}}" style="color:{{colorTime}}" start="2015-09-01" end="2050-09-01" bindchange="bindDateChange">
+						<view class="picker">
+							{{date}}
+						</view>
+					</picker>
+					<image src="../img/xiala.svg"></image>
+				</view>
+			</view>
+		</view>
+		<view wx:if='{{item.name=="信封"}}'>
+			<view class="priceEveTitle">
+				<text class="lineOne">{{item.name}}</text>
+				<input placeholder="请输入价格" placeholder-class="placeholder"></input>
+			</view>
+			<view>
+				<text class="fahuodate">装船日期</text>
+				<view class="pickTimeFahuo">
+					<picker mode="date" value="{{date}}" style="color:{{colorTime}}" start="2015-09-01" end="2050-09-01" bindchange="bindDateChange">
+						<view class="picker">
+							{{date}}
+						</view>
+					</picker>
+					<image src="../img/xiala.svg"></image>
+				</view>
+			</view>
+			<view>
+				<text class="fahuodate">装船日期</text>
+				<view class="pickTimeshouhuo">
+					<picker mode="date" value="{{date}}" style="color:{{colorTime}}" start="2015-09-01" end="2050-09-01" bindchange="bindDateChange">
+						<view class="picker">
+							{{date}}
+						</view>
+					</picker>
+					<image src="../img/xiala.svg"></image>
+				</view>
+			</view>
+		</view>
+		<view wx:if='{{item.name=="安通"}}'>
+			<view class="priceEveTitle">
+				<text class="lineOne">{{item.name}}</text>
+				<input placeholder="请输入价格" placeholder-class="placeholder"></input>
+			</view>
+			<view>
+				<text class="fahuodate">装船日期</text>
+				<view class="pickTimeFahuo">
+					<picker mode="date" value="{{date}}" style="color:{{colorTime}}" start="2015-09-01" end="2050-09-01" bindchange="bindDateChange">
+						<view class="picker">
+							{{date}}
+						</view>
+					</picker>
+					<image src="../img/xiala.svg"></image>
+				</view>
+			</view>
+			<view>
+				<text class="fahuodate">装船日期</text>
+				<view class="pickTimeshouhuo">
+					<picker mode="date" value="{{date}}" style="color:{{colorTime}}" start="2015-09-01" end="2050-09-01" bindchange="bindDateChange">
+						<view class="picker">
+							{{date}}
+						</view>
+					</picker>
+					<image src="../img/xiala.svg"></image>
+				</view>
 			</view>
 		</view>
 	</view>

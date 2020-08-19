@@ -1,6 +1,18 @@
 <!--pages/orderList/orderList.wxml-->
-<view>
+<!-- <view>
 	<include src="../common/common.wxml" />
+</view> -->
+<view class="container" style="padding-top:{{statusBarHeight+titleBarHeight}}px">
+  <view class="header">
+    <view class="status-bar" style="height:{{statusBarHeight}}px"></view>
+    <view class="title-bar" style="height:{{titleBarHeight}}px">
+    <view>
+    <text class='titleText'>{{navtitle}}</text>
+		<text style="font-size:26rpx;color:#999999;">(共{{totalCount}}条数据)</text>
+
+    </view>
+    </view>
+  </view>
 </view>
 <!-- 筛选顶部 -->
 <view class="searchBox" style="top:{{statusBarHeight+titleBarHeight}}px">
@@ -19,32 +31,35 @@
 <view class="orderList">
 	<view class="orderItem" wx:for='{{orderList}}'>
 		<view class="orderItemOne">
-			<text>发货日期：2020-04-09</text>
-			<text>报价中-已有20人报价</text>
+			<text class="lineOne">发货日期：{{item.faHuoTime}}</text>
+			<text wx:if='{{item.chengJiaoIs==0}}'>报价中-已有{{item.baoJiaCount}}人报价</text>
+			<text wx:if='{{item.chengJiaoIs!=0}}'>已成交</text>
 		</view>
 		<view class="orderItemTwo">
 			<view>
 				<view class="fahuo">
 					<image class="fashou" src="../img/fa.svg"></image>
-					<text class="lineOne">杭州市西湖区</text>
+					<text class="lineOne">{{item.faHuoArea2Name||''}}{{item.faHuoArea3Name||''}}</text>
 				</view>
 				<view class="pointLine"></view>
 				<view class="shouhuo">
 					<image class="fashou" src="../img/shou.svg"></image>
-					<text class="lineOne">南京市六合区</text>
+					<text class="lineOne">{{item.shouHuoArea2Name||''}}{{item.shouHuoArea3Name||''}}</text>
 				</view>
 			</view>
-			<view class="toPrice">去报价</view>
+			<view class="toPrice" bindtap="toPrice" data-orderid='{{item.orderId}}' wx:if='{{item.chengJiaoIs==0}}'>去报价</view>
 		</view>
 		<view class="orderItemThree lineOne">
-			货物：衣服，230g，纸箱
+			货物：{{item.huoWuLeiXingName}}，{{item.huoWuWeight}}kg，{{item.xiangXingName}}
 		</view>
 	</view>
+	
 </view>
+<view class="totalCount">{{listTitle}}</view>
 
 <!-- 筛选弹窗 -->
-<view class="screenView" wx:if='{{showIs}}'>
-	<view class="screenUserView">
+<view class="screenView" wx:if='{{showIs}}' bindtap="showClose">
+	<view class="screenUserView" catchtap="eveThis">
 		<text class="title" style="padding-top: 100rpx;">订单选择</text>
 		<picker class="orderSelcet" bindchange="bindPickerChange" value="{{index}}" range="{{selectDatas}}">
 			<view class="picker">

@@ -11,15 +11,26 @@ Page({
     titleBarHeight: app.globalData.titleBarHeight,
     selectDatas: ['全部订单', '最新订单', '临近发货日期', '已成交订单'], //下拉列表的数据
     indexs: 0, //选择的下拉列 表下标,
-    orderList: [{}, {}, {}, {}],
+    orderList: [],
     index: 0,
     picker: true,
     pickers: true,
     region: ['请选择地址'],
     regions: ['请选择地址'],
     showIs: false,//弹窗是否弹出
+    orderSort:'',
+    faHuoAreaId:'',
+    shouHuoAreaId:'',
+    totalCount:'0',
+    pageNo:'',
+    listTitle:''
   },
-
+// 去报价
+toPrice(e){
+  wx.navigateTo({
+    url: '../orderDetail/orderDetail?id='+e.currentTarget.dataset.orderid,
+  })
+},  
   // 筛选条件选择
   screen() {
     this.setData({
@@ -30,36 +41,41 @@ Page({
     this.setData({
       picker: false
     })
-
     this.setData({
       region: e.detail.value,
-      area1Id: e.detail.code[2].substring(0, 2),
-      area2Id: e.detail.code[2].substring(0, 4),
-      area3Id: e.detail.code[2],
-      area1Name: e.detail.value[0],
-      area2Name: e.detail.value[1],
-      area3Name: e.detail.value[2],
+      faHuoAreaId: e.detail.code[2],
     })
   },
   bindRegionChange2: function (e) {
     this.setData({
       pickers: false
     })
-
     this.setData({
       regions: e.detail.value,
-      area1Id: e.detail.code[2].substring(0, 2),
-      area2Id: e.detail.code[2].substring(0, 4),
-      area3Id: e.detail.code[2],
-      area1Name: e.detail.value[0],
-      area2Name: e.detail.value[1],
-      area3Name: e.detail.value[2],
+      shouHuoAreaId:e.detail.code[2],
+     
     })
   },
   bindPickerChange: function (e) {
+    let orderSort=''
+    if (e.detail.value == 0) {
+      orderSort = ''
+    } else if (e.detail.value == 1) {
+      orderSort = 'updateTime'
+    } else if (e.detail.value == 2) {
+      orderSort = 'faHuoTime'
+    }else if (e.detail.value == 3) {
+      orderSort = 'chengJiaoIs'
+    }
     console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
-      index: e.detail.value
+      index: e.detail.value,
+      orderSort:orderSort
+    })
+  },
+  showClose() {
+    this.setData({
+      showIs: false,
     })
   },
   selectAgain() {
@@ -68,40 +84,48 @@ Page({
       regions: ['请选择地址'],
       picker: true,
       pickers: true,
-      indexs: 0
+      indexs: 0,
+      faHuoAreaId:'',
+      shouHuoAreaId:'',
+      orderSort:''
     })
   },
   makesure() {
     this.setData({
-      showIs: false
+      showIs: false,
+      orderList:[]
     })
+    this.lastPage('','','',this.data.faHuoAreaId,this.data.shouHuoAreaId,this.data.orderSort,'asc',1)
+    this.lastPageNumber('','','',this.data.faHuoAreaId,this.data.shouHuoAreaId,this.data.orderSort,'asc')
   },
   // 点击下拉显示框
-  selectTaps() {
+  selectTaps(e) {
     this.setData({
       shows: !this.data.shows,
     });
   },
   // 点击下拉列表
   optionTaps(e) {
-    var status
+    let sort=''
     let Indexs = e.currentTarget.dataset.index; //获取点击的下拉列表的下标
     if (Indexs == 0) {
-      status = ''
+      sort = ''
     } else if (Indexs == 1) {
-      status = '1'
+      sort = 'updateTime'
     } else if (Indexs == 2) {
-      status = '4'
+      sort = 'faHuoTime'
+    }else if (Indexs == 3) {
+      sort = 'chengJiaoIs'
     }
     this.setData({
       indexs: Indexs,
       shows: !this.data.shows,
-      status: status,
-      list1: []
+      orderList:[],
     });
-    this.lastPage(0, status, this.data.clinicId)
+    this.lastPage('','','','','',sort,'asc',1)
+    this.lastPageNumber('','','','','',sort,'asc')
   },
-   lastPage(kw,chengJiaoIs,baoJiaIs,faHuoAreaId,shouHuoAreaId,sort,order,pn){
+   lastPage(kw,chengJiaoIs,baoJiaIs,faHuoAreaId,shouHuoAreaId,sort,order,pageNo){
      let that=this
     wx.request({
       url: app.globalData.url+'/wuliu/order/order-list',
@@ -113,7 +137,7 @@ Page({
         shouHuoAreaId:shouHuoAreaId,
         sort:sort,
         order:order,
-        pn:pn,
+        pn:pageNo,
         ps:15
       },
       header: {
@@ -129,9 +153,36 @@ Page({
           })
         }
         if(res.data.code==0){
+          console.log(res.data.data.itemList)
+          for(var i in res.data.data.itemList){
+            res.data.data.itemList[i].faHuoTime=res.data.data.itemList[i].faHuoTime.slice(0,10)
+            if(res.data.data.itemList[i].huoWuLeiXing==1){
+              res.data.data.itemList[i].huoWuLeiXingName='服装'
+            }else if(res.data.data.itemList[i].huoWuLeiXing==2){
+              res.data.data.itemList[i].huoWuLeiXingName='食品'
+            }
+            if(res.data.data.itemList[i].xiangXing==1){
+              res.data.data.itemList[i].xiangXingName='木箱'
+            }else if(res.data.data.itemList[i].xiangXing==2){
+              res.data.data.itemList[i].xiangXingName='纸箱'
+            }
+          }
+          that.data.orderList.concat(res.data.data.itemList)
+          var orderListArr = that.data.orderList;
+          var neworderListArr = orderListArr.concat(res.data.data.itemList)
           that.setData({
-            orderList:res.data.data
+            orderList:neworderListArr,
+            pageNo:pageNo,
           })
+          if(that.data.orderList.length==that.data.totalCount){
+            that.setData({
+              listTitle:'数据已全部加载完成.'
+            })
+          }else{
+            that.setData({
+              listTitle:'.'
+            })
+          }
         }else if(res.data.code==20){
           wx.showToast({
             title: '请先登录',
@@ -148,14 +199,60 @@ Page({
           });
         }
       }
-      // data:'kw='+kw+'&chengJiaoIs='+chengJiaoIs+'&chengJiaoIs='+chengJiaoIs+'&faHuoAreaId='+faHuoAreaId+'&shouHuoAreaId='+shouHuoAreaId+'&sort='+sort+'&order='+order+'&pn='+pageNo+'&ps=15'
     })
   },
+  lastPageNumber(kw,chengJiaoIs,baoJiaIs,faHuoAreaId,shouHuoAreaId,sort,order){
+    let that=this
+   wx.request({
+     url: app.globalData.url+'/wuliu/order/order-list-sum',
+     data:{
+       kw: kw,
+       chengJiaoIs:chengJiaoIs,
+       baoJiaIs:baoJiaIs,
+       faHuoAreaId:faHuoAreaId,
+       shouHuoAreaId:shouHuoAreaId,
+       sort:sort,
+       order:order,
+     },
+     header: {
+       "Content-Type": "application/x-www-form-urlencoded",
+       'cookie': wx.getStorageSync('cookie')
+     },
+     method: 'post',
+     success:function(res){
+       if(res.data.codeMsg){
+         wx.showToast({
+           title: res.data.codeMsg,
+           icon:'none'
+         })
+       }
+       if(res.data.code==0){
+         that.setData({
+          totalCount:res.data.data.itemCount
+         })
+       }else if(res.data.code==20){
+         wx.showToast({
+           title: '请先登录',
+           icon: 'none',
+           duration: 2000,
+           mask: true,
+           complete: function complete(res) {
+             setTimeout(function () {   
+                 wx.navigateTo({
+                   url: '../login/login',
+                 })       
+             }, 100);
+           }
+         });
+       }
+     }
+   })
+ },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.lastPage('','','','','','','',1)
+   
   },
 
   /**
@@ -169,7 +266,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.lastPage('','','','','','','',1);
+    this.lastPageNumber('','','','','','','')
   },
 
   /**
@@ -190,6 +288,14 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
+    this.setData({
+      orderList:[],
+      totalCount:0,
+      pageNo:1,
+      listTitle:'加载中.'
+    })
+    this.lastPage('','','',this.data.faHuoAreaId,this.data.shouHuoAreaId,this.data.orderSort,'asc',1)
+    this.lastPageNumber('','','',this.data.faHuoAreaId,this.data.shouHuoAreaId,this.data.orderSort,'asc')
     wx.stopPullDownRefresh()
   },
 
@@ -197,7 +303,13 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    
+    var pageNo=this.data.pageNo+1
+    console.log(this.data.pageNo,pageNo)
+    this.setData({
+      listTitle:'正在载入更多.'
+    })
+    this.lastPage('','','',this.data.faHuoAreaId,this.data.shouHuoAreaId,this.data.orderSort,'asc',pageNo)
   },
 
   /**
