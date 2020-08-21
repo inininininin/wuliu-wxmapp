@@ -11,15 +11,16 @@ Page({
     titleBarHeight: app.globalData.titleBarHeight,
     shopList:[{},{},{},{},{},{},{}],
     navbar: ['已报价订单','已完成订单','已完成订单','已完成订单1','已完成订单2','已完成订单2'],
-    navbar:[{'name':'全部','value':['全部一','全部二','全部一','全部二','全部一','全部二','全部一','全部二','全部一','全部二']},{'name':'全部','value':['全部一','全部二']},{'name':'全部','value':['全部一','全部二']},{'name':'全部','value':['全部一','全部二']},{'name':'全部','value':['全部一','全部二']},{'name':'全部','value':['全部一','全部二']},{'name':'全部','value':['全部一','全部二']}],
+    navbar:[{'name':'全部','value':['全部一','全部二','全部一','全部二','全部一','全部二','全部一','全部二','全部一','全部二']},{'name':'全部','value':['全部一','全部二']},{'name':'全部','value':['全部一','全部二']},{'name':'全部','value':['全部一','全部二']},{'name':'全部','value':['全部一','全部二']},{'name':'全部','value':['全部一','全部二']},{'name':'全部','value':['全部一','全部二']},{'name':'全部','value':['全部一','全部二']},{'name':'全部','value':['全部一','全部二']},{'name':'全部','value':['全部一','全部二']}],
     currentTab: 0,
-    navbarEve:['全部一','全部二','全部一','全部二','全部一','全部二','全部一','全部二','全部一','全部二'],
+    navbarEve:[],
     currentTabEve: 0,
   },
 // 导航栏切换
 navbarTap: function(e) {
   this.setData({
     currentTab: e.currentTarget.dataset.idx,
+    navbarEve:this.data.navbar[e.currentTarget.dataset.idx].value
   })
 },
 navbarTapEve: function(e) {
@@ -32,7 +33,9 @@ navbarTapEve: function(e) {
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.setData({
+      navbarEve:this.data.navbar[0].value
+    })
   },
 
   /**
@@ -46,7 +49,14 @@ navbarTapEve: function(e) {
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+  
+    if(this.data.navbarEve&&this.data.navbarEve.length==0){
+      console.log(this.data.navbarEve.length)
+      this.setData({
+        navbarEve:this.data.navbar[0].value
+      })
+    }
+    
   },
 
   /**

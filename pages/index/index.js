@@ -1,5 +1,6 @@
 // page/index/index.js
-var app=getApp()
+const app=getApp()
+const util=require('../../utils/util.js')
 Page({
 
   /**
@@ -11,7 +12,7 @@ Page({
     titleBarHeight: app.globalData.titleBarHeight,
     articleList:[],
     totalCount:'0',
-    loginIf:'1'
+    loginIf:'0'
   },
   sendorder(){
     if(app.globalData.loginIf==1){
@@ -71,7 +72,7 @@ Page({
      },
      method: 'post',
      success:function(res){
-       if(res.data.codeMsg){
+       if(res.data.codeMsg&&res.data.code!=20){
          wx.showToast({
            title: res.data.codeMsg,
            icon:'none'
@@ -80,17 +81,22 @@ Page({
        if(res.data.code==0){
          console.log(res.data.data.itemList)
          for(var i in res.data.data.itemList){
-           res.data.data.itemList[i].faHuoTime=res.data.data.itemList[i].faHuoTime.slice(0,10)
-           res.data.data.itemList[i].cover=app.cover(res.data.data.itemList[i].cover)
+           res.data.data.itemList[i].updateTime=res.data.data.itemList[i].updateTime.slice(0,16)
+           res.data.data.itemList[i].coverImage=app.cover(res.data.data.itemList[i].coverImage)
          }
-         that.data.orderList.concat(res.data.data.itemList)
-         var listArr = that.data.orderList;
-         var newListArr = listArr.concat(res.data.data.itemList)
+         let newListArr,listArr
+         if(res.data.data.itemList&&res.data.data.itemList.length!=0){
+          that.data.articleList.concat(res.data.data.itemList)
+            listArr = that.data.articleList;
+           newListArr = listArr.concat(res.data.data.itemList)
+         }else{
+           newListArr=that.data.articleList;
+         }
          that.setData({
            articleList:newListArr,
            pageNo:pageNo,
          })
-         if(that.data.orderList.length==that.data.totalCount){
+         if(that.data.articleList.length==that.data.totalCount){
            that.setData({
              listTitle:'数据已全部加载完成.'
            })
@@ -128,7 +134,7 @@ Page({
     },
     method: 'post',
     success:function(res){
-      if(res.data.codeMsg){
+      if(res.data.codeMsg&&res.data.code!=20){
         wx.showToast({
           title: res.data.codeMsg,
           icon:'none'

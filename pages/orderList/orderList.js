@@ -261,10 +261,10 @@ toPrice(e){
       orderList:[],
       loginIf:app.globalData.loginIf
     })
-    if(app.globalData.loginIf==1){
-      this.lastPage('','','','','','','',1);
-      this.lastPageNumber('','','','','')
-    }
+    // if(app.globalData.loginIf==1){
+    //   this.lastPage('','','','','','','',1);
+    //   this.lastPageNumber('','','','','')
+    // }
   },
 
   /**
@@ -279,6 +279,9 @@ toPrice(e){
    */
   onShow: function () {
     console.log(this.data.orderList,this.data.orderList.length)
+    this.setData({
+      loginIf:app.globalData.loginIf
+    })
     if(this.data.orderList&&this.data.orderList.length==0){
       if(app.globalData.loginIf==1){
         this.lastPage('','','','','','','',1);
