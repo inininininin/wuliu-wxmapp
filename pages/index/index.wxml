@@ -9,7 +9,7 @@
 		<text>发布订单</text>
 	</view>
 	<view bindtap="baojia">
-		<image class="baojia"  src="../img/baojia.svg"></image>
+		<image class="baojia" src="../img/baojia.svg"></image>
 		<text>我要报价</text>
 	</view>
 </view>
@@ -17,44 +17,26 @@
 	<view class="title">
 		<image src="../img/xinxi.svg"></image>
 		<text>行业信息</text>
+		<text class="articleList">(共{{totalCount}}条)</text>
 	</view>
 
-	<view class="articleList">
-		<view class="articleEve">
+	<view class="articleList"  wx:if='{{totalCount!=0}}'>
+		<view class="articleEve" wx:for='{{articleList}}'>
 			<view class="articleLf">
 				<view class="lineTwo">邦德物流南京货运公司主管：行李托运、电动车托运、航空速,电动车托运、航空速</view>
 				<view class="lineOne">
-          <image src="../img/time.png"></image>
-        2019-02-19 12:39</view>
+					<image src="../img/time.png"></image>
+					2019-02-19 12:39
+				</view>
 			</view>
 			<image mode="aspectFill" src="../img/peitu.jpg"></image>
 		</view>
-    <view class="articleEve">
-			<view class="articleLf">
-				<view class="lineTwo">邦德物流南京货运公司主管：行李托运、电动车托运、航空速,电动车托运、航空速</view>
-				<view class="lineOne">
-          <image src="../img/time.png"></image>
-        2019-02-19 12:39</view>
-			</view>
-			<image mode="aspectFill" src="../img/peitu.jpg"></image>
-		</view>
-    <view class="articleEve">
-			<view class="articleLf">
-				<view class="lineTwo">邦德物流南京货运公司主管：行李托运、电动车托运、航空速,电动车托运、航空速</view>
-				<view class="lineOne">
-          <image src="../img/time.png"></image>
-        2019-02-19 12:39</view>
-			</view>
-			<image mode="aspectFill" src="../img/peitu.jpg"></image>
-		</view>
-    <view class="articleEve">
-			<view class="articleLf">
-				<view class="lineTwo">邦德物流南京货运公司主管：行李托运、电动车托运、航空速,电动车托运、航空速</view>
-				<view class="lineOne">
-          <image src="../img/time.png"></image>
-        2019-02-19 12:39</view>
-			</view>
-			<image mode="aspectFill" src="../img/peitu.jpg"></image>
-		</view>
+
+	</view>
+	<view wx:if='{{totalCount==0}}' style="padding-bottom:100rpx">
+		<image src="../img/quexing.png"  class="bgImg"></image>
+		<view  class="loginTitle" wx:if='{{loginIf==1}}'>当前尚无行业信息</view>
+		<text class="loginTitle" wx:if='{{loginIf==0}}'>点击登录获取信息</text>
+	<view class="gologinBtn" bindtap="gologinBtn" wx:if='{{loginIf==0}}'>去登陆</view>
 	</view>
 </view>

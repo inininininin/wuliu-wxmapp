@@ -4,7 +4,8 @@
 </view>
 <view class="indexTitle">
   <image mode="acpectFill" src="{{avator}}"></image>
-  <text>昵称</text>
+  <text class="lineOne" wx:if='{{loginIf==1}}'>{{nickname}}</text>
+  <text class="lineOne" wx:if='{{loginIf==0}}' bindtap="gologin">点击登录</text>
 </view>
 <view class="linkList">
     <view bindtap="myorder">

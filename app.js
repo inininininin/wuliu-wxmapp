@@ -1,5 +1,15 @@
 //app.js
 App({
+  globalData: {
+    userInfo: null,
+    userInfoDetail:[],
+    statusBarHeight:'',
+    titleBarHeight:'',
+    loginIf:'0',
+    domain:'https://test.inininininin.com',
+    url:'https://test.inininininin.com',
+    version:'1.0.0.2008101759',
+  },
   version:'20.0731.1804',
   versionNote:'修复了一些BUG , 优化了用户体验 .',
   onLaunch: function () {
@@ -125,14 +135,6 @@ App({
       _cover='https://test.inininininin.com'+_cover
     }
     return _cover
-  },
-  globalData: {
-    userInfo: null,
-    userInfoDetail:[],
-    statusBarHeight:'',
-    titleBarHeight:'',
-    domain:'https://test.inininininin.com',
-    url:'https://test.inininininin.com',
-    version:'1.0.0.2008101759',
   }
+  
 })

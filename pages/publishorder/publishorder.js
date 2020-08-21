@@ -37,8 +37,8 @@ Page({
   //  发货地址
   bindRegionChange: function (e) {
     this.data.fahuoList.region = e.detail.value,
-      this.data.fahuoList.picker = false
-    this.data.fahuoList.faHuoArea1Id = e.detail.code[2].substring(0, 2),
+      this.data.fahuoList.picker = false,
+      this.data.fahuoList.faHuoArea1Id = e.detail.code[2].substring(0, 2),
       this.data.fahuoList.faHuoArea2Id = e.detail.code[2].substring(0, 4),
       this.data.fahuoList.faHuoArea3Id = e.detail.code[2],
       this.data.fahuoList.faHuoArea1Name = e.detail.value[0],
@@ -245,8 +245,8 @@ Page({
   // 收货地址
   faaddress: function (e) {
     this.data.getAddressList[0].region = e.detail.value,
-      this.data.getAddressList[0].picker = false
-    this.data.getAddressList[0].shouHuoArea1Id = e.detail.code[2].substring(0, 2),
+      this.data.getAddressList[0].picker = false,
+      this.data.getAddressList[0].shouHuoArea1Id = e.detail.code[2].substring(0, 2),
       this.data.getAddressList[0].shouHuoArea2Id = e.detail.code[2].substring(0, 4),
       this.data.getAddressList[0].shouHuoArea3Id = e.detail.code[2],
       this.data.getAddressList[0].shouHuoArea1Name = e.detail.value[0],
@@ -258,8 +258,8 @@ Page({
   },
   faaddress1: function (e) {
     this.data.getAddressList[1].region = e.detail.value,
-      this.data.getAddressList[1].picker = false
-    this.data.getAddressList[1].shouHuo1Area1Id = e.detail.code[2].substring(0, 2),
+      this.data.getAddressList[1].picker = false,
+      this.data.getAddressList[1].shouHuo1Area1Id = e.detail.code[2].substring(0, 2),
       this.data.getAddressList[1].shouHuo1Area2Id = e.detail.code[2].substring(0, 4),
       this.data.getAddressList[1].shouHuo1Area3Id = e.detail.code[2],
       this.data.getAddressList[1].shouHuo1Area1Name = e.detail.value[0],
@@ -271,8 +271,8 @@ Page({
   },
   faaddress2: function (e) {
     this.data.getAddressList[2].region = e.detail.value,
-      this.data.getAddressList[2].picker = false
-    this.data.getAddressList[2].shouHuo2Area1Id = e.detail.code[2].substring(0, 2),
+      this.data.getAddressList[2].picker = false,
+      this.data.getAddressList[2].shouHuo2Area1Id = e.detail.code[2].substring(0, 2),
       this.data.getAddressList[2].shouHuo2Area2Id = e.detail.code[2].substring(0, 4),
       this.data.getAddressList[2].shouHuo2Area3Id = e.detail.code[2],
       this.data.getAddressList[2].shouHuo2Area1Name = e.detail.value[0],
@@ -284,8 +284,8 @@ Page({
   },
   faaddress3: function (e) {
     this.data.getAddressList[3].region = e.detail.value,
-      this.data.getAddressList[3].picker = false
-    this.data.getAddressList[3].shouHuo3Area1Id = e.detail.code[2].substring(0, 2),
+      this.data.getAddressList[3].picker = false,
+      this.data.getAddressList[3].shouHuo3Area1Id = e.detail.code[2].substring(0, 2),
       this.data.getAddressList[3].shouHuo3Area2Id = e.detail.code[2].substring(0, 4),
       this.data.getAddressList[3].shouHuo3Area3Id = e.detail.code[2],
       this.data.getAddressList[3].shouHuo3Area1Name = e.detail.value[0],
@@ -347,7 +347,6 @@ Page({
     this.setData({
       getAddressList: this.data.getAddressList
     })
-    console.log(this.data.getAddressList)
   },
   // 发布订单
   send() {
@@ -483,7 +482,6 @@ Page({
         + '&shouHuo3Address=' + that.data.getAddressList[3].shouHuo3Address + '&shouHuo3Weight=' + that.data.getAddressList[3].shouHuo3Weight
         + '&shouHuo3Volume=' + that.data.getAddressList[3].shouHuo3Volume + '&shouHuo3Time=' + util.formatTimecuo(that.data.getAddressList[3].shouHuo3Time)
     }
-    console.log(param)
     wx.request({
       url: app.globalData.url + '/wuliu/order/order-insert?' + param,
       header: {

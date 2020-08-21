@@ -6,7 +6,7 @@
       <!-- <image src="../img/weixin@2x.png" mode="aspectFill"></image> -->
        微信账号快捷登录
      </button>
-     <text class="loginPhone">输入手机号登录/注册</text>
+     <!-- <text class="loginPhone">输入手机号登录/注册</text> -->
 
 <view class="popWindow" wx:if='{{showIs}}'>
 	<view>

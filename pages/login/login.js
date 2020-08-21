@@ -7,14 +7,23 @@ Page({
    */
   data: {
     showIs:false,
-    version:app.globalData.version
+    version:app.globalData.version,
+    tabbarIs:'',
+    route:''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-   
+    console.log(options.route.split('pages/')[1])
+    if(options.route){
+      options.route='../'+options.route.split('pages/')[1]
+      this.setData({
+        route:options.route,
+        tabbarIs:options.tabbarIs
+      })
+    }
   },
   loginWx: function () {
     var that = this
@@ -64,6 +73,7 @@ Page({
                     success: function (res) {
                       wx.hideToast()
                       if (res.data.code == 0) {
+                        app.globalData.loginIf=1
                         // debugger
                         app.globalData.userInfoDetail = res.data.data
                         wx.showToast({
@@ -73,12 +83,19 @@ Page({
                           mask: true,
                           complete: function complete(res) {
                             setTimeout(function () {   
-                                wx.reLaunch({
-                                  url: '../index/index',
-                                })                       
-                                // wx.navigateBack({
-                                //   complete: (res) => {},
-                                // })
+                                if(that.data.tabbarIs==1&&that.data.route!=''){
+                                  wx.reLaunch({
+                                    url: that.data.route,
+                                  }) 
+                                }else if(that.data.tabbarIs==0&&that.data.route!=''){
+                                  wx.redirectTo({
+                                    url: that.data.route,
+                                  }) 
+                                }else{
+                                  wx.reLaunch({
+                                    url: '../index/index',
+                                  })
+                                }
                             }, 100);
                           }
                         });

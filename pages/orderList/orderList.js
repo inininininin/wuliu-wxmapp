@@ -9,6 +9,7 @@ Page({
     navtitle: '集贤装物流',
     statusBarHeight: app.globalData.statusBarHeight,
     titleBarHeight: app.globalData.titleBarHeight,
+    loginIf:'',
     selectDatas: ['全部订单', '最新订单', '临近发货日期', '已成交订单'], //下拉列表的数据
     indexs: 0, //选择的下拉列 表下标,
     orderList: [],
@@ -24,6 +25,12 @@ Page({
     totalCount:'0',
     pageNo:'',
     listTitle:''
+  },
+  // 去登陆
+  gologinBtn(e){
+    wx.navigateTo({
+      url: '../login/login?tabbarIs=1&route='+getCurrentPages()[0].route,
+    })
   },
 // 去报价
 toPrice(e){
@@ -96,7 +103,7 @@ toPrice(e){
       orderList:[]
     })
     this.lastPage('','','',this.data.faHuoAreaId,this.data.shouHuoAreaId,this.data.orderSort,'asc',1)
-    this.lastPageNumber('','','',this.data.faHuoAreaId,this.data.shouHuoAreaId,this.data.orderSort,'asc')
+    this.lastPageNumber('','','',this.data.faHuoAreaId,this.data.shouHuoAreaId)
   },
   // 点击下拉显示框
   selectTaps(e) {
@@ -123,7 +130,7 @@ toPrice(e){
       orderList:[],
     });
     this.lastPage('','','','','',sort,'asc',1)
-    this.lastPageNumber('','','','','',sort,'asc')
+    this.lastPageNumber('','','','','')
   },
    lastPage(kw,chengJiaoIs,baoJiaIs,faHuoAreaId,shouHuoAreaId,sort,order,pageNo){
      let that=this
@@ -201,7 +208,7 @@ toPrice(e){
       }
     })
   },
-  lastPageNumber(kw,chengJiaoIs,baoJiaIs,faHuoAreaId,shouHuoAreaId,sort,order){
+  lastPageNumber(kw,chengJiaoIs,baoJiaIs,faHuoAreaId,shouHuoAreaId){
     let that=this
    wx.request({
      url: app.globalData.url+'/wuliu/order/order-list-sum',
@@ -210,9 +217,7 @@ toPrice(e){
        chengJiaoIs:chengJiaoIs,
        baoJiaIs:baoJiaIs,
        faHuoAreaId:faHuoAreaId,
-       shouHuoAreaId:shouHuoAreaId,
-       sort:sort,
-       order:order,
+       shouHuoAreaId:shouHuoAreaId
      },
      header: {
        "Content-Type": "application/x-www-form-urlencoded",
@@ -252,7 +257,14 @@ toPrice(e){
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-   
+    this.setData({
+      orderList:[],
+      loginIf:app.globalData.loginIf
+    })
+    if(app.globalData.loginIf==1){
+      this.lastPage('','','','','','','',1);
+      this.lastPageNumber('','','','','')
+    }
   },
 
   /**
@@ -266,8 +278,14 @@ toPrice(e){
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.lastPage('','','','','','','',1);
-    this.lastPageNumber('','','','','','','')
+    console.log(this.data.orderList,this.data.orderList.length)
+    if(this.data.orderList&&this.data.orderList.length==0){
+      if(app.globalData.loginIf==1){
+        this.lastPage('','','','','','','',1);
+        this.lastPageNumber('','','','','')
+      }
+    }
+    
   },
 
   /**
@@ -288,14 +306,17 @@ toPrice(e){
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    this.setData({
-      orderList:[],
-      totalCount:0,
-      pageNo:1,
-      listTitle:'加载中.'
-    })
-    this.lastPage('','','',this.data.faHuoAreaId,this.data.shouHuoAreaId,this.data.orderSort,'asc',1)
-    this.lastPageNumber('','','',this.data.faHuoAreaId,this.data.shouHuoAreaId,this.data.orderSort,'asc')
+    if(app.globalData.loginIf==1){
+      this.setData({
+        orderList:[],
+        totalCount:0,
+        pageNo:1,
+        listTitle:'加载中.'
+      })
+      this.lastPage('','','',this.data.faHuoAreaId,this.data.shouHuoAreaId,this.data.orderSort,'asc',1)
+      this.lastPageNumber('','','',this.data.faHuoAreaId,this.data.shouHuoAreaId)
+    }
+    
     wx.stopPullDownRefresh()
   },
 
@@ -303,13 +324,15 @@ toPrice(e){
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
+    if(app.globalData.loginIf==1){
+      var pageNo=this.data.pageNo+1
+      console.log(this.data.pageNo,pageNo)
+      this.setData({
+        listTitle:'正在载入更多.'
+      })
+      this.lastPage('','','',this.data.faHuoAreaId,this.data.shouHuoAreaId,this.data.orderSort,'asc',pageNo)
+    }
     
-    var pageNo=this.data.pageNo+1
-    console.log(this.data.pageNo,pageNo)
-    this.setData({
-      listTitle:'正在载入更多.'
-    })
-    this.lastPage('','','',this.data.faHuoAreaId,this.data.shouHuoAreaId,this.data.orderSort,'asc',pageNo)
   },
 
   /**

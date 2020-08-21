@@ -3,95 +3,104 @@
 	<include src="../common/common.wxml" />
 </view> -->
 <view class="container" style="padding-top:{{statusBarHeight+titleBarHeight}}px">
-  <view class="header">
-    <view class="status-bar" style="height:{{statusBarHeight}}px"></view>
-    <view class="title-bar" style="height:{{titleBarHeight}}px">
-    <view>
-    <text class='titleText'>{{navtitle}}</text>
-		<text style="font-size:26rpx;color:#999999;">(共{{totalCount}}条数据)</text>
-
-    </view>
-    </view>
-  </view>
-</view>
-<!-- 筛选顶部 -->
-<view class="searchBox" style="top:{{statusBarHeight+titleBarHeight}}px">
-	<view class='select_box'>
-		<view class='select' catchtap='selectTaps'>
-			<text class='select_text'>{{selectDatas[indexs]}}</text>
-			<image mode="aspectFill" class='select_img {{shows&&"select_img_rotate"}}' src='../img/xiala.svg'></image>
-		</view>
-		<view class='option_box' style='height:{{shows?(selectDatas.length>5?300:selectDatas.length*88):0}}rpx;'>
-			<text class='option' style='{{indexs==selectDatas.length-1&&"border:0;"}}' wx:for='{{selectDatas}}' wx:key='this' data-index='{{index}}' catchtap='optionTaps'>{{item}}</text>
-		</view>
-	</view>
-	<view class="screen" bindtap="screen">筛选</view>
-</view>
-<!-- 订单列表 -->
-<view class="orderList">
-	<view class="orderItem" wx:for='{{orderList}}'>
-		<view class="orderItemOne">
-			<text class="lineOne">发货日期：{{item.faHuoTime}}</text>
-			<text wx:if='{{item.chengJiaoIs==0}}'>报价中-已有{{item.baoJiaCount}}人报价</text>
-			<text wx:if='{{item.chengJiaoIs!=0}}'>已成交</text>
-		</view>
-		<view class="orderItemTwo">
+	<view class="header">
+		<view class="status-bar" style="height:{{statusBarHeight}}px"></view>
+		<view class="title-bar" style="height:{{titleBarHeight}}px">
 			<view>
-				<view class="fahuo">
-					<image class="fashou" src="../img/fa.svg"></image>
-					<text class="lineOne">{{item.faHuoArea2Name||''}}{{item.faHuoArea3Name||''}}</text>
-				</view>
-				<view class="pointLine"></view>
-				<view class="shouhuo">
-					<image class="fashou" src="../img/shou.svg"></image>
-					<text class="lineOne">{{item.shouHuoArea2Name||''}}{{item.shouHuoArea3Name||''}}</text>
-				</view>
+				<text class='titleText'>{{navtitle}}</text>
+				<text style="font-size:26rpx;color:#999999;">(共{{totalCount}}条数据)</text>
+
 			</view>
-			<view class="toPrice" bindtap="toPrice" data-orderid='{{item.orderId}}' wx:if='{{item.chengJiaoIs==0}}'>去报价</view>
-		</view>
-		<view class="orderItemThree lineOne">
-			货物：{{item.huoWuLeiXingName}}，{{item.huoWuWeight}}kg，{{item.xiangXingName}}
 		</view>
 	</view>
-	
 </view>
-<view class="totalCount">{{listTitle}}</view>
 
-<!-- 筛选弹窗 -->
-<view class="screenView" wx:if='{{showIs}}' bindtap="showClose">
-	<view class="screenUserView" catchtap="eveThis">
-		<text class="title" style="padding-top: 100rpx;">订单选择</text>
-		<picker class="orderSelcet" bindchange="bindPickerChange" value="{{index}}" range="{{selectDatas}}">
-			<view class="picker">
-				{{selectDatas[index]}}
+<view wx:if='{{loginIf==1}}'>
+<!-- 筛选顶部 -->
+	<view class="searchBox" style="top:{{statusBarHeight+titleBarHeight}}px">
+		<view class='select_box'>
+			<view class='select' catchtap='selectTaps'>
+				<text class='select_text'>{{selectDatas[indexs]}}</text>
+				<image mode="aspectFill" class='select_img {{shows&&"select_img_rotate"}}' src='../img/xiala.svg'></image>
 			</view>
-		</picker>
-		<text class="title">发货地</text>
-		<picker class="orderSelcet" wx:if='{{picker}}' mode="region" style="color:#999" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
-			<view class="picker">
-				{{region[0]}}{{region[1]}}{{region[2]}}
+			<view class='option_box' style='height:{{shows?(selectDatas.length>5?300:selectDatas.length*88):0}}rpx;'>
+				<text class='option' style='{{indexs==selectDatas.length-1&&"border:0;"}}' wx:for='{{selectDatas}}' wx:key='this' data-index='{{index}}' catchtap='optionTaps'>{{item}}</text>
 			</view>
-		</picker>
-		<picker class="orderSelcet" wx:if='{{!picker}}' mode="region" style="color:#333" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
-			<view class="picker">
-				{{region[0]}}，{{region[1]}}，{{region[2]}}
-			</view>
-		</picker>
-		<text class="title">收货地</text>
-		<picker class="orderSelcet" wx:if='{{pickers}}' mode="region" style="color:#999" bindchange="bindRegionChange2" value="{{regions}}" custom-item="{{customItem}}">
-			<view class="picker">
-				{{regions[0]}}{{regions[1]}}{{regions[2]}}
-			</view>
-		</picker>
-		<picker class="orderSelcet" wx:if='{{!pickers}}' mode="region" style="color:#333" bindchange="bindRegionChange2" value="{{regions}}" custom-item="{{customItem}}">
-			<view class="picker">
-				{{regions[0]}}，{{regions[1]}}，{{regions[2]}}
-			</view>
-		</picker>
-
-    <view class="screenbtn">
-      <view class="selectAgain" bindtap="selectAgain">重选</view>
-      <view class="makesure" bindtap="makesure">确定</view>
-    </view>
+		</view>
+		<view class="screen" bindtap="screen">筛选</view>
 	</view>
+	<!-- 订单列表 -->
+	<view class="orderList">
+		<view class="orderItem" wx:for='{{orderList}}'>
+			<view class="orderItemOne">
+				<text class="lineOne">发货日期：{{item.faHuoTime}}</text>
+				<text wx:if='{{item.chengJiaoIs==0}}'>报价中-已有{{item.baoJiaCount}}人报价</text>
+				<text wx:if='{{item.chengJiaoIs!=0}}'>已成交</text>
+			</view>
+			<view class="orderItemTwo">
+				<view>
+					<view class="fahuo">
+						<image class="fashou" src="../img/fa.svg"></image>
+						<text class="lineOne">{{item.faHuoArea2Name||''}}{{item.faHuoArea3Name||''}}</text>
+					</view>
+					<view class="pointLine"></view>
+					<view class="shouhuo">
+						<image class="fashou" src="../img/shou.svg"></image>
+						<text class="lineOne">{{item.shouHuoArea2Name||''}}{{item.shouHuoArea3Name||''}}</text>
+					</view>
+				</view>
+				<view class="toPrice" bindtap="toPrice" data-orderid='{{item.orderId}}' wx:if='{{item.chengJiaoIs==0}}'>去报价</view>
+			</view>
+			<view class="orderItemThree lineOne">
+				货物：{{item.huoWuLeiXingName}}，{{item.huoWuWeight}}kg，{{item.xiangXingName}}
+			</view>
+		</view>
+
+	</view>
+	<view class="totalCount">{{listTitle}}</view>
+
+	<!-- 筛选弹窗 -->
+	<view class="screenView" wx:if='{{showIs}}' bindtap="showClose">
+		<view class="screenUserView" catchtap="eveThis">
+			<text class="title" style="padding-top: 100rpx;">订单选择</text>
+			<picker class="orderSelcet" bindchange="bindPickerChange" value="{{index}}" range="{{selectDatas}}">
+				<view class="picker">
+					{{selectDatas[index]}}
+				</view>
+			</picker>
+			<text class="title">发货地</text>
+			<picker class="orderSelcet" wx:if='{{picker}}' mode="region" style="color:#999" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
+				<view class="picker">
+					{{region[0]}}{{region[1]}}{{region[2]}}
+				</view>
+			</picker>
+			<picker class="orderSelcet" wx:if='{{!picker}}' mode="region" style="color:#333" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
+				<view class="picker">
+					{{region[0]}}，{{region[1]}}，{{region[2]}}
+				</view>
+			</picker>
+			<text class="title">收货地</text>
+			<picker class="orderSelcet" wx:if='{{pickers}}' mode="region" style="color:#999" bindchange="bindRegionChange2" value="{{regions}}" custom-item="{{customItem}}">
+				<view class="picker">
+					{{regions[0]}}{{regions[1]}}{{regions[2]}}
+				</view>
+			</picker>
+			<picker class="orderSelcet" wx:if='{{!pickers}}' mode="region" style="color:#333" bindchange="bindRegionChange2" value="{{regions}}" custom-item="{{customItem}}">
+				<view class="picker">
+					{{regions[0]}}，{{regions[1]}}，{{regions[2]}}
+				</view>
+			</picker>
+
+			<view class="screenbtn">
+				<view class="selectAgain" bindtap="selectAgain">重选</view>
+				<view class="makesure" bindtap="makesure">确定</view>
+			</view>
+		</view>
+	</view>
+</view>
+
+<view wx:if='{{loginIf!=1}}'>
+	<image src="../img/quexing.png" class="bgImg"></image>
+	<text class="loginTitle">点击登录获取信息</text>
+	<view class="gologinBtn" bindtap="gologinBtn">去登陆</view>
 </view>

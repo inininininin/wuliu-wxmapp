@@ -1,13 +1,16 @@
 /* pages/orderDetail/orderDetail.wxss */
 page {
   background: #f5f5f5;
+  padding-bottom: 20rpx;
 }
 
 .topMain {
   width: 750rpx;
-  height: 730rpx;
+  /* height: 730rpx; */
   background: #ffffff;
   margin-top: 20rpx;
+  float: left;
+  padding-bottom: 24rpx;
 }
 
 .topMain .type1 {
@@ -102,6 +105,7 @@ page {
   height: 180rpx;
   line-height: 90rpx;
   border-top: 1rpx solid #e2e2e2;
+  font-size: 28rpx;
 }
 
 .priceEve .priceEveTitle {
@@ -133,28 +137,33 @@ page {
 }
 
 .fahuodate {
-  width: 139rpx;
+  width: 149rpx;
   float: left;
 }
 
 .pickTimeFahuo,
 .pickTimeshouhuo {
-  width: 210rpx;
+  width: 200rpx;
   float: left;
+  position: relative;
 }
 
 .pickTimeFahuo>picker,
 .pickTimeshouhuo>picker {
-  width: 180rpx;
+  width: 200rpx;
   float: left;
+  
 }
 
 .pickTimeFahuo image,
 .pickTimeshouhuo image {
+  position: absolute;
+  top: 41rpx;
+  right:10rpx ;
   width: 14rpx;
   height: 8rpx;
-  margin: 41rpx 10rpx 41rpx 5rpx;
-  float: left;
+  /* margin: 41rpx 10rpx 41rpx 5rpx; */
+  /* float: left; */
 }
 
 .sendPrice {

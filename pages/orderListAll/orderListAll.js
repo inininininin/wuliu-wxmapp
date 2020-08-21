@@ -6,7 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    orderList: [{'status':1}, {'status':0}, {'status':1}, {'status':0}],
+    orderList: [],
     navbar: ['已报价订单','已完成订单'],
     currentTab: 0,
   },
@@ -18,15 +18,140 @@ Page({
       qx:1,
     })
   },
- 
+  toChoice(e){
+    wx.navigateTo({
+      url: '../selectprovider/selectprovider?id='+e.currentTarget.dataset.orderid,
+    })
+  },
   
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.lastPage('','',1,'','','','',1)
+    this.lastPageNumber('','',1,'','')
   },
-
+  lastPage(kw,chengJiaoIs,baoJiaIs,faHuoAreaId,shouHuoAreaId,sort,order,pageNo){
+    let that=this
+   wx.request({
+     url: app.globalData.url+'/wuliu/order/order-list',
+     data:{
+       kw: kw,
+       chengJiaoIs:chengJiaoIs,
+       baoJiaIs:baoJiaIs,
+       faHuoAreaId:faHuoAreaId,
+       shouHuoAreaId:shouHuoAreaId,
+       sort:sort,
+       order:order,
+       pn:pageNo,
+       ps:15
+     },
+     header: {
+       "Content-Type": "application/x-www-form-urlencoded",
+       'cookie': wx.getStorageSync('cookie')
+     },
+     method: 'post',
+     success:function(res){
+       if(res.data.codeMsg){
+         wx.showToast({
+           title: res.data.codeMsg,
+           icon:'none'
+         })
+       }
+       if(res.data.code==0){
+         console.log(res.data.data.itemList)
+         for(var i in res.data.data.itemList){
+           res.data.data.itemList[i].faHuoTime=res.data.data.itemList[i].faHuoTime.slice(0,10)
+           if(res.data.data.itemList[i].huoWuLeiXing==1){
+             res.data.data.itemList[i].huoWuLeiXingName='服装'
+           }else if(res.data.data.itemList[i].huoWuLeiXing==2){
+             res.data.data.itemList[i].huoWuLeiXingName='食品'
+           }
+           if(res.data.data.itemList[i].xiangXing==1){
+             res.data.data.itemList[i].xiangXingName='木箱'
+           }else if(res.data.data.itemList[i].xiangXing==2){
+             res.data.data.itemList[i].xiangXingName='纸箱'
+           }
+         }
+         that.data.orderList.concat(res.data.data.itemList)
+         var orderListArr = that.data.orderList;
+         var neworderListArr = orderListArr.concat(res.data.data.itemList)
+         that.setData({
+           orderList:neworderListArr,
+           pageNo:pageNo,
+         })
+         if(that.data.orderList.length==that.data.totalCount){
+           that.setData({
+             listTitle:'数据已全部加载完成.'
+           })
+         }else{
+           that.setData({
+             listTitle:'.'
+           })
+         }
+       }else if(res.data.code==20){
+         wx.showToast({
+           title: '请先登录',
+           icon: 'none',
+           duration: 2000,
+           mask: true,
+           complete: function complete(res) {
+             setTimeout(function () {   
+                 wx.navigateTo({
+                   url: '../login/login',
+                 })       
+             }, 100);
+           }
+         });
+       }
+     }
+   })
+ },
+ lastPageNumber(kw,chengJiaoIs,baoJiaIs,faHuoAreaId,shouHuoAreaId){
+   let that=this
+  wx.request({
+    url: app.globalData.url+'/wuliu/order/order-list-sum',
+    data:{
+      kw: kw,
+      chengJiaoIs:chengJiaoIs,
+      baoJiaIs:baoJiaIs,
+      faHuoAreaId:faHuoAreaId,
+      shouHuoAreaId:shouHuoAreaId
+    },
+    header: {
+      "Content-Type": "application/x-www-form-urlencoded",
+      'cookie': wx.getStorageSync('cookie')
+    },
+    method: 'post',
+    success:function(res){
+      if(res.data.codeMsg){
+        wx.showToast({
+          title: res.data.codeMsg,
+          icon:'none'
+        })
+      }
+      if(res.data.code==0){
+        that.setData({
+         totalCount:res.data.data.itemCount
+        })
+      }else if(res.data.code==20){
+        wx.showToast({
+          title: '请先登录',
+          icon: 'none',
+          duration: 2000,
+          mask: true,
+          complete: function complete(res) {
+            setTimeout(function () {   
+                wx.navigateTo({
+                  url: '../login/login',
+                })       
+            }, 100);
+          }
+        });
+      }
+    }
+  })
+},
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
