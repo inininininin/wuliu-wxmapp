@@ -12,7 +12,8 @@
     "pages/orderDetail/orderDetail",
     "pages/orderList/orderList",
     "pages/mine/mine",
-    "pages/common/common"
+    "pages/common/common",
+    "pages/articleDetail/articleDetail"
   ],
   "window": {
     "backgroundTextStyle": "light",

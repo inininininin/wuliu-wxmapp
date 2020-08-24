@@ -6,33 +6,68 @@
 	</view>
 </view>
 <!-- 订单列表 -->
-<view class="orderList">
+<view class="orderList" wx:if='{{currentTab==0}}'>
 	<view class="orderItem" wx:for='{{orderList}}'>
 		<view class="orderItemOne">
-			<text>发货日期：2020-04-09</text>
-			<text wx:if='{{item.status==0}}'>待确认</text>
-			<text wx:if='{{item.status==1}}'>订单已完成</text>
+			<text>发货日期：{{item.faHuoTime}}</text>
+			<text wx:if='{{item.chengJiaoIs==0}}'>待确认</text>
+			<text wx:if='{{item.chengJiaoIs==1}}'>订单已完成</text>
 		</view>
 		<view class="orderItemTwo">
 			<view>
 				<view class="fahuo">
 					<image class="fashou" src="../img/fa.svg"></image>
-					<text class="lineOne">杭州市西湖区</text>
+					<text class="lineOne">{{item.faHuoArea2Name}}{{item.faHuoArea3Name}}</text>
 				</view>
 				<view class="pointLine"></view>
 				<view class="shouhuo">
 					<image class="fashou" src="../img/shou.svg"></image>
-					<text class="lineOne">南京市六合区</text>
+					<text class="lineOne">{{item.shouHuoArea2Name}}{{item.shouHuoArea3Name}}</text>
 				</view>
 			</view>
-			<view class="toPrice" wx:if='{{item.status==0}}'>联系用户</view>
+			<view class="toPrice" wx:if='{{item.chengJiaoIs==0}}' bindtap="userphone" data-userphone='{{item.userPhone}}'>联系用户</view>
 		</view>
 		<view class="orderItemThree lineOne">
-			货物：衣服，230g，纸箱
+			货物：{{item.huoWuLeiXingName}}，{{item.huoWuWeight}}kg，{{item.xiangXingName}}
 		</view>
 	</view>
+	<view wx:if='{{totalCount==0}}' style="padding-bottom:100rpx">
+		<image src="../img/quexing.png" class="bgImg"></image>
+		<view class="loginTitle">当前尚无待确认订单</view>
+	</view>
+	<view class="totalCount">{{listTitle}}</view>
 </view>
-
+<view wx:if='{{currentTab==1}}'>
+	<view class="orderItem" wx:for='{{orderListFinish}}'>
+		<view class="orderItemOne">
+			<text>发货日期：{{item.faHuoTime}}</text>
+			<text wx:if='{{item.chengJiaoIs==0}}'>待确认</text>
+			<text wx:if='{{item.chengJiaoIs==1}}'>订单已完成</text>
+		</view>
+		<view class="orderItemTwo">
+			<view>
+				<view class="fahuo">
+					<image class="fashou" src="../img/fa.svg"></image>
+					<text class="lineOne">{{item.faHuoArea2Name}}{{item.faHuoArea3Name}}</text>
+				</view>
+				<view class="pointLine"></view>
+				<view class="shouhuo">
+					<image class="fashou" src="../img/shou.svg"></image>
+					<text class="lineOne">{{item.shouHuoArea2Name}}{{item.shouHuoArea3Name}}</text>
+				</view>
+			</view>
+			<view class="toPrice" wx:if='{{item.chengJiaoIs==0}}' bindtap="userphone" data-userphone='{{item.userPhone}}'>联系用户</view>
+		</view>
+		<view class="orderItemThree lineOne">
+			货物：{{item.huoWuLeiXingName}}，{{item.huoWuWeight}}kg，{{item.xiangXingName}}
+		</view>
+	</view>
+	<view wx:if='{{totalCountEve==0}}' style="padding-bottom:100rpx">
+		<image src="../img/quexing.png" class="bgImg"></image>
+		<view class="loginTitle">当前尚无已完成订单</view>
+	</view>
+	<view class="totalCount" wx:if='{{totalCountEve!=0}}'>{{listTitleEve}}</view>
+</view>
 <!-- 筛选弹窗 -->
 <view class="screenView" wx:if='{{showIs}}'>
 	<view class="screenUserView">
@@ -65,9 +100,9 @@
 			</view>
 		</picker>
 
-    <view class="screenbtn">
-      <view class="selectAgain" bindtap="selectAgain">重选</view>
-      <view class="makesure" bindtap="makesure">确定</view>
-    </view>
+		<view class="screenbtn">
+			<view class="selectAgain" bindtap="selectAgain">重选</view>
+			<view class="makesure" bindtap="makesure">确定</view>
+		</view>
 	</view>
 </view>

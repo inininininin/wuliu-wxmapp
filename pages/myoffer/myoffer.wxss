@@ -238,3 +238,8 @@ page {
   font-size: 26rpx;
   text-align: center;
 }
+
+
+.bgImg{
+  margin-top: 205rpx !important;
+}

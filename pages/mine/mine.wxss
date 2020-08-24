@@ -18,46 +18,73 @@ page {
   margin: 90rpx 317rpx 0;
   border-radius: 50%;
 }
-.indexTitle>text{
+
+.indexTitle>text {
   display: block;
   width: 100%;
   text-align: center;
-height: 50rpx;
-font-size: 36rpx;
-font-family: PingFangSC, PingFangSC-Regular;
-font-weight: 400;
-color: #ffffff;
-line-height: 50rpx;
+  height: 50rpx;
+  font-size: 36rpx;
+  font-family: PingFangSC, PingFangSC-Regular;
+  font-weight: 400;
+  color: #ffffff;
+  line-height: 50rpx;
 }
-.linkList{
+
+.linkList {
   width: 100%;
   background: #ffffff;
   margin-top: 20rpx;
   height: auto;
 }
-.linkList>view{
+
+.linkList>view {
   width: 718rpx;
   height: 104rpx;
   box-sizing: border-box;
   border-bottom: 1rpx solid #e5e5e5;
   line-height: 104rpx;
   margin-left: 32rpx;
-  
+
 }
-.linkList>view text{
+
+.linkList>view text {
   font-size: 34rpx;
-font-family: PingFangSC, PingFangSC-Regular;
-font-weight: 400;
-text-align: left;
-color: #333333;
-letter-spacing: 1rpx;
+  font-family: PingFangSC, PingFangSC-Regular;
+  font-weight: 400;
+  text-align: left;
+  color: #333333;
+  letter-spacing: 1rpx;
 }
-.linkList>view image{
+
+.linkList>view image {
   width: 16rpx;
   height: 26rpx;
   float: right;
   margin: 39rpx 36rpx 39rpx 0;
 }
-.linkList>view:last-child{
+
+.linkList>view:last-child {
   border-bottom: 0;
+}
+
+/* 号码 */
+.linkList .phone ,.linkList .phoneGet{
+  float: right;
+  color: #666666;
+  font-size: 24rpx;
+  margin-right: 36rpx
+}
+
+.linkList button{
+  display: inline-block;
+  width: 200rpx !important;
+  height: 102rpx;
+  line-height: 102rpx;
+  text-align: right;
+  padding: 0;
+  cursor: pointer;
+  background: #ffffff;
+  border: 0;
+  outline: none;
 }

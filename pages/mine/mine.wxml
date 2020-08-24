@@ -3,25 +3,31 @@
 	<include src="../common/common.wxml" />
 </view>
 <view class="indexTitle">
-  <image mode="acpectFill" src="{{avator}}"></image>
-  <text class="lineOne" wx:if='{{loginIf==1}}'>{{nickname}}</text>
-  <text class="lineOne" wx:if='{{loginIf==0}}' bindtap="gologin">点击登录</text>
+	<image mode="acpectFill" src="{{avator}}"></image>
+	<text class="lineOne" wx:if='{{loginIf==1}}'>{{nickname}}</text>
+	<text class="lineOne" wx:if='{{loginIf==0}}' bindtap="gologin">点击登录</text>
 </view>
 <view class="linkList">
-    <view bindtap="myorder">
-      <text>我的订单</text>
-      <image src="../img/rightIcon.svg"></image>
-    </view>
-    <view bindtap="myoffer">
-      <text>我的报价</text>
-      <image src="../img/rightIcon.svg"></image>
-    </view>
-    <view>
-      <text>联系客服</text>
-      <image src="../img/rightIcon.svg"></image>
-    </view>
-    <view bindtap="guanli">
-      <text>账号管理</text>
-      <image src="../img/rightIcon.svg"></image>
-    </view>
+	<view>
+		<text>手机号</text>
+    <text wx:if='{{phone}}' class="phone">{{phone}}</text>
+    <button wx:if='{{!phone}}' class="phoneGet"  open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber"  style="color:#0E4090">点击授权手机号</button>
+		<!-- <image src="../img/rightIcon.svg"></image> -->
+	</view>
+	<view bindtap="myorder" wx:if='{{loginIf==1}}'>
+		<text>我的订单</text>
+		<image src="../img/rightIcon.svg"></image>
+	</view>
+	<view bindtap="myoffer" wx:if='{{loginIf==1}}'>
+		<text>我的报价</text>
+		<image src="../img/rightIcon.svg"></image>
+	</view>
+	<view>
+		<text>联系客服</text>
+		<image src="../img/rightIcon.svg"></image>
+	</view>
+	<view bindtap="loginOut" wx:if='{{loginIf==1}}'>
+		<text>退出登录</text>
+		<image src="../img/rightIcon.svg"></image>
+	</view>
 </view>

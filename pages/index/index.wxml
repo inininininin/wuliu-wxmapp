@@ -21,7 +21,7 @@
 	</view>
 
 	<view class="articleList"  wx:if='{{totalCount!=0}}'>
-		<view class="articleEve" wx:for='{{articleList}}'>
+		<view class="articleEve" wx:for='{{articleList}}' bindtap="articleDetail" data-id='{{item.articleId}}'>
 			<view class="articleLf">
 				<view class="lineTwo">{{item.title}}</view>
 				<view class="lineOne">
@@ -29,10 +29,10 @@
 					{{item.updateTime}}
 				</view>
 			</view>
-			<image mode="aspectFill" lazy-load='true'  src="{{item.coverImage}}"></image>
+			<image mode="aspectFill" lazy-load='true'  src="{{item.cover}}"></image>
 		</view>
-
 	</view>
+	
 	<view wx:if='{{totalCount==0}}' style="padding-bottom:100rpx">
 		<image src="../img/quexing.png"  class="bgImg"></image>
 		<view  class="loginTitle" wx:if='{{loginIf==1}}'>当前尚无行业信息</view>
@@ -40,3 +40,4 @@
 	<view class="gologinBtn" bindtap="gologinBtn" wx:if='{{loginIf==0}}'>去登陆</view>
 	</view>
 </view>
+	<view class="totalCount">{{listTitle}}</view>

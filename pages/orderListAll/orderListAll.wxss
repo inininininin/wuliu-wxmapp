@@ -29,7 +29,8 @@ page {
 
 .navbar>view {
   position: relative;
-  width: 375rpx;
+  width: 250rpx;
+  /* width: 375rpx; */
   text-align: center;
   line-height: 88rpx;
   height: 88rpx;
@@ -45,7 +46,7 @@ page {
   position: absolute;
   top: 82rpx;
   border-radius: 3rpx;
-  left: 147rpx;
+  left: 85rpx;
   width: 80rpx;
   height: 6rpx;
   background: #FF932E;
@@ -120,7 +121,7 @@ page {
   float: left;
 }
 
-.toPrice {
+.toChoice {
   width: 140rpx;
   height: 50rpx;
   background: #ff932e;
