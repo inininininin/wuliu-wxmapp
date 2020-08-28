@@ -21,6 +21,12 @@ Page({
     kw: '',
     listTitle: '',
   },
+  // 商品详情
+  goodsdetail(e){
+    wx.navigateTo({
+      url: '../goodsdetail/goodsdetail?id='+e.currentTarget.dataset.id,
+    })
+  },
   // 关键字搜索
   searchKw: function (e) {
     this.setData({
@@ -230,7 +236,11 @@ Page({
                 console.log(res.data.data.items)
                 for (var i in res.data.data.items) {
                   res.data.data.items[i].cover = app.cover(res.data.data.items[i].cover)
-      
+                  if(res.data.data.items[i].unit==1){
+                    res.data.data.items[i].unitName='件'
+                  }else if(res.data.data.items[i].unit==2){
+                    res.data.data.items[i].unitName='斤'
+                  }
                 }
                 that.data.orderList.concat(res.data.data.items)
                 var orderListArr = that.data.orderList;

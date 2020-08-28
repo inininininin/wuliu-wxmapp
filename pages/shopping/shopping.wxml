@@ -22,15 +22,16 @@
 </view>
 <view wx:if='{{loginIf==1}}'>
 	<view class="shopList" style="margin-top:176rpx;">
-		<view class="shopItem" wx:for='{{orderList}}'>
+		<view class="shopItem" wx:for='{{orderList}}' bindtap="goodsdetail" data-id='{{item.goodsId}}'>
 			<image mode='aspectFill' src="{{item.cover}}"></image>
 			<view class="detail">
 				<view class="title lineOne">{{item.name}}</view>
 				<view class="address "><text>装货地：</text><text class="lineOne" style="width:350rpx">{{item.area1Name}}-{{item.area2Name}}</text></view>
+					<view class="address "><text>规格：</text><text class="lineOne" style="width:350rpx">{{item.unitName}}</text></view>
 				<view class="position">
 					<view>简介：</view>
 					<view>
-						<view class="lineFour">{{item.intro}}</view>
+						<view class="lineThree">{{item.intro}}</view>
 						<!-- <view class="lineOne">小柜-5吨-380ml-<text>¥2083</text></view>
 					<view class="lineOne">大柜-8吨-1200ml-<text>¥20933</text></view>
 					<view class="lineOne">**柜-<text>¥38772</text></view>

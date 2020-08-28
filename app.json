@@ -17,7 +17,8 @@
     "pages/orderList/orderList",
     "pages/mine/mine",
     "pages/common/common",
-    "pages/articleDetail/articleDetail"
+    "pages/articleDetail/articleDetail",
+    "pages/goodsdetail/goodsdetail"
   ],
   "window": {
     "backgroundTextStyle": "light",
