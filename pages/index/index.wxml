@@ -2,7 +2,7 @@
 <view>
 	<include src="../common/common.wxml" />
 </view>
-<image class="adPic" src="../img/peitu.jpg" mode="aspectFill"></image>
+<image  bindtap="totalCount" class="adPic" src="../img/peitu.jpg" mode="aspectFill"></image>
 <view class="orderAndPrice">
 	<view bindtap="sendorder">
 		<image class="fahuo" src="../img/fahuo.svg"></image>
@@ -41,3 +41,13 @@
 	</view>
 </view>
 	<view class="totalCount">{{listTitle}}</view>
+
+<view class="popWindowRz" bindtap="closePop" wx:if='{{show}}'>
+	<view class="popBox" catchtap="clearThis">
+		<view class="popTop">
+			<text>您还没有进行认证</text>
+			<text>发布订单需要先进行身份认证</text>
+		</view>
+		<view class="popBot" bindtap="goRecognize">去认证</view>
+	</view>
+</view>

@@ -1,0 +1,8 @@
+<!--pages/recognize/recognize.wxml-->
+<view class="title">请选择认证方</view>
+<view class="line {{active1}}" bindtap="personal">个人</view>
+<view class="line {{active2}}" bindtap="company">公司</view>
+<view class="line {{active3}}" bindtap="maoyi">贸易</view>
+
+<view wx:if='{{type!=0}}' class="gorec active" bindtap="gorec">下一步</view>
+<view wx:if='{{type==0}}' class="gorec" bindtap="gorecNo">下一步</view>

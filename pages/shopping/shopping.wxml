@@ -6,7 +6,7 @@
 			<view>
 				<view class="searchBox">
 					<image src="../img/sousuo.svg"></image>
-					<input disabled="disabled" placeholder-class="placeholder" placeholder="商品名称/订单编号"></input>
+					<input bindconfirm="searchKw" confirm-type='search' placeholder-class="placeholder" placeholder="商品名称/订单编号"></input>
 				</view>
 			</view>
 		</view>
@@ -14,27 +14,43 @@
 </view>
 <view class="navbarList" style="position:fixed;top:{{statusBarHeight+titleBarHeight}}px">
 	<scroll-view scroll-x='true' bindscroll="scroll" style="width: 100%" class="scroll-header navbar">
-		<view wx:for="{{navbar}}" data-idx="{{index}}" class="scroll-view-item item {{currentTab==index ? 'active' : ''}}" wx:key="unique" bindtap="navbarTap">{{item.name}}</view>
+		<view wx:for="{{navbar}}" data-idx="{{index}}" data-typeid='{{item.type}}' class="scroll-view-item item {{currentTab==index ? 'active' : ''}}" wx:key="unique" bindtap="navbarTap">{{item.name}}</view>
 	</scroll-view>
 	<scroll-view scroll-x='true' bindscroll="scroll" style="width: 100%" class="scroll-header-this navbarEve">
-		<view wx:for="{{navbarEve}}" data-idx="{{index}}" class="scroll-view-item item {{currentTabEve==index ? 'active' : ''}}" wx:key="unique" bindtap="navbarTapEve">{{item}}</view>
+		<view wx:for="{{navbarEve}}" data-idx="{{index}}" data-typeid='{{item.type}}' class="scroll-view-item item {{currentTabEve==index ? 'active' : ''}}" wx:key="unique" bindtap="navbarTapEve">{{item.name}}</view>
 	</scroll-view>
 </view>
-<view class="shopList" style="margin-top:176rpx;">
-	<view class="shopItem" wx:for='{{shopList}}'>
-		<image mode='aspectFill' src="../img/peitu.jpg"></image>
-		<view class="detail">
-			<view class="title">医疗器械</view>
-			<view class="address"><text>装货地：</text><text>南京市</text></view>
-			<view class="position">
-				<view>规格：</view>
-				<view>
-					<view class="lineOne">小柜-5吨-380ml-<text>¥2083</text></view>
+<view wx:if='{{loginIf==1}}'>
+	<view class="shopList" style="margin-top:176rpx;">
+		<view class="shopItem" wx:for='{{orderList}}'>
+			<image mode='aspectFill' src="{{item.cover}}"></image>
+			<view class="detail">
+				<view class="title lineOne">{{item.name}}</view>
+				<view class="address "><text>装货地：</text><text class="lineOne" style="width:350rpx">{{item.area1Name}}-{{item.area2Name}}</text></view>
+				<view class="position">
+					<view>规格：</view>
+					<view>
+						<view class="lineFour">{{item.intro}}</view>
+						<!-- <view class="lineOne">小柜-5吨-380ml-<text>¥2083</text></view>
 					<view class="lineOne">大柜-8吨-1200ml-<text>¥20933</text></view>
 					<view class="lineOne">**柜-<text>¥38772</text></view>
-					<view class="lineOne">拼柜：-(同收货港可拼,满柜可售)</view>
+					<view class="lineOne">拼柜：-(同收货港可拼,满柜可售)</view> -->
+					</view>
 				</view>
 			</view>
 		</view>
 	</view>
+	<view style="clear:both"></view>
+	<view wx:if='{{totalCount==0}}' style="padding-bottom:100rpx">
+		<image src="../img/quexing.png" class="bgImg"></image>
+		<view class="loginTitle">当前尚无商品</view>
+	</view>
+	<view class="totalCount" wx:if='{{totalCount!=0}}'>{{listTitle}}</view>
+</view>
+
+
+<view wx:if='{{loginIf!=1}}'>
+	<image src="../img/quexing.png" class="bgImg"></image>
+	<text class="loginTitle">点击登录获取信息</text>
+	<view class="gologinBtn" bindtap="gologinBtn">去登陆</view>
 </view>

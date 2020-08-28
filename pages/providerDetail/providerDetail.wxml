@@ -1,63 +1,130 @@
 <!--pages/orderDetail/orderDetail.wxml-->
+<view class="container" style="padding-top:{{statusBarHeight+titleBarHeight}}px">
+	<view class="header">
+		<view class="status-bar" style="height:{{statusBarHeight}}px"></view>
+		<view class="title-bar" style="height:{{titleBarHeight}}px">
+			<view>
+				<view style="height:{{titleBarHeight}}px;width:{{titleBarHeight+50}}px;" bindtap="backHistory">
+					<image src="../img/fanhui2.png"></image>
+				</view>
+				<text  style="width:calc(100% - {{titleBarHeight+titleBarHeight+100}}px);text-align:center;display:inline-block;margin-left:0" class='titleText'>{{navtitle}}</text>
+			</view>
+		</view>
+	</view>
+</view>
 <view class="topMain">
-	<view class="type1">
-		<image class="faIcon" src="../img/fa.svg"></image>
-		<view class="lineOne">四川省锦江区某某街道某某单位201仓库</view>
+	<view>
+		<view class="type1">
+			<image class="faIcon" src="../img/fa.svg"></image>
+			<view class="lineOne">{{orderDetail.faHuoArea1Name||''}}{{orderDetail.faHuoArea2Name||''}}{{orderDetail.faHuoArea3Name||''}}{{orderDetail.faHuoAddress||''}}</view>
+		</view>
+		<view class="type1">
+			<image class="faIcon1" src="../img/date.svg"></image>
+			<view class="lineOne">{{orderDetail.faHuoTime||''}}</view>
+		</view>
 	</view>
-	<view class="type1">
-		<image class="faIcon1" src="../img/date.svg"></image>
-		<view class="lineOne">2020-02-04</view>
+
+	<view wx:if='{{orderDetail.shouHuoArea1Id}}'>
+		<view class="type1">
+			<image class="faIcon" src="../img/shou.svg"></image>
+			<view class="lineOne">{{orderDetail.shouHuoArea1Name||''}}{{orderDetail.shouHuoArea2Name||''}}{{orderDetail.shouHuoArea3Name||''}}{{orderDetail.shouHuoAddress||''}}</view>
+		</view>
+		<view class="type1">
+			<image class="faIcon1" src="../img/riqi2.svg"></image>
+			<view class="lineOne ">{{orderDetail.shouHuoTime||''}}</view>
+		</view>
+		<view class="type1">
+			<image class="faIcon1" src="../img/zhongliang.svg"></image>
+			<view class="lineOne lineOne">{{orderDetail.shouHuoWeight||''}}kg；{{orderDetail.shouHuoVolume||''}}L/m³</view>
+		</view>
 	</view>
-	<view class="type1">
-		<image class="faIcon" src="../img/shou.svg"></image>
-		<view class="lineOne">江苏省南京市六合区某街道某小区301</view>
+	<view wx:if='{{orderDetail.shouHuo1Area1Id}}'>
+		<view class="type1">
+			<image class="faIcon" src="../img/shou.svg"></image>
+			<view class="lineOne">{{orderDetail.shouHuo1Area1Name||''}}{{orderDetail.shouHuo1Area2Name||''}}{{orderDetail.shouHuo1Area3Name||''}}{{orderDetail.shouHuo1Address||''}}</view>
+		</view>
+		<view class="type1">
+			<image class="faIcon1" src="../img/riqi2.svg"></image>
+			<view class="lineOne ">{{orderDetail.shouHuo1Time||''}}</view>
+		</view>
+		<view class="type1">
+			<image class="faIcon1" src="../img/zhongliang.svg"></image>
+			<view class="lineOne lineOne">{{orderDetail.shouHuo1Weight||''}}kg；{{orderDetail.shouHuo1Volume||''}}L/m³</view>
+		</view>
 	</view>
-	<view class="type1">
-		<image class="faIcon1" src="../img/riqi2.svg"></image>
-		<view class="lineOne ">2020-08-10</view>
+	<view wx:if='{{orderDetail.shouHuo2Area1Id}}'>
+		<view class="type1">
+			<image class="faIcon" src="../img/shou.svg"></image>
+			<view class="lineOne">{{orderDetail.shouHuo2Area1Name||''}}{{orderDetail.shouHuo2Area2Name||''}}{{orderDetail.shouHuo2Area3Name||''}}{{orderDetail.shouHuo2Address||''}}</view>
+		</view>
+		<view class="type1">
+			<image class="faIcon1" src="../img/riqi2.svg"></image>
+			<view class="lineOne ">{{orderDetail.shouHuo2Time||''}}</view>
+		</view>
+		<view class="type1">
+			<image class="faIcon1" src="../img/zhongliang.svg"></image>
+			<view class="lineOne lineOne">{{orderDetail.shouHuo2Weight||''}}kg；{{orderDetail.shouHuo2Volume||''}}L/m³</view>
+		</view>
 	</view>
-	<view class="type1">
-		<image class="faIcon1" src="../img/zhongliang.svg"></image>
-		<view class="lineOne lineOne">50kg；2688L</view>
+	<view wx:if='{{orderDetail.shouHuo3Area1Id}}'>
+		<view class="type1">
+			<image class="faIcon" src="../img/shou.svg"></image>
+			<view class="lineOne">{{orderDetail.shouHuo3Area1Name||''}}{{orderDetail.shouHuo3Area2Name||''}}{{orderDetail.shouHuo3Area3Name||''}}{{orderDetail.shouHuo3Address||''}}</view>
+		</view>
+		<view class="type1">
+			<image class="faIcon1" src="../img/riqi2.svg"></image>
+			<view class="lineOne ">{{orderDetail.shouHuo3Time||''}}</view>
+		</view>
+		<view class="type1">
+			<image class="faIcon1" src="../img/zhongliang.svg"></image>
+			<view class="lineOne lineOne">{{orderDetail.shouHuo3Weight||''}}kg；{{orderDetail.shouHuo3Volume||''}}L/m³</view>
+		</view>
 	</view>
+
 
 	<view class="type2">
 		<text class="type2title">货物类型</text>
-		<text class="type2Detail lineOne">服装</text>
+		<text class="type2Detail lineOne">{{orderDetail.huoWuLeiXingName||''}}</text>
 	</view>
 	<view class="type2 ">
 		<text class="type2title">货物重量</text>
-		<text class="type2Detail1 lineOne">230g</text>
+		<text class="type2Detail1 lineOne">{{orderDetail.huoWuWeight||''}}kg</text>
 		<text class="type2title">货物重量</text>
-		<text class="type2Detail1 lineOne">230g230g230g230g230g</text>
+		<text class="type2Detail1 lineOne">{{orderDetail.huoWuVolume||''}}L/m³</text>
 	</view>
 	<view class="type2">
 		<text class="type2title">包装方式</text>
-		<text class="type2Detail lineOne">纸箱</text>
+		<text class="type2Detail lineOne">{{orderDetail.baoZhuangFangShiName||''}}</text>
 	</view>
 	<view class="type2">
-		<text class="type2title">箱型要求</text>
-		<text class="type2Detail lineOne">小柜</text>
+		<text class="type2title">箱型</text>
+		<text class="type2Detail lineOne">{{orderDetail.xiangXingName||''}}</text>
 	</view>
 	<view class="type2">
-		<text class="type2title">小柜</text>
-		<text class="type2Detail lineOne">短板</text>
+		<text class="type2title">功能</text>
+		<text class="type2Detail lineOne">{{orderDetail.gongNengName||''}}</text>
 	</view>
+	<view class="type2">
+		<text class="type2title">箱数</text>
+		<text class="type2Detail lineOne">{{orderDetail.xiangShuUnit||''}}个 / {{orderDetail.xiangShuName||''}}</text>
+	</view>
+
 	<view class="type2">
 		<text class="type2title">备注信息</text>
-		<text class="type2Detail lineOne">封闭性要好，不能受潮</text>
+		<text class="type2Detail lineOne">{{orderDetail.note||''}}</text>
 	</view>
 </view>
+<view style="clear:both"></view>
 <view class="providerDetail">
 	<view class="title">服务商详情</view>
 	<view class="detail">
 		<view class="intro">
 			<image src="../img/peitu.jpg" mode="aspectFill"></image>
 			<view>
-				<view class="providername">服务商二</view>
-				<view class="providertel">联系电话：18225635244</view>
+				<view class="providername">{{baojiaDetail.nickname}}</view>
+				<view class="providertel">联系电话：{{baojiaDetail.phone}}</view>
 			</view>
-			<view class="linePhone">拨号</view>
+			<view class="linePhone" bindtap="linePhone" data-phone='{{baojiaDetail.phone}}'>拨号</view>
 		</view>
 
 		<view class="hisprice">
@@ -71,53 +138,75 @@
 		</view>
 		<view>
 			<view class="hispriceItem">
-				<view class="hispriceItemName">慢******</view>
+				<view class="hispriceItemName">中远</view>
 				<view class="hispriceItemDate">
-					<view>¥2918</view>
-					<view>2020-02-01</view>
-					<view>2020-02-04</view>
+					<view>¥{{baojiaDetail.zhongYuanMoney}}万</view>
+					<view>{{baojiaDetail.zhongYuanZhuangChuanTime}}</view>
+					<view>{{baojiaDetail.zhongYuanDaoGangTime}}</view>
 				</view>
 			</view>
 			<view class="hispriceItem">
-				<view class="hispriceItemName">慢******</view>
+				<view class="hispriceItemName">中谷</view>
 				<view class="hispriceItemDate">
-					<view>¥2918</view>
-					<view>2020-02-01</view>
-					<view>2020-02-04</view>
+					<view>¥{{baojiaDetail.zhongYuanMoney}}万</view>
+					<view>{{baojiaDetail.zhongGuZhuangChuanTime}}</view>
+					<view>{{baojiaDetail.zhongGuDaoGangTime}}</view>
 				</view>
 			</view>
 			<view class="hispriceItem">
-				<view class="hispriceItemName">慢******</view>
+				<view class="hispriceItemName">信风</view>
 				<view class="hispriceItemDate">
-					<view>¥2918</view>
-					<view>2020-02-01</view>
-					<view>2020-02-04</view>
+					<view>¥{{baojiaDetail.zhongYuanMoney}}万</view>
+					<view>{{baojiaDetail.xinFengZhuangChuanTime}}</view>
+					<view>{{baojiaDetail.zhongGuDaoGangTime}}</view>
 				</view>
 			</view>
 			<view class="hispriceItem">
-				<view class="hispriceItemName">慢******</view>
+				<view class="hispriceItemName">安通</view>
 				<view class="hispriceItemDate">
-					<view>¥2918</view>
-					<view>2020-02-01</view>
-					<view>2020-02-04</view>
+					<view>¥{{baojiaDetail.zhongYuanMoney}}万</view>
+					<view>{{baojiaDetail.anTongZhuangChuanTime}}</view>
+					<view>{{baojiaDetail.anTongDaoGangTime}}</view>
 				</view>
 			</view>
 		</view>
 	</view>
-		<view class="hisevalute">
-				<view class="titles">他的评价：</view>
-				<view class="starAll" style="width:300rpx;margin-left:24rpx">
-            <view style="display:flex;">        
-                <view class="star"><view class="icon icon_yellow"></view></view>
-                <view class="star"><view class="icon icon_yellow"></view></view>
-                <view class="star"><view class="icon icon_yellow"></view></view>
-                <view class="star"><view class="icon icon_yellow"></view></view>
-                <view class="star half_star"><view class="icon icon_gray"><view class="icon icon_yellow"></view></view></view>
-            </view> 
-        </view>
-				<view class="point">4.65分</view>
-				<view class="gopoint">去评价</view>
+	<view class="hisevalute">
+		<view class="titles">他的评价：</view>
+		<view class="starAll" style="width:300rpx;margin-left:24rpx">
+			<view style="display:flex;">
+				<view class="star" wx:for='{{yellow_star}}'>
+					<view class="icon icon_yellow"></view>
+				</view>
+				<view class="star half_star" wx:if="{{star_per>0}}">
+					<view class="icon icon_gray">
+						<view class="icon icon_yellow" style="width:{{star_per}}%;overflow:hidden;position:absolute;left:0;top:0;"></view>
+					</view>
+				</view>
+				<view class="star" wx:for='{{gray_star}}'>
+					<view class="icon icon_gray"></view>
+				</view>
+			</view>
 		</view>
+		<view class="point">{{orderDetail.pingJiaScore||0}}分</view>
+		<view class="gopoint" bindtap="gopoint">去评价</view>
+	</view>
 </view>
 
-<view class="sendPrice">重新选择服务商</view>
+<view class="sendPrice" bindtap="sendPrice">重新选择服务商</view>
+
+<!-- 评价框 -->
+<view class="pingjiaBox" wx:if='{{showPj}}' bindtap="closepoint">
+	<view class="pingjiaBoxEve" catchtap="thisBUdong">
+		<view>
+			<text class="title">请评价</text>
+			<view>
+				<view class="pingjiastar" wx:for='{{starList}}' bindtap="pointThis"  data-point='{{item.point}}' >
+					<image wx:if='{{item.show}}' src="../img/xing1.svg"></image>
+					<image wx:if='{{!item.show}}' src="../img/xing2.svg"></image>
+				</view>
+			</view>
+		</view>
+		<view class="makesureThis" bindtap="makesureThis">确定</view>
+	</view>
+</view>

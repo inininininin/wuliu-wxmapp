@@ -1,6 +1,10 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/recognizeEnd/recognizeEnd",
+    "pages/recognizeSh/recognizeSh",
+    "pages/recPhoto/recPhoto",
+    "pages/recognize/recognize",
     "pages/publishorder/publishorder",
     "pages/login/login",
     "pages/shopping/shopping",

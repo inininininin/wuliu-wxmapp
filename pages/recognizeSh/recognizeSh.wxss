@@ -1,0 +1,86 @@
+/* pages/recognizeSh/recognizeSh.wxss */
+.line {
+  width: 750rpx;
+  height: 176rpx;
+  background: #ffffff;
+  border-top: 1rpx solid #dddddd;
+  border-bottom: 1rpx solid #dddddd;
+}
+.line>.imageEve{
+  float: left;
+  width: 120rpx;
+  height: 120rpx;
+  border: 1rpx solid #dddddd;
+  border-radius: 8rpx;
+  margin: 27rpx 30rpx;
+}
+.imgBox {
+  float: left;
+  width: 120rpx;
+  height: 120rpx;
+  border: 1rpx solid #dddddd;
+  border-radius: 8rpx;
+  margin: 27rpx 30rpx;
+}
+
+.imgBox>image {
+  width: 54rpx;
+  height: 48rpx;
+  margin: 36rpx 33rpx;
+}
+
+.textBox {
+  float: left;
+  /* width: 200rpx; */
+  height: 176rpx;
+  font-size: 34rpx;
+  font-family: PingFangSC, PingFangSC-Regular;
+  font-weight: 400;
+  text-align: left;
+  color: #000000;
+  line-height: 176rpx;
+  letter-spacing: -1rpx;
+}
+
+.rightIcon {
+  float: right;
+  width: 16rpx;
+  height: 26rpx;
+  margin: 75rpx 30rpx;
+}
+
+.lineEve{
+  height: 89rpx;
+  line-height: 89rpx;
+  width: 100%;
+}
+.lineEve>text{
+  float: left;
+  width: 196rpx;
+  line-height: 89rpx;
+  padding-left: 30rpx;
+  box-sizing: border-box;
+  text-align: left;
+}
+.lineEve>input{
+  width: 554rpx;
+  box-sizing: border-box;
+  padding: 0 24rpx;
+  line-height: 89rpx !important;
+  height: 89rpx !important;
+  border-bottom: 1rpx solid #dddddd;
+  outline: none;
+}
+
+
+.makesure{
+  width: 670rpx;
+height: 90rpx;
+background: #0e4090;
+line-height: 90rpx;
+font-size: 36rpx;
+text-align: center;
+color: #ffffff;
+border-radius: 50rpx;
+margin: 355rpx 40rpx 100rpx;
+}

@@ -37,7 +37,7 @@
 	</view>
 	<view class="totalCount">{{listTitle}}</view>
 </view>
-<view wx:if='{{currentTab==1}}'>
+<view class="orderList" wx:if='{{currentTab==1}}'>
 	<view class="orderItem" wx:for='{{orderListFinish}}'>
 		<view class="orderItemOne">
 			<text>发货日期：{{item.faHuoTime}}</text>

@@ -5,7 +5,9 @@ page {
 
 .topMain {
   width: 750rpx;
-  height: 730rpx;
+  /* height: 730rpx; */
+  float: left;
+  padding-bottom: 24rpx;
   background: #ffffff;
   margin-top: 20rpx;
 }
@@ -129,7 +131,7 @@ page {
   float: left;
   height: 100%;
 }
-.providerItem checkbox{
+.providerItem radio{
   transform: scale(0.7);
   padding: 0;
   margin: 0;

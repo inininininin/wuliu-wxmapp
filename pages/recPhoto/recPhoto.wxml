@@ -1,0 +1,12 @@
+<!--pages/recPhote/recPhoto.wxml-->
+<view class="title">{{title}}</view>
+<view class="bgColor" bindtap="photo">
+	<view class="bgPhoto" wx:if='{{!tempFilePaths}}'>
+		<image src="../img/photo1.svg" mode="aspectFill"></image>
+		<text>点此拍摄证件</text>
+	</view>
+  <view class="photoImage" wx:if='{{tempFilePaths}}'>
+    <image src="{{tempFilePaths}}" mode="aspectFill"></image>
+  </view>
+</view>
+<view class="makesure" bindtap="makesure">确认并提交</view>

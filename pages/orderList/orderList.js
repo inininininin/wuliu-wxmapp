@@ -24,7 +24,36 @@ Page({
     shouHuoAreaId: '',
     totalCount: '0',
     pageNo: '',
-    listTitle: ''
+    listTitle: '',
+    show: false
+  },
+  // 备用的去认证按钮
+  totalCount(e) {
+    // wx.showModal({
+    //   title: '您还没有进行认证',
+    //   content: '发布订单需要先进行身份认证',
+    //   cancelColor: 'cancelColor',
+    //   confirmText:'去认证',
+    //   confirmColor:'#FF932E'
+    // })
+    this.setData({
+      show: true
+    })
+  },
+  // 关闭弹窗
+  closePop(e) {
+    this.setData({
+      show: false
+    })
+  },
+  // 去认证
+  goRecognize(e) {
+    this.setData({
+      show: false
+    })
+    wx.navigateTo({
+      url: '../recognizeSh/recognizeSh?type=0',
+    })
   },
   // 去登陆
   gologinBtn(e) {
@@ -34,9 +63,63 @@ Page({
   },
   // 去报价
   toPrice(e) {
-    wx.navigateTo({
-      url: '../orderDetail/orderDetail?id=' + e.currentTarget.dataset.orderid,
+    let that=this
+    wx.request({
+      url: app.globalData.url + '/wuliu/login-refresh',
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded",
+        'cookie': wx.getStorageSync('cookie')
+      },
+      method: 'post',
+      success: function (res) {
+        wx.hideToast()
+        if (res.data.code == 0) {
+          app.globalData.userInfoDetail = res.data.data
+          app.globalData.loginIf = 1
+          that.setData({
+            loginIf: app.globalData.loginIf
+          })
+          if (app.globalData.userInfoDetail.fuWuShangRenZhengIs == 0 && app.globalData.userInfoDetail.fuWuShangRenZhengTiJiaoIs == 0) {
+            that.setData({
+              show: true
+            })
+            return
+          } else if (app.globalData.userInfoDetail.fuWuShangRenZhengIs == 0 && app.globalData.userInfoDetail.fuWuShangRenZhengTiJiaoIs == 1) {
+            wx.showToast({
+              title: '认证已提交审核，请等待',
+              icon: 'none'
+            })
+            return
+          }else if (app.globalData.userInfoDetail.fuWuShangRenZhengIs == 2 && app.globalData.userInfoDetail.fuWuShangRenZhengTiJiaoIs == 1){
+            wx.showToast({
+              title: '认证已提交审核，请等待',
+              icon: 'none'
+            })
+            return
+          } else if (app.globalData.userInfoDetail.fuWuShangRenZhengIs == 2 && app.globalData.userInfoDetail.fuWuShangRenZhengTiJiaoIs == 0) {
+            wx.showToast({
+              title: app.globalData.userInfoDetail.fuWuShangRenZhengNote+'，请重新提交认证！',
+              icon: 'none',
+              duration: 1000,
+              mask: true,
+              complete: function complete(res) {
+                setTimeout(function () {
+                  that.setData({
+                    show: true
+                  })
+                  return
+                }, 1000);
+              }
+            });
+          } else {
+            wx.navigateTo({
+              url: '../orderDetail/orderDetail?id=' + e.currentTarget.dataset.orderid,
+            })
+          }
+        } 
+      }
     })
+   
   },
   // 筛选条件选择
   screen() {
@@ -181,11 +264,11 @@ Page({
             orderList: neworderListArr,
             pageNo: pageNo,
           })
-          if(res.data.data.itemList&&res.data.data.itemList.length<15){
+          if (res.data.data.itemList && res.data.data.itemList.length < 15) {
             that.setData({
               listTitle: '数据已全部加载完成.'
             })
-          }else{
+          } else {
             if (that.data.orderList.length == that.data.totalCount) {
               that.setData({
                 listTitle: '数据已全部加载完成.'
@@ -196,7 +279,7 @@ Page({
               })
             }
           }
-          
+
         } else if (res.data.code == 20) {
           wx.showToast({
             title: '请先登录',
@@ -264,10 +347,40 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({
+    let that = this
+    that.setData({
       orderList: [],
       loginIf: app.globalData.loginIf
     })
+
+
+    if (app.globalData.loginIf == 0) {
+      wx.request({
+        url: app.globalData.url + '/wuliu/login-refresh',
+        header: {
+          "Content-Type": "application/x-www-form-urlencoded",
+          'cookie': wx.getStorageSync('cookie')
+        },
+        method: 'post',
+        success: function (res) {
+          wx.hideToast()
+          if (res.data.code == 0) {
+            app.globalData.userInfoDetail = res.data.data
+            app.globalData.loginIf = 1
+            that.setData({
+              loginIf: app.globalData.loginIf
+            })
+          } else if (res.data.code == 20) {
+            app.globalData.loginIf = 0
+          } else {
+            wx.showToast({
+              title: res.data.codeMsg,
+              icon: 'none'
+            })
+          }
+        }
+      })
+    }
     // if(app.globalData.loginIf==1){
     //   this.lastPage('','','','','','','',1);
     //   this.lastPageNumber('','','','','')
@@ -285,7 +398,6 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    console.log(this.data.orderList, this.data.orderList.length)
     this.setData({
       loginIf: app.globalData.loginIf
     })
@@ -296,6 +408,9 @@ Page({
       }
     }
 
+    // this.setData({
+    //   show:false
+    // })
   },
 
   /**

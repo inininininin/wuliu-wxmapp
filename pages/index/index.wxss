@@ -1,20 +1,24 @@
 /* page/index/index.wxss */
 @import '../common/common.wxss';
+
 /* @import '../../../all/all.wxss'; */
-page{
+page {
   background: #f5f5f5;
   padding-bottom: 120rpx;
 }
-.adPic{
+
+.adPic {
   width: 702rpx;
-height: 277rpx;
-margin:20rpx 24rpx;
+  height: 277rpx;
+  margin: 20rpx 24rpx;
 }
-.orderAndPrice{
+
+.orderAndPrice {
   width: 100%;
   height: 128rpx;
 }
-.orderAndPrice>view{
+
+.orderAndPrice>view {
   display: inline-block;
   width: 339rpx;
   height: 128rpx;
@@ -24,97 +28,110 @@ margin:20rpx 24rpx;
   line-height: 128rpx;
   text-align: center;
 }
-.fahuo{
+
+.fahuo {
   width: 43rpx;
   height: 40rpx;
   margin-right: 20rpx;
   vertical-align: middle;
 }
-.baojia{
+
+.baojia {
   width: 44rpx;
   height: 44rpx;
   margin-right: 20rpx;
   vertical-align: middle;
 }
-.articleBox{
+
+.articleBox {
   width: 702rpx;
   height: auto;
   background: #ffffff;
   margin: 20rpx 24rpx;
 }
-.articleBox .title{
+
+.articleBox .title {
   height: 73rpx;
   width: 100%;
 }
-.articleBox .title image{
+
+.articleBox .title image {
   width: 28rpx;
   height: 29rpx;
   float: left;
   margin: 32rpx 12rpx 0 24rpx;
 }
-.articleBox .title text{
-height: 45rpx;
-font-size: 32rpx;
-font-family: PingFangSC, PingFangSC-Medium;
-font-weight: 500;
-text-align: center;
-color: #333333;
-line-height: 45rpx;
-margin-top: 24rpx;
-float: left;
+
+.articleBox .title text {
+  height: 45rpx;
+  font-size: 32rpx;
+  font-family: PingFangSC, PingFangSC-Medium;
+  font-weight: 500;
+  text-align: center;
+  color: #333333;
+  line-height: 45rpx;
+  margin-top: 24rpx;
+  float: left;
 }
 
-.articleEve{
+.articleEve {
   width: 654rpx;
-  margin: 20rpx 24rpx 0; 
+  margin: 20rpx 24rpx 0;
   height: 180rpx;
   border-bottom: 1rpx solid #d8d8d8;
 }
-.articleList>view:last-child{
+
+.articleList>view:last-child {
   border-bottom: 0;
 }
-.articleLf{
+
+.articleLf {
   width: 416rpx;
   height: 180rpx;
   float: left;
 }
-.articleLf>view:nth-child(1){
+
+.articleLf>view:nth-child(1) {
   width: 416rpx;
-height: 80rpx;
-font-size: 28rpx;
-font-family: PingFangSC, PingFangSC-Regular;
-font-weight: 400;
-text-align: left;
-color: #333333;
-line-height: 40rpx;
+  height: 80rpx;
+  font-size: 28rpx;
+  font-family: PingFangSC, PingFangSC-Regular;
+  font-weight: 400;
+  text-align: left;
+  color: #333333;
+  line-height: 40rpx;
 }
-.articleLf>view:nth-child(2){
-height: 33rpx;
-font-size: 24rpx;
-font-family: PingFangSC, PingFangSC-Regular;
-font-weight: 400;
-text-align: left;
-color: #999999;
-line-height: 33rpx;
-margin-top: 47rpx;
+
+.articleLf>view:nth-child(2) {
+  height: 33rpx;
+  font-size: 24rpx;
+  font-family: PingFangSC, PingFangSC-Regular;
+  font-weight: 400;
+  text-align: left;
+  color: #999999;
+  line-height: 33rpx;
+  margin-top: 47rpx;
 }
-.articleLf>view:nth-child(2)>image{
+
+.articleLf>view:nth-child(2)>image {
   width: 22rpx;
   height: 22rpx;
   margin-right: 10rpx;
 }
-.articleEve>image{
+
+.articleEve>image {
   float: left;
   width: 216rpx;
-height: 160rpx;
-margin-left: 22rpx;
+  height: 160rpx;
+  margin-left: 22rpx;
 }
 
 /* 行业信息后补 */
-.articleList{
+.articleList {
   color: #999999 !important;
   font-size: 24rpx !important;
 }
+
 .bgImg {
   width: 508rpx;
   height: 264rpx;
@@ -133,7 +150,7 @@ margin-left: 22rpx;
   line-height: 40rpx;
   text-align: center;
   display: block;
-  
+
 }
 
 .gologinBtn {
@@ -147,5 +164,4 @@ margin-left: 22rpx;
   text-align: center;
   line-height: 80rpx;
 }
-
 

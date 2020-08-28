@@ -1,0 +1,3 @@
+<!--pages/recognizeEnd/recognizeEnd.wxml-->
+<image src="../img/shenhe.svg" class="shenhe"></image>
+<text class="title">{{titel}}</text>

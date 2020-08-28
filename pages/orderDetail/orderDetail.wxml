@@ -11,7 +11,7 @@
 		</view>
 	</view>
 
-<view wx:if='{{orderDetail.shouHuoArea1Id}}'>
+	<view wx:if='{{orderDetail.shouHuoArea1Id}}'>
 		<view class="type1">
 			<image class="faIcon" src="../img/shou.svg"></image>
 			<view class="lineOne">{{orderDetail.shouHuoArea1Name||''}}{{orderDetail.shouHuoArea2Name||''}}{{orderDetail.shouHuoArea3Name||''}}{{orderDetail.shouHuoAddress||''}}</view>
@@ -67,7 +67,7 @@
 			<view class="lineOne lineOne">{{orderDetail.shouHuo3Weight||''}}kg；{{orderDetail.shouHuo3Volume||''}}L/m³</view>
 		</view>
 	</view>
-	
+
 
 	<view class="type2">
 		<text class="type2title">货物类型</text>
@@ -95,21 +95,21 @@
 		<text class="type2title">箱数</text>
 		<text class="type2Detail lineOne">{{orderDetail.xiangShuUnit||''}}个 / {{orderDetail.xiangShuName||''}}</text>
 	</view>
-	
+
 	<view class="type2">
 		<text class="type2title">备注信息</text>
 		<text class="type2Detail lineOne">{{orderDetail.note||''}}</text>
 	</view>
 </view>
 <view style="clear:both"></view>
-<!-- 报价 -->
+<!-- 报价  -->
 <view class="getPrice">
 	<view class="title">我的报价</view>
 	<view class="priceEve" wx:for='{{priceList}}'>
 		<view wx:if='{{item.name=="中远"}}'>
 			<view class="priceEveTitle">
 				<text class="lineOne">{{item.name}}(万)</text>
-				<input placeholder="请输入价格"  type="number" bindinput="zhongYuanMoney" placeholder-class="placeholder"></input>
+				<input placeholder="请输入价格" type="number" bindinput="zhongYuanMoney" placeholder-class="placeholder"></input>
 			</view>
 			<view>
 				<text class="fahuodate">装船日期</text>
@@ -137,7 +137,7 @@
 		<view wx:if='{{item.name=="中谷"}}'>
 			<view class="priceEveTitle">
 				<text class="lineOne">{{item.name}}(万)</text>
-				<input placeholder="请输入价格"  type="number" bindinput="zhongGuMoney" placeholder-class="placeholder"></input>
+				<input placeholder="请输入价格" type="number" bindinput="zhongGuMoney" placeholder-class="placeholder"></input>
 			</view>
 			<view>
 				<text class="fahuodate">装船日期</text>
@@ -193,7 +193,7 @@
 		<view wx:if='{{item.name=="安通"}}'>
 			<view class="priceEveTitle">
 				<text class="lineOne">{{item.name}}(万)</text>
-				<input placeholder="请输入价格"  type="number" bindinput="anTongMoney" placeholder-class="placeholder"></input>
+				<input placeholder="请输入价格" type="number" bindinput="anTongMoney" placeholder-class="placeholder"></input>
 			</view>
 			<view>
 				<text class="fahuodate">装船日期</text>

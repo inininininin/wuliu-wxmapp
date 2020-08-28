@@ -11,14 +11,14 @@ Page({
     titleBarHeight: app.globalData.titleBarHeight,
     avator: '../img/logo2.svg',
     nickname: '昵称',
-    phone: app.globalData.userInfoDetail.phone,
+    phone: '',
   },
   // 登出
   loginOut() {
     wx.showModal({
       title: '提示',
       content: '请确认是否退出',
-      success (res) {
+      success(res) {
         if (res.confirm) {
           wx.request({
             url: app.globalData.url + '/wuliu/logout',
@@ -47,7 +47,7 @@ Page({
         }
       }
     })
-   
+
   },
   myorder() {
     wx.navigateTo({
@@ -69,7 +69,35 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    let that = this
+    if(app.globalData.loginIf==0){
+      wx.request({
+        url: app.globalData.url + '/wuliu/login-refresh',
+        header: {
+          "Content-Type": "application/x-www-form-urlencoded",
+          'cookie': wx.getStorageSync('cookie')
+        },
+        method: 'post',
+        success: function (res) {
+          wx.hideToast()
+          if (res.data.code == 0) {
+            app.globalData.userInfoDetail = res.data.data
+            app.globalData.loginIf = 1
+            that.setData({
+              loginIf: app.globalData.loginIf
+            })
+          } else if (res.data.code == 20) {
+            app.globalData.loginIf = 0
+          } else {
+            wx.showToast({
+              title: res.data.codeMsg,
+              icon: 'none'
+            })
+          }
+        }
+      })
+    }
+   
   },
 
   /**
@@ -88,6 +116,7 @@ Page({
       avator: app.globalData.userInfoDetail.logo || '../img/logo2.svg',
       nickname: app.globalData.userInfoDetail.nickname || '',
       loginIf: app.globalData.loginIf,
+      phone: app.globalData.userInfoDetail.phone,
     })
     //   wx.request({
     //     url: app.globalData.url + '/wuliu/login-refresh',
@@ -146,7 +175,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    wx.stopPullDownRefresh()
   },
 
   /**
@@ -164,7 +193,6 @@ Page({
   },
   // 获取手机号授权
   getPhoneNumber(e) {
-
     var that = this
     console.log(e.detail)
     console.log(e.detail.iv)
@@ -184,7 +212,7 @@ Page({
         var jscode = res.code
         if (e.detail.encryptedData != null && e.detail.encryptedData != '' && e.detail.encryptedData != undefined) {
           wx.request({
-            url: app.globalData.url + '/wuliu/get-wx-minapp-phone',
+            url: app.globalData.url + '/wuliu/update-my-phone',
             header: {
               "Content-Type": "application/x-www-form-urlencoded",
               'cookie': wx.getStorageSync('cookie')
@@ -204,33 +232,8 @@ Page({
                 that.setData({
                   phone: res.data.data.phone
                 })
-                // that.makeSureOk()
-                wx.request({
-                  url: app.globalData.url + '/wuliu/update-my-info',
-                  header: {
-                    "Content-Type": "application/x-www-form-urlencoded",
-                    'cookie': wx.getStorageSync('cookie')
-                  },
-                  data: { 'phone': phone },
-                  method: 'post',
-                  success: function (res) {
-                    wx.hideToast()
-                    if (res.data.codeMsg) {
-                      wx.showToast({
-                        title: res.data.codeMsg,
-                        icon: 'none'
-                      })
-                    }
-                    if (res.data.code == 0) {
-                      app.globalData.userInfoDetail.phone = phone
-                    } else {
-                      wx.showToast({
-                        title: res.data.codeMsg,
-                        icon: 'none'
-                      })
-                    }
-                  }
-                })
+                app.globalData.userInfoDetail.phone = phone
+               
               } else {
                 wx.showToast({
                   title: res.data.codeMsg,

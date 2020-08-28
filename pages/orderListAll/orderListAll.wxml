@@ -7,7 +7,7 @@
 </view>
 <!-- 订单列表 -->
 <view class="orderList" wx:if='{{currentTab==0}}'>
-	<view class="orderItem" wx:for='{{orderList}}'>
+	<view class="orderItem" wx:for='{{orderList}}' data-orderid='{{item.orderId}}' data-chengjiao='{{item.chengJiaoIs}}' bindtap="jumpThis">
 		<view class="orderItemOne">
 			<text>发货日期：{{item.faHuoTime}}</text>
 			<text wx:if='{{item.chengJiaoIs==0}}'>报价中-已有{{item.baoJiaCount||0}}人报价</text>
@@ -25,7 +25,7 @@
 					<text class="lineOne">{{item.shouHuoArea2Name}}{{item.shouHuoArea3Name}}</text>
 				</view>
 			</view>
-			<view class="toChoice" bindtap="toChoice" wx:if='{{item.baoJiaIs==1}}'>去选择</view>
+			<view class="toChoice" data-orderid='{{item.orderId}}' bindtap="toChoice" wx:if='{{item.chengJiaoIs==0&&item.baoJiaIs==1}}'>去选择</view>
 		</view>
 		<view class="orderItemThree lineOne">
 			货物：{{item.huoWuLeiXingName}}，{{item.huoWuWeight}}kg，{{item.xiangXingName}}
@@ -33,12 +33,12 @@
 	</view>
 	<view wx:if='{{totalCount==0}}' style="padding-bottom:100rpx">
 		<image src="../img/quexing.png" class="bgImg"></image>
-		<view class="loginTitle">当前尚无已完成订单</view>
+		<view class="loginTitle">当前尚无订单</view>
 	</view>
 	<view class="totalCount" wx:if='{{totalCount!=0}}'>{{listTitle}}</view>
 </view>
 <view class="orderList" wx:if='{{currentTab==1}}'>
-	<view class="orderItem" wx:for='{{orderList1}}'>
+	<view class="orderItem" wx:for='{{orderList1}}'  data-orderid='{{item.orderId}}'  data-chengjiao='{{item.chengJiaoIs}}' bindtap="jumpThis">
 		<view class="orderItemOne">
 			<text>发货日期：{{item.faHuoTime}}</text>
 			<text wx:if='{{item.chengJiaoIs==0}}'>报价中-已有{{item.baoJiaCount||0}}人报价</text>
@@ -56,7 +56,7 @@
 					<text class="lineOne">{{item.shouHuoArea2Name}}{{item.shouHuoArea3Name}}</text>
 				</view>
 			</view>
-			<view class="toChoice" bindtap="toChoice" wx:if='{{item.baoJiaIs==1}}'>去选择</view>
+			<view class="toChoice" data-orderid='{{item.orderId}}' bindtap="toChoice" wx:if='{{item.chengJiaoIs==0&&item.baoJiaIs==1}}'>去选择</view>
 		</view>
 		<view class="orderItemThree lineOne">
 			货物：{{item.huoWuLeiXingName}}，{{item.huoWuWeight}}kg，{{item.xiangXingName}}
@@ -69,7 +69,7 @@
 	<view class="totalCount" wx:if='{{totalCount1!=0}}'>{{listTitle1}}</view>
 </view>
 <view class="orderList" wx:if='{{currentTab==2}}'>
-	<view class="orderItem" wx:for='{{orderList2}}'>
+	<view class="orderItem" wx:for='{{orderList2}}'  data-orderid='{{item.orderId}}'  data-chengjiao='{{item.chengJiaoIs}}' bindtap="jumpThis">
 		<view class="orderItemOne">
 			<text>发货日期：{{item.faHuoTime}}</text>
 			<text wx:if='{{item.chengJiaoIs==0}}'>报价中-已有{{item.baoJiaCount||0}}人报价</text>
@@ -87,7 +87,7 @@
 					<text class="lineOne">{{item.shouHuoArea2Name}}{{item.shouHuoArea3Name}}</text>
 				</view>
 			</view>
-			<view class="toChoice" bindtap="toChoice" wx:if='{{item.baoJiaIs==1}}'>去选择</view>
+			<view class="toChoice" data-orderid='{{item.orderId}}' bindtap="toChoice" wx:if='{{item.chengJiaoIs==0&&item.baoJiaIs==1}}'>去选择</view>
 		</view>
 		<view class="orderItemThree lineOne">
 			货物：{{item.huoWuLeiXingName}}，{{item.huoWuWeight}}kg，{{item.xiangXingName}}

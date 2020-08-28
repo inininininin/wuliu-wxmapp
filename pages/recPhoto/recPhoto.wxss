@@ -1,0 +1,57 @@
+/* pages/recPhote/recPhoto.wxss */
+.title {
+  margin-top: 100rpx;
+  width: 100%;
+  padding-left: 60rpx;
+  height: 42rpx;
+  font-size: 50rpx;
+  font-family: PingFangSC, PingFangSC-Regular;
+  font-weight: 400;
+  text-align: left;
+  color: #000000;
+  line-height: 42rpx;
+  margin-bottom: 120rpx;
+}
+
+.bgColor {
+  margin: 100rpx 60rpx;
+  width: 630rpx;
+  height: 419rpx;
+  background: #eeeeee;
+}
+
+.bgColor .bgPhoto image {
+  width: 117rpx;
+  height: 104rpx;
+  /* background: #333333; */
+  margin: 111rpx 256rpx 40rpx;
+}
+
+.bgColor text {
+  width: 100%;
+  display: block;
+  height: 53rpx;
+  font-size: 38rpx;
+  font-family: PingFangSC, PingFangSC-Regular;
+  font-weight: 400;
+  text-align: center;
+  color: #333333;
+  line-height: 53rpx;
+}
+.bgColor .photoImage image{
+  width: 630rpx;
+  height: 419rpx;
+}
+
+
+.makesure {
+  width: 670rpx;
+  height: 90rpx;
+  background: #0e4090;
+  border-radius: 50rpx;
+  margin: 335rpx 40rpx 100rpx;
+  font-size: 38rpx;
+  color: #ffffff;
+  line-height: 90rpx;
+  text-align: center;
+}

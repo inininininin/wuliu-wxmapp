@@ -7,7 +7,7 @@
 		<view class="status-bar" style="height:{{statusBarHeight}}px"></view>
 		<view class="title-bar" style="height:{{titleBarHeight}}px">
 			<view>
-				<text class='titleText'>{{navtitle}}</text>
+				<text class='titleText' bindtap="totalCount">{{navtitle}}</text>
 				<text style="font-size:26rpx;color:#999999;">(共{{totalCount}}条数据)</text>
 
 			</view>
@@ -103,4 +103,14 @@
 	<image src="../img/quexing.png" class="bgImg"></image>
 	<text class="loginTitle">点击登录获取信息</text>
 	<view class="gologinBtn" bindtap="gologinBtn">去登陆</view>
+</view>
+
+<view class="popWindowRz" bindtap="closePop" wx:if='{{show}}'>
+	<view class="popBox" catchtap="clearThis">
+		<view class="popTop">
+			<text>您还没有进行认证</text>
+			<text>选择报价需要先进行资质认证</text>
+		</view>
+		<view class="popBot" bindtap="goRecognize">去认证</view>
+	</view>
 </view>

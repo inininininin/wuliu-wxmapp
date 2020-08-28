@@ -1,0 +1,39 @@
+/* pages/recognize/recognize.wxss */
+.title {
+  margin-top: 100rpx;
+  width: 100%;
+  padding-left: 60rpx;
+  height: 42rpx;
+  font-size: 50rpx;
+  font-family: PingFangSC, PingFangSC-Regular;
+  font-weight: 400;
+  text-align: left;
+  color: #000000;
+  line-height: 42rpx;
+  margin-bottom: 120rpx;
+}
+.line{
+  width: 670rpx;
+height: 90rpx;
+margin:  0 40rpx 80rpx ;
+background: #0e4090;
+border-radius: 50rpx;
+line-height: 90rpx;
+text-align: center;
+color: #ffffff;
+font-size: 38rpx;
+}
+.gorec{
+  width: 670rpx;
+height: 90rpx;
+margin: 300rpx 40rpx 80rpx;
+background: #999999;
+border-radius: 50rpx;
+text-align: center;
+line-height: 90rpx;
+color: #ffffff;
+font-size: 38rpx;
+}
+.active{
+  background:#FF932E ;
+}
