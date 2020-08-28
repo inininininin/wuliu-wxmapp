@@ -6,7 +6,7 @@
 			<view>
 				<picker class="orderSelcet" wx:if='{{fahuoList.picker}}' mode="region" style="color:#999" bindchange="bindRegionChange" value="{{fahuoList.region}}" custom-item="{{customItem}}">
 					<view class="picker lineOne">
-						请选择发货地址：省-市-区
+						请选择发货地：省-市-区
 					</view>
 				</picker>
 				<picker class="orderSelcet" wx:if='{{!fahuoList.picker}}' mode="region" style="color:#333" bindchange="bindRegionChange" value="{{fahuoList.region}}" custom-item="{{customItem}}">
@@ -16,7 +16,7 @@
 				</picker>
 			</view>
 			<view>
-				<input class="faaddress2" placeholder-class="placeholder" placeholder="详细地址（详细到门牌、街道）" bindinput="faHuoAddress" value="{{fahuoList.faHuoAddress}}"></input>
+				<input class="faaddress2" placeholder-class="placeholder" placeholder="详细地址" bindinput="faHuoAddress" value="{{fahuoList.faHuoAddress}}"></input>
 			</view>
 		</view>
 	</view>
@@ -42,7 +42,7 @@
 						<!-- value="{{item.region}}" -->
 						<picker class="orderSelcet" wx:if='{{item.picker}}' mode="region" style="color:#999" bindchange="faaddress" custom-item="{{customItem}}">
 							<view class="picker lineOne">
-								请选择发货地址：省-市-区
+								请选择收货地：省-市-区
 							</view>
 						</picker>
 						<!-- value="{{item.region}}"  -->
@@ -55,7 +55,7 @@
 						<text class="addNewaddress" bindtap="addNewaddress" wx:if='{{getAddressList.length==1}}'>添加地址</text>
 					</view>
 					<view>
-						<input class="faaddress2" placeholder-class="placeholder" placeholder="详细地址（详细到门牌、街道）" bindinput="shouHuoAddress" value="{{shouHuoAddress}}"></input>
+						<input class="faaddress2" placeholder-class="placeholder" placeholder="详细地址" bindinput="shouHuoAddress" value="{{shouHuoAddress}}"></input>
 					</view>
 				</view>
 			</view>
@@ -72,9 +72,9 @@
 			<view class="zhongliang">
 				<image src="../img/zhongliang.svg"></image>
 				<view class="zhongliangView">
-					<input placeholder-class="placeholder" type="number" bindinput="shouHuoWeight" placeholder="请输入货物重量"></input>
+					<input placeholder-class="placeholder" type="number" bindinput="shouHuoWeight" placeholder="请输入货物重量kg"></input>
 					<text>;</text>
-					<input placeholder-class="placeholder" type="number" bindinput="shouHuoVolume" placeholder="请输入货物体积"></input>
+					<input placeholder-class="placeholder" type="number" bindinput="shouHuoVolume" placeholder="请输入货物体积m³"></input>
 				</view>
 			</view>
 
@@ -87,7 +87,7 @@
 						<!-- value="{{item.region}}" -->
 						<picker class="orderSelcet" wx:if='{{item.picker}}' mode="region" style="color:#999" bindchange="faaddress1" custom-item="{{customItem}}">
 							<view class="picker lineOne">
-								请选择发货地址：省-市-区
+								请选择收货地：省-市-区
 							</view>
 						</picker>
 						<!-- value="{{item.region}}"  -->
@@ -100,7 +100,7 @@
 						<text class="addNewaddress" bindtap="addNewaddress" wx:if='{{getAddressList.length==2}}'>添加地址</text>
 					</view>
 					<view>
-						<input class="faaddress2" placeholder-class="placeholder" placeholder="详细地址（详细到门牌、街道）" bindinput="shouHuo1Address" value="{{shouHuo1Address}}"></input>
+						<input class="faaddress2" placeholder-class="placeholder" placeholder="详细地址" bindinput="shouHuo1Address" value="{{shouHuo1Address}}"></input>
 					</view>
 				</view>
 			</view>
@@ -117,9 +117,9 @@
 			<view class="zhongliang">
 				<image src="../img/zhongliang.svg"></image>
 				<view class="zhongliangView">
-					<input placeholder-class="placeholder" type="number" bindinput="shouHuo1Weight" placeholder="请输入货物重量"></input>
+					<input placeholder-class="placeholder" type="number" bindinput="shouHuo1Weight" placeholder="请输入货物重量kg"></input>
 					<text>;</text>
-					<input placeholder-class="placeholder" type="number" bindinput="shouHuo1Volume" placeholder="请输入货物体积"></input>
+					<input placeholder-class="placeholder" type="number" bindinput="shouHuo1Volume" placeholder="请输入货物体积m³"></input>
 				</view>
 			</view>
 
@@ -132,7 +132,7 @@
 						<!-- value="{{item.region}}" -->
 						<picker class="orderSelcet" wx:if='{{item.picker}}' mode="region" style="color:#999" bindchange="faaddress2" custom-item="{{customItem}}">
 							<view class="picker lineOne">
-								请选择发货地址：省-市-区
+								请选择收货地：省-市-区
 							</view>
 						</picker>
 						<!-- value="{{item.region}}"  -->
@@ -145,7 +145,7 @@
 						<text class="addNewaddress" bindtap="addNewaddress" wx:if='{{getAddressList.length==3}}'>添加地址</text>
 					</view>
 					<view>
-						<input class="faaddress2" placeholder-class="placeholder" placeholder="详细地址（详细到门牌、街道）" bindinput="shouHuo2Address" value="{{shouHuo2Address}}"></input>
+						<input class="faaddress2" placeholder-class="placeholder" placeholder="详细地址" bindinput="shouHuo2Address" value="{{shouHuo2Address}}"></input>
 					</view>
 				</view>
 			</view>
@@ -162,9 +162,9 @@
 			<view class="zhongliang">
 				<image src="../img/zhongliang.svg"></image>
 				<view class="zhongliangView">
-					<input placeholder-class="placeholder" type="number" bindinput="shouHuo2Weight" placeholder="请输入货物重量"></input>
+					<input placeholder-class="placeholder" type="number" bindinput="shouHuo2Weight" placeholder="请输入货物重量kg"></input>
 					<text>;</text>
-					<input placeholder-class="placeholder" type="number" bindinput="shouHuo2Volume" placeholder="请输入货物体积"></input>
+					<input placeholder-class="placeholder" type="number" bindinput="shouHuo2Volume" placeholder="请输入货物体积m³"></input>
 				</view>
 			</view>
 
@@ -177,7 +177,7 @@
 						<!-- value="{{item.region}}" -->
 						<picker class="orderSelcet" wx:if='{{item.picker}}' mode="region" style="color:#999" bindchange="faaddress3" custom-item="{{customItem}}">
 							<view class="picker lineOne">
-								请选择发货地址：省-市-区
+								请选择收货地：省-市-区
 							</view>
 						</picker>
 						<!-- value="{{item.region}}"  -->
@@ -190,7 +190,7 @@
 						<text class="addNewaddress" bindtap="addNewaddress" wx:if='{{getAddressList.length==4}}'>添加地址</text>
 					</view>
 					<view>
-						<input class="faaddress2" placeholder-class="placeholder" placeholder="详细地址（详细到门牌、街道）" bindinput="shouHuo3Address" value="{{shouHuo3Address}}"></input>
+						<input class="faaddress2" placeholder-class="placeholder" placeholder="详细地址" bindinput="shouHuo3Address" value="{{shouHuo3Address}}"></input>
 					</view>
 				</view>
 			</view>
@@ -207,9 +207,9 @@
 			<view class="zhongliang">
 				<image src="../img/zhongliang.svg"></image>
 				<view class="zhongliangView">
-					<input placeholder-class="placeholder" type="number" bindinput="shouHuo3Weight" placeholder="请输入货物重量"></input>
+					<input placeholder-class="placeholder" type="number" bindinput="shouHuo3Weight" placeholder="请输入货物重量kg"></input>
 					<text>;</text>
-					<input placeholder-class="placeholder" type="number" bindinput="shouHuo3Volume" placeholder="请输入货物体积"></input>
+					<input placeholder-class="placeholder" type="number" bindinput="shouHuo3Volume" placeholder="请输入货物体积m³"></input>
 				</view>
 			</view>
 
@@ -235,11 +235,11 @@
 		<!-- <input bindinput="huoWuLeiXing" placeholder="如证件、服装等" placeholder-class="placeholder"></input> -->
 	</view>
 	<view class="shopDetailItem xxrequireItem">
-		<text>重量</text>
+		<text>重量kg</text>
 		<view class="shopItem">
-			<input bindinput="huoWuWeight" type="number" placeholder="如230g等" placeholder-class="placeholder"></input>
-			<text>体积</text>
-			<input bindinput="huoWuVolume" type="number" placeholder="如5L等" placeholder-class="placeholder"></input>
+			<input bindinput="huoWuWeight" type="number" placeholder="请输入" placeholder-class="placeholder"></input>
+			<text>体积m³</text>
+			<input bindinput="huoWuVolume" type="number" placeholder="请输入" placeholder-class="placeholder"></input>
 		</view>
 	</view>
 	<view class="shopDetailItem xxrequireItem">
