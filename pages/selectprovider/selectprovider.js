@@ -28,7 +28,7 @@ Page({
       return
     }
     wx.request({
-      url: app.globalData.url + '/wuliu/order/select-bao-jia',
+      url: app.globalData.url + '/order/select-bao-jia',
       data: {
         orderId: that.data.orderId,
         baoJiaId:that.data.baoJiaId,
@@ -66,7 +66,7 @@ Page({
     })
     that.lastpage(options.id)
     wx.request({
-      url: app.globalData.url + '/wuliu/order/order-info',
+      url: app.globalData.url + '/order/order-info',
       data: {
         orderId: options.id
       },
@@ -169,7 +169,7 @@ Page({
   lastpage(id){
     let that=this
     wx.request({
-      url: app.globalData.url + '/wuliu/order/bao-jia-list',
+      url: app.globalData.url + '/order/bao-jia-list',
       data: {
         orderId:id,
         pn:1,

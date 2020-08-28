@@ -47,7 +47,7 @@ Page({
 
           if(e.detail.userInfo.nickName!=null&&e.detail.userInfo.nickName!=undefined&e.detail.userInfo.nickName!=''){
             wx.request({
-              url: app.globalData.url + '/wuliu/login-by-wxminapp',
+              url: app.globalData.url + '/login-by-wxminapp',
               header: {
                 "Content-Type": "application/x-www-form-urlencoded",
               },
@@ -63,7 +63,7 @@ Page({
     
                   wx.setStorageSync('cookie', res.header['Set-Cookie'])
                   wx.request({
-                    url: app.globalData.url + '/wuliu/login-refresh',
+                    url: app.globalData.url + '/login-refresh',
                     header: {
                       "Content-Type": "application/x-www-form-urlencoded",
                       'cookie': wx.getStorageSync('cookie')

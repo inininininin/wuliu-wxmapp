@@ -53,7 +53,7 @@ Page({
     }
     // var param = encodeURIComponent('pages/out/articleDetail/articleDetail?id=' + id+'&isfrom=1' )
     wx.getImageInfo({
-      src: app.globalData.url + '/wuliu/wxminqrcode?path=' + param + '&width=200',
+      src: app.globalData.url + '/wxminqrcode?path=' + param + '&width=200',
       method: 'get',
       header: {
         "Content-Type": "application/x-www-form-urlencoded",
@@ -77,7 +77,7 @@ Page({
       titleBarHeight: getApp().globalData.titleBarHeight,
     })
     wx.request({
-      url: app.globalData.url + '/wuliu/article/article-info',
+      url: app.globalData.url + '/article/article-info',
       method: 'post',
       data: {
         articleId: id,

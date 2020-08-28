@@ -53,7 +53,7 @@ Page({
     let that=this
     if (app.globalData.loginIf == 1) {
       wx.request({
-        url: app.globalData.url + '/wuliu/login-refresh',
+        url: app.globalData.url + '/login-refresh',
         header: {
           "Content-Type": "application/x-www-form-urlencoded",
           'cookie': wx.getStorageSync('cookie')
@@ -152,7 +152,7 @@ Page({
   lastPage(pageNo) {
     let that = this
     wx.request({
-      url: app.globalData.url + '/wuliu/article/article-list',
+      url: app.globalData.url + '/article/article-list',
       data: {
         pn: pageNo,
         ps: 15
@@ -205,7 +205,7 @@ Page({
   lastPageNumber() {
     let that = this
     wx.request({
-      url: app.globalData.url + '/wuliu/article/article-list-sum',
+      url: app.globalData.url + '/article/article-list-sum',
       data: {},
       header: {
         "Content-Type": "application/x-www-form-urlencoded",
@@ -238,7 +238,7 @@ Page({
   loginRdfresh(){
     let that=this
     wx.request({
-      url: app.globalData.url + '/wuliu/login-refresh',
+      url: app.globalData.url + '/login-refresh',
       header: {
         "Content-Type": "application/x-www-form-urlencoded",
         'cookie': wx.getStorageSync('cookie')

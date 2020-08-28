@@ -62,7 +62,7 @@ Page({
   firstPage(chengJiaoIs, baoJiaIs, pageNo){
     let that=this
     wx.request({
-      url: app.globalData.url + '/wuliu/my/orders-sum',
+      url: app.globalData.url + '/my/orders-sum',
       data: {
         chengJiaoIs: chengJiaoIs,
         baoJiaIs: baoJiaIs,
@@ -108,7 +108,7 @@ Page({
             })
           }
           wx.request({
-            url: app.globalData.url + '/wuliu/my/orders',
+            url: app.globalData.url + '/my/orders',
             data: {
               chengJiaoIs: chengJiaoIs,
               baoJiaIs: baoJiaIs,
@@ -259,7 +259,7 @@ Page({
   lastPage(chengJiaoIs, baoJiaIs, pageNo) {
     let that = this
     wx.request({
-      url: app.globalData.url + '/wuliu/my/orders',
+      url: app.globalData.url + '/my/orders',
       data: {
         chengJiaoIs: chengJiaoIs,
         baoJiaIs: baoJiaIs,
@@ -392,7 +392,7 @@ Page({
   lastPageNumber(chengJiaoIs, baoJiaIs) {
     let that = this
     wx.request({
-      url: app.globalData.url + '/wuliu/my/orders-sum',
+      url: app.globalData.url + '/my/orders-sum',
       data: {
         chengJiaoIs: chengJiaoIs,
         baoJiaIs: baoJiaIs,

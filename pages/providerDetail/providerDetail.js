@@ -105,7 +105,7 @@ Page({
       return
     }
     // wx.request({
-    //   url: app.globalData.url + '/wuliu/order/order-info',
+    //   url: app.globalData.url + '/order/order-info',
     //   data: {
     //     baojiaId: that.data.baojiaId,
     // point:that.data.point
@@ -131,7 +131,7 @@ Page({
 
 
     wx.request({
-      url: app.globalData.url + '/wuliu/order/order-info',
+      url: app.globalData.url + '/order/order-info',
       data: {
         orderId: options.id
       },
@@ -149,7 +149,7 @@ Page({
         }
         if (res.data.code == 0) {
           wx.request({
-            url: app.globalData.url + '/wuliu/order/bao-jia-list',
+            url: app.globalData.url + '/order/bao-jia-list',
             data: {
               baoJiaId: res.data.data.baoJiaId
             },

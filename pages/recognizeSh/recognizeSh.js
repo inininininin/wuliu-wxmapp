@@ -69,7 +69,7 @@ Page({
         duration: 2000
       })
       wx.request({
-        url: app.globalData.url + '/wuliu/ren-zheng-fu-wu-shang-ti-jiao',
+        url: app.globalData.url + '/ren-zheng-fu-wu-shang-ti-jiao',
         header: {
           "Content-Type": "application/x-www-form-urlencoded",
           'cookie': wx.getStorageSync('cookie')
@@ -86,7 +86,7 @@ Page({
           wx.hideToast()
           if (res.data.code == 0) {
             wx.request({
-              url: app.globalData.url + '/wuliu/login-refresh',
+              url: app.globalData.url + '/login-refresh',
               header: {
                 "Content-Type": "application/x-www-form-urlencoded",
                 'cookie': wx.getStorageSync('cookie')
@@ -148,7 +148,7 @@ Page({
         duration: 2000
       })
       wx.request({
-        url: app.globalData.url + '/wuliu/ren-zheng-ti-jiao',
+        url: app.globalData.url + '/ren-zheng-ti-jiao',
         header: {
           "Content-Type": "application/x-www-form-urlencoded",
           'cookie': wx.getStorageSync('cookie')
@@ -165,7 +165,7 @@ Page({
           wx.hideToast()
           if (res.data.code == 0) {
             wx.request({
-              url: app.globalData.url + '/wuliu/login-refresh',
+              url: app.globalData.url + '/login-refresh',
               header: {
                 "Content-Type": "application/x-www-form-urlencoded",
                 'cookie': wx.getStorageSync('cookie')
@@ -328,7 +328,7 @@ Page({
         var jscode = res.code
         if (e.detail.encryptedData != null && e.detail.encryptedData != '' && e.detail.encryptedData != undefined) {
           wx.request({
-            url: app.globalData.url + '/wuliu/update-my-phone',
+            url: app.globalData.url + '/update-my-phone',
             header: {
               "Content-Type": "application/x-www-form-urlencoded",
               'cookie': wx.getStorageSync('cookie')

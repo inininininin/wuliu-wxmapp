@@ -67,7 +67,7 @@ sendPrice(e){
   }
   
   wx.request({
-    url: app.globalData.url + '/wuliu/order/bao-jia-do',
+    url: app.globalData.url + '/order/bao-jia-do',
     header: {
       "Content-Type": "application/x-www-form-urlencoded",
       'cookie': wx.getStorageSync('cookie')
@@ -250,7 +250,7 @@ sendPrice(e){
       orderId:options.id
     })
     wx.request({
-      url: app.globalData.url + '/wuliu/order/order-info',
+      url: app.globalData.url + '/order/order-info',
       data: {
         orderId: options.id
       },
