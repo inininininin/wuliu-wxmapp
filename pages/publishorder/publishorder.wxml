@@ -234,16 +234,16 @@
 		</view>
 		<!-- <input bindinput="huoWuLeiXing" placeholder="如证件、服装等" placeholder-class="placeholder"></input> -->
 	</view>
-	<view class="shopDetailItem">
-		<text>货物重量</text>
+	<view class="shopDetailItem xxrequireItem">
+		<text>重量</text>
 		<view class="shopItem">
 			<input bindinput="huoWuWeight" type="number" placeholder="如230g等" placeholder-class="placeholder"></input>
-			<text>货物体积</text>
+			<text>体积</text>
 			<input bindinput="huoWuVolume" type="number" placeholder="如5L等" placeholder-class="placeholder"></input>
 		</view>
 	</view>
 	<view class="shopDetailItem xxrequireItem">
-		<text>包装方式</text>
+		<text>包装</text>
 		<view>
 			<picker bindchange="baoZhuangFangShi" value="{{baoZhuangFangShiIndex}}" range="{{baoZhuangFangShiList}}">
 				<view class="picker" wx:if='{{baoZhuangFangShiIndex==0}}' style="color:#999999">
@@ -336,6 +336,10 @@
 		<text>箱数</text>
 		<view>
 			<view class="xxrequireItemEve">
+				<input type="number" bindinput="xiangShuUnit" placeholder="请输入"></input>
+				<!-- <text>个</text> -->
+			</view>
+			<view class="xxrequireItemEve">
 				<picker bindchange="xiangShu" value="{{index3}}" range="{{array3}}">
 					<view class="picker" wx:if='{{index3==0}}' style="color:#999999">
 						{{array3[index3]}}
@@ -346,16 +350,13 @@
 				</picker>
 				<image src="../img/xiala.svg"></image>
 			</view>
-			<view class="xxrequireItemEve">
-				<input type="number" bindinput="xiangShuUnit" placeholder="请输入数量"></input>
-				<text>个</text>
-			</view>
+
 
 		</view>
 	</view>
 </view>
 <!-- 备注信息 -->
-<view class="remark">
+<view class="remark xxrequireItem">
 	<text>备注信息</text>
 	<input placeholder-class="" bindinput="note" placeholder="填写个性需求及需注意因素"></input>
 </view>
