@@ -61,6 +61,7 @@
   padding-left: 30rpx;
   box-sizing: border-box;
   text-align: left;
+  font-size: 34rpx;
 }
 .lineEve>input{
   width: 554rpx;
@@ -83,4 +84,61 @@ text-align: center;
 color: #ffffff;
 border-radius: 50rpx;
 margin: 355rpx 40rpx 100rpx;
+}
+
+/* 获取手机号码 */
+/* 号码 */
+.linkList {
+  width: 100%;
+  background: #ffffff;
+  /* margin-top: 20rpx; */
+  border-bottom: 1rpx solid #dddddd;
+  height: auto;
+}
+
+.linkList>view {
+  width: 750rpx;
+  height: 88rpx;
+  box-sizing: border-box;
+  border-bottom: 1rpx solid #e5e5e5;
+  line-height: 88rpx;
+  /* margin-left: 32rpx; */
+
+}
+
+.linkList>view text {
+  font-size: 34rpx;
+  font-family: PingFangSC, PingFangSC-Regular;
+  color: #000000;
+  float: left;
+width: 250rpx;
+line-height: 89rpx;
+padding-left: 30rpx;
+box-sizing: border-box;
+text-align: left;
+
+}
+
+
+.linkList>view:last-child {
+  border-bottom: 0;
+}
+.linkList .phone ,.linkList .phoneGet{
+  float: right;
+  color: #666666;
+  font-size: 34rpx;
+  margin-right: 36rpx
+}
+
+.linkList button{
+  display: inline-block;
+  width: 250rpx !important;
+  height: 86rpx;
+  line-height: 86rpx;
+  text-align: right;
+  padding: 0;
+  cursor: pointer;
+  background: #ffffff;
+  border: 0;
+  outline: none;
 }

@@ -9,6 +9,7 @@ Page({
     navtitle: '集贤装物流',
     statusBarHeight: app.globalData.statusBarHeight,
     titleBarHeight: app.globalData.titleBarHeight,
+    color:'#999',
     loginIf: '',
     selectDatas: ['全部订单', '最新订单', '临近发货日期', '已成交订单'], //下拉列表的数据
     indexs: 0, //选择的下拉列 表下标,
@@ -25,7 +26,10 @@ Page({
     totalCount: '0',
     pageNo: '',
     listTitle: '',
-    show: false
+    show: false,
+    chengJiaoIs:'',
+    order:'',
+    sort:'',
   },
   // 备用的去认证按钮
   totalCount(e) {
@@ -147,20 +151,32 @@ Page({
     })
   },
   bindPickerChange: function (e) {
-    let orderSort = ''
+    let orderSort = '',sort='',chengJiaoIs=''
     if (e.detail.value == 0) {
-      orderSort = ''
+      orderSort = '';
+      sort='';
+      chengJiaoIs=''
     } else if (e.detail.value == 1) {
-      orderSort = 'updateTime'
+      orderSort = 'updateTime';
+      sort='asc';
+      chengJiaoIs=''
     } else if (e.detail.value == 2) {
-      orderSort = 'faHuoTime'
+      orderSort = 'faHuoTime';
+      sort='asc';
+      chengJiaoIs=''
     } else if (e.detail.value == 3) {
-      orderSort = 'chengJiaoIs'
+      orderSort = '';
+      sort='';
+      chengJiaoIs=1
     }
     console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
       index: e.detail.value,
-      orderSort: orderSort
+      indexs: e.detail.value,
+      order: orderSort,
+      sort:'',
+      chengJiaoIs:chengJiaoIs,
+      color:'#333'
     })
   },
   showClose() {
@@ -175,9 +191,12 @@ Page({
       picker: true,
       pickers: true,
       indexs: 0,
+      index:0,
       faHuoAreaId: '',
       shouHuoAreaId: '',
-      orderSort: ''
+      order: '',
+      sort:'',
+      chengJiaoIs:''
     })
   },
   makesure() {
@@ -185,8 +204,8 @@ Page({
       showIs: false,
       orderList: []
     })
-    this.lastPage('', '', '', this.data.faHuoAreaId, this.data.shouHuoAreaId, this.data.orderSort, 'asc', 1)
-    this.lastPageNumber('', '', '', this.data.faHuoAreaId, this.data.shouHuoAreaId)
+    this.lastPage('', this.data.chengJiaoIs, '', this.data.faHuoAreaId, this.data.shouHuoAreaId, this.data.orderSort,this.data.order, 1)
+    this.lastPageNumber('', this.data.chengJiaoIs, '', this.data.faHuoAreaId, this.data.shouHuoAreaId)
   },
   // 点击下拉显示框
   selectTaps(e) {
@@ -196,24 +215,36 @@ Page({
   },
   // 点击下拉列表
   optionTaps(e) {
-    let sort = ''
+    let sort = '',chengJiaoIs='',order='';
     let Indexs = e.currentTarget.dataset.index; //获取点击的下拉列表的下标
     if (Indexs == 0) {
-      sort = ''
+      chengJiaoIs='';
+      sort = '';
+      order='';
     } else if (Indexs == 1) {
-      sort = 'updateTime'
+      chengJiaoIs='';
+      sort = 'updateTime';
+      order='asc';
     } else if (Indexs == 2) {
-      sort = 'faHuoTime'
+      chengJiaoIs='';
+      sort = 'faHuoTime';
+      order='asc';
     } else if (Indexs == 3) {
-      sort = 'chengJiaoIs'
+      chengJiaoIs=1;
+      sort = '';
+      order='';
     }
     this.setData({
       indexs: Indexs,
+      index:Indexs,
       shows: !this.data.shows,
       orderList: [],
+      chengJiaoIs:chengJiaoIs,
+      sort:sort,
+      order:order,
     });
-    this.lastPage('', '', '', '', '', sort, 'asc', 1)
-    this.lastPageNumber('', '', '', '', '')
+    this.lastPage('', chengJiaoIs, '', '', '', sort, order, 1)
+    this.lastPageNumber('', chengJiaoIs, '', '', '')
   },
   lastPage(kw, chengJiaoIs, baoJiaIs, faHuoAreaId, shouHuoAreaId, sort, order, pageNo) {
     let that = this
@@ -403,8 +434,8 @@ Page({
     })
     if (this.data.orderList && this.data.orderList.length == 0) {
       if (app.globalData.loginIf == 1) {
-        this.lastPage('', '', '', '', '', '', '', 1);
-        this.lastPageNumber('', '', '', '', '')
+        this.lastPage('', this.data.chengJiaoIs, '', '', '', this.data.sort, this.data.order, 1);
+        this.lastPageNumber('', this.data.chengJiaoIs, '', '', '')
       }
     }
 
@@ -438,8 +469,8 @@ Page({
         pageNo: 1,
         listTitle: '加载中.'
       })
-      this.lastPage('', '', '', this.data.faHuoAreaId, this.data.shouHuoAreaId, this.data.orderSort, 'asc', 1)
-      this.lastPageNumber('', '', '', this.data.faHuoAreaId, this.data.shouHuoAreaId)
+      this.lastPage('', this.data.chengJiaoIs, '', this.data.faHuoAreaId, this.data.shouHuoAreaId, this.data.sort, this.data.order, 1)
+      this.lastPageNumber('', this.data.chengJiaoIs, '', this.data.faHuoAreaId, this.data.shouHuoAreaId)
     }
 
     wx.stopPullDownRefresh()
@@ -454,7 +485,7 @@ Page({
       this.setData({
         listTitle: '正在载入更多.'
       })
-      this.lastPage('', '', '', this.data.faHuoAreaId, this.data.shouHuoAreaId, this.data.orderSort, 'asc', pageNo)
+      this.lastPage('', this.data.chengJiaoIs, '', this.data.faHuoAreaId, this.data.shouHuoAreaId, this.data.sort, this.data.order, pageNo)
     }
 
   },

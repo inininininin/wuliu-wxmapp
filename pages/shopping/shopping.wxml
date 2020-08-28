@@ -28,7 +28,7 @@
 				<view class="title lineOne">{{item.name}}</view>
 				<view class="address "><text>装货地：</text><text class="lineOne" style="width:350rpx">{{item.area1Name}}-{{item.area2Name}}</text></view>
 				<view class="position">
-					<view>规格：</view>
+					<view>简介：</view>
 					<view>
 						<view class="lineFour">{{item.intro}}</view>
 						<!-- <view class="lineOne">小柜-5吨-380ml-<text>¥2083</text></view>

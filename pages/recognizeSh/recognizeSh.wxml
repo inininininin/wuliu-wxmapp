@@ -3,7 +3,7 @@
 	<view wx:if='{{image1==""}}' class="imgBox">
 		<image src="../img/photo2.svg"></image>
 	</view>
-  <image  wx:if='{{image1!=""}}'  mode="aspectFill"  class="imageEve" src="{{image1}}"></image>
+	<image wx:if='{{image1!=""}}' mode="aspectFill" class="imageEve" src="{{image1}}"></image>
 	<view class="textBox">验证营业执照</view>
 	<image class="rightIcon" src="../img/rightIcon.svg"></image>
 </view>
@@ -11,29 +11,37 @@
 	<view wx:if='{{image2==""}}' class="imgBox">
 		<image src="../img/photo2.svg"></image>
 	</view>
-  <image class="imageEve" mode="aspectFill" wx:if='{{image2!=""}}' src="{{image2}}"></image>
+	<image class="imageEve" mode="aspectFill" wx:if='{{image2!=""}}' src="{{image2}}"></image>
 	<view class="textBox">验证身份证照片</view>
 	<image class="rightIcon" src="../img/rightIcon.svg"></image>
 </view>
 <view class="lineEve  wx:if='{{show1}}'">
-  <text>姓名</text>
-  <input  type="text"  value="{{realname}}" bindinput="realname" placeholder="请输入您的姓名"></input>
+	<text>姓名</text>
+	<input type="text" value="{{realname}}" bindinput="realname" placeholder="请输入您的姓名"></input>
 </view>
-<view class="lineEve"  wx:if='{{show2}}'>
-  <text>联系方式</text>
-  <input type="number" bindinput="phone" placeholder="请输入您的联系方式"></input>
+<view class="lineEve" wx:if='{{show2}}'>
+	<text>联系方式</text>
+	<input type="number" bindinput="phone" placeholder="请输入您的联系方式"></input>
 </view>
-<view class="lineEve"  wx:if='{{show1}}'>
-  <text>公司名称</text>
-  <input  type="number"  value="{{company}}" bindinput="company"  placeholder="请输入您的公司名称"></input>
+
+<view class="lineEve" wx:if='{{show1}}'>
+	<text>公司名称</text>
+	<input type="number" value="{{company}}" bindinput="company" placeholder="请输入您的公司名称"></input>
 </view>
-<view class="lineEve"  wx:if='{{show3}}'>
-  <text>公司电话</text>
-  <input  type="number" bindinput="tel"  placeholder="请输入您的公司电话"></input>
+<view class="lineEve" wx:if='{{show3}}'>
+	<text>公司电话</text>
+	<input type="number" bindinput="tel" placeholder="请输入您的公司电话"></input>
 </view>
-<view class="lineEve"  wx:if='{{show4}}'>
-  <text>公司介绍</text>
-  <input  type="text"  value="{{fuWuShangIntro}}" bindinput="fuWuShangIntro"  placeholder="请输入您的公司介绍"></input>
+<view class="lineEve" wx:if='{{show4}}'>
+	<text>公司介绍</text>
+	<input type="text" value="{{fuWuShangIntro}}" bindinput="fuWuShangIntro" placeholder="请输入您的公司介绍"></input>
+</view>
+<view class="linkList">
+	<view wx:if='{{show1}}'>
+		<text>手机号</text>
+		<text wx:if='{{phone}}' class="phone">{{phone}}</text>
+		<button wx:if='{{!phone}}' class="phoneGet" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" style="color:#0E4090">点击授权手机号</button>
+	</view>
 </view>
 
 <view class="makesure" bindtap="makesure">确认并提交</view>

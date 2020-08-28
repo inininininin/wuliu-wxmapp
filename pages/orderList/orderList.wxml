@@ -63,7 +63,7 @@
 	<view class="screenView" wx:if='{{showIs}}' bindtap="showClose">
 		<view class="screenUserView" catchtap="eveThis">
 			<text class="title" style="padding-top: 100rpx;">订单选择</text>
-			<picker class="orderSelcet" bindchange="bindPickerChange" value="{{index}}" range="{{selectDatas}}">
+			<picker class="orderSelcet" style="color:{{color}}" bindchange="bindPickerChange" value="{{index}}" range="{{selectDatas}}">
 				<view class="picker">
 					{{selectDatas[index]}}
 				</view>

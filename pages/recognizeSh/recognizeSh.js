@@ -15,6 +15,7 @@ Page({
     realname: '',
     company: '',
     fuWuShangIntro: '',
+    phone: '',
   },
   yyzz() {
     wx.navigateTo({
@@ -31,11 +32,11 @@ Page({
       realname: e.detail.value
     })
   },
-  phone(e) {
-    this.setData({
-      phone: e.detail.value
-    })
-  },
+  // phone(e) {
+  //   this.setData({
+  //     phone: e.detail.value
+  //   })
+  // },
   tel(e) {
     this.setData({
       tel: e.detail.value
@@ -221,6 +222,7 @@ Page({
    */
   onLoad: function (options) {
     console.log(options.type)
+    
     if (app.globalData.userInfoDetail.idCard) {
       app.globalData.renzhengcover1 = app.globalData.userInfoDetail.idCard
     }
@@ -231,6 +233,7 @@ Page({
       realname: app.globalData.userInfoDetail.realname || '',
       company: app.globalData.userInfoDetail.company || '',
       fuWuShangIntro: app.globalData.userInfoDetail.fuWuShangIntro || '',
+      phone: app.globalData.userInfoDetail.phone||'',
     })
 
     if (options.type == 0) {
@@ -303,5 +306,66 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+   // 获取手机号授权
+   getPhoneNumber(e) {
+    var that = this
+    console.log(e.detail)
+    console.log(e.detail.iv)
+    wx.showToast({
+      title: '授权中，请稍后',
+      icon: 'none',
+      duration: 1000
+    })
+    that.setData({
+      encryptedData: encodeURIComponent(e.detail.encryptedData),
+      iv: encodeURIComponent(e.detail.iv)
+    })
+
+
+    wx.login({
+      success(res) {
+        var jscode = res.code
+        if (e.detail.encryptedData != null && e.detail.encryptedData != '' && e.detail.encryptedData != undefined) {
+          wx.request({
+            url: app.globalData.url + '/wuliu/update-my-phone',
+            header: {
+              "Content-Type": "application/x-www-form-urlencoded",
+              'cookie': wx.getStorageSync('cookie')
+            },
+            data: 'wxMinAppEncryptedDataOfPhoneNumber=' + encodeURIComponent(e.detail.encryptedData) + '&wxMinappIv=' + encodeURIComponent(e.detail.iv) + '&jscode=' + jscode,
+            method: 'post',
+            success: function (res) {
+              wx.hideToast()
+              if (res.data.codeMsg) {
+                wx.showToast({
+                  title: res.data.codeMsg,
+                  icon: 'none'
+                })
+              }
+              if (res.data.code == 0) {
+                let phone = res.data.data.phone
+                that.setData({
+                  phone: res.data.data.phone
+                })
+                app.globalData.userInfoDetail.phone = phone
+               
+              } else {
+                wx.showToast({
+                  title: res.data.codeMsg,
+                  icon: 'none'
+                })
+              }
+            }
+          })
+        } else {
+          wx.showToast({
+            title: '获取失败请重试',
+            icon: 'none',
+            duration: 1000
+          })
+        }
+      }
+    })
   }
 })
