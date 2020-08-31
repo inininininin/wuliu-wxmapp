@@ -72,9 +72,11 @@
 			<view class="zhongliang">
 				<image src="../img/zhongliang.svg"></image>
 				<view class="zhongliangView">
-					<input placeholder-class="placeholder" type="number" bindinput="shouHuoWeight" placeholder="请输入货物重量kg"></input>
+					<input placeholder-class="placeholder" type="number" bindinput="shouHuoWeight" placeholder="请输入货物重量"></input>
+					<text class="text">kg</text>
 					<text>;</text>
-					<input placeholder-class="placeholder" type="number" bindinput="shouHuoVolume" placeholder="请输入货物体积m³"></input>
+					<input placeholder-class="placeholder" type="number" bindinput="shouHuoVolume" placeholder="请输入货物体积"></input>
+					<text class="text">m³</text>
 				</view>
 			</view>
 
@@ -117,9 +119,11 @@
 			<view class="zhongliang">
 				<image src="../img/zhongliang.svg"></image>
 				<view class="zhongliangView">
-					<input placeholder-class="placeholder" type="number" bindinput="shouHuo1Weight" placeholder="请输入货物重量kg"></input>
+					<input placeholder-class="placeholder" type="number" bindinput="shouHuo1Weight" placeholder="请输入货物重量"></input>
+					<text class="text">kg</text>
 					<text>;</text>
-					<input placeholder-class="placeholder" type="number" bindinput="shouHuo1Volume" placeholder="请输入货物体积m³"></input>
+					<input placeholder-class="placeholder" type="number" bindinput="shouHuo1Volume" placeholder="请输入货物体积"></input>
+					<text class="text">m³</text>
 				</view>
 			</view>
 
@@ -162,9 +166,11 @@
 			<view class="zhongliang">
 				<image src="../img/zhongliang.svg"></image>
 				<view class="zhongliangView">
-					<input placeholder-class="placeholder" type="number" bindinput="shouHuo2Weight" placeholder="请输入货物重量kg"></input>
+					<input placeholder-class="placeholder" type="number" bindinput="shouHuo2Weight" placeholder="请输入货物重量"></input>
+					<text class="text">kg</text>
 					<text>;</text>
-					<input placeholder-class="placeholder" type="number" bindinput="shouHuo2Volume" placeholder="请输入货物体积m³"></input>
+					<input placeholder-class="placeholder" type="number" bindinput="shouHuo2Volume" placeholder="请输入货物体积"></input>
+					<text class="text">m³</text>
 				</view>
 			</view>
 
@@ -207,9 +213,11 @@
 			<view class="zhongliang">
 				<image src="../img/zhongliang.svg"></image>
 				<view class="zhongliangView">
-					<input placeholder-class="placeholder" type="number" bindinput="shouHuo3Weight" placeholder="请输入货物重量kg"></input>
+					<input placeholder-class="placeholder" type="number" bindinput="shouHuo3Weight" placeholder="请输入货物重量"></input>
+					<text class="text">kg</text>
 					<text>;</text>
-					<input placeholder-class="placeholder" type="number" bindinput="shouHuo3Volume" placeholder="请输入货物体积m³"></input>
+					<input placeholder-class="placeholder" type="number" bindinput="shouHuo3Volume" placeholder="请输入货物体积"></input>
+					<text class="text">m³</text>
 				</view>
 			</view>
 
