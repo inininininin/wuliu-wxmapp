@@ -358,7 +358,7 @@
 <!-- 备注信息 -->
 <view class="remark xxrequireItem">
 	<text>备注信息</text>
-	<input placeholder-class="" bindinput="note" placeholder="填写个性需求及需注意因素"></input>
+	<input placeholder-class="" bindinput="note" placeholder="请输入"></input>
 </view>
 
 <view class="send" bindtap="send">发布</view>
