@@ -21,7 +21,7 @@ Page({
       success(res) {
         if (res.confirm) {
           wx.request({
-            url: app.globalData.url + '/wuliu/logout',
+            url: app.globalData.domain + '/wuliu/logout',
             header: {
               "Content-Type": "application/x-www-form-urlencoded",
               'cookie': wx.getStorageSync('cookie')
@@ -72,7 +72,7 @@ Page({
     let that = this
     if(app.globalData.loginIf==0){
       wx.request({
-        url: app.globalData.url + '/wuliu/login-refresh',
+        url: app.globalData.domain + '/wuliu/login-refresh',
         header: {
           "Content-Type": "application/x-www-form-urlencoded",
           'cookie': wx.getStorageSync('cookie')
@@ -119,7 +119,7 @@ Page({
       phone: app.globalData.userInfoDetail.phone,
     })
     //   wx.request({
-    //     url: app.globalData.url + '/wuliu/login-refresh',
+    //     url: app.globalData.domain + '/wuliu/login-refresh',
     //     header: {
     //       "Content-Type": "application/x-www-form-urlencoded",
     //       'cookie': wx.getStorageSync('cookie')

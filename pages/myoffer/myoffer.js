@@ -45,7 +45,7 @@ Page({
   firstPage(chengJiaoIs, sort, order, pageNo) {
     let that = this
     wx.request({
-      url: app.globalData.url + '/wuliu/my/bao-jia-orders-sum',
+      url: app.globalData.domain + '/wuliu/my/bao-jia-orders-sum',
       data: {
         chengJiaoIs: chengJiaoIs,
       },
@@ -80,7 +80,7 @@ Page({
             })
           }
           wx.request({
-            url: app.globalData.url + '/wuliu/my/bao-jia-orders',
+            url: app.globalData.domain + '/wuliu/my/bao-jia-orders',
             data: {
               chengJiaoIs: chengJiaoIs,
               sort: sort,
@@ -206,7 +206,7 @@ Page({
   lastPage(chengJiaoIs, sort, order, pageNo) {
     let that = this
     wx.request({
-      url: app.globalData.url + '/wuliu/my/bao-jia-orders',
+      url: app.globalData.domain + '/wuliu/my/bao-jia-orders',
       data: {
         chengJiaoIs: chengJiaoIs,
         sort: sort,
@@ -312,7 +312,7 @@ Page({
   lastPageNumber(chengJiaoIs) {
     let that = this
     wx.request({
-      url: app.globalData.url + '/wuliu/my/bao-jia-orders-sum',
+      url: app.globalData.domain + '/wuliu/my/bao-jia-orders-sum',
       data: {
         chengJiaoIs: chengJiaoIs,
       },

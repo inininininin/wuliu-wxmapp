@@ -483,7 +483,7 @@ Page({
         + '&shouHuo3Volume=' + that.data.getAddressList[3].shouHuo3Volume + '&shouHuo3Time=' + util.formatTimecuo(that.data.getAddressList[3].shouHuo3Time)
     }
     wx.request({
-      url: app.globalData.url + '/wuliu/order/order-insert?' + param,
+      url: app.globalData.domain + '/wuliu/order/order-insert?' + param,
       header: {
         "Content-Type": "application/x-www-form-urlencoded",
         'cookie': wx.getStorageSync('cookie')

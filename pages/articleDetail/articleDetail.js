@@ -53,7 +53,7 @@ Page({
     }
     // var param = encodeURIComponent('pages/out/articleDetail/articleDetail?id=' + id+'&isfrom=1' )
     wx.getImageInfo({
-      src: app.globalData.url + '/wuliu/wxminqrcode?path=' + param + '&width=200',
+      src: app.globalData.domain + '/wuliu/wxminqrcode?path=' + param + '&width=200',
       method: 'get',
       header: {
         "Content-Type": "application/x-www-form-urlencoded",
@@ -77,7 +77,7 @@ Page({
       titleBarHeight: getApp().globalData.titleBarHeight,
     })
     wx.request({
-      url: app.globalData.url + '/wuliu/article/article-info',
+      url: app.globalData.domain + '/wuliu/article/article-info',
       method: 'post',
       data: {
         articleId: id,
@@ -99,7 +99,7 @@ Page({
           var contentUrl = res.data.data.contentUrl
 
           wx.request({
-            url: app.globalData.url +contentUrl,
+            url: app.globalData.domain +contentUrl,
             method: 'get',
             header: {
               "Content-Type": "application/x-www-form-urlencoded",
@@ -117,7 +117,7 @@ Page({
           })
 
           // var qrCodePath
-          //  var img2 = app.globalData.url + '/wxminqrcode?path=pages/articleDetail/articleDetail?id=' + options.id + '&width=200'
+          //  var img2 = app.globalData.domain + '/wxminqrcode?path=pages/articleDetail/articleDetail?id=' + options.id + '&width=200'
           // // console.log(that.data.list.cover)
           // let promise1 = new Promise(function(resolve, reject) {
           //   wx.getImageInfo({
@@ -130,7 +130,7 @@ Page({
           // });
           // let promise2 = new Promise(function(resolve, reject) {
             // wx.getImageInfo({
-            //   src: app.globalData.url + '/wxminqrcode?path=pages/articleDetail/articleDetail?id=' + that.data.id + '&width=200',
+            //   src: app.globalData.domain + '/wxminqrcode?path=pages/articleDetail/articleDetail?id=' + that.data.id + '&width=200',
             //   success: function(res) {
             //     resolve(res);
             //   }
@@ -278,7 +278,7 @@ Page({
         icon:'none'
       })
       wx.request({
-        url: app.globalData.url +'/c2/share?articleId=' + that.data.id,
+        url: app.globalData.domain +'/c2/share?articleId=' + that.data.id,
         method: 'get',
         header: {
           "Content-Type": "application/x-www-form-urlencoded",
@@ -288,7 +288,7 @@ Page({
         }
       })
       // that.setData({
-      //   pyqewm: app.globalData.url + '/wxminqrcode?path=pages/articleDetail/articleDetail?id=' + that.data.id + '&width=200'
+      //   pyqewm: app.globalData.domain + '/wxminqrcode?path=pages/articleDetail/articleDetail?id=' + that.data.id + '&width=200'
       // })
       // if(!that.data.avatorShare){
         that.setData({
@@ -309,7 +309,7 @@ Page({
       setTimeout(function(){
         if(that.data.imglist){
           wx.request({
-            url: app.globalData.url +'/c2/share?articleId=' + that.data.id,
+            url: app.globalData.domain +'/c2/share?articleId=' + that.data.id,
             method: 'get',
             header: {
               "Content-Type": "application/x-www-form-urlencoded",
@@ -344,7 +344,7 @@ Page({
     
     // console.log(that.data.pyqewm)
     // wx.request({
-    //   url: app.globalData.url + '/wxminqrcode?path=pages/articleDetail/articleDetail?id=' + that.data.id+'&width=200',
+    //   url: app.globalData.domain + '/wxminqrcode?path=pages/articleDetail/articleDetail?id=' + that.data.id+'&width=200',
     //   method: 'get',
     //   header: {
     //     "Content-Type": "application/x-www-form-urlencoded",
@@ -364,7 +364,7 @@ Page({
   
   onShareAppMessage: function (res) { 
     wx.request({
-      url: app.globalData.url +'/c2/share?articleId=' + this.data.id,
+      url: app.globalData.domain +'/c2/share?articleId=' + this.data.id,
       method: 'get',
       header: {
         "Content-Type": "application/x-www-form-urlencoded",

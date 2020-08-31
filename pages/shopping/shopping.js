@@ -83,7 +83,7 @@ Page({
     })
     if (app.globalData.loginIf == 0) {
       wx.request({
-        url: app.globalData.url + '/wuliu/login-refresh',
+        url: app.globalData.domain + '/wuliu/login-refresh',
         header: {
           "Content-Type": "application/x-www-form-urlencoded",
           'cookie': wx.getStorageSync('cookie')
@@ -189,7 +189,7 @@ Page({
   firstPage(pageNo){
     let that = this
     wx.request({
-      url: app.globalData.url + '/wuliu/goods/goodses-sum',
+      url: app.globalData.domain + '/wuliu/goods/goodses-sum',
       data: {
         kw: that.data.kw,
         type1Id: that.data.type1Id,
@@ -212,7 +212,7 @@ Page({
             totalCount: res.data.data.itemCount
           })
           wx.request({
-            url: app.globalData.url + '/wuliu/goods/goodses',
+            url: app.globalData.domain + '/wuliu/goods/goodses',
             data: {
               kw: that.data.kw,
               type1Id: that.data.type1Id,
@@ -277,7 +277,7 @@ Page({
   lastPage(pageNo) {
     let that = this
     wx.request({
-      url: app.globalData.url + '/wuliu/goods/goodses',
+      url: app.globalData.domain + '/wuliu/goods/goodses',
       data: {
         kw: that.data.kw,
         type1Id: that.data.type1Id,
@@ -347,7 +347,7 @@ Page({
   lastPageNumber() {
     let that = this
     wx.request({
-      url: app.globalData.url + '/wuliu/goods/goodses-sum',
+      url: app.globalData.domain + '/wuliu/goods/goodses-sum',
       data: {
         kw: that.data.kw,
         type1Id: that.data.type1Id,

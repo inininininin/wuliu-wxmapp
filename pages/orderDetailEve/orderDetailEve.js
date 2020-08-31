@@ -20,7 +20,7 @@ Page({
       orderId:options.id
     })
     wx.request({
-      url: app.globalData.url + '/wuliu/order/order-info',
+      url: app.globalData.domain + '/wuliu/order/order-info',
       data: {
         orderId: options.id
       },

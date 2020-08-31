@@ -69,7 +69,7 @@ Page({
   toPrice(e) {
     let that=this
     wx.request({
-      url: app.globalData.url + '/wuliu/login-refresh',
+      url: app.globalData.domain + '/wuliu/login-refresh',
       header: {
         "Content-Type": "application/x-www-form-urlencoded",
         'cookie': wx.getStorageSync('cookie')
@@ -249,7 +249,7 @@ Page({
   lastPage(kw, chengJiaoIs, baoJiaIs, faHuoAreaId, shouHuoAreaId, sort, order, pageNo) {
     let that = this
     wx.request({
-      url: app.globalData.url + '/wuliu/order/order-list',
+      url: app.globalData.domain + '/wuliu/order/order-list',
       data: {
         kw: kw,
         chengJiaoIs: chengJiaoIs,
@@ -332,7 +332,7 @@ Page({
   lastPageNumber(kw, chengJiaoIs, baoJiaIs, faHuoAreaId, shouHuoAreaId) {
     let that = this
     wx.request({
-      url: app.globalData.url + '/wuliu/order/order-list-sum',
+      url: app.globalData.domain + '/wuliu/order/order-list-sum',
       data: {
         kw: kw,
         chengJiaoIs: chengJiaoIs,
@@ -387,7 +387,7 @@ Page({
 
     if (app.globalData.loginIf == 0) {
       wx.request({
-        url: app.globalData.url + '/wuliu/login-refresh',
+        url: app.globalData.domain + '/wuliu/login-refresh',
         header: {
           "Content-Type": "application/x-www-form-urlencoded",
           'cookie': wx.getStorageSync('cookie')
