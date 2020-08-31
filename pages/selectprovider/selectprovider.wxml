@@ -122,4 +122,4 @@
 	</view>
 </view>
 <view style="clear:both"></view>
-<view class="sendPrice" bindtap="sendPrice">提交报价</view>
+<view class="sendPrice" bindtap="sendPrice">选择报价</view>
