@@ -152,7 +152,7 @@ Page({
   firstPage(pageNo){
     let that = this
     wx.request({
-      url: app.globalData.url + '/wuliu/article/article-list-sum',
+      url: app.globalData.url + '/article/article-list-sum',
       data: {},
       header: {
         "Content-Type": "application/x-www-form-urlencoded",
@@ -171,7 +171,7 @@ Page({
             totalCount: res.data.data.itemCount
           })
           wx.request({
-            url: app.globalData.url + '/wuliu/article/article-list',
+            url: app.globalData.url + '/article/article-list',
             data: {
               pn: pageNo,
               ps: 15
