@@ -1,0 +1,82 @@
+/* pages/orderDetail/orderDetail.wxss */
+page {
+  background: #f5f5f5;
+  padding-bottom: 20rpx;
+}
+
+.topMain {
+  width: 750rpx;
+  /* height: 730rpx; */
+  background: #ffffff;
+  margin-top: 20rpx;
+  float: left;
+  padding-bottom: 24rpx;
+}
+
+.topMain .type1 {
+  width: 100%;
+  height: 44rpx;
+  line-height: 44rpx;
+  margin-top: 24rpx;
+  float: left;
+}
+
+.topMain .type1 .faIcon {
+  width: 35rpx;
+  height: 44rpx;
+  float: left;
+  margin: 0 30rpx 0 25rpx;
+}
+
+.faIcon1 {
+  width: 29rpx;
+  height: 30rpx;
+  margin: 7rpx 33rpx 0 29rpx;
+  float: left;
+}
+
+.topMain .type1>view {
+  width: 600rpx;
+  height: 44rpx;
+  line-height: 44rpx;
+  /* margin-top: 22rpx; */
+  float: left;
+}
+
+.type2 {
+  width: 100%;
+  height: 40rpx;
+  line-height: 40rpx;
+  float: left;
+  margin-top: 23rpx;
+}
+
+.type2 text {
+  /* display: inline-block; */
+  float: left;
+  font-size: 28rpx;
+  color: #333333;
+}
+
+.type2title {
+  width: 216rpx;
+  box-sizing: border-box;
+  padding-left: 24rpx;
+  text-align: left;
+}
+
+.type2Detail {
+  width: 532rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+}
+
+.type2Detail1 {
+  width: 130rpx;
+  margin-right: 29rpx;
+}
+
+.type2Detail {
+  width: 510rpx;
+}
+

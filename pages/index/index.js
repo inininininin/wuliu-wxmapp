@@ -138,8 +138,9 @@ Page({
    */
   onLoad: function (options) {
     console.log(app.globalData.statusBarHeight)
-    this.lastPage(1)
-    this.lastPageNumber()
+    this.firstPage(1)
+    // this.lastPage(1)
+    // this.lastPageNumber()
   },
 
   /**
@@ -148,7 +149,89 @@ Page({
   onReady: function () {
 
   },
-
+  firstPage(pageNo){
+    let that = this
+    wx.request({
+      url: app.globalData.url + '/wuliu/article/article-list-sum',
+      data: {},
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded",
+        'cookie': wx.getStorageSync('cookie')
+      },
+      method: 'post',
+      success: function (res) {
+        if (res.data.codeMsg && res.data.code != 20) {
+          wx.showToast({
+            title: res.data.codeMsg,
+            icon: 'none'
+          })
+        }
+        if (res.data.code == 0) {
+          that.setData({
+            totalCount: res.data.data.itemCount
+          })
+          wx.request({
+            url: app.globalData.url + '/wuliu/article/article-list',
+            data: {
+              pn: pageNo,
+              ps: 15
+            },
+            header: {
+              "Content-Type": "application/x-www-form-urlencoded",
+              'cookie': wx.getStorageSync('cookie')
+            },
+            method: 'post',
+            success: function (res) {
+              if (res.data.codeMsg && res.data.code != 20) {
+                wx.showToast({
+                  title: res.data.codeMsg,
+                  icon: 'none'
+                })
+              }
+              if (res.data.code == 0) {
+                console.log(res.data.data.itemList)
+                for (var i in res.data.data.itemList) {
+                  res.data.data.itemList[i].updateTime = res.data.data.itemList[i].updateTime.slice(0, 16)
+                  res.data.data.itemList[i].cover = app.cover(res.data.data.itemList[i].cover)
+                }
+                let newListArr, listArr
+                if (res.data.data.itemList && res.data.data.itemList.length != 0) {
+                  that.data.articleList.concat(res.data.data.itemList)
+                  listArr = that.data.articleList;
+                  newListArr = listArr.concat(res.data.data.itemList)
+                } else {
+                  newListArr = that.data.articleList;
+                }
+                that.setData({
+                  articleList: newListArr,
+                  pageNo: pageNo,
+                })
+                if (res.data.data.itemList && res.data.data.itemList.length < 15) {
+                  that.setData({
+                    listTitle: '数据已全部加载完成.'
+                  })
+                } else {
+                  if (that.data.articleList.length == that.data.totalCount) {
+                    that.setData({
+                      listTitle: '数据已全部加载完成.'
+                    })
+                  } else {
+                    that.setData({
+                      listTitle: ''
+                    })
+                  }
+                }
+              } else if (res.data.code == 20) {
+              
+              }
+            }
+          })
+        } else if (res.data.code == 20) {
+         
+        }
+      }
+    })
+  },
   lastPage(pageNo) {
     let that = this
     wx.request({
@@ -187,14 +270,20 @@ Page({
             articleList: newListArr,
             pageNo: pageNo,
           })
-          if (that.data.articleList.length == that.data.totalCount) {
+          if (res.data.data.itemList && res.data.data.itemList.length < 15) {
             that.setData({
               listTitle: '数据已全部加载完成.'
             })
           } else {
-            that.setData({
-              listTitle: ''
-            })
+            if (that.data.articleList.length == that.data.totalCount) {
+              that.setData({
+                listTitle: '数据已全部加载完成.'
+              })
+            } else {
+              that.setData({
+                listTitle: ''
+              })
+            }
           }
         } else if (res.data.code == 20) {
         
@@ -284,12 +373,13 @@ Page({
     if (app.globalData.loginIf == 1) {
       this.setData({
         articleList: [],
-        totalCount: 0,
+        // totalCount: 0,
         pageNo: 1,
-        listTitle: ''
+        listTitle: '加载中.'
       })
-      this.lastPageNumber()
-      this.lastPage(1)
+      this.firstPage(1)
+      // this.lastPageNumber()
+      // this.lastPage(1)
     }
 
     wx.stopPullDownRefresh()
