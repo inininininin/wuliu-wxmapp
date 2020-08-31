@@ -2,7 +2,7 @@
 <view>
 	<include src="../common/common.wxml" />
 </view>
-<image  bindtap="totalCount" class="adPic" src="../img/peitu.jpg" mode="aspectFill"></image>
+<image bindtap="totalCount" class="adPic" src="../img/peitu.jpg" mode="aspectFill"></image>
 <view class="orderAndPrice">
 	<view bindtap="sendorder">
 		<image class="fahuo" src="../img/fahuo.svg"></image>
@@ -17,10 +17,10 @@
 	<view class="title">
 		<image src="../img/xinxi.svg"></image>
 		<text>行业信息</text>
-		<text class="articleList">(共{{totalCount}}条)</text>
+		<text class="articleList" wx:if='{{loginIf==1}}'>(共{{totalCount}}条)</text>
 	</view>
 
-	<view class="articleList"  wx:if='{{totalCount!=0}}'>
+	<view class="articleList" wx:if='{{loginIf==1&&totalCount!=0}}'>
 		<view class="articleEve" wx:for='{{articleList}}' bindtap="articleDetail" data-id='{{item.articleId}}'>
 			<view class="articleLf">
 				<view class="lineTwo">{{item.title}}</view>
@@ -29,18 +29,28 @@
 					{{item.updateTime}}
 				</view>
 			</view>
-			<image mode="aspectFill" lazy-load='true'  src="{{item.cover}}"></image>
+			<image mode="aspectFill" lazy-load='true' src="{{item.cover}}"></image>
 		</view>
 	</view>
-	
-	<view wx:if='{{totalCount==0}}' style="padding-bottom:100rpx">
-		<image src="../img/quexing.png"  class="bgImg"></image>
-		<view  class="loginTitle" wx:if='{{loginIf==1}}'>当前尚无行业信息</view>
-		<text class="loginTitle" wx:if='{{loginIf==0}}'>点击登录获取信息</text>
-	<view class="gologinBtn" bindtap="gologinBtn" wx:if='{{loginIf==0}}'>去登陆</view>
+	<view wx:if='{{loginIf==1&&totalCount==0}}' style="padding-bottom:100rpx">
+		<image src="../img/quexing.png" class="bgImg"></image>
+		<view class="loginTitle">当前尚无行业信息</view>
 	</view>
+	<view wx:if='{{loginIf==0}}' style="padding-bottom:100rpx">
+		<image src="../img/quexing.png" class="bgImg"></image>
+		<text class="loginTitle" wx:if='{{loginIf==0}}'>点击登录获取信息</text>
+		<view class="gologinBtn" bindtap="gologinBtn" wx:if='{{loginIf==0}}'>去登陆</view>
+	</view>
+	<!-- <view wx:if='{{totalCount==0}}' style="padding-bottom:100rpx">
+		<image src="../img/quexing.png" class="bgImg"></image>
+		<view class="loginTitle" wx:if='{{loginIf==1}}'>当前尚无行业信息</view>
+		<text class="loginTitle" wx:if='{{loginIf==0}}'>点击登录获取信息</text>
+		<view class="gologinBtn" bindtap="gologinBtn" wx:if='{{loginIf==0}}'>去登陆</view>
+	</view> -->
+
+
 </view>
-	<view class="totalCount">{{listTitle}}</view>
+<view class="totalCount">{{listTitle}}</view>
 
 <view class="popWindowRz" bindtap="closePop" wx:if='{{show}}'>
 	<view class="popBox" catchtap="clearThis">
