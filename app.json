@@ -18,7 +18,8 @@
     "pages/mine/mine",
     "pages/common/common",
     "pages/articleDetail/articleDetail",
-    "pages/goodsdetail/goodsdetail"
+    "pages/goodsdetail/goodsdetail",
+    "pages/orderDetailEve/orderDetailEve"
   ],
   "window": {
     "backgroundTextStyle": "light",

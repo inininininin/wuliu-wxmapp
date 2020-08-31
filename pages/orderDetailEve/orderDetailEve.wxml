@@ -1,0 +1,104 @@
+<!--pages/orderDetail/orderDetail.wxml-->
+<view class="topMain">
+	<view>
+		<view class="type1">
+			<image class="faIcon" src="../img/fa.svg"></image>
+			<view class="lineOne">{{orderDetail.faHuoArea1Name||''}}{{orderDetail.faHuoArea2Name||''}}{{orderDetail.faHuoArea3Name||''}}{{orderDetail.faHuoAddress||''}}</view>
+		</view>
+		<view class="type1">
+			<image class="faIcon1" src="../img/date.svg"></image>
+			<view class="lineOne">{{orderDetail.faHuoTime||''}}</view>
+		</view>
+	</view>
+
+	<view wx:if='{{orderDetail.shouHuoArea1Id}}'>
+		<view class="type1">
+			<image class="faIcon" src="../img/shou.svg"></image>
+			<view class="lineOne">{{orderDetail.shouHuoArea1Name||''}}{{orderDetail.shouHuoArea2Name||''}}{{orderDetail.shouHuoArea3Name||''}}{{orderDetail.shouHuoAddress||''}}</view>
+		</view>
+		<view class="type1">
+			<image class="faIcon1" src="../img/riqi2.svg"></image>
+			<view class="lineOne ">{{orderDetail.shouHuoTime||''}}</view>
+		</view>
+		<view class="type1">
+			<image class="faIcon1" src="../img/zhongliang.svg"></image>
+			<view class="lineOne lineOne">{{orderDetail.shouHuoWeight||''}}kg；{{orderDetail.shouHuoVolume||''}}L/m³</view>
+		</view>
+	</view>
+	<view wx:if='{{orderDetail.shouHuo1Area1Id}}'>
+		<view class="type1">
+			<image class="faIcon" src="../img/shou.svg"></image>
+			<view class="lineOne">{{orderDetail.shouHuo1Area1Name||''}}{{orderDetail.shouHuo1Area2Name||''}}{{orderDetail.shouHuo1Area3Name||''}}{{orderDetail.shouHuo1Address||''}}</view>
+		</view>
+		<view class="type1">
+			<image class="faIcon1" src="../img/riqi2.svg"></image>
+			<view class="lineOne ">{{orderDetail.shouHuo1Time||''}}</view>
+		</view>
+		<view class="type1">
+			<image class="faIcon1" src="../img/zhongliang.svg"></image>
+			<view class="lineOne lineOne">{{orderDetail.shouHuo1Weight||''}}kg；{{orderDetail.shouHuo1Volume||''}}L/m³</view>
+		</view>
+	</view>
+	<view wx:if='{{orderDetail.shouHuo2Area1Id}}'>
+		<view class="type1">
+			<image class="faIcon" src="../img/shou.svg"></image>
+			<view class="lineOne">{{orderDetail.shouHuo2Area1Name||''}}{{orderDetail.shouHuo2Area2Name||''}}{{orderDetail.shouHuo2Area3Name||''}}{{orderDetail.shouHuo2Address||''}}</view>
+		</view>
+		<view class="type1">
+			<image class="faIcon1" src="../img/riqi2.svg"></image>
+			<view class="lineOne ">{{orderDetail.shouHuo2Time||''}}</view>
+		</view>
+		<view class="type1">
+			<image class="faIcon1" src="../img/zhongliang.svg"></image>
+			<view class="lineOne lineOne">{{orderDetail.shouHuo2Weight||''}}kg；{{orderDetail.shouHuo2Volume||''}}L/m³</view>
+		</view>
+	</view>
+	<view wx:if='{{orderDetail.shouHuo3Area1Id}}'>
+		<view class="type1">
+			<image class="faIcon" src="../img/shou.svg"></image>
+			<view class="lineOne">{{orderDetail.shouHuo3Area1Name||''}}{{orderDetail.shouHuo3Area2Name||''}}{{orderDetail.shouHuo3Area3Name||''}}{{orderDetail.shouHuo3Address||''}}</view>
+		</view>
+		<view class="type1">
+			<image class="faIcon1" src="../img/riqi2.svg"></image>
+			<view class="lineOne ">{{orderDetail.shouHuo3Time||''}}</view>
+		</view>
+		<view class="type1">
+			<image class="faIcon1" src="../img/zhongliang.svg"></image>
+			<view class="lineOne lineOne">{{orderDetail.shouHuo3Weight||''}}kg；{{orderDetail.shouHuo3Volume||''}}L/m³</view>
+		</view>
+	</view>
+
+
+	<view class="type2">
+		<text class="type2title">货物类型</text>
+		<text class="type2Detail lineOne">{{orderDetail.huoWuLeiXingName||''}}</text>
+	</view>
+	<view class="type2 ">
+		<text class="type2title">货物重量</text>
+		<text class="type2Detail1 lineOne">{{orderDetail.huoWuWeight||''}}kg</text>
+		<text class="type2title">货物重量</text>
+		<text class="type2Detail1 lineOne">{{orderDetail.huoWuVolume||''}}L/m³</text>
+	</view>
+	<view class="type2">
+		<text class="type2title">包装方式</text>
+		<text class="type2Detail lineOne">{{orderDetail.baoZhuangFangShiName||''}}</text>
+	</view>
+	<view class="type2">
+		<text class="type2title">箱型</text>
+		<text class="type2Detail lineOne">{{orderDetail.xiangXingName||''}}</text>
+	</view>
+	<view class="type2">
+		<text class="type2title">功能</text>
+		<text class="type2Detail lineOne">{{orderDetail.gongNengName||''}}</text>
+	</view>
+	<view class="type2">
+		<text class="type2title">箱数</text>
+		<text class="type2Detail lineOne">{{orderDetail.xiangShuUnit||''}}个 / {{orderDetail.xiangShuName||''}}</text>
+	</view>
+
+	<view class="type2">
+		<text class="type2title">备注信息</text>
+		<text class="type2Detail lineOne">{{orderDetail.note||''}}</text>
+	</view>
+</view>
+<view style="clear:both"></view>

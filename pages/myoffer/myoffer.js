@@ -17,6 +17,12 @@ Page({
     listTitleEve: '',
     totalCountEve: 0
   },
+  // 订单详情
+  detail(e){
+    wx.navigateTo({
+      url: '../orderDetailEve/orderDetailEve?id='+e.currentTarget.dataset.id,
+    })
+  },
   // 联系用户
   userphone(e) {
     wx.makePhoneCall({
