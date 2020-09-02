@@ -11,7 +11,7 @@ Page({
     titleBarHeight: app.globalData.titleBarHeight,
     color:'#999',
     loginIf: '',
-    selectDatas: ['全部订单', '最新订单', '临近发货日期', '已成交订单'], //下拉列表的数据
+    selectDatas: ['当前订单', '最新订单', '临近发货日期', '已成交订单'], //下拉列表的数据
     indexs: 0, //选择的下拉列 表下标,
     orderList: [],
     index: 0,
@@ -27,7 +27,7 @@ Page({
     pageNo: '',
     listTitle: '',
     show: false,
-    chengJiaoIs:'',
+    chengJiaoIs:0,
     order:'',
     sort:'',
   },
@@ -69,7 +69,7 @@ Page({
   toPrice(e) {
     let that=this
     wx.request({
-      url: app.globalData.url + '/login-refresh',
+      url: app.globalData.domain + '/wuliu/login-refresh',
       header: {
         "Content-Type": "application/x-www-form-urlencoded",
         'cookie': wx.getStorageSync('cookie')
@@ -128,7 +128,8 @@ Page({
   // 筛选条件选择
   screen() {
     this.setData({
-      showIs: true
+      showIs: true,
+      shows: !this.data.shows,
     })
   },
   bindRegionChange: function (e) {
@@ -151,25 +152,24 @@ Page({
     })
   },
   bindPickerChange: function (e) {
-    let orderSort = '',sort='',chengJiaoIs=''
+    let orderSort = '',sort='',chengJiaoIs=0
     if (e.detail.value == 0) {
       orderSort = '';
       sort='';
-      chengJiaoIs=''
+      chengJiaoIs=0
     } else if (e.detail.value == 1) {
       orderSort = 'updateTime';
       sort='asc';
-      chengJiaoIs=''
+      chengJiaoIs=0
     } else if (e.detail.value == 2) {
       orderSort = 'faHuoTime';
       sort='asc';
-      chengJiaoIs=''
+      chengJiaoIs=0
     } else if (e.detail.value == 3) {
       orderSort = '';
       sort='';
       chengJiaoIs=1
     }
-    console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
       index: e.detail.value,
       indexs: e.detail.value,
@@ -196,7 +196,7 @@ Page({
       shouHuoAreaId: '',
       order: '',
       sort:'',
-      chengJiaoIs:''
+      chengJiaoIs:0
     })
   },
   makesure() {
@@ -215,18 +215,18 @@ Page({
   },
   // 点击下拉列表
   optionTaps(e) {
-    let sort = '',chengJiaoIs='',order='';
+    let sort = '',chengJiaoIs=0,order='';
     let Indexs = e.currentTarget.dataset.index; //获取点击的下拉列表的下标
     if (Indexs == 0) {
-      chengJiaoIs='';
+      chengJiaoIs=0;
       sort = '';
       order='';
     } else if (Indexs == 1) {
-      chengJiaoIs='';
+      chengJiaoIs=0;
       sort = 'updateTime';
       order='asc';
     } else if (Indexs == 2) {
-      chengJiaoIs='';
+      chengJiaoIs=0;
       sort = 'faHuoTime';
       order='asc';
     } else if (Indexs == 3) {
@@ -249,7 +249,7 @@ Page({
   lastPage(kw, chengJiaoIs, baoJiaIs, faHuoAreaId, shouHuoAreaId, sort, order, pageNo) {
     let that = this
     wx.request({
-      url: app.globalData.url + '/order/order-list',
+      url: app.globalData.domain + '/wuliu/order/order-list',
       data: {
         kw: kw,
         chengJiaoIs: chengJiaoIs,
@@ -274,8 +274,8 @@ Page({
           })
         }
         if (res.data.code == 0) {
-          console.log(res.data.data.itemList)
           for (var i in res.data.data.itemList) {
+            res.data.data.itemList[i].orderIdEve = res.data.data.itemList[i].orderId.slice(res.data.data.itemList[i].orderId.slice.length-8, res.data.data.itemList[i].orderId.length)
             res.data.data.itemList[i].faHuoTime = res.data.data.itemList[i].faHuoTime.slice(0, 10)
             if (res.data.data.itemList[i].huoWuLeiXing == 1) {
               res.data.data.itemList[i].huoWuLeiXingName = '服装'
@@ -332,7 +332,7 @@ Page({
   lastPageNumber(kw, chengJiaoIs, baoJiaIs, faHuoAreaId, shouHuoAreaId) {
     let that = this
     wx.request({
-      url: app.globalData.url + '/order/order-list-sum',
+      url: app.globalData.domain + '/wuliu/order/order-list-sum',
       data: {
         kw: kw,
         chengJiaoIs: chengJiaoIs,
@@ -387,7 +387,7 @@ Page({
 
     if (app.globalData.loginIf == 0) {
       wx.request({
-        url: app.globalData.url + '/login-refresh',
+        url: app.globalData.domain + '/wuliu/login-refresh',
         header: {
           "Content-Type": "application/x-www-form-urlencoded",
           'cookie': wx.getStorageSync('cookie')

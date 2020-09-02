@@ -69,7 +69,7 @@ Page({
         duration: 2000
       })
       wx.request({
-        url: app.globalData.url + '/ren-zheng-fu-wu-shang-ti-jiao',
+        url: app.globalData.domain + '/wuliu/ren-zheng-fu-wu-shang-ti-jiao',
         header: {
           "Content-Type": "application/x-www-form-urlencoded",
           'cookie': wx.getStorageSync('cookie')
@@ -86,7 +86,7 @@ Page({
           wx.hideToast()
           if (res.data.code == 0) {
             wx.request({
-              url: app.globalData.url + '/login-refresh',
+              url: app.globalData.domain + '/wuliu/login-refresh',
               header: {
                 "Content-Type": "application/x-www-form-urlencoded",
                 'cookie': wx.getStorageSync('cookie')
@@ -135,12 +135,26 @@ Page({
         }
       })
     }else{
-      if (app.globalData.renzhengcover1 == "" || app.globalData.renzhengcover2 == "" || that.data.realname == ""  || that.data.company == "") {
-        wx.showToast({
-          title: '请将信息填写完整',
-          icon: 'none'
-        })
-        return
+      let yingYeZhiZhao=''
+      if(that.data.type==1){
+        if (app.globalData.renzhengcover1 == ""  || that.data.realname == ""  || that.data.company == "") {
+          wx.showToast({
+            title: '请将信息填写完整',
+            icon: 'none'
+          })
+          return
+        }
+        yingYeZhiZhao=''
+      }else{
+        
+        if (app.globalData.renzhengcover1 == "" || app.globalData.renzhengcover2 == "" || that.data.realname == ""  || that.data.company == "") {
+          wx.showToast({
+            title: '请将信息填写完整',
+            icon: 'none'
+          })
+          return
+        }
+        yingYeZhiZhao=app.globalData.renzhengcover2
       }
       wx.showToast({
         title: '请稍等',
@@ -148,14 +162,14 @@ Page({
         duration: 2000
       })
       wx.request({
-        url: app.globalData.url + '/ren-zheng-ti-jiao',
+        url: app.globalData.domain + '/wuliu/ren-zheng-ti-jiao',
         header: {
           "Content-Type": "application/x-www-form-urlencoded",
           'cookie': wx.getStorageSync('cookie')
         },
         data: {
           idCard: app.globalData.renzhengcover1,
-          yingYeZhiZhao: app.globalData.renzhengcover2,
+          yingYeZhiZhao: yingYeZhiZhao,
           realname: that.data.realname,
           renZhengType: that.data.type,
           company: that.data.company
@@ -165,7 +179,7 @@ Page({
           wx.hideToast()
           if (res.data.code == 0) {
             wx.request({
-              url: app.globalData.url + '/login-refresh',
+              url: app.globalData.domain + '/wuliu/login-refresh',
               header: {
                 "Content-Type": "application/x-www-form-urlencoded",
                 'cookie': wx.getStorageSync('cookie')
@@ -244,7 +258,15 @@ Page({
         show4: true,
         type: options.type
       })
-    } else {
+    }else if (options.type == 1) {
+      this.setData({
+        show1: true,
+        show2: false,
+        show3: false,
+        show4: false,
+        type: options.type
+      })
+    }else {
       this.setData({
         show1: true,
         show2: false,
@@ -328,7 +350,7 @@ Page({
         var jscode = res.code
         if (e.detail.encryptedData != null && e.detail.encryptedData != '' && e.detail.encryptedData != undefined) {
           wx.request({
-            url: app.globalData.url + '/update-my-phone',
+            url: app.globalData.domain + '/wuliu/update-my-phone',
             header: {
               "Content-Type": "application/x-www-form-urlencoded",
               'cookie': wx.getStorageSync('cookie')

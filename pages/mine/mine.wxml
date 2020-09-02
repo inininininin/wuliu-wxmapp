@@ -13,11 +13,11 @@
     <text wx:if='{{phone}}' class="phone">{{phone}}</text>
     <button wx:if='{{!phone}}' class="phoneGet"  open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber"  style="color:#0E4090">点击授权手机号</button>
 	</view> -->
-	<view bindtap="myorder" wx:if='{{loginIf==1}}'>
+	<view bindtap="myorder" wx:if='{{loginIf==1&&renZhengIs==1}}'>
 		<text>我的订单</text>
 		<image src="../img/rightIcon.svg"></image>
 	</view>
-	<view bindtap="myoffer" wx:if='{{loginIf==1}}'>
+	<view bindtap="myoffer" wx:if='{{loginIf==1&&fuWuShangRenZhengIs==1}}'>
 		<text>我的报价</text>
 		<image src="../img/rightIcon.svg"></image>
 	</view>

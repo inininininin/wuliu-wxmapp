@@ -22,7 +22,7 @@
 		</view>
 		<view class="type1">
 			<image class="faIcon1" src="../img/zhongliang.svg"></image>
-			<view class="lineOne lineOne">{{orderDetail.shouHuoWeight||''}}kg；{{orderDetail.shouHuoVolume||''}}L/m³</view>
+			<view class="lineOne lineOne">{{orderDetail.shouHuoWeight||''}}KG；{{orderDetail.shouHuoVolume||''}}M³</view>
 		</view>
 	</view>
 	<view wx:if='{{orderDetail.shouHuo1Area1Id}}'>
@@ -36,7 +36,7 @@
 		</view>
 		<view class="type1">
 			<image class="faIcon1" src="../img/zhongliang.svg"></image>
-			<view class="lineOne lineOne">{{orderDetail.shouHuo1Weight||''}}kg；{{orderDetail.shouHuo1Volume||''}}L/m³</view>
+			<view class="lineOne lineOne">{{orderDetail.shouHuo1Weight||''}}KG；{{orderDetail.shouHuo1Volume||''}}M³</view>
 		</view>
 	</view>
 	<view wx:if='{{orderDetail.shouHuo2Area1Id}}'>
@@ -50,7 +50,7 @@
 		</view>
 		<view class="type1">
 			<image class="faIcon1" src="../img/zhongliang.svg"></image>
-			<view class="lineOne lineOne">{{orderDetail.shouHuo2Weight||''}}kg；{{orderDetail.shouHuo2Volume||''}}L/m³</view>
+			<view class="lineOne lineOne">{{orderDetail.shouHuo2Weight||''}}KG；{{orderDetail.shouHuo2Volume||''}}M³</view>
 		</view>
 	</view>
 	<view wx:if='{{orderDetail.shouHuo3Area1Id}}'>
@@ -64,20 +64,21 @@
 		</view>
 		<view class="type1">
 			<image class="faIcon1" src="../img/zhongliang.svg"></image>
-			<view class="lineOne lineOne">{{orderDetail.shouHuo3Weight||''}}kg；{{orderDetail.shouHuo3Volume||''}}L/m³</view>
+			<view class="lineOne lineOne">{{orderDetail.shouHuo3Weight||''}}KG；{{orderDetail.shouHuo3Volume||''}}M³</view>
 		</view>
 	</view>
 
-
+<view class="type2">
+		<text class="type2title">订单ID</text>
+		<text class="type2Detail lineOne">{{orderDetail.orderIdEve||''}}</text>
+	</view>
 	<view class="type2">
 		<text class="type2title">货物类型</text>
 		<text class="type2Detail lineOne">{{orderDetail.huoWuLeiXingName||''}}</text>
 	</view>
 	<view class="type2 ">
-		<text class="type2title">货物重量</text>
-		<text class="type2Detail1 lineOne">{{orderDetail.huoWuWeight||''}}kg</text>
-		<text class="type2title">货物重量</text>
-		<text class="type2Detail1 lineOne">{{orderDetail.huoWuVolume||''}}L/m³</text>
+			<text class="type2title">货物类型详情</text>
+		<text class="type2Detail">{{orderDetail.huoWuLeiXingDetail||''}}</text>
 	</view>
 	<view class="type2">
 		<text class="type2title">包装方式</text>
@@ -100,5 +101,7 @@
 		<text class="type2title">备注信息</text>
 		<text class="type2Detail lineOne">{{orderDetail.note||''}}</text>
 	</view>
+
+	
 </view>
 <view style="clear:both"></view>

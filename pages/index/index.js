@@ -53,7 +53,7 @@ Page({
     let that=this
     if (app.globalData.loginIf == 1) {
       wx.request({
-        url: app.globalData.url + '/login-refresh',
+        url: app.globalData.domain + '/wuliu/login-refresh',
         header: {
           "Content-Type": "application/x-www-form-urlencoded",
           'cookie': wx.getStorageSync('cookie')
@@ -137,7 +137,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(app.globalData.statusBarHeight)
     this.firstPage(1)
     // this.lastPage(1)
     // this.lastPageNumber()
@@ -152,7 +151,7 @@ Page({
   firstPage(pageNo){
     let that = this
     wx.request({
-      url: app.globalData.url + '/wuliu/article/article-list-sum',
+      url: app.globalData.domain + '/wuliu/article/article-list-sum',
       data: {},
       header: {
         "Content-Type": "application/x-www-form-urlencoded",
@@ -171,7 +170,7 @@ Page({
             totalCount: res.data.data.itemCount
           })
           wx.request({
-            url: app.globalData.url + '/wuliu/article/article-list',
+            url: app.globalData.domain + '/wuliu/article/article-list',
             data: {
               pn: pageNo,
               ps: 15
@@ -189,9 +188,8 @@ Page({
                 })
               }
               if (res.data.code == 0) {
-                console.log(res.data.data.itemList)
                 for (var i in res.data.data.itemList) {
-                  res.data.data.itemList[i].updateTime = res.data.data.itemList[i].updateTime.slice(0, 16)
+                  res.data.data.itemList[i].updateTime = res.data.data.itemList[i].updateTime.slice(2, 16)
                   res.data.data.itemList[i].cover = app.cover(res.data.data.itemList[i].cover)
                 }
                 let newListArr, listArr
@@ -235,7 +233,7 @@ Page({
   lastPage(pageNo) {
     let that = this
     wx.request({
-      url: app.globalData.url + '/article/article-list',
+      url: app.globalData.domain + '/wuliu/article/article-list',
       data: {
         pn: pageNo,
         ps: 15
@@ -253,9 +251,8 @@ Page({
           })
         }
         if (res.data.code == 0) {
-          console.log(res.data.data.itemList)
           for (var i in res.data.data.itemList) {
-            res.data.data.itemList[i].updateTime = res.data.data.itemList[i].updateTime.slice(0, 16)
+            res.data.data.itemList[i].updateTime = res.data.data.itemList[i].updateTime.slice(2, 16)
             res.data.data.itemList[i].cover = app.cover(res.data.data.itemList[i].cover)
           }
           let newListArr, listArr
@@ -294,7 +291,7 @@ Page({
   lastPageNumber() {
     let that = this
     wx.request({
-      url: app.globalData.url + '/article/article-list-sum',
+      url: app.globalData.domain + '/wuliu/article/article-list-sum',
       data: {},
       header: {
         "Content-Type": "application/x-www-form-urlencoded",
@@ -327,7 +324,7 @@ Page({
   loginRdfresh(){
     let that=this
     wx.request({
-      url: app.globalData.url + '/login-refresh',
+      url: app.globalData.domain + '/wuliu/login-refresh',
       header: {
         "Content-Type": "application/x-www-form-urlencoded",
         'cookie': wx.getStorageSync('cookie')
@@ -390,8 +387,7 @@ Page({
    */
   onReachBottom: function () {
     if(app.globalData.loginIf==1){
-      var pageNo=this.data.pageNo+1
-      console.log(this.data.pageNo,pageNo)
+      var pageNo=parseInt(this.data.pageNo)+1
       this.setData({
         listTitle:'正在载入更多.'
       })

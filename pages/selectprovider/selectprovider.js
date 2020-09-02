@@ -1,5 +1,5 @@
 // pages/orderDetail/orderDetail.js
-var app=getApp()
+var app = getApp()
 Page({
 
   /**
@@ -8,37 +8,36 @@ Page({
   data: {
     items: [],
     orderDetail: {},
-    baoJiaId:'',
-    orderId:'',
+    baoJiaId: '',
+    orderId: '',
   },
-  checkboxChange(e){
-    console.log(e.detail.value)
+  checkboxChange(e) {
     this.setData({
-      baoJiaId:e.detail.value
+      baoJiaId: e.detail.value
     })
   },
   // 提交报价
-  sendPrice(){
-    let that=this
-    if(that.data.baoJiaId==''){
+  sendPrice() {
+    let that = this
+    if (that.data.baoJiaId == '') {
       wx.showToast({
         title: '请先选择报价商',
-        icon:'none'
+        icon: 'none'
       })
       return
     }
     wx.request({
-      url: app.globalData.url + '/order/select-bao-jia',
+      url: app.globalData.domain + '/wuliu/order/select-bao-jia',
       data: {
         orderId: that.data.orderId,
-        baoJiaId:that.data.baoJiaId,
+        baoJiaId: that.data.baoJiaId,
       },
       header: {
         "Content-Type": "application/x-www-form-urlencoded",
         'cookie': wx.getStorageSync('cookie')
       },
       method: 'post',
-      success(res){
+      success(res) {
         if (res.data.codeMsg) {
           wx.showToast({
             title: res.data.codeMsg,
@@ -46,11 +45,17 @@ Page({
           })
         }
         if (res.data.code == 0) {
+          let pages = getCurrentPages(); //获取当前页面js里面的pages里的所有信息。
+          let prevPage = pages[pages.length - 2];
+          //prevPage 是获取上一个页面的js里面的pages的所有信息。 -2 是上一个页面，-3是上上个页面以此类推。
+          prevPage.setData({  // 将我们想要传递的参数在这里直接setData。上个页面就会执行这里的操作。
+            change: 1,
+          })
           wx.navigateBack({
-            complete: (res) => {},
+            complete: (res) => { },
             delta: 1,
-            fail: (res) => {},
-            success: (res) => {},
+            fail: (res) => { },
+            success: (res) => { },
           })
         }
       }
@@ -62,11 +67,11 @@ Page({
   onLoad: function (options) {
     let that = this
     that.setData({
-      orderId:options.id
+      orderId: options.id
     })
     that.lastpage(options.id)
     wx.request({
-      url: app.globalData.url + '/order/order-info',
+      url: app.globalData.domain + '/wuliu/order/order-info',
       data: {
         orderId: options.id
       },
@@ -101,49 +106,49 @@ Page({
           if (res.data.data.shouHuo3Time) {
             res.data.data.shouHuo3Time = res.data.data.shouHuo3Time.slice(0, 10)
           }
-          if(res.data.data.huoWuLeiXing==1){
-            res.data.data.huoWuLeiXingName='服装'
-          }else if(res.data.data.huoWuLeiXing==2){
-            res.data.data.huoWuLeiXingName='食品'
+          if (res.data.data.huoWuLeiXing == 1) {
+            res.data.data.huoWuLeiXingName = '服装'
+          } else if (res.data.data.huoWuLeiXing == 2) {
+            res.data.data.huoWuLeiXingName = '食品'
           }
-          if(res.data.data.baoZhuangFangShi==1){
-            res.data.data.baoZhuangFangShiName='木箱'
-          }else if(res.data.data.baoZhuangFangShi==2){
-            res.data.data.baoZhuangFangShiName='纸箱'
+          if (res.data.data.baoZhuangFangShi == 1) {
+            res.data.data.baoZhuangFangShiName = '木箱'
+          } else if (res.data.data.baoZhuangFangShi == 2) {
+            res.data.data.baoZhuangFangShiName = '纸箱'
           }
-          if(res.data.data.xiangXing==1){
-            res.data.data.xiangXingName='木箱'
-          }else if(res.data.data.xiangXing==2){
-            res.data.data.xiangXingName='纸箱'
-          }
-
-          if(res.data.data.gongNeng==1){
-            res.data.data.gongNengName='普通'
-          }else if(res.data.data.gongNeng==2){
-            res.data.data.gongNengName='短板'
-          }else if(res.data.data.gongNeng==3){
-            res.data.data.gongNengName='短板自卸'
-          }else if(res.data.data.gongNeng==4){
-            res.data.data.gongNengName='冷柜'
-          }else if(res.data.data.gongNeng==5){
-            res.data.data.gongNengName='开顶'
-          }else if(res.data.data.gongNeng==6){
-            res.data.data.gongNengName='罐式'
-          }else if(res.data.data.gongNeng==7){
-            res.data.data.gongNengName='脚架折叠'
-          }else if(res.data.data.gongNeng==8){
-            res.data.data.gongNengName='板框折叠'
-          }else if(res.data.data.gongNeng==9){
-            res.data.data.gongNengName='挂衣'
-          }
-          if(res.data.data.xiangShu==1){
-            res.data.data.xiangShuName='普通'
-          }else if(res.data.data.xiangShu==2){
-            res.data.data.xiangShuName='短板'
-          }else if(res.data.data.xiangShu==3){
-            res.data.data.xiangShuName='短板自卸'
+          if (res.data.data.xiangXing == 1) {
+            res.data.data.xiangXingName = '木箱'
+          } else if (res.data.data.xiangXing == 2) {
+            res.data.data.xiangXingName = '纸箱'
           }
 
+          if (res.data.data.gongNeng == 1) {
+            res.data.data.gongNengName = '普通'
+          } else if (res.data.data.gongNeng == 2) {
+            res.data.data.gongNengName = '短板'
+          } else if (res.data.data.gongNeng == 3) {
+            res.data.data.gongNengName = '短板自卸'
+          } else if (res.data.data.gongNeng == 4) {
+            res.data.data.gongNengName = '冷柜'
+          } else if (res.data.data.gongNeng == 5) {
+            res.data.data.gongNengName = '开顶'
+          } else if (res.data.data.gongNeng == 6) {
+            res.data.data.gongNengName = '罐式'
+          } else if (res.data.data.gongNeng == 7) {
+            res.data.data.gongNengName = '脚架折叠'
+          } else if (res.data.data.gongNeng == 8) {
+            res.data.data.gongNengName = '板框折叠'
+          } else if (res.data.data.gongNeng == 9) {
+            res.data.data.gongNengName = '挂衣'
+          }
+          if (res.data.data.xiangShu == 1) {
+            res.data.data.xiangShuName = '普通'
+          } else if (res.data.data.xiangShu == 2) {
+            res.data.data.xiangShuName = '短板'
+          } else if (res.data.data.xiangShu == 3) {
+            res.data.data.xiangShuName = '短板自卸'
+          }
+          res.data.data.orderIdEve=res.data.data.orderId.slice(res.data.data.orderId.length-17,res.data.data.orderId.length)
           that.setData({
             orderDetail: res.data.data
           })
@@ -166,32 +171,32 @@ Page({
     })
   },
 
-  lastpage(id){
-    let that=this
+  lastpage(id) {
+    let that = this
     wx.request({
-      url: app.globalData.url + '/order/bao-jia-list',
+      url: app.globalData.domain + '/wuliu/order/bao-jia-list',
       data: {
-        orderId:id,
-        pn:1,
-        ps:200
+        orderId: id,
+        pn: 1,
+        ps: 200
       },
       header: {
         "Content-Type": "application/x-www-form-urlencoded",
         'cookie': wx.getStorageSync('cookie')
       },
       method: 'post',
-      success(res){
-        if(res.data.codeMsg){
+      success(res) {
+        if (res.data.codeMsg) {
           wx.showToast({
             title: res.data.codeMsg,
-            icon:'none'
+            icon: 'none'
           })
         }
-        if(res.data.code==0){
+        if (res.data.code == 0) {
           that.setData({
-            items:res.data.data.itemList
+            items: res.data.data.itemList
           })
-        }else if(res.data.code==20){
+        } else if (res.data.code == 20) {
           wx.showToast({
             title: '请先登录',
             icon: 'none',
@@ -205,7 +210,7 @@ Page({
               }, 100);
             }
           });
-           
+
         }
       }
     })

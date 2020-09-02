@@ -21,7 +21,7 @@ Page({
       success(res) {
         if (res.confirm) {
           wx.request({
-            url: app.globalData.url + '/logout',
+            url: app.globalData.domain + '/wuliu/logout',
             header: {
               "Content-Type": "application/x-www-form-urlencoded",
               'cookie': wx.getStorageSync('cookie')
@@ -36,6 +36,7 @@ Page({
                 })
               }
               if (res.data.code == 0) {
+                wx.setStorageSync('cookie', '')
                 wx.redirectTo({
                   url: '../login/login',
                 })
@@ -43,7 +44,6 @@ Page({
             }
           })
         } else if (res.cancel) {
-          console.log('用户点击取消')
         }
       }
     })
@@ -70,9 +70,10 @@ Page({
    */
   onLoad: function (options) {
     let that = this
+   
     if(app.globalData.loginIf==0){
       wx.request({
-        url: app.globalData.url + '/login-refresh',
+        url: app.globalData.domain + '/wuliu/login-refresh',
         header: {
           "Content-Type": "application/x-www-form-urlencoded",
           'cookie': wx.getStorageSync('cookie')
@@ -113,13 +114,15 @@ Page({
   onShow: function () {
     let that = this
     that.setData({
+      renZhengIs:app.globalData.userInfoDetail.renZhengIs,
+      fuWuShangRenZhengIs:app.globalData.userInfoDetail.fuWuShangRenZhengIs,
       avator: app.globalData.userInfoDetail.logo || '../img/logo2.svg',
       nickname: app.globalData.userInfoDetail.nickname || '',
       loginIf: app.globalData.loginIf,
       phone: app.globalData.userInfoDetail.phone,
     })
     //   wx.request({
-    //     url: app.globalData.url + '/login-refresh',
+    //     url: app.globalData.domain + '/wuliu/login-refresh',
     //     header: {
     //       "Content-Type": "application/x-www-form-urlencoded",
     //       'cookie': wx.getStorageSync('cookie')
