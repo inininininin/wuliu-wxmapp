@@ -34,8 +34,7 @@
     "selectedColor": "#FF932E",
     "borderStyle": "white",
     "backgroundColor": "#ffffff",
-    "list": [
-      {
+    "list": [{
         "pagePath": "pages/index/index",
         "iconPath": "pages/img/shouye1.png",
         "selectedIconPath": "pages/img/shouye2.png",
@@ -45,7 +44,7 @@
         "pagePath": "pages/orderList/orderList",
         "iconPath": "pages/img/dingdanchi1.png",
         "selectedIconPath": "pages/img/dingdanchi2.png",
-        "text": "订单池"
+        "text": "订单"
       },
       {
         "pagePath": "pages/shopping/shopping",

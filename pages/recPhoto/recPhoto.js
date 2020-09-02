@@ -33,7 +33,7 @@ Page({
     })
     let that=this
     wx.uploadFile({
-      url: app.globalData.url + '/upload-file', //仅为示例，非真实的接口地址
+      url: app.globalData.domain + '/wuliu/upload-file', //仅为示例，非真实的接口地址
       filePath: that.data.tempFilePaths,
       name: 'file',
       success: function (res) {

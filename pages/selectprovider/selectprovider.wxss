@@ -139,6 +139,7 @@ page {
   float: left;
 }
 .providerItem .weui-cell__hd text{
+  width: 150rpx;
   float: left;
   margin-top: 31rpx;
 }

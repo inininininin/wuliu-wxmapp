@@ -45,7 +45,7 @@ Page({
   firstPage(chengJiaoIs, sort, order, pageNo) {
     let that = this
     wx.request({
-      url: app.globalData.url + '/my/bao-jia-orders-sum',
+      url: app.globalData.domain + '/wuliu/my/bao-jia-orders-sum',
       data: {
         chengJiaoIs: chengJiaoIs,
       },
@@ -80,7 +80,7 @@ Page({
             })
           }
           wx.request({
-            url: app.globalData.url + '/my/bao-jia-orders',
+            url: app.globalData.domain + '/wuliu/my/bao-jia-orders',
             data: {
               chengJiaoIs: chengJiaoIs,
               sort: sort,
@@ -101,9 +101,9 @@ Page({
                 })
               }
               if (res.data.code == 0) {
-                console.log(res.data.data.items)
                 for (var i in res.data.data.items) {
                   res.data.data.items[i].faHuoTime = res.data.data.items[i].faHuoTime.slice(0, 10)
+                  res.data.data.items[i].orderIdEve = res.data.data.items[i].orderId.slice(res.data.data.items[i].orderId.slice.length-8, res.data.data.items[i].orderId.length)
                   if (res.data.data.items[i].huoWuLeiXing == 1) {
                     res.data.data.items[i].huoWuLeiXingName = '服装'
                   } else if (res.data.data.items[i].huoWuLeiXing == 2) {
@@ -206,7 +206,7 @@ Page({
   lastPage(chengJiaoIs, sort, order, pageNo) {
     let that = this
     wx.request({
-      url: app.globalData.url + '/my/bao-jia-orders',
+      url: app.globalData.domain + '/wuliu/my/bao-jia-orders',
       data: {
         chengJiaoIs: chengJiaoIs,
         sort: sort,
@@ -227,9 +227,9 @@ Page({
           })
         }
         if (res.data.code == 0) {
-          console.log(res.data.data.items)
           for (var i in res.data.data.items) {
             res.data.data.items[i].faHuoTime = res.data.data.items[i].faHuoTime.slice(0, 10)
+            res.data.data.items[i].orderIdEve = res.data.data.items[i].orderId.slice(res.data.data.items[i].orderId.slice.length-8, res.data.data.items[i].orderId.length)
             if (res.data.data.items[i].huoWuLeiXing == 1) {
               res.data.data.items[i].huoWuLeiXingName = '服装'
             } else if (res.data.data.items[i].huoWuLeiXing == 2) {
@@ -312,7 +312,7 @@ Page({
   lastPageNumber(chengJiaoIs) {
     let that = this
     wx.request({
-      url: app.globalData.url + '/my/bao-jia-orders-sum',
+      url: app.globalData.domain + '/wuliu/my/bao-jia-orders-sum',
       data: {
         chengJiaoIs: chengJiaoIs,
       },

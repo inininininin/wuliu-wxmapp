@@ -1,5 +1,5 @@
 <!--pages/recognizeSh/recognizeSh.wxml-->
-<view class="line" style="margin-top:20rpx" bindtap="yyzz">
+<view class="line" wx:if='{{type!=1}}' style="margin-top:20rpx" bindtap="yyzz">
 	<view wx:if='{{image1==""}}' class="imgBox">
 		<image src="../img/photo2.svg"></image>
 	</view>

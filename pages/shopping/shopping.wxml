@@ -6,8 +6,10 @@
 			<view>
 				<view class="searchBox">
 					<image src="../img/sousuo.svg"></image>
-					<input bindconfirm="searchKw" confirm-type='search' placeholder-class="placeholder" placeholder="商品名称/订单编号"></input>
+					<input bindinput="searchKw" value="{{kw}}" confirm-type='search' placeholder-class="placeholder" placeholder="搜索"></input>
+					 <icon wx:if='{{showIsIcon}}' bindtap="showIsIcon" class="icon-small" type="cancel" size="15" color='#979797'></icon>
 				</view>
+				<view class="searchThisEve" bindtap="searchThisEve">搜索</view>
 			</view>
 		</view>
 	</view>

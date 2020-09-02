@@ -19,6 +19,9 @@ Page({
     point: '',
     starList: [{ show: true, point: 1 }, { show: true, point: 2 }, { show: true, point: 3 }, { show: true, point: 4 }, { show: true, point: 5 }]
   },
+  thisBUdong(e){
+
+  },
   backHistory(e){
     wx.navigateBack({
       complete: (res) => {},
@@ -52,6 +55,7 @@ Page({
       gray_star: gray_star,//整个灰色五角星的数量
     })
   },
+  
   // 重新选择服务商
   sendPrice(e) {
     if (this.data.orderId == '') {
@@ -63,6 +67,191 @@ Page({
     }
     wx.navigateTo({
       url: '../selectprovider/selectprovider?id=' + this.data.orderId,
+    })
+  },
+  deal(e) {
+    let that=this
+    if (that.data.orderId == '') {
+      wx.showToast({
+        title: '请稍后重试',
+        icon: 'none'
+      })
+      return
+    }
+     wx.request({
+      url: app.globalData.domain + '/wuliu/order/cheng-jiao',
+      data: {
+        orderId: that.data.orderId,
+      },
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded",
+        'cookie': wx.getStorageSync('cookie')
+      },
+      method: 'post',
+      success: function (res) {
+        if (res.data.codeMsg) {
+          wx.showToast({
+            title: res.data.codeMsg,
+            icon: 'none'
+          })
+        }
+          if(res.data.code==0){
+            wx.showToast({
+              title: '订单已成交',
+              icon: 'none',
+              duration: 2000,
+              mask: true,
+              complete: function complete(res) {
+                wx.request({
+                  url: app.globalData.domain + '/wuliu/order/order-info',
+                  data: {
+                    orderId:  that.data.orderId,
+                  },
+                  header: {
+                    "Content-Type": "application/x-www-form-urlencoded",
+                    'cookie': wx.getStorageSync('cookie')
+                  },
+                  method: 'post',
+                  success: function (res) {
+                    if (res.data.codeMsg) {
+                      wx.showToast({
+                        title: res.data.codeMsg,
+                        icon: 'none'
+                      })
+                    }
+                    if (res.data.code == 0) {
+                      wx.request({
+                        url: app.globalData.domain + '/wuliu/order/bao-jia-list',
+                        data: {
+                          baoJiaId: res.data.data.baoJiaId
+                        },
+                        header: {
+                          "Content-Type": "application/x-www-form-urlencoded",
+                          'cookie': wx.getStorageSync('cookie')
+                        },
+                        method: 'post',
+                        success: function (res) {
+                          if (res.data.codeMsg) {
+                            wx.showToast({
+                              title: res.data.codeMsg,
+                              icon: 'none'
+                            })
+                          }
+                          if (res.data.code == 0) {
+                            res.data.data.itemList[0].zhongYuanZhuangChuanTime = res.data.data.itemList[0].zhongYuanZhuangChuanTime.slice(0, 10)
+                            res.data.data.itemList[0].zhongYuanDaoGangTime = res.data.data.itemList[0].zhongYuanDaoGangTime.slice(0, 10)
+                            res.data.data.itemList[0].zhongGuDaoGangTime = res.data.data.itemList[0].zhongGuDaoGangTime.slice(0, 10)
+                            res.data.data.itemList[0].zhongGuZhuangChuanTime = res.data.data.itemList[0].zhongGuZhuangChuanTime.slice(0, 10)
+                            res.data.data.itemList[0].xinFengDaoGangTime = res.data.data.itemList[0].xinFengDaoGangTime.slice(0, 10)
+                            res.data.data.itemList[0].xinFengZhuangChuanTime = res.data.data.itemList[0].xinFengZhuangChuanTime.slice(0, 10)
+                            res.data.data.itemList[0].anTongZhuangChuanTime = res.data.data.itemList[0].anTongZhuangChuanTime.slice(0, 10)
+                            res.data.data.itemList[0].anTongDaoGangTime = res.data.data.itemList[0].anTongDaoGangTime.slice(0, 10)
+                            that.setData({
+                              baojiaDetail: res.data.data.itemList[0]
+                            })
+                          } else if (res.data.code == 20) {
+                            wx.showToast({
+                              title: '请先登录',
+                              icon: 'none',
+                              duration: 2000,
+                              mask: true,
+                              complete: function complete(res) {
+                                setTimeout(function () {
+                                  wx.navigateTo({
+                                    url: '../login/login',
+                                  })
+                                }, 100);
+                              }
+                            });
+                          }
+                        }
+                      })
+                      that.star(res.data.data.pingJiaScore)
+                      if (res.data.data.faHuoTime) {
+                        res.data.data.faHuoTime = res.data.data.faHuoTime.slice(0, 10)
+                      }
+                      if (res.data.data.insertTime) {
+                        res.data.data.insertTime = res.data.data.insertTime.slice(0, 10)
+                      }
+                      if (res.data.data.shouHuoTime) {
+                        res.data.data.shouHuoTime = res.data.data.insertTime.slice(0, 10)
+                      }
+                      if (res.data.data.shouHuo1Time) {
+                        res.data.data.shouHuo1Time = res.data.data.shouHuo1Time.slice(0, 10)
+                      }
+                      if (res.data.data.shouHuo2Time) {
+                        res.data.data.shouHuo2Time = res.data.data.shouHuo2Time.slice(0, 10)
+                      }
+                      if (res.data.data.shouHuo3Time) {
+                        res.data.data.shouHuo3Time = res.data.data.shouHuo3Time.slice(0, 10)
+                      }
+                      if (res.data.data.huoWuLeiXing == 1) {
+                        res.data.data.huoWuLeiXingName = '服装'
+                      } else if (res.data.data.huoWuLeiXing == 2) {
+                        res.data.data.huoWuLeiXingName = '食品'
+                      }
+                      if (res.data.data.baoZhuangFangShi == 1) {
+                        res.data.data.baoZhuangFangShiName = '木箱'
+                      } else if (res.data.data.baoZhuangFangShi == 2) {
+                        res.data.data.baoZhuangFangShiName = '纸箱'
+                      }
+                      if (res.data.data.xiangXing == 1) {
+                        res.data.data.xiangXingName = '木箱'
+                      } else if (res.data.data.xiangXing == 2) {
+                        res.data.data.xiangXingName = '纸箱'
+                      }
+            
+                      if (res.data.data.gongNeng == 1) {
+                        res.data.data.gongNengName = '普通'
+                      } else if (res.data.data.gongNeng == 2) {
+                        res.data.data.gongNengName = '短板'
+                      } else if (res.data.data.gongNeng == 3) {
+                        res.data.data.gongNengName = '短板自卸'
+                      } else if (res.data.data.gongNeng == 4) {
+                        res.data.data.gongNengName = '冷柜'
+                      } else if (res.data.data.gongNeng == 5) {
+                        res.data.data.gongNengName = '开顶'
+                      } else if (res.data.data.gongNeng == 6) {
+                        res.data.data.gongNengName = '罐式'
+                      } else if (res.data.data.gongNeng == 7) {
+                        res.data.data.gongNengName = '脚架折叠'
+                      } else if (res.data.data.gongNeng == 8) {
+                        res.data.data.gongNengName = '板框折叠'
+                      } else if (res.data.data.gongNeng == 9) {
+                        res.data.data.gongNengName = '挂衣'
+                      }
+                      if (res.data.data.xiangShu == 1) {
+                        res.data.data.xiangShuName = '普通'
+                      } else if (res.data.data.xiangShu == 2) {
+                        res.data.data.xiangShuName = '短板'
+                      } else if (res.data.data.xiangShu == 3) {
+                        res.data.data.xiangShuName = '短板自卸'
+                      }
+                      res.data.data.orderIdEve=res.data.data.orderId.slice(res.data.data.orderId.length-17,res.data.data.orderId.length)
+                      that.setData({
+                        orderDetail: res.data.data
+                      })
+                    } else if (res.data.code == 20) {
+                      wx.showToast({
+                        title: '请先登录',
+                        icon: 'none',
+                        duration: 2000,
+                        mask: true,
+                        complete: function complete(res) {
+                          setTimeout(function () {
+                            wx.navigateTo({
+                              url: '../login/login',
+                            })
+                          }, 100);
+                        }
+                      });
+                    }
+                  }
+                })
+              }
+            });
+          }
+      }
     })
   },
   // 去评价
@@ -79,11 +268,9 @@ Page({
   },
   // 评价服务商
   pointThis(e) {
-    console.log(e.currentTarget.dataset.point)
     for (var i in this.data.starList) {
 
       if (i < e.currentTarget.dataset.point) {
-        console.log(i)
         this.data.starList[i].show = false
       } else {
         this.data.starList[i].show = true
@@ -96,6 +283,7 @@ Page({
 
   },
   makesureThis(e) {
+    console.log(12312312)
     let that = this
     if (that.data.point == '') {
       wx.showToast({
@@ -104,21 +292,36 @@ Page({
       })
       return
     }
-    // wx.request({
-    //   url: app.globalData.url + '/order/order-info',
-    //   data: {
-    //     baojiaId: that.data.baojiaId,
-    // point:that.data.point
-    //   },
-    //   header: {
-    //     "Content-Type": "application/x-www-form-urlencoded",
-    //     'cookie': wx.getStorageSync('cookie')
-    //   },
-    //   method: 'post',
-    //   success: function (res) {
-
-    //   }
-    // })
+    wx.request({
+      url: app.globalData.domain + '/wuliu/order/ping-jia-do',
+      data: {
+        orderId: that.data.orderId,
+        pingJiaScore:that.data.point
+      },
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded",
+        'cookie': wx.getStorageSync('cookie')
+      },
+      method: 'post',
+      success: function (res) {
+        if(res.data.code==0){
+          wx.showToast({
+            title: '评价成功!',
+            icon: 'none',
+            duration: 2000,
+            mask: true,
+            complete: function complete(res) {
+              setTimeout(function () {
+                that.setData({
+                  showPj: false
+                })
+              }, 100);
+            }
+          })
+          
+        }
+      }
+    })
   },
   /**
    * 生命周期函数--监听页面加载
@@ -131,7 +334,7 @@ Page({
 
 
     wx.request({
-      url: app.globalData.url + '/order/order-info',
+      url: app.globalData.domain + '/wuliu/order/order-info',
       data: {
         orderId: options.id
       },
@@ -149,7 +352,7 @@ Page({
         }
         if (res.data.code == 0) {
           wx.request({
-            url: app.globalData.url + '/order/bao-jia-list',
+            url: app.globalData.domain + '/wuliu/order/bao-jia-list',
             data: {
               baoJiaId: res.data.data.baoJiaId
             },
@@ -255,7 +458,7 @@ Page({
           } else if (res.data.data.xiangShu == 3) {
             res.data.data.xiangShuName = '短板自卸'
           }
-
+          res.data.data.orderIdEve=res.data.data.orderId.slice(res.data.data.orderId.length-17,res.data.data.orderId.length)
           that.setData({
             orderDetail: res.data.data
           })
@@ -311,7 +514,9 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    wx.stopPullDownRefresh({
+      complete: (res) => {},
+    })
   },
 
   /**

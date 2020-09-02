@@ -1807,7 +1807,7 @@ showdown.subParser('headers', function (text, options, globals) {
 
   // Set text-style headers:
   //	Header 1
-  //	========
+
   //
   //	Header 2
   //	--------

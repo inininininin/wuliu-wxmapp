@@ -2,6 +2,7 @@
 page {
   background: #f5f5f5;
   padding-bottom: 40rpx;
+  font-size: 28rpx;
 }
 
 .publishAddress {
@@ -129,6 +130,7 @@ page {
   width: 50rpx;
   text-align: left;
   float: left;
+  font-size: 28rpx;
 }
 
 .getaddressList .orderSelcet {
@@ -408,4 +410,7 @@ box-sizing: border-box;
   float: left;
   box-sizing: border-box;
   text-align: right;
+}
+input{
+  font-size: 28rpx;
 }

@@ -9,7 +9,7 @@ App({
     titleBarHeight:'',
     loginIf:'0',
     domain:'https://test.inininininin.com',
-    url:'https://test.inininininin.com/wuliu',
+    version:'1.0.0.2008101759',
     renzhengcover1:'',
     renzhengcover2:'',
     renzhengcover3:'',

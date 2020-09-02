@@ -9,6 +9,7 @@ Page({
     navtitle: '集贤装物流',
     statusBarHeight: app.globalData.statusBarHeight,
     titleBarHeight: app.globalData.titleBarHeight,
+    showIsIcon:false,
     orderList: [],
     totalCount:'0',
     navbar: ['已报价订单', '已完成订单', '已完成订单', '已完成订单1', '已完成订单2', '已完成订单2'],
@@ -29,8 +30,24 @@ Page({
   },
   // 关键字搜索
   searchKw: function (e) {
+    if(e.detail.value){
+      
+      this.setData({
+        showIsIcon:true,
+      })
+    }
     this.setData({
       kw:e.detail.value,
+    })
+  },
+  showIsIcon: function (e) {
+    this.setData({
+      showIsIcon:false,
+      kw:'',
+    })
+  },
+  searchThisEve: function (e) {
+    this.setData({
       orderList: [],
       // totalCount: 0,
       pageNo: 1,
@@ -56,7 +73,6 @@ Page({
     // this.lastPageNumber()
   },
   navbarTapEve: function (e) {
-    console.log(e.currentTarget.dataset.idx)
     this.setData({
       currentTabEve: e.currentTarget.dataset.idx,
       type2Id: e.currentTarget.dataset.typeid,
@@ -83,7 +99,7 @@ Page({
     })
     if (app.globalData.loginIf == 0) {
       wx.request({
-        url: app.globalData.url + '/login-refresh',
+        url: app.globalData.domain + '/wuliu/login-refresh',
         header: {
           "Content-Type": "application/x-www-form-urlencoded",
           'cookie': wx.getStorageSync('cookie')
@@ -189,7 +205,7 @@ Page({
   firstPage(pageNo){
     let that = this
     wx.request({
-      url: app.globalData.url + '/goods/goodses-sum',
+      url: app.globalData.domain + '/wuliu/goods/goodses-sum',
       data: {
         kw: that.data.kw,
         type1Id: that.data.type1Id,
@@ -212,7 +228,7 @@ Page({
             totalCount: res.data.data.itemCount
           })
           wx.request({
-            url: app.globalData.url + '/goods/goodses',
+            url: app.globalData.domain + '/wuliu/goods/goodses',
             data: {
               kw: that.data.kw,
               type1Id: that.data.type1Id,
@@ -233,7 +249,6 @@ Page({
                 })
               }
               if (res.data.code == 0) {
-                console.log(res.data.data.items)
                 for (var i in res.data.data.items) {
                   res.data.data.items[i].cover = app.cover(res.data.data.items[i].cover)
                   if(res.data.data.items[i].unit==1){
@@ -277,7 +292,7 @@ Page({
   lastPage(pageNo) {
     let that = this
     wx.request({
-      url: app.globalData.url + '/goods/goodses',
+      url: app.globalData.domain + '/wuliu/goods/goodses',
       data: {
         kw: that.data.kw,
         type1Id: that.data.type1Id,
@@ -298,7 +313,6 @@ Page({
           })
         }
         if (res.data.code == 0) {
-          console.log(res.data.data.items)
           for (var i in res.data.data.items) {
             res.data.data.items[i].cover = app.cover(res.data.data.items[i].cover)
 
@@ -347,7 +361,7 @@ Page({
   lastPageNumber() {
     let that = this
     wx.request({
-      url: app.globalData.url + '/goods/goodses-sum',
+      url: app.globalData.domain + '/wuliu/goods/goodses-sum',
       data: {
         kw: that.data.kw,
         type1Id: that.data.type1Id,

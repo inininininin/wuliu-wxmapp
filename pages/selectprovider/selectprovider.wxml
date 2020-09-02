@@ -1,26 +1,29 @@
 <!--pages/orderDetail/orderDetail.wxml-->
 <view class="optProvider">
 	<view class="title">服务商的报价</view>
-	<view >
-	<radio-group class=' providerItemLf' bindchange="checkboxChange">
-        <label class="weui-cell weui-check__label providerItem"  wx:for="{{items}}" wx:key="{{item.value}}">
-          <view class="weui-cell__hd">					
-            <radio value="{{item.baoJiaId}}"  color='#FF932E'  checked="{{item.checked}}" />
-						<text>{{item.nickname}}</text>
-          </view>
-          <view class="weui-cell__bd">
-							<view class="lineOne">中远 {{item.zhongYuanMoney}}万元</view>
-					<view class="lineOne">中谷 {{item.zhongGuMoney}}万元</view>
-					<view class="lineOne">信风 {{item.xinFengMoney}}万元</view>
-					<view class="lineOne">安通 {{item.anTongMoney}}万元</view>
-					</view>
-        </label>
-      </radio-group>
+	<view>
+		<radio-group class=' providerItemLf' bindchange="checkboxChange">
+			<label class="weui-cell weui-check__label providerItem" wx:for="{{items}}" wx:key="{{item.value}}">
+				<view class="weui-cell__hd">
+					<radio value="{{item.baoJiaId}}" color='#FF932E' checked="{{item.checked}}" />
+					<text class="lineOne">{{item.nickname}}</text>
+				</view>
+				<view class="weui-cell__bd">
+					<view class="lineOne" wx:if='{{item.zhongYuanMoney}}'>中远 {{item.zhongYuanMoney}}万元</view>
+					<view class="lineOne" wx:if='{{item.zhongGuMoney}}'>中谷 {{item.zhongGuMoney}}万元</view>
+					<view class="lineOne" wx:if='{{item.xinFengMoney}}'>信风 {{item.xinFengMoney}}万元</view>
+					<view class="lineOne" wx:if='{{item.anTongMoney}}'>安通 {{item.anTongMoney}}万元</view>
+				</view>
+			</label>
+		</radio-group>
 	</view>
 </view>
 
 <view class="topMain">
 	<view>
+		<view class="type2">
+		<text class="type2Detail lineOne" style="float:left;text-align:left;margin-left:25rpx">ID：{{orderDetail.orderIdEve||''}}</text>
+	</view>
 		<view class="type1">
 			<image class="faIcon" src="../img/fa.svg"></image>
 			<view class="lineOne">{{orderDetail.faHuoArea1Name||''}}{{orderDetail.faHuoArea2Name||''}}{{orderDetail.faHuoArea3Name||''}}{{orderDetail.faHuoAddress||''}}</view>
