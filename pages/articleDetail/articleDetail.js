@@ -65,7 +65,6 @@ Page({
           tcode: res.path,
           imglist: imglist,
         })
-        console.log(that.data.imglist)
       },
       fail(res) {
         console.log(res)
@@ -90,7 +89,9 @@ Page({
       success: function(res) {
         if (res.data.code == 0) {
           res.data.data.cover=app.cover(res.data.data.cover)
-          res.data.data.updateTime = res.data.data.updateTime .slice(0,16)
+          res.data.data.updateTime = res.data.data.updateTime .slice(2,16)
+          res.data.data.insertTime = res.data.data.insertTime .slice(2,16)
+          
           that.setData({
             list: res.data.data,
             id: id,
@@ -440,7 +441,6 @@ Page({
   saveIs: function() {
     var that = this
     //生产环境时 记得这里要加入获取相册授权的代码
-    console.log( that.data.urls)
     wx.saveImageToPhotosAlbum({
       filePath: that.data.urls,
       success(res) {
@@ -451,7 +451,6 @@ Page({
           confirmColor: '#72B9C3',
           success: function(res) {
             if (res.confirm) {
-              console.log('用户点击确定');
               that.setData({
                 hidden: true
               })
@@ -528,7 +527,6 @@ getImageInfo() {
   wx.getImageInfo({
     src: this.data.avatorShare,
     complete: (res) => {
-      console.log(res)
       var windowW = that.data.windowW;
       var nbei=res.width/windowW
       var avatorShareHeight=parseInt(res.height/nbei)
@@ -536,33 +534,27 @@ getImageInfo() {
         avatorShareHeight:avatorShareHeight,
         avatorShareWidth: windowW
       })
-      console.log(that.data.avatorShareHeight)
     }
   })
 },
   canvasdraw: function (canvas) {
     var that = this;
-   
-    // console.log(that.data.testImg)
     that.setData({
       canvasShow:true
     })
     wx.downloadFile({
       url: that.data.list.cover,//注意公众平台是否配置相应的域名
       success: function (res) {
-        console.log( res.tempFilePath)
         that.setData({
           avatorShare: res.tempFilePath
         })
         var leftW=(that.data.windowW-140)
         var windowW = that.data.windowW;
         var windowH = that.data.windowH;
-        console.log(windowW,windowH)
         // that.getImageInfo()
         wx.getImageInfo({
           src: that.data.avatorShare,
           complete: (res) => {
-            console.log(res)
             var windowW = that.data.windowW;
             var nbei=res.height/200
             var avatorShareHeight=parseInt(windowW/nbei)
@@ -571,8 +563,6 @@ getImageInfo() {
               avatorShareHeight:res.height,
               avatorShareWidth: res.width
             })
-            console.log(that.data.avatorShareHeight)
-            console.log(windowW,that.data.avatorShareHeight)
             canvas.drawImage('../../img/fang.png', 0, 0, windowW, windowW);
             canvas.drawImage(that.data.avatorShare, 0, 0,  that.data.avatorShareWidth, that.data.avatorShareHeight,0, 0, windowW, 200);
             canvas.drawImage(that.data.imglist[0], leftW,230, 120, 120);
@@ -587,7 +577,6 @@ getImageInfo() {
               }else{
                 var titles=that.data.list.title
               }
-              console.log(titles)
               canvas.fillText(titles, 20, 230,200)
             // }
             canvas.font="16px Georgia";
@@ -610,21 +599,17 @@ getImageInfo() {
         
       }
     })
-   
-    console.log(that.data.avatorShare,that.data.imglist[0])
   
    
    
     // canvas.draw();
   },
   saveCanvas: function () {
-    console.log('a');
   
     var that = this;
    
     var windowW = that.data.windowW;
     var windowH = that.data.windowH;
-    console.log(windowW,windowH);
     that.setData({
       canvasShow:true
     })
@@ -638,7 +623,6 @@ getImageInfo() {
       canvasId: 'canvas',
       success: function (res) {
         wx.hideToast({})
-        console.log(res.tempFilePath)
         that.setData({
           // canvasShow:false
         })
@@ -664,7 +648,6 @@ getImageInfo() {
   },
   lookCodeShow(){
     var that=this
-    console.log(that.data.urls)
     wx.previewImage({
       urls: [that.data.urls],
     })

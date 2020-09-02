@@ -135,12 +135,26 @@ Page({
         }
       })
     }else{
-      if (app.globalData.renzhengcover1 == "" || app.globalData.renzhengcover2 == "" || that.data.realname == ""  || that.data.company == "") {
-        wx.showToast({
-          title: '请将信息填写完整',
-          icon: 'none'
-        })
-        return
+      let yingYeZhiZhao=''
+      if(that.data.type==1){
+        if (app.globalData.renzhengcover1 == ""  || that.data.realname == ""  || that.data.company == "") {
+          wx.showToast({
+            title: '请将信息填写完整',
+            icon: 'none'
+          })
+          return
+        }
+        yingYeZhiZhao=''
+      }else{
+        
+        if (app.globalData.renzhengcover1 == "" || app.globalData.renzhengcover2 == "" || that.data.realname == ""  || that.data.company == "") {
+          wx.showToast({
+            title: '请将信息填写完整',
+            icon: 'none'
+          })
+          return
+        }
+        yingYeZhiZhao=app.globalData.renzhengcover2
       }
       wx.showToast({
         title: '请稍等',
@@ -155,7 +169,7 @@ Page({
         },
         data: {
           idCard: app.globalData.renzhengcover1,
-          yingYeZhiZhao: app.globalData.renzhengcover2,
+          yingYeZhiZhao: yingYeZhiZhao,
           realname: that.data.realname,
           renZhengType: that.data.type,
           company: that.data.company
@@ -244,7 +258,15 @@ Page({
         show4: true,
         type: options.type
       })
-    } else {
+    }else if (options.type == 1) {
+      this.setData({
+        show1: true,
+        show2: false,
+        show3: false,
+        show4: false,
+        type: options.type
+      })
+    }else {
       this.setData({
         show1: true,
         show2: false,

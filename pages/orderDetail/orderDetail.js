@@ -15,56 +15,56 @@ Page({
 // 提交报价
 sendPrice(e){
   let that=this
-  // if(that.data.priceList[0].zhongYuanMoney==''&&that.data.priceList[1].zhongGuMoney==''&&that.data.priceList[2].xinFengMoney==''&&that.data.priceList[3].anTongMoney==''){
-  //   wx.showToast({
-  //     title: '请最少填写一个物流报价',
-  //     icon: 'none'
-  //   })
-  //   return
-  // }
-  if(that.data.priceList[0].zhongYuanMoney==''||that.data.priceList[1].zhongGuMoney==''||that.data.priceList[2].xinFengMoney==''||that.data.priceList[3].anTongMoney==''){
+  if(that.data.priceList[0].zhongYuanMoney==''&&that.data.priceList[1].zhongGuMoney==''&&that.data.priceList[2].xinFengMoney==''&&that.data.priceList[3].anTongMoney==''){
     wx.showToast({
-      title: '请填写所有的物流报价',
+      title: '请最少填写一个物流报价',
       icon: 'none'
     })
     return
   }
-  if(that.data.priceList[0].zhongYuanMoney!=''||that.data.priceList[0].zhongYuanZhuangChuanTime!='请选择'||that.data.priceList[0].zhongYuanDaoGangTime!='请选择'){
-    if(that.data.priceList[0].zhongYuanMoney==''||that.data.priceList[0].zhongYuanZhuangChuanTime=='请选择'||that.data.priceList[0].zhongYuanDaoGangTime=='请选择'){
-      wx.showToast({
-        title: '请填写完整中远报价信息',
-        icon: 'none'
-      })
-      return
-    }
-  }
-  if(that.data.priceList[1].zhongGuMoney!=''||that.data.priceList[1].zhongGuZhuangChuanTime!='请选择'||that.data.priceList[1].zhongGuDaoGangTime!='请选择'){
-    if(that.data.priceList[1].zhongGuMoney==''||that.data.priceList[1].zhongGuZhuangChuanTime=='请选择'||that.data.priceList[1].zhongGuDaoGangTime=='请选择'){
-      wx.showToast({
-        title: '请填写完整中谷报价信息',
-        icon: 'none'
-      })
-      return
-    }
-  }
-  if(that.data.priceList[2].xinFengMoney!=''||that.data.priceList[2].xinFengZhuangChuanTime!='请选择'||that.data.priceList[2].xinFengDaoGangTime!='请选择'){
-    if(that.data.priceList[2].xinFengMoney==''||that.data.priceList[2].xinFengZhuangChuanTime=='请选择'||that.data.priceList[2].xinFengDaoGangTime=='请选择'){
-      wx.showToast({
-        title: '请填写完整信风报价信息',
-        icon: 'none'
-      })
-      return
-    }
-  }
-  if(that.data.priceList[3].anTongMoney!=''||that.data.priceList[3].anTongZhuangChuanTime!='请选择'||that.data.priceList[3].anTongDaoGangTime!='请选择'){
-    if(that.data.priceList[3].anTongMoney==''||that.data.priceList[3].anTongZhuangChuanTime=='请选择'||that.data.priceList[3].anTongDaoGangTime=='请选择'){
-      wx.showToast({
-        title: '请填写完整安通报价信息',
-        icon: 'none'
-      })
-      return
-    }
-  }
+  // if(that.data.priceList[0].zhongYuanMoney==''||that.data.priceList[1].zhongGuMoney==''||that.data.priceList[2].xinFengMoney==''||that.data.priceList[3].anTongMoney==''){
+  //   wx.showToast({
+  //     title: '请填写所有的物流报价',
+  //     icon: 'none'
+  //   })
+  //   return
+  // }
+  // if(that.data.priceList[0].zhongYuanMoney!=''||that.data.priceList[0].zhongYuanZhuangChuanTime!='请选择'||that.data.priceList[0].zhongYuanDaoGangTime!='请选择'){
+  //   if(that.data.priceList[0].zhongYuanMoney==''||that.data.priceList[0].zhongYuanZhuangChuanTime=='请选择'||that.data.priceList[0].zhongYuanDaoGangTime=='请选择'){
+  //     wx.showToast({
+  //       title: '请填写完整中远报价信息',
+  //       icon: 'none'
+  //     })
+  //     return
+  //   }
+  // }
+  // if(that.data.priceList[1].zhongGuMoney!=''||that.data.priceList[1].zhongGuZhuangChuanTime!='请选择'||that.data.priceList[1].zhongGuDaoGangTime!='请选择'){
+  //   if(that.data.priceList[1].zhongGuMoney==''||that.data.priceList[1].zhongGuZhuangChuanTime=='请选择'||that.data.priceList[1].zhongGuDaoGangTime=='请选择'){
+  //     wx.showToast({
+  //       title: '请填写完整中谷报价信息',
+  //       icon: 'none'
+  //     })
+  //     return
+  //   }
+  // }
+  // if(that.data.priceList[2].xinFengMoney!=''||that.data.priceList[2].xinFengZhuangChuanTime!='请选择'||that.data.priceList[2].xinFengDaoGangTime!='请选择'){
+  //   if(that.data.priceList[2].xinFengMoney==''||that.data.priceList[2].xinFengZhuangChuanTime=='请选择'||that.data.priceList[2].xinFengDaoGangTime=='请选择'){
+  //     wx.showToast({
+  //       title: '请填写完整信风报价信息',
+  //       icon: 'none'
+  //     })
+  //     return
+  //   }
+  // }
+  // if(that.data.priceList[3].anTongMoney!=''||that.data.priceList[3].anTongZhuangChuanTime!='请选择'||that.data.priceList[3].anTongDaoGangTime!='请选择'){
+  //   if(that.data.priceList[3].anTongMoney==''||that.data.priceList[3].anTongZhuangChuanTime=='请选择'||that.data.priceList[3].anTongDaoGangTime=='请选择'){
+  //     wx.showToast({
+  //       title: '请填写完整安通报价信息',
+  //       icon: 'none'
+  //     })
+  //     return
+  //   }
+  // }
   
   wx.request({
     url: app.globalData.domain + '/wuliu/order/bao-jia-do',
@@ -75,18 +75,18 @@ sendPrice(e){
     method: 'post',
     data: {
       orderId:that.data.orderId,
-      zhongYuanMoney: that.data.priceList[0].zhongYuanMoney,
-      zhongYuanZhuangChuanTime:util.formatTimecuo(that.data.priceList[0].zhongYuanZhuangChuanTime),
-      zhongYuanDaoGangTime: util.formatTimecuo(that.data.priceList[0].zhongYuanDaoGangTime),
-      zhongGuMoney: that.data.priceList[1].zhongGuMoney,
-      zhongGuZhuangChuanTime: util.formatTimecuo(that.data.priceList[1].zhongGuZhuangChuanTime),
-      zhongGuDaoGangTime: util.formatTimecuo(that.data.priceList[1].zhongGuDaoGangTime),
-      xinFengMoney: that.data.priceList[2].xinFengMoney,
-      xinFengZhuangChuanTime: util.formatTimecuo(that.data.priceList[2].xinFengZhuangChuanTime),
-      xinFengDaoGangTime: util.formatTimecuo(that.data.priceList[2].xinFengDaoGangTime),
-      anTongMoney: that.data.priceList[3].anTongMoney,
-      anTongZhuangChuanTime: util.formatTimecuo(that.data.priceList[3].anTongZhuangChuanTime),
-      anTongDaoGangTime: util.formatTimecuo(that.data.priceList[3].anTongDaoGangTime),
+      zhongYuanMoney: that.data.priceList[0].zhongYuanMoney||'',
+      zhongYuanZhuangChuanTime:util.formatTimecuo(that.data.priceList[0].zhongYuanZhuangChuanTime)||'',
+      zhongYuanDaoGangTime: util.formatTimecuo(that.data.priceList[0].zhongYuanDaoGangTime)||'',
+      zhongGuMoney: that.data.priceList[1].zhongGuMoney||'',
+      zhongGuZhuangChuanTime: util.formatTimecuo(that.data.priceList[1].zhongGuZhuangChuanTime)||'',
+      zhongGuDaoGangTime: util.formatTimecuo(that.data.priceList[1].zhongGuDaoGangTime)||'',
+      xinFengMoney: that.data.priceList[2].xinFengMoney||'',
+      xinFengZhuangChuanTime: util.formatTimecuo(that.data.priceList[2].xinFengZhuangChuanTime)||'',
+      xinFengDaoGangTime: util.formatTimecuo(that.data.priceList[2].xinFengDaoGangTime)||'',
+      anTongMoney: that.data.priceList[3].anTongMoney||'',
+      anTongZhuangChuanTime: util.formatTimecuo(that.data.priceList[3].anTongZhuangChuanTime)||'',
+      anTongDaoGangTime: util.formatTimecuo(that.data.priceList[3].anTongDaoGangTime)||'',
     },
     success: function (res) {
       if (res.data.codeMsg) {
@@ -327,7 +327,7 @@ sendPrice(e){
           }else if(res.data.data.xiangShu==3){
             res.data.data.xiangShuName='短板自卸'
           }
-
+          res.data.data.orderIdEve=res.data.data.orderId.slice(res.data.data.orderId.length-17,res.data.data.orderId.length)
           that.setData({
             orderDetail: res.data.data
           })

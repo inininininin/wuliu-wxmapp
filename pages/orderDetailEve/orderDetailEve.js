@@ -97,7 +97,7 @@ Page({
           }else if(res.data.data.xiangShu==3){
             res.data.data.xiangShuName='短板自卸'
           }
-
+          res.data.data.orderIdEve=res.data.data.orderId.slice(res.data.data.orderId.length-17,res.data.data.orderId.length)
           that.setData({
             orderDetail: res.data.data
           })

@@ -14,6 +14,9 @@
 </view>
 <view class="topMain">
 	<view>
+		<view class="type2">
+		<text class="type2Detail lineOne" style="float:left;text-align:left;margin-left:25rpx">ID：{{orderDetail.orderIdEve||''}}</text>
+	</view>
 		<view class="type1">
 			<image class="faIcon" src="../img/fa.svg"></image>
 			<view class="lineOne">{{orderDetail.faHuoArea1Name||''}}{{orderDetail.faHuoArea2Name||''}}{{orderDetail.faHuoArea3Name||''}}{{orderDetail.faHuoAddress||''}}</view>
@@ -35,7 +38,7 @@
 		</view>
 		<view class="type1">
 			<image class="faIcon1" src="../img/zhongliang.svg"></image>
-			<view class="lineOne lineOne">{{orderDetail.shouHuoWeight||''}}kg；{{orderDetail.shouHuoVolume||''}}L/m³</view>
+			<view class="lineOne lineOne">{{orderDetail.shouHuoWeight||''}}KG；{{orderDetail.shouHuoVolume||''}}M³</view>
 		</view>
 	</view>
 	<view wx:if='{{orderDetail.shouHuo1Area1Id}}'>
@@ -49,7 +52,7 @@
 		</view>
 		<view class="type1">
 			<image class="faIcon1" src="../img/zhongliang.svg"></image>
-			<view class="lineOne lineOne">{{orderDetail.shouHuo1Weight||''}}kg；{{orderDetail.shouHuo1Volume||''}}L/m³</view>
+			<view class="lineOne lineOne">{{orderDetail.shouHuo1Weight||''}}KG；{{orderDetail.shouHuo1Volume||''}}M³</view>
 		</view>
 	</view>
 	<view wx:if='{{orderDetail.shouHuo2Area1Id}}'>
@@ -63,7 +66,7 @@
 		</view>
 		<view class="type1">
 			<image class="faIcon1" src="../img/zhongliang.svg"></image>
-			<view class="lineOne lineOne">{{orderDetail.shouHuo2Weight||''}}kg；{{orderDetail.shouHuo2Volume||''}}L/m³</view>
+			<view class="lineOne lineOne">{{orderDetail.shouHuo2Weight||''}}KG；{{orderDetail.shouHuo2Volume||''}}M³</view>
 		</view>
 	</view>
 	<view wx:if='{{orderDetail.shouHuo3Area1Id}}'>
@@ -77,7 +80,7 @@
 		</view>
 		<view class="type1">
 			<image class="faIcon1" src="../img/zhongliang.svg"></image>
-			<view class="lineOne lineOne">{{orderDetail.shouHuo3Weight||''}}kg；{{orderDetail.shouHuo3Volume||''}}L/m³</view>
+			<view class="lineOne lineOne">{{orderDetail.shouHuo3Weight||''}}KG；{{orderDetail.shouHuo3Volume||''}}M³</view>
 		</view>
 	</view>
 
@@ -87,10 +90,8 @@
 		<text class="type2Detail lineOne">{{orderDetail.huoWuLeiXingName||''}}</text>
 	</view>
 	<view class="type2 ">
-		<text class="type2title">货物重量</text>
-		<text class="type2Detail1 lineOne">{{orderDetail.huoWuWeight||''}}kg</text>
-		<text class="type2title">货物重量</text>
-		<text class="type2Detail1 lineOne">{{orderDetail.huoWuVolume||''}}L/m³</text>
+		<text class="type2title">货物类型详情</text>
+		<text class="type2Detail">{{orderDetail.huoWuLeiXingDetail||''}}</text>
 	</view>
 	<view class="type2">
 		<text class="type2title">包装方式</text>
@@ -113,6 +114,8 @@
 		<text class="type2title">备注信息</text>
 		<text class="type2Detail lineOne">{{orderDetail.note||''}}</text>
 	</view>
+
+
 </view>
 <view style="clear:both"></view>
 <view class="providerDetail">
@@ -189,11 +192,13 @@
 			</view>
 		</view>
 		<view class="point">{{orderDetail.pingJiaScore||0}}分</view>
-		<view class="gopoint" bindtap="gopoint">去评价</view>
+		<view class="gopoint" bindtap="gopoint" wx:if='{{orderDetail.chengJiaoIs==1}}'>去评价</view>
 	</view>
 </view>
 
-<view class="sendPrice" bindtap="sendPrice">重新选择服务商</view>
+<view class="sendPrice" bindtap="sendPrice" wx:if='{{orderDetail.chengJiaoIs!=1}}'>重新选择服务商</view>
+
+<view class="sendPrice" bindtap="deal" wx:if='{{orderDetail.chengJiaoIs!=1}}'>成交</view>
 
 <!-- 评价框 -->
 <view class="pingjiaBox" wx:if='{{showPj}}' bindtap="closepoint">
@@ -207,6 +212,6 @@
 				</view>
 			</view>
 		</view>
-		<view class="makesureThis" bindtap="makesureThis">确定</view>
+		<view class="makesureThis" catchtap="makesureThis">确定</view>
 	</view>
 </view>

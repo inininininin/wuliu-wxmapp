@@ -25,10 +25,12 @@
 					<text class="lineOne">{{item.shouHuoArea2Name}}{{item.shouHuoArea3Name}}</text>
 				</view>
 			</view>
-			<view class="toChoice" data-orderid='{{item.orderId}}' bindtap="toChoice" wx:if='{{item.chengJiaoIs==0&&item.baoJiaIs==1}}'>去选择</view>
+			<view class="toChoice" data-orderid='{{item.orderId}}' bindtap="toChoice" wx:if='{{item.chengJiaoIs==0&&item.baoJiaIs==1&&item.selectedBaoJiaIs==0}}'>去选择</view>
+			<view class="toChoice" data-orderid='{{item.orderId}}' bindtap="toChoiceEve" wx:if='{{item.chengJiaoIs==0&&item.baoJiaIs==1&&item.selectedBaoJiaIs==1}}'>去确认</view>
 		</view>
 		<view class="orderItemThree lineOne">
-			货物：{{item.huoWuLeiXingName}}，{{item.huoWuWeight}}kg，{{item.xiangXingName}}
+				<text>货物：{{item.huoWuLeiXingName}}，{{item.xiangXingName}}</text>
+				<text style="float:right">ID:{{item.orderIdEve}}</text>
 		</view>
 	</view>
 	<view wx:if='{{totalCount==0}}' style="padding-bottom:100rpx">
@@ -56,10 +58,12 @@
 					<text class="lineOne">{{item.shouHuoArea2Name}}{{item.shouHuoArea3Name}}</text>
 				</view>
 			</view>
-			<view class="toChoice" data-orderid='{{item.orderId}}' bindtap="toChoice" wx:if='{{item.chengJiaoIs==0&&item.baoJiaIs==1}}'>去选择</view>
+			<view class="toChoice" data-orderid='{{item.orderId}}' bindtap="toChoice" wx:if='{{item.chengJiaoIs==0&&item.baoJiaIs==1&&item.selectedBaoJiaIs==0}}'>去选择</view>
+			<view class="toChoice" data-orderid='{{item.orderId}}' bindtap="toChoiceEve" wx:if='{{item.chengJiaoIs==0&&item.baoJiaIs==1&&item.selectedBaoJiaIs==1}}'>去确认</view>
 		</view>
 		<view class="orderItemThree lineOne">
-			货物：{{item.huoWuLeiXingName}}，{{item.huoWuWeight}}kg，{{item.xiangXingName}}
+				<text>货物：{{item.huoWuLeiXingName}}，{{item.xiangXingName}}</text>
+				<text style="float:right">ID:{{item.orderIdEve}}</text>
 		</view>
 	</view>
 	<view wx:if='{{totalCount1==0}}' style="padding-bottom:100rpx">
@@ -87,10 +91,12 @@
 					<text class="lineOne">{{item.shouHuoArea2Name}}{{item.shouHuoArea3Name}}</text>
 				</view>
 			</view>
-			<view class="toChoice" data-orderid='{{item.orderId}}' bindtap="toChoice" wx:if='{{item.chengJiaoIs==0&&item.baoJiaIs==1}}'>去选择</view>
+			<view class="toChoice" data-orderid='{{item.orderId}}' bindtap="toChoice" wx:if='{{item.chengJiaoIs==0&&item.baoJiaIs==1&&item.selectedBaoJiaIs==0}}'>去选择</view>
+			<view class="toChoice" data-orderid='{{item.orderId}}' bindtap="toChoiceEve" wx:if='{{item.chengJiaoIs==0&&item.baoJiaIs==1&&item.selectedBaoJiaIs==1}}'>去确认</view>
 		</view>
 		<view class="orderItemThree lineOne">
-			货物：{{item.huoWuLeiXingName}}，{{item.huoWuWeight}}kg，{{item.xiangXingName}}
+				<text>货物：{{item.huoWuLeiXingName}}，{{item.xiangXingName}}</text>
+				<text style="float:right">ID:{{item.orderIdEve}}</text>
 		</view>
 	</view>
 	<view wx:if='{{totalCount2==0}}' style="padding-bottom:100rpx">

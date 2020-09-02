@@ -30,6 +30,7 @@ Page({
     xiangShu: '',
     xiangShuUnit: '',
     huoWuLeiXing: '',
+    huoWuLeiXingDetail:'',
     huoWuVolume: '',
     huoWuWeight: '',
     baoZhuangFangShi: '',
@@ -62,8 +63,6 @@ Page({
     this.setData({
       fahuoList: this.data.fahuoList
     })
-    // return util.formatTimecuo(this.data.fahuoList.faHuoTime)
-    console.log(this.data.fahuoList.faHuoTime, util.formatTimecuo(this.data.fahuoList.faHuoTime))
   },
   // 货物类型  huoWuLeiXingList
   huoWuLeiXing: function (e) {
@@ -75,9 +74,13 @@ Page({
     }
     this.setData({
       huoWuLeiXingIndex: e.detail.value,
-      huoWuLeiXing: huoWuLeiXing == '如证件、服装等' ? '' : e.detail.value
+      huoWuLeiXing: huoWuLeiXing == '请选择' ? '' : e.detail.value
     })
-    console.log(this.data.huoWuLeiXing)
+  },
+  huoWuLeiXingDetail: function (e) {
+    this.setData({
+      huoWuLeiXingDetail: e.detail.value
+    })
   },
   // 货物重量
   huoWuWeight: function (e) {
@@ -101,9 +104,8 @@ Page({
     }
     this.setData({
       baoZhuangFangShiIndex: e.detail.value,
-      baoZhuangFangShi: baoZhuangFangShi == '如纸箱、木箱等' ? '' : e.detail.value
+      baoZhuangFangShi: baoZhuangFangShi == '请选择' ? '' : e.detail.value
     })
-    console.log(this.data.baoZhuangFangShi)
     // this.setData({
     //   baoZhuangFangShi: e.detail.value
     // })
@@ -119,7 +121,7 @@ Page({
     }
     this.setData({
       index1: e.detail.value,
-      xiangXing: xiangXing == '请选择箱型' ? '' : e.detail.value
+      xiangXing: xiangXing == '请选择' ? '' : e.detail.value
     })
   },
   // 功能
@@ -132,7 +134,7 @@ Page({
     }
     this.setData({
       index2: e.detail.value,
-      gongNeng: gongNeng == '请选择功能' ? '' : e.detail.value
+      gongNeng: gongNeng == '请选择' ? '' : e.detail.value
     })
   },
   // 箱数
@@ -145,7 +147,7 @@ Page({
     }
     this.setData({
       index3: e.detail.value,
-      xiangShu: xiangShu == '请选择单位' ? '' : e.detail.value
+      xiangShu: xiangShu == '请选择' ? '' : e.detail.value
     })
   },
   // 箱数个数
@@ -163,28 +165,28 @@ Page({
 
   // 收货日期
   shouHuoTime: function (e) {
-    this.data.getAddressList[0].shouHuoTime = e.detail.value,
+    this.data.getAddressList[0].shouHuoTime = e.detail.value||'',
       this.data.getAddressList[0].colorTime = '#333333'
     this.setData({
       getAddressList: this.data.getAddressList
     })
   },
   shouHuo1Time: function (e) {
-    this.data.getAddressList[1].shouHuo1Time = e.detail.value,
+    this.data.getAddressList[1].shouHuo1Time = e.detail.value||'',
       this.data.getAddressList[1].colorTime = '#333333'
     this.setData({
       getAddressList: this.data.getAddressList
     })
   },
   shouHuo2Time: function (e) {
-    this.data.getAddressList[2].shouHuo2Time = e.detail.value,
+    this.data.getAddressList[2].shouHuo2Time = e.detail.value||'',
       this.data.getAddressList[2].colorTime = '#333333'
     this.setData({
       getAddressList: this.data.getAddressList
     })
   },
   shouHuo3Time: function (e) {
-    this.data.getAddressList[3].shouHuo3Time = e.detail.value,
+    this.data.getAddressList[3].shouHuo3Time = e.detail.value||'',
       this.data.getAddressList[3].colorTime = '#333333'
     this.setData({
       getAddressList: this.data.getAddressList
@@ -196,7 +198,6 @@ Page({
       this.setData({
         getAddressList: this.data.getAddressList
       })
-    console.log(this.data.getAddressList)
   },
   shouHuo1Weight: function (e) {
     this.data.getAddressList[1].shouHuo1Weight = e.detail.value,
@@ -222,7 +223,6 @@ Page({
       this.setData({
         getAddressList: this.data.getAddressList
       })
-    console.log(this.data.getAddressList)
   },
   shouHuo1Volume: function (e) {
     this.data.getAddressList[1].shouHuo1Volume = e.detail.value,
@@ -301,28 +301,24 @@ Page({
     this.setData({
       getAddressList: this.data.getAddressList
     })
-    console.log(this.data.getAddressList)
   },
   shouHuo1Address(e) {
     this.data.getAddressList[1].shouHuo1Address = e.detail.value
     this.setData({
       getAddressList: this.data.getAddressList
     })
-    console.log(this.data.getAddressList)
   },
   shouHuo2Address(e) {
     this.data.getAddressList[2].shouHuo2Address = e.detail.value
     this.setData({
       getAddressList: this.data.getAddressList
     })
-    console.log(this.data.getAddressList)
   },
   shouHuo3Address(e) {
     this.data.getAddressList[3].shouHuo3Address = e.detail.value
     this.setData({
       getAddressList: this.data.getAddressList
     })
-    console.log(this.data.getAddressList)
   },
   addNewaddress() {
     if (this.data.getAddressList.length == 1) {
@@ -373,7 +369,7 @@ Page({
       return
     }
 
-    if (that.data.huoWuLeiXing == '' || that.data.huoWuWeight == '' || that.data.huoWuVolume == '' || that.data.baoZhuangFangShi == '') {
+    if (that.data.huoWuLeiXing == '' ||  that.data.baoZhuangFangShi == ''||that.data.huoWuLeiXingDetail=='') {
       wx.showToast({
         title: '请填写完整货物详情',
         icon: 'none',
@@ -382,12 +378,11 @@ Page({
     }
     if (that.data.xiangXing == '' || that.data.gongNeng == '' || that.data.xiangshu == '' || that.data.xiangShuUnit == '') {
       wx.showToast({
-        title: '请填写完整包装详情',
+        title: '请填写完整箱型功能等',
         icon: 'none',
       });
       return
     }
-    console.log(that.data.getAddressList.length)
     if (that.data.getAddressList.length == 1) {
       param = 'shouHuoArea1Id=' + that.data.getAddressList[0].shouHuoArea1Id + '&shouHuoArea1Name=' + that.data.getAddressList[0].shouHuoArea1Name
         + '&shouHuoArea2Id=' + that.data.getAddressList[0].shouHuoArea2Id + '&shouHuoArea2Name=' + that.data.getAddressList[0].shouHuoArea2Name
@@ -499,8 +494,9 @@ Page({
         faHuoAddress: that.data.fahuoList.faHuoAddress,
         faHuoTime: util.formatTimecuo(that.data.fahuoList.faHuoTime),
         huoWuLeiXing: that.data.huoWuLeiXing,
-        huoWuWeight: that.data.huoWuWeight,
-        huoWuVolume: that.data.huoWuVolume,
+        huoWuLeiXingDetail:that.data.huoWuLeiXingDetail,
+        // huoWuWeight: that.data.huoWuWeight,
+        // huoWuVolume: that.data.huoWuVolume,
         baoZhuangFangShi: that.data.baoZhuangFangShi,
         note: that.data.note,
         xiangXing: that.data.xiangXing,
