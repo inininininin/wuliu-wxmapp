@@ -17,20 +17,20 @@
 </view>
 <view class="lineEve  wx:if='{{show1}}'">
 	<text>姓名</text>
-	<input type="text" value="{{realname}}" bindinput="realname" placeholder="请输入您的姓名"></input>
+	<input type="text" value="{{realname}}" bindinput="realname" placeholder="请输入"></input>
 </view>
 <view class="lineEve" wx:if='{{show2}}'>
 	<text>联系方式</text>
-	<input type="number" bindinput="phone" placeholder="请输入您的联系方式"></input>
+	<input type="number" bindinput="phone" placeholder="请输入"></input>
 </view>
 
 <view class="lineEve" wx:if='{{show1}}'>
-	<text>公司名称</text>
-	<input type="number" value="{{company}}" bindinput="company" placeholder="请输入您的公司名称"></input>
+	<text>公司名</text>
+	<input type="number" value="{{company}}" bindinput="company" placeholder="请输入"></input>
 </view>
 <view class="lineEve" wx:if='{{show3}}'>
 	<text>公司电话</text>
-	<input type="number" bindinput="tel" placeholder="请输入您的公司电话"></input>
+	<input type="number" bindinput="tel" placeholder="请输入"></input>
 </view>
 <view class="lineEve" wx:if='{{show4}}'>
 	<text>公司介绍</text>
