@@ -6,7 +6,7 @@
 			<view>
 				<view class="searchBox">
 					<image src="../img/sousuo.svg"></image>
-					<input bindconfirm="searchKw" confirm-type='search' placeholder-class="placeholder" placeholder="商品名称/订单编号"></input>
+					<input bindconfirm="searchKw" confirm-type='search' placeholder-class="placeholder" placeholder="搜索"></input>
 				</view>
 			</view>
 		</view>
