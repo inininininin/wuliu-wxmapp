@@ -1,6 +1,6 @@
 <!--pages/out/newsDetail/newsDetail.wxml-->
 <import src="../../wxParse/wxParse.wxml" />
-<view class='topImg' style='background:url({{list.cover}}) no-repeat;background-size:cover;background-position: center;'></view>
+<view class='topImg'  wx:if='{{list.cover}}' style='background:url({{list.cover}}) no-repeat;background-size:cover;background-position: center;'></view>
 <!-- <image  mode="aspectFill"  class='topImg' src='{{list.cover}}'></image> -->
 <text class='title '>{{list.name}}</text>
 <text style="font-size:28rpx;color:#666;margin:0 32rpx 22rpx;display: block">发货地：{{list.area1Name}}-{{list.area2Name}}-{{list.area3Name}}-{{list.address}}</text>

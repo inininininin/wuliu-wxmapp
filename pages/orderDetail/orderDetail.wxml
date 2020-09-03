@@ -2,8 +2,8 @@
 <view class="topMain">
 	<view>
 		<view class="type2">
-		<!-- <text class="type2title" ></text> -->
-		<text class="type2Detail lineOne" style="float:left;text-align:left;margin-left:25rpx">ID：{{orderDetail.orderIdEve||''}}</text>
+	<text style="float:left;width:65rpx;margin-left:25rpx">ID：</text>
+		<text class="type2Detail lineOne" style="float:left;text-align:left;">{{orderDetail.orderIdEve||''}}</text>
 	</view>
 		<view class="type1">
 			<image class="faIcon" src="../img/fa.svg"></image>
@@ -96,7 +96,7 @@
 	</view>
 	<view class="type2">
 		<text class="type2title">箱数</text>
-		<text class="type2Detail lineOne">{{orderDetail.xiangShuUnit||''}}个 / {{orderDetail.xiangShuName||''}}</text>
+		<text class="type2Detail lineOne">{{orderDetail.xiangShu||''}} （{{orderDetail.xiangShuUnit||''}}）</text>
 	</view>
 
 	<view class="type2">

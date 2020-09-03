@@ -1,6 +1,10 @@
 <!--pages/orderDetail/orderDetail.wxml-->
 <view class="topMain">
 	<view>
+	<view class="type2">
+		<text style="float:left;width:65rpx;margin-left:25rpx">ID：</text>
+		<text class="type2Detail lineOne" style="float:left;text-align:left;">{{orderDetail.orderIdEve||''}}</text>
+	</view>
 		<view class="type1">
 			<image class="faIcon" src="../img/fa.svg"></image>
 			<view class="lineOne">{{orderDetail.faHuoArea1Name||''}}{{orderDetail.faHuoArea2Name||''}}{{orderDetail.faHuoArea3Name||''}}{{orderDetail.faHuoAddress||''}}</view>
@@ -68,10 +72,7 @@
 		</view>
 	</view>
 
-<view class="type2">
-		<text class="type2title">订单ID</text>
-		<text class="type2Detail lineOne">{{orderDetail.orderIdEve||''}}</text>
-	</view>
+
 	<view class="type2">
 		<text class="type2title">货物类型</text>
 		<text class="type2Detail lineOne">{{orderDetail.huoWuLeiXingName||''}}</text>
@@ -94,7 +95,7 @@
 	</view>
 	<view class="type2">
 		<text class="type2title">箱数</text>
-		<text class="type2Detail lineOne">{{orderDetail.xiangShuUnit||''}}个 / {{orderDetail.xiangShuName||''}}</text>
+		<text class="type2Detail lineOne">{{orderDetail.xiangShu||''}} （{{orderDetail.xiangShuUnit||''}}）</text>
 	</view>
 
 	<view class="type2">

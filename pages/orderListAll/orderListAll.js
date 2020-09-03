@@ -53,9 +53,17 @@ Page({
       wx.navigateTo({
         url: '../providerDetail/providerDetail?id=' + e.currentTarget.dataset.orderid,
       })
-    }else  if (e.currentTarget.dataset.chengjiao == 0){
+    }else  if (e.currentTarget.dataset.chengjiao == 0 &&e.currentTarget.dataset.baojiais==0){
       wx.navigateTo({
         url: '../orderDetailEve/orderDetailEve?id=' + e.currentTarget.dataset.orderid,
+      })
+    }else  if (e.currentTarget.dataset.chengjiao == 0 &&e.currentTarget.dataset.baojiais==1&&e.currentTarget.dataset.selectbaojiais==0){
+      wx.navigateTo({
+        url: '../selectprovider/selectprovider?id=' + e.currentTarget.dataset.orderid,
+      })
+    }else  if (e.currentTarget.dataset.chengjiao == 0 &&e.currentTarget.dataset.baojiais==1&&e.currentTarget.dataset.selectbaojiais==1){
+      wx.navigateTo({
+        url: '../providerDetail/providerDetail?id=' + e.currentTarget.dataset.orderid,
       })
     }
   },

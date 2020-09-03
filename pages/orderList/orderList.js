@@ -31,19 +31,7 @@ Page({
     order:'',
     sort:'',
   },
-  // 备用的去认证按钮
-  totalCount(e) {
-    // wx.showModal({
-    //   title: '您还没有进行认证',
-    //   content: '发布订单需要先进行身份认证',
-    //   cancelColor: 'cancelColor',
-    //   confirmText:'去认证',
-    //   confirmColor:'#FF932E'
-    // })
-    this.setData({
-      show: true
-    })
-  },
+  
   // 关闭弹窗
   closePop(e) {
     this.setData({

@@ -8,6 +8,7 @@
 }
 
 .title {
+  font-weight: bolder;
   display: inline-block;
   line-height: 50rpx;
   font-size: 34rpx;
