@@ -106,7 +106,7 @@ Page({
           }else  if( res.data.data.xiangShuUnit==2){
             res.data.data.xiangShuUnit='组'
           }
-          res.data.data.orderIdEve=res.data.data.orderId.slice(res.data.data.orderId.length-17,res.data.data.orderId.length)
+          res.data.data.orderIdEve=res.data.data.orderId.slice(res.data.data.orderId.length-15,res.data.data.orderId.length)
           that.setData({
             orderDetail: res.data.data
           })
