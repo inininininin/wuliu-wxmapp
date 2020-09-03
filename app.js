@@ -27,7 +27,7 @@ App({
         console.log(res.code)
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
         // wx.request({
-        //   url: vm.globalData.url + '/wuliu/refresh-wx-session-key',
+        //   url: vm.globalData.url + '/refresh-wx-session-key',
         //   header: {
         //     "Content-Type": "application/x-www-form-urlencoded",
         //     'cookie': wx.getStorageSync('cookie')
@@ -135,7 +135,7 @@ App({
   cover(_cover){
     var that=this
     if(_cover&&_cover.slice(0,1)!='h'){
-      _cover='https://test.inininininin.com'+_cover
+      _cover=this.globalData.domain+_cover
     }
     return _cover
   }
