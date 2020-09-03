@@ -64,7 +64,7 @@
 .searchBox>icon{
   width: 42rpx;
   /* margin-top: 15rpx; */
-  padding: 15rpx 7rpx;
+  padding: 15rpx 0;
   /* height:60rpx; */
   display: inline-block;
   float: left;
@@ -248,8 +248,10 @@ page {
   color: #333333;
   line-height: 37rpx;
 }
-
-.position>view>view>text {
+.position>view>view>view{
+  display: inline-block;
+}
+.position>view>view>view>text ,.colorEve{
   color: #ED2828;
 }
 

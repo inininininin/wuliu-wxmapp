@@ -7,7 +7,7 @@
 				<view class="searchBox">
 					<image src="../img/sousuo.svg"></image>
 					<input bindinput="searchKw" value="{{kw}}" confirm-type='search' placeholder-class="placeholder" placeholder="搜索"></input>
-					 <icon wx:if='{{showIsIcon}}' bindtap="showIsIcon" class="icon-small" type="cancel" size="15" color='#979797'></icon>
+					<icon wx:if='{{showIsIcon}}' bindtap="showIsIcon" class="icon-small" type="cancel" size="15" color='#979797'></icon>
 				</view>
 				<view class="searchThisEve" bindtap="searchThisEve">搜索</view>
 			</view>
@@ -27,17 +27,21 @@
 		<view class="shopItem" wx:for='{{orderList}}' bindtap="goodsdetail" data-id='{{item.goodsId}}'>
 			<image mode='aspectFill' src="{{item.cover}}"></image>
 			<view class="detail">
-				<view class="title lineOne">{{item.name}}</view>
-				<view class="address "><text>装货地：</text><text class="lineOne" style="width:350rpx">{{item.area1Name}}-{{item.area2Name}}</text></view>
-					<view class="address "><text>规格：</text><text class="lineOne" style="width:350rpx">{{item.unitName}}</text></view>
+				<view class="title lineOne">{{item.name||''}}</view>
+				<view class="address "><text>装货地：</text><text class="lineOne" style="width:350rpx">{{item.area1Name||''}}-{{item.area2Name||''}}</text></view>
+				<!-- <view class="address "><text>规格：</text><text class="lineOne" style="width:350rpx">{{item.unitName}}</text></view> -->
 				<view class="position">
-					<view>简介：</view>
+					<view>规格：</view>
 					<view>
-						<view class="lineThree">{{item.intro}}</view>
-						<!-- <view class="lineOne">小柜-5吨-380ml-<text>¥2083</text></view>
-					<view class="lineOne">大柜-8吨-1200ml-<text>¥20933</text></view>
-					<view class="lineOne">**柜-<text>¥38772</text></view>
-					<view class="lineOne">拼柜：-(同收货港可拼,满柜可售)</view> -->
+						<!-- <view class="lineThree">{{item.intro}}</view> -->
+						<view class="lineOne">
+							<view  wx:if='{{item.jianPrice}}'><text class="colorEve">¥{{item.jianPrice}}</text>/件 </view>
+							<view wx:if='{{item.jinPrice}}'><text  class="colorEve">¥{{item.jinPrice}}</text>/斤</view>
+						</view>
+						<view class="lineOne" wx:if='{{item.xiaoGuiPrice}}'>小柜-<text wx:if='{{item.daGuiWeight}}'>{{item.daGuiWeight/1000}}吨-</text><text wx:if='{{item.daGuiVolumn}}'>{{item.daGuiVolumn}}M³-</text><text class="colorEve">{{item.xiaoGuiPrice}}</text>
+						</view>
+						<view class="lineOne" wx:if='{{item.daGuiPrice}}'>大柜-<text wx:if='{{item.diyGuiWeight}}'>{{item.diyGuiWeight/1000}}吨-</text><text wx:if='{{item.diyGuiVolumn}}'>{{item.diyGuiVolumn}}M³-</text><text class="colorEve">{{item.daGuiPrice}}</text></view>
+						<view class="lineOne" wx:if='{{item.diyGuiCount&&item.diyGuiPrice}}'>{{item.diyGuiCount}}柜-<text wx:if='{{item.diyGuiWeight}}'>{{item.diyGuiWeight/1000}}吨-</text><text wx:if='{{item.diyGuiVolumn}}'>{{item.diyGuiVolumn}}M³-</text><text class="colorEve">¥{{item.diyGuiPrice}}</text></view>
 					</view>
 				</view>
 			</view>

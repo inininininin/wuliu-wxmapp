@@ -9,11 +9,11 @@ Page({
     navtitle: '集贤装物流',
     statusBarHeight: app.globalData.statusBarHeight,
     titleBarHeight: app.globalData.titleBarHeight,
-    showIsIcon:false,
+    showIsIcon: false,
     orderList: [],
-    totalCount:'0',
+    totalCount: '0',
     navbar: ['已报价订单', '已完成订单', '已完成订单', '已完成订单1', '已完成订单2', '已完成订单2'],
-    navbar: [{ 'name': '全部', 'type': '', 'value': [{ 'name': '全部', 'type': ''}] },{ 'name': '日用品', 'type': 1, 'value': [{ 'name': '全部', 'type': 11 },{ 'name': '电灯', 'type': 12 }] }, { 'name': '进口', 'type': 2, 'value': [{ 'name': '全部', 'type': 21 }, { 'name': '冰棍', 'type': 22 }] }, { 'name': '服装', 'type': 3, 'value': [{ 'name': '全部', 'type': 31 }, { 'name': '男装', 'type': 32 }, { 'name': '女装', 'type': 33 }] }, { 'name': '食品', 'type': 4, 'value': [{ 'name': '全部', 'type': 41 }, { 'name': '牛奶', 'type': 42 }, { 'name': '酸奶', 'type': 43 }, { 'name': '坚果', 'type': 44 }, { 'name': '肉', 'type': 45 }, { 'name': '膨化食品', 'type': 46 }, { 'name': '脱水蔬菜', 'type': 47 }, { 'name': '水果', 'type': 48 }] }, { 'name': '医药', 'type': 5, 'value': [{ 'name': '全部', 'type': 51 }, { 'name': '日用品', 'type': 52 }, { 'name': '医疗器械', 'type': 53 }] }, { 'name': '母婴', 'type': 6, 'value': [{ 'name': '全部', 'type': 61 }, { 'name': '奶粉', 'type': 62 }, { 'name': '衣服', 'type': 63 }] }, { 'name': '电器', 'type': 7, 'value': [{ 'name': '全部', 'type': 71 }, { 'name': '手机', 'type': 72 }, { 'name': '电脑', 'type': 73 }] }, { 'name': '配件', 'type': 8, 'value': [{ 'name': '全部', 'type': 81 }, { 'name': '五金', 'type': 82 }, { 'name': '水管', 'type': 83 }] }],
+    navbar: [{ 'name': '全部', 'type': '', 'value': [{ 'name': '全部', 'type': '' }] }, { 'name': '日用品', 'type': 1, 'value': [{ 'name': '全部', 'type': 11 }, { 'name': '电灯', 'type': 12 }] }, { 'name': '进口', 'type': 2, 'value': [{ 'name': '全部', 'type': 21 }, { 'name': '冰棍', 'type': 22 }] }, { 'name': '服装', 'type': 3, 'value': [{ 'name': '全部', 'type': 31 }, { 'name': '男装', 'type': 32 }, { 'name': '女装', 'type': 33 }] }, { 'name': '食品', 'type': 4, 'value': [{ 'name': '全部', 'type': 41 }, { 'name': '牛奶', 'type': 42 }, { 'name': '酸奶', 'type': 43 }, { 'name': '坚果', 'type': 44 }, { 'name': '肉', 'type': 45 }, { 'name': '膨化食品', 'type': 46 }, { 'name': '脱水蔬菜', 'type': 47 }, { 'name': '水果', 'type': 48 }] }, { 'name': '医药', 'type': 5, 'value': [{ 'name': '全部', 'type': 51 }, { 'name': '日用品', 'type': 52 }, { 'name': '医疗器械', 'type': 53 }] }, { 'name': '母婴', 'type': 6, 'value': [{ 'name': '全部', 'type': 61 }, { 'name': '奶粉', 'type': 62 }, { 'name': '衣服', 'type': 63 }] }, { 'name': '电器', 'type': 7, 'value': [{ 'name': '全部', 'type': 71 }, { 'name': '手机', 'type': 72 }, { 'name': '电脑', 'type': 73 }] }, { 'name': '配件', 'type': 8, 'value': [{ 'name': '全部', 'type': 81 }, { 'name': '五金', 'type': 82 }, { 'name': '水管', 'type': 83 }] }],
     currentTab: 0,
     navbarEve: [],
     currentTabEve: 0,
@@ -23,27 +23,27 @@ Page({
     listTitle: '',
   },
   // 商品详情
-  goodsdetail(e){
+  goodsdetail(e) {
     wx.navigateTo({
-      url: '../goodsdetail/goodsdetail?id='+e.currentTarget.dataset.id,
+      url: '../goodsdetail/goodsdetail?id=' + e.currentTarget.dataset.id,
     })
   },
   // 关键字搜索
   searchKw: function (e) {
-    if(e.detail.value){
-      
+    if (e.detail.value) {
+
       this.setData({
-        showIsIcon:true,
+        showIsIcon: true,
       })
     }
     this.setData({
-      kw:e.detail.value,
+      kw: e.detail.value,
     })
   },
   showIsIcon: function (e) {
     this.setData({
-      showIsIcon:false,
-      kw:'',
+      showIsIcon: false,
+      kw: '',
     })
   },
   searchThisEve: function (e) {
@@ -61,7 +61,7 @@ Page({
     this.setData({
       currentTab: e.currentTarget.dataset.idx,
       navbarEve: this.data.navbar[e.currentTarget.dataset.idx].value,
-      currentTabEve:0,
+      currentTabEve: 0,
       type1Id: e.currentTarget.dataset.typeid,
       type2Id: this.data.navbar[e.currentTarget.dataset.idx].value[0].type,
       orderList: [],
@@ -84,8 +84,8 @@ Page({
     this.firstPage(1)
     // this.lastPageNumber()
   },
-   // 去登陆
-   gologinBtn(e) {
+  // 去登陆
+  gologinBtn(e) {
     wx.navigateTo({
       url: '../login/login?tabbarIs=1&route=' + getCurrentPages()[0].route,
     })
@@ -202,7 +202,7 @@ Page({
   onShareAppMessage: function () {
 
   },
-  firstPage(pageNo){
+  firstPage(pageNo) {
     let that = this
     wx.request({
       url: app.globalData.domain + '/wuliu/goods/goodses-sum',
@@ -217,7 +217,7 @@ Page({
       },
       method: 'post',
       success: function (res) {
-        if (res.data.codeMsg&&res.data.code != 20) {
+        if (res.data.codeMsg && res.data.code != 20) {
           wx.showToast({
             title: res.data.codeMsg,
             icon: 'none'
@@ -242,7 +242,7 @@ Page({
             },
             method: 'post',
             success: function (res) {
-              if (res.data.codeMsg&&res.data.code != 20) {
+              if (res.data.codeMsg && res.data.code != 20) {
                 wx.showToast({
                   title: res.data.codeMsg,
                   icon: 'none'
@@ -251,10 +251,26 @@ Page({
               if (res.data.code == 0) {
                 for (var i in res.data.data.items) {
                   res.data.data.items[i].cover = app.cover(res.data.data.items[i].cover)
-                  if(res.data.data.items[i].unit==1){
-                    res.data.data.items[i].unitName='件'
-                  }else if(res.data.data.items[i].unit==2){
-                    res.data.data.items[i].unitName='斤'
+                  if (res.data.data.items[i].xiaoGuiPrice && res.data.data.items[i].xiaoGuiPrice < 10000) {
+                    res.data.data.items[i].xiaoGuiPrice = res.data.data.items[i].xiaoGuiPrice + '元'
+                  } else if (res.data.data.items[i].xiaoGuiPrice && res.data.data.items[i].xiaoGuiPrice >= 10000) {
+                    res.data.data.items[i].xiaoGuiPrice = res.data.data.items[i].xiaoGuiPrice / 10000 + '万元'
+                  } else {
+                    res.data.data.items[i].xiaoGuiPrice = ''
+                  }
+                  if (res.data.data.items[i].daGuiPrice && res.data.data.items[i].daGuiPrice < 10000) {
+                    res.data.data.items[i].daGuiPrice = res.data.data.items[i].daGuiPrice + '元'
+                  } else if (res.data.data.items[i].daGuiPrice && res.data.data.items[i].daGuiPrice >= 10000) {
+                    res.data.data.items[i].daGuiPrice = res.data.data.items[i].daGuiPrice / 10000 + '万元'
+                  } else {
+                    res.data.data.items[i].daGuiPrice = ''
+                  }
+                  if (res.data.data.items[i].diyGuiPrice && res.data.data.items[i].diyGuiPrice < 10000) {
+                    res.data.data.items[i].diyGuiPrice = res.data.data.items[i].diyGuiPrice + '元'
+                  } else if (res.data.data.items[i].diyGuiPrice && res.data.data.items[i].diyGuiPrice >= 10000) {
+                    res.data.data.items[i].diyGuiPrice = res.data.data.items[i].diyGuiPrice / 10000 + '万元'
+                  } else {
+                    res.data.data.items[i].diyGuiPrice = ''
                   }
                 }
                 that.data.orderList.concat(res.data.data.items)
@@ -279,7 +295,7 @@ Page({
                     })
                   }
                 }
-      
+
               } else if (res.data.code == 20) {
               }
             }
@@ -306,7 +322,7 @@ Page({
       },
       method: 'post',
       success: function (res) {
-        if (res.data.codeMsg&&res.data.code != 20) {
+        if (res.data.codeMsg && res.data.code != 20) {
           wx.showToast({
             title: res.data.codeMsg,
             icon: 'none'
@@ -315,7 +331,21 @@ Page({
         if (res.data.code == 0) {
           for (var i in res.data.data.items) {
             res.data.data.items[i].cover = app.cover(res.data.data.items[i].cover)
-
+            if (res.data.data.items[i].xiaoGuiPrice && res.data.data.items[i].xiaoGuiPrice < 10000) {
+              res.data.data.items[i].xiaoGuiPrice = res.data.data.items[i].xiaoGuiPrice + '元'
+            } else {
+              res.data.data.items[i].xiaoGuiPrice = res.data.data.items[i].xiaoGuiPrice / 10000 + '万元'
+            }
+            if (res.data.data.items[i].daGuiPrice && res.data.data.items[i].daGuiPrice < 10000) {
+              res.data.data.items[i].daGuiPrice = res.data.data.items[i].daGuiPrice + '元'
+            } else {
+              res.data.data.items[i].daGuiPrice = res.data.data.items[i].daGuiPrice / 10000 + '万元'
+            }
+            if (res.data.data.items[i].diyGuiPrice && res.data.data.items[i].diyGuiPrice < 10000) {
+              res.data.data.items[i].diyGuiPrice = res.data.data.items[i].diyGuiPrice + '元'
+            } else {
+              res.data.data.items[i].diyGuiPrice = res.data.data.items[i].diyGuiPrice / 10000 + '万元'
+            }
           }
           that.data.orderList.concat(res.data.data.items)
           var orderListArr = that.data.orderList;
@@ -373,7 +403,7 @@ Page({
       },
       method: 'post',
       success: function (res) {
-        if (res.data.codeMsg&&res.data.code != 20) {
+        if (res.data.codeMsg && res.data.code != 20) {
           wx.showToast({
             title: res.data.codeMsg,
             icon: 'none'

@@ -347,3 +347,45 @@ canvas {
   margin-top: 14rpx;
   background: #2b77ef;
 }
+
+.detail image{
+  width: 100% !important;
+  /* height: auto !important; */
+}
+
+.position>view:nth-child(1) {
+  /* width: 78rpx; */
+  display: inline-block;
+  float: left;
+  font-size: 26rpx;
+  font-family: PingFangSC, PingFangSC-Regular;
+  font-weight: 400;
+  text-align: left;
+  color: #666;
+  line-height: 37rpx;
+}
+
+.position>view:nth-child(2) {
+  width: 382rpx;
+  /* height: 148rpx; */
+  display: inline-block;
+  float: left;
+}
+
+.position>view {
+  /* height: 148rpx; */
+  font-size: 26rpx;
+  font-family: PingFangSC, PingFangSC-Regular;
+  font-weight: 400;
+  text-align: left;
+  color: #333333;
+  line-height: 37rpx;
+}
+.position>view>view>view{
+  display: inline-block;
+}
+.position>view>view>view>text ,.colorEve{
+  color: #ED2828;
+}
+
+

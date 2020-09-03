@@ -144,7 +144,7 @@
 			<view class="hispriceItem">
 				<view class="hispriceItemName">中远</view>
 				<view class="hispriceItemDate">
-					<view wx:if='{{baojiaDetail.zhongYuanMoney}}'>¥{{baojiaDetail.zhongYuanMoney||''}}万</view>
+					<view wx:if='{{baojiaDetail.zhongYuanMoney}}'>¥{{baojiaDetail.zhongYuanMoney/10000||''}}万</view>
 					<view wx:if='{{!baojiaDetail.zhongYuanMoney}}'></view>
 					<view>{{baojiaDetail.zhongYuanZhuangChuanTime}}</view>
 					<view>{{baojiaDetail.zhongYuanDaoGangTime}}</view>
@@ -153,7 +153,7 @@
 			<view class="hispriceItem">
 				<view class="hispriceItemName">中谷</view>
 				<view class="hispriceItemDate">
-					<view wx:if='{{baojiaDetail.zhongGuMoney}}'>¥{{baojiaDetail.zhongGuMoney||''}}万</view>
+					<view wx:if='{{baojiaDetail.zhongGuMoney}}'>¥{{baojiaDetail.zhongGuMoney/10000||''}}万</view>
 					<view wx:if='{{!baojiaDetail.zhongGuMoney}}'></view>
 					<view>{{baojiaDetail.zhongGuZhuangChuanTime}}</view>
 					<view>{{baojiaDetail.zhongGuDaoGangTime}}</view>
@@ -162,7 +162,7 @@
 			<view class="hispriceItem">
 				<view class="hispriceItemName">信风</view>
 				<view class="hispriceItemDate">
-					<view wx:if='{{baojiaDetail.xinFengMoney}}'>¥{{baojiaDetail.xinFengMoney||''}}万</view>
+					<view wx:if='{{baojiaDetail.xinFengMoney}}'>¥{{baojiaDetail.xinFengMoney/10000||''}}万</view>
 					<view wx:if='{{!baojiaDetail.xinFengMoney}}'></view>
 					<view>{{baojiaDetail.xinFengZhuangChuanTime}}</view>
 					<view>{{baojiaDetail.xinFengDaoGangTime}}</view>
@@ -171,7 +171,7 @@
 			<view class="hispriceItem">
 				<view class="hispriceItemName">安通</view>
 				<view class="hispriceItemDate">
-					<view wx:if='{{baojiaDetail.anTongMoney}}'>¥{{baojiaDetail.anTongMoney||''}}万</view>
+					<view wx:if='{{baojiaDetail.anTongMoney}}'>¥{{baojiaDetail.anTongMoney/10000||''}}万</view>
 					<view wx:if='{{!baojiaDetail.anTongMoney}}'></view>
 					<view>{{baojiaDetail.anTongZhuangChuanTime}}</view>
 					<view>{{baojiaDetail.anTongDaoGangTime}}</view>

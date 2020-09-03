@@ -3,7 +3,6 @@ var app = getApp()
 var utils = require('../../utils/util.js');
 var WxParse = require('../../wxParse/wxParse.js');
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -91,7 +90,27 @@ Page({
           res.data.data.cover=app.cover(res.data.data.cover)
           res.data.data.updateTime = res.data.data.updateTime .slice(2,16)
           res.data.data.insertTime = res.data.data.insertTime .slice(2,16)
-          
+          if (res.data.data.xiaoGuiPrice && res.data.data.xiaoGuiPrice < 10000) {
+            res.data.data.xiaoGuiPrice = res.data.data.xiaoGuiPrice + '元'
+          } else if (res.data.data.xiaoGuiPrice && res.data.data.xiaoGuiPrice >= 10000) {
+            res.data.data.xiaoGuiPrice = res.data.data.xiaoGuiPrice / 10000 + '万元'
+          } else {
+            res.data.data.xiaoGuiPrice = ''
+          }
+          if (res.data.data.daGuiPrice && res.data.data.daGuiPrice < 10000) {
+            res.data.data.daGuiPrice = res.data.data.daGuiPrice + '元'
+          } else if (res.data.data.daGuiPrice && res.data.data.daGuiPrice >= 10000) {
+            res.data.data.daGuiPrice = res.data.data.daGuiPrice / 10000 + '万元'
+          } else {
+            res.data.data.daGuiPrice = ''
+          }
+          if (res.data.data.diyGuiPrice && res.data.data.diyGuiPrice < 10000) {
+            res.data.data.diyGuiPrice = res.data.data.diyGuiPrice + '元'
+          } else if (res.data.data.diyGuiPrice && res.data.data.diyGuiPrice >= 10000) {
+            res.data.data.diyGuiPrice = res.data.data.diyGuiPrice / 10000 + '万元'
+          } else {
+            res.data.data.diyGuiPrice = ''
+          }
           that.setData({
             list: res.data.data,
             id: id,

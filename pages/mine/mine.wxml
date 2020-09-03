@@ -22,8 +22,10 @@
 		<image src="../img/rightIcon.svg"></image>
 	</view>
 	<view>
-		<text>联系客服</text>
-		<image src="../img/rightIcon.svg"></image>
+		<button open-type="contact" bindcontact="handleContact">
+			<text>联系客服</text>
+			<image src="../img/rightIcon.svg"></image>
+		</button>
 	</view>
 	<view bindtap="loginOut" wx:if='{{loginIf==1}}'>
 		<text>退出登录</text>
