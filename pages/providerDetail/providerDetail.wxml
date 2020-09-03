@@ -15,8 +15,9 @@
 <view class="topMain">
 	<view>
 		<view class="type2">
-		<text class="type2Detail lineOne" style="float:left;text-align:left;margin-left:25rpx">ID：{{orderDetail.orderIdEve||''}}</text>
-	</view>
+		<text style="float:left;width:65rpx;margin-left:25rpx">ID：</text>
+		<text class="type2Detail lineOne" style="float:left;text-align:left;">{{orderDetail.orderIdEve||''}}</text>
+		</view>
 		<view class="type1">
 			<image class="faIcon" src="../img/fa.svg"></image>
 			<view class="lineOne">{{orderDetail.faHuoArea1Name||''}}{{orderDetail.faHuoArea2Name||''}}{{orderDetail.faHuoArea3Name||''}}{{orderDetail.faHuoAddress||''}}</view>
@@ -107,7 +108,7 @@
 	</view>
 	<view class="type2">
 		<text class="type2title">箱数</text>
-		<text class="type2Detail lineOne">{{orderDetail.xiangShuUnit||''}}个 / {{orderDetail.xiangShuName||''}}</text>
+		<text class="type2Detail lineOne">{{orderDetail.xiangShu||''}} （{{orderDetail.xiangShuUnit||''}}）</text>
 	</view>
 
 	<view class="type2">
@@ -143,7 +144,8 @@
 			<view class="hispriceItem">
 				<view class="hispriceItemName">中远</view>
 				<view class="hispriceItemDate">
-					<view>¥{{baojiaDetail.zhongYuanMoney}}万</view>
+					<view wx:if='{{baojiaDetail.zhongYuanMoney}}'>¥{{baojiaDetail.zhongYuanMoney||''}}万</view>
+					<view wx:if='{{!baojiaDetail.zhongYuanMoney}}'></view>
 					<view>{{baojiaDetail.zhongYuanZhuangChuanTime}}</view>
 					<view>{{baojiaDetail.zhongYuanDaoGangTime}}</view>
 				</view>
@@ -151,7 +153,8 @@
 			<view class="hispriceItem">
 				<view class="hispriceItemName">中谷</view>
 				<view class="hispriceItemDate">
-					<view>¥{{baojiaDetail.zhongYuanMoney}}万</view>
+					<view wx:if='{{baojiaDetail.zhongGuMoney}}'>¥{{baojiaDetail.zhongGuMoney||''}}万</view>
+					<view wx:if='{{!baojiaDetail.zhongGuMoney}}'></view>
 					<view>{{baojiaDetail.zhongGuZhuangChuanTime}}</view>
 					<view>{{baojiaDetail.zhongGuDaoGangTime}}</view>
 				</view>
@@ -159,15 +162,17 @@
 			<view class="hispriceItem">
 				<view class="hispriceItemName">信风</view>
 				<view class="hispriceItemDate">
-					<view>¥{{baojiaDetail.zhongYuanMoney}}万</view>
+					<view wx:if='{{baojiaDetail.xinFengMoney}}'>¥{{baojiaDetail.xinFengMoney||''}}万</view>
+					<view wx:if='{{!baojiaDetail.xinFengMoney}}'></view>
 					<view>{{baojiaDetail.xinFengZhuangChuanTime}}</view>
-					<view>{{baojiaDetail.zhongGuDaoGangTime}}</view>
+					<view>{{baojiaDetail.xinFengDaoGangTime}}</view>
 				</view>
 			</view>
 			<view class="hispriceItem">
 				<view class="hispriceItemName">安通</view>
 				<view class="hispriceItemDate">
-					<view>¥{{baojiaDetail.zhongYuanMoney}}万</view>
+					<view wx:if='{{baojiaDetail.anTongMoney}}'>¥{{baojiaDetail.anTongMoney||''}}万</view>
+					<view wx:if='{{!baojiaDetail.anTongMoney}}'></view>
 					<view>{{baojiaDetail.anTongZhuangChuanTime}}</view>
 					<view>{{baojiaDetail.anTongDaoGangTime}}</view>
 				</view>
@@ -206,7 +211,7 @@
 		<view>
 			<text class="title">请评价</text>
 			<view>
-				<view class="pingjiastar" wx:for='{{starList}}' bindtap="pointThis"  data-point='{{item.point}}' >
+				<view class="pingjiastar" wx:for='{{starList}}' bindtap="pointThis" data-point='{{item.point}}'>
 					<image wx:if='{{item.show}}' src="../img/xing1.svg"></image>
 					<image wx:if='{{!item.show}}' src="../img/xing2.svg"></image>
 				</view>

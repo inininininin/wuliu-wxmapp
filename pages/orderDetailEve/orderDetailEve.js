@@ -66,9 +66,13 @@ Page({
             res.data.data.baoZhuangFangShiName='纸箱'
           }
           if(res.data.data.xiangXing==1){
-            res.data.data.xiangXingName='木箱'
+            res.data.data.xiangXingName='20小箱'
           }else if(res.data.data.xiangXing==2){
-            res.data.data.xiangXingName='纸箱'
+            res.data.data.xiangXingName='40大箱'
+          }else if(res.data.data.xiangXing==3){
+            res.data.data.xiangXingName='40高箱'
+          }else if(res.data.data.xiangXing==4){
+            res.data.data.xiangXingName='45高箱'
           }
 
           if(res.data.data.gongNeng==1){
@@ -90,14 +94,19 @@ Page({
           }else if(res.data.data.gongNeng==9){
             res.data.data.gongNengName='挂衣'
           }
-          if(res.data.data.xiangShu==1){
-            res.data.data.xiangShuName='普通'
-          }else if(res.data.data.xiangShu==2){
-            res.data.data.xiangShuName='短板'
-          }else if(res.data.data.xiangShu==3){
-            res.data.data.xiangShuName='短板自卸'
+          // if(res.data.data.xiangShu==1){
+          //   res.data.data.xiangShuName='普通'
+          // }else if(res.data.data.xiangShu==2){
+          //   res.data.data.xiangShuName='短板'
+          // }else if(res.data.data.xiangShu==3){
+          //   res.data.data.xiangShuName='短板自卸'
+          // }
+          if( res.data.data.xiangShuUnit==1){
+            res.data.data.xiangShuUnit='个'
+          }else  if( res.data.data.xiangShuUnit==2){
+            res.data.data.xiangShuUnit='组'
           }
-          res.data.data.orderIdEve=res.data.data.orderId.slice(res.data.data.orderId.length-17,res.data.data.orderId.length)
+          res.data.data.orderIdEve=res.data.data.orderId.slice(res.data.data.orderId.length-15,res.data.data.orderId.length)
           that.setData({
             orderDetail: res.data.data
           })

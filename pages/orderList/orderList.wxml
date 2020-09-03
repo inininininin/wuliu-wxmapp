@@ -7,7 +7,7 @@
 		<view class="status-bar" style="height:{{statusBarHeight}}px"></view>
 		<view class="title-bar" style="height:{{titleBarHeight}}px">
 			<view>
-				<text class='titleText' bindtap="totalCount">{{navtitle}}</text>
+				<text class='titleText'>{{navtitle}}</text>
 				<text style="font-size:26rpx;color:#999999;">(共{{totalCount}}条数据)</text>
 
 			</view>
