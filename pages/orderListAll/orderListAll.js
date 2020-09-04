@@ -479,7 +479,7 @@ Page({
           orderList: [],
           pageNo: 1,
           listTitle: '',
-          // totalCount: 0,
+          change: 0,
         })
         this.firstPage('', '', 1)
         // this.lastPageNumber('','')
@@ -489,7 +489,7 @@ Page({
           orderList1: [],
           pageNo1: 1,
           listTitle1: '',
-          // totalCount1: 0
+          change: 0
         })
         this.firstPage(0, 1, 1)
         // this.lastPageNumber(0,1)
@@ -499,7 +499,7 @@ Page({
           orderList2: [],
           pageNo2: 1,
           listTitle2: '',
-          // totalCount2: 0
+          change: 0
         })
         this.firstPage(1, '', 1)
         // this.lastPageNumber(1,'')

@@ -68,7 +68,7 @@ page {
   border-bottom: 0;
 }
 
-/* 号码 */
+/* 号码
 .linkList .phone ,.linkList .phoneGet{
   float: right;
   color: #666666;
@@ -87,4 +87,25 @@ page {
   background: #ffffff;
   border: 0;
   outline: none;
+} */
+
+
+.linkList>view  button{
+  color: #0050cc;
+  font-weight: 100;
+  /* left: 225rpx; */
+  padding: 0;
+  background: rgba(144,116,58,0);
+}
+.linkList>view  button:not([size='mini']) {
+  width: 100%;
+  height: 104rpx;
+  line-height: 104rpx;
+  /* line-height: 90rpx; */
+  text-align: center;
+  /* border-radius: 45rpx; */
+  margin:0;
+}
+.linkList>view  button text{
+  float: left;
 }

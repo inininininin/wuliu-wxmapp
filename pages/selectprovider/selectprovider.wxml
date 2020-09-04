@@ -9,10 +9,10 @@
 					<text class="lineOne">{{item.nickname}}</text>
 				</view>
 				<view class="weui-cell__bd">
-					<view class="lineOne" wx:if='{{item.zhongYuanMoney}}'>中远 {{item.zhongYuanMoney}}万元</view>
-					<view class="lineOne" wx:if='{{item.zhongGuMoney}}'>中谷 {{item.zhongGuMoney}}万元</view>
-					<view class="lineOne" wx:if='{{item.xinFengMoney}}'>信风 {{item.xinFengMoney}}万元</view>
-					<view class="lineOne" wx:if='{{item.anTongMoney}}'>安通 {{item.anTongMoney}}万元</view>
+					<view class="lineOne" wx:if='{{item.zhongYuanMoney}}'>中远 {{item.zhongYuanMoney/10000}}万元</view>
+					<view class="lineOne" wx:if='{{item.zhongGuMoney}}'>中谷 {{item.zhongGuMoney/10000}}万元</view>
+					<view class="lineOne" wx:if='{{item.xinFengMoney}}'>信风 {{item.xinFengMoney/10000}}万元</view>
+					<view class="lineOne" wx:if='{{item.anTongMoney}}'>安通 {{item.anTongMoney/10000}}万元</view>
 				</view>
 			</label>
 		</radio-group>

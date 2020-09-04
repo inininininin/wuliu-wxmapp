@@ -1,16 +1,30 @@
 <!--pages/out/newsDetail/newsDetail.wxml-->
 <import src="../../wxParse/wxParse.wxml" />
-<view class='topImg'  wx:if='{{list.cover}}' style='background:url({{list.cover}}) no-repeat;background-size:cover;background-position: center;'></view>
+<view class='topImg' wx:if='{{list.cover}}' style='background:url({{list.cover}}) no-repeat;background-size:cover;background-position: center;'></view>
 <!-- <image  mode="aspectFill"  class='topImg' src='{{list.cover}}'></image> -->
 <text class='title '>{{list.name}}</text>
-<text style="font-size:28rpx;color:#666;margin:0 32rpx 22rpx;display: block">发货地：{{list.area1Name}}-{{list.area2Name}}-{{list.area3Name}}-{{list.address}}</text>
-<text style="font-size:28rpx;color:#666;margin:0 32rpx 22rpx;display: block">上传时间：{{list.insertTime}}</text>
-<text class='title ' style="font-size:28rpx;color:#666;line-height:40rpx;margin:25rpx 32rpx 32rpx">简介：{{list.intro}}</text>
+<text style="font-size:28rpx;color:#666;margin:0 32rpx 22rpx;display: block">发货地：{{list.area1Name||''}}-{{list.area2Name||''}}-{{list.area3Name||''}}-{{list.address||''}}</text>
+<text style="font-size:28rpx;color:#666;margin:0 32rpx 22rpx;display: block">上传时间：{{list.insertTime||''}}</text>
+<text class=' ' style="font-size:28rpx;color:#666;line-height:40rpx;margin:25rpx 32rpx 32rpx;width:718rpx;display:block">简介：{{list.intro||''}}</text>
 <!-- <view class="readShare">
 	<text>浏览量：{{list.viewCount||0}}</text>
 	<text>分享数：{{list.shareCount||0}}</text>
 </view> -->
-<view class='detail' >
+<view class="position" style="padding-top:12rpx">
+	<view style="margin: 0 16px 16px;font-size:28rpx;color:#666;">规格：</view>
+	<view>
+		<view class="lineOne">
+			<view wx:if='{{list.jianPrice}}'><text class="colorEve">¥{{list.jianPrice}}</text>/件 </view>
+			<view wx:if='{{list.jinPrice}}'><text  class="colorEve">¥{{list.jinPrice}}</text>/斤</view>
+		</view>
+		<view class="lineOne" wx:if='{{list.xiaoGuiPrice}}'>小柜-<text wx:if='{{list.daGuiWeight}}'>{{list.daGuiWeight/1000}}吨-</text><text wx:if='{{list.daGuiVolumn}}'>{{list.daGuiVolumn}}M³-</text><text class="colorEve">{{list.xiaoGuiPrice}}</text>
+		</view>
+		<view class="lineOne" wx:if='{{list.daGuiPrice}}'>大柜-<text wx:if='{{list.diyGuiWeight}}'>{{list.diyGuiWeight/1000}}吨-</text><text wx:if='{{list.diyGuiVolumn}}'>{{list.diyGuiVolumn}}M³-</text><text class="colorEve">{{list.daGuiPrice}}</text></view>
+		<view class="lineOne" wx:if='{{list.diyGuiCount&&list.diyGuiPrice}}'>{{list.diyGuiCount}}柜-<text wx:if='{{list.diyGuiWeight}}'>{{list.diyGuiWeight/1000}}吨-</text><text wx:if='{{list.diyGuiVolumn}}'>{{list.diyGuiVolumn}}M³-</text><text class="colorEve">¥{{list.diyGuiPrice}}</text></view>
+	</view>
+</view>
+
+<view class='detail'>
 	<!-- <text> -->
 	<!-- {{res}} -->
 	<view class="wxParse" style='font-size:{{fontSize}}rpx !important'>
@@ -32,14 +46,14 @@
               <button open-type='share'>分享到微信</button>
             </view> -->
 				<button open-type='share'>
-					<image  mode="aspectFill"  bindtap='sharewx' class='wx' src='../img/weixin@2x.png'></image>
+					<image mode="aspectFill" bindtap='sharewx' class='wx' src='../img/weixin@2x.png'></image>
 					<text>分享到微信</text>
 				</button>
 				<!-- bindtap='shareIs' -->
-				<button  bindtap='sharepyq'>
-              <image  mode="aspectFill"  class='pyq' src='../img/pengyouquan@2x.png'></image>
-              <text>分享到朋友圈</text>
-            </button>
+				<button bindtap='sharepyq'>
+					<image mode="aspectFill" class='pyq' src='../img/pengyouquan@2x.png'></image>
+					<text>分享到朋友圈</text>
+				</button>
 
 				<!-- <button>
               <image  mode="aspectFill"  bindtap='shareWb' class='wb' src='../../img/weibo@2x.png'></image>
@@ -53,7 +67,7 @@
 
 
 <view class='shareFontNew' style="display:none">
-	<view  bindtap='changefont' >文字大小</view>
+	<view bindtap='changefont'>文字大小</view>
 	<text></text>
 	<view bindtap='share'>分享</view>
 </view>
@@ -75,13 +89,13 @@
 
 
 <!-- 画布大小按需定制 这里我按照背景图的尺寸定的  -->
-<view class="canvasShow" wx-if='{{canvasShow}}'   style="opacity:1" bindtap="closeCanvas">
-<canvas canvas-id='canvas'   style='width:{{windowW}}px;height:{{windowW}}px;margin-top:{{windowTop}}px;border:2rpx solid #e5e5e5' catchlongtap="saveCanvas"></canvas>
+<view class="canvasShow" wx-if='{{canvasShow}}' style="opacity:1" bindtap="closeCanvas">
+	<canvas canvas-id='canvas' style='width:{{windowW}}px;height:{{windowW}}px;margin-top:{{windowTop}}px;border:2rpx solid #e5e5e5' catchlongtap="saveCanvas"></canvas>
 	<button type='primary' size='mini' bindtap='saveIs'>保存分享图</button>
 </view>
 
 <!-- 预览区域  -->
 <view hidden='{{hidden}}' class='preview'>
-	<image  mode="aspectFill"  src='{{prurl}}' mode='widthFix'></image>
+	<image mode="aspectFill" src='{{prurl}}' mode='widthFix'></image>
 	<button type='primary' size='mini' bindtap='saveIs'>保存分享图</button>
 </view>

@@ -34,6 +34,7 @@ Page({
     huoWuVolume: '',
     huoWuWeight: '',
     baoZhuangFangShi: '',
+    note:'',
   },
   //  发货地址
   bindRegionChange: function (e) {
