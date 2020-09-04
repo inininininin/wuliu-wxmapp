@@ -101,6 +101,7 @@ page {
   height: auto;
   background: #ffffff;
   margin-top: 20rpx;
+  margin-bottom: 20rpx;
 }
 
 .providerDetail .title {

@@ -36,7 +36,7 @@
 		<image src="../img/quexing.png" class="bgImg"></image>
 		<view class="loginTitle">当前尚无待确认订单</view>
 	</view>
-	<view class="totalCount">{{listTitle}}</view>
+	<view class="totalCount"wx:if='{{totalCount!=0}}'>{{listTitle}}</view>
 </view>
 <view class="orderList" wx:if='{{currentTab==1}}'>
 	<view class="orderItem" wx:for='{{orderListFinish}}'  bindtap="detail" data-id='{{item.orderId}}'>

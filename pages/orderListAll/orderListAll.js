@@ -529,7 +529,7 @@ Page({
       this.setData({
         orderList: [],
         pageNo: 1,
-        listTitle: '',
+        listTitle: '加载中.',
         // totalCount: 0,
       })
       this.firstPage('', '', 1)
@@ -539,7 +539,7 @@ Page({
       this.setData({
         orderList1: [],
         pageNo1: 1,
-        listTitle1: '',
+        listTitle1: '加载中.',
         // totalCount1: 0
       })
       this.firstPage(0, 1, 1)
@@ -549,7 +549,7 @@ Page({
       this.setData({
         orderList2: [],
         pageNo2: 1,
-        listTitle2: '',
+        listTitle2: '加载中.',
         // totalCount2: 0
       })
       this.firstPage(1, '', 1)
