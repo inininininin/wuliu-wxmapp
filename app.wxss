@@ -215,3 +215,24 @@ input{
   color: #ff932e;
   line-height: 98rpx;
 }
+
+.toTop{
+  position: fixed;
+  width: 90rpx;
+  height: 90rpx;
+  border-radius: 40rpx;
+  right: 40rpx;
+  bottom: 60rpx;
+  z-index: 1000;
+  background: #fff;
+  /* border: 1rpx solid #e5e5e5; */
+  box-shadow: -2rpx -2rpx 10rpx  #e5e5e5;
+  transform: rotate(45deg);
+}
+.toTop>image{
+  width: 60rpx;
+  height: 60rpx;
+  margin-top: 15rpx;
+  margin-left: 15rpx;
+  transform: rotate(-45deg);
+}

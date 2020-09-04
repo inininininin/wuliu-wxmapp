@@ -21,6 +21,23 @@ Page({
     orderList2: [],
     pageNo2: 1,
     change: 0,
+    toTopShow:false
+  },
+  onPageScroll(e){
+    if(e.scrollTop>200){
+      this.setData({
+        toTopShow:true
+      })
+    }else{
+      this.setData({
+        toTopShow:false
+      })
+    }
+  },
+  toTop(e){
+    wx.pageScrollTo({
+      scrollTop: 0
+    })
   },
   // 导航栏切换
   navbarTap: function (e) {
@@ -474,36 +491,49 @@ Page({
       this.lastPageNumber('', '')
       this.lastPageNumber(0, 1)
       this.lastPageNumber(1, '')
-      if (this.data.currentTab == 0) {
-        this.setData({
-          orderList: [],
-          pageNo: 1,
-          listTitle: '',
-          change: 0,
-        })
-        this.firstPage('', '', 1)
-        // this.lastPageNumber('','')
-      }
-      if (this.data.currentTab == 1) {
-        this.setData({
-          orderList1: [],
-          pageNo1: 1,
-          listTitle1: '',
-          change: 0
-        })
-        this.firstPage(0, 1, 1)
-        // this.lastPageNumber(0,1)
-      }
-      if (this.data.currentTab == 2) {
-        this.setData({
-          orderList2: [],
-          pageNo2: 1,
-          listTitle2: '',
-          change: 0
-        })
-        this.firstPage(1, '', 1)
-        // this.lastPageNumber(1,'')
-      }
+      this.setData({
+        orderList: [],
+        pageNo: 1,
+        listTitle: '',
+        change: 0,
+        orderList1: [],
+        pageNo1: 1,
+        listTitle1: '',
+        orderList2: [],
+        pageNo2: 1,
+        listTitle2: '',
+      })
+      this.firstPage('', '', 1)
+      this.firstPage(0, 1, 1)
+      this.firstPage(1, '', 1)
+      // if (this.data.currentTab == 0) {
+      //   this.setData({
+      //     orderList: [],
+      //     pageNo: 1,
+      //     listTitle: '',
+      //     change: 0,
+        
+      //   })
+      //   this.firstPage('', '', 1)
+      // }
+      // if (this.data.currentTab == 1) {
+      //   this.setData({
+      //     orderList1: [],
+      //     pageNo1: 1,
+      //     listTitle1: '',
+      //     change: 0
+      //   })
+      //   this.firstPage(0, 1, 1)
+      // }
+      // if (this.data.currentTab == 2) {
+      //   this.setData({
+      //     orderList2: [],
+      //     pageNo2: 1,
+      //     listTitle2: '',
+      //     change: 0
+      //   })
+      //   this.firstPage(1, '', 1)
+      // }
     }
   },
 

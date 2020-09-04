@@ -15,7 +15,24 @@ Page({
     orderListFinish: [],
     pageNoEve: 1,
     listTitleEve: '',
-    totalCountEve: 0
+    totalCountEve: 0,
+    toTopShow:false
+  },
+  onPageScroll(e){
+    if(e.scrollTop>200){
+      this.setData({
+        toTopShow:true
+      })
+    }else{
+      this.setData({
+        toTopShow:false
+      })
+    }
+  },
+  toTop(e){
+    wx.pageScrollTo({
+      scrollTop: 0
+    })
   },
   // 订单详情
   detail(e){

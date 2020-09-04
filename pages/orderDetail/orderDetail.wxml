@@ -112,7 +112,7 @@
 		<view wx:if='{{item.name=="中远"}}'>
 			<view class="priceEveTitle">
 				<text class="lineOne">{{item.name}}(万)</text>
-				<input placeholder="请输入价格" type="number" bindinput="zhongYuanMoney" placeholder-class="placeholder"></input>
+				<input placeholder="请输入价格" type="digit" bindinput="zhongYuanMoney" placeholder-class="placeholder"></input>
 			</view>
 			<view>
 				<text class="fahuodate">装船日期</text>
@@ -140,7 +140,7 @@
 		<view wx:if='{{item.name=="中谷"}}'>
 			<view class="priceEveTitle">
 				<text class="lineOne">{{item.name}}(万)</text>
-				<input placeholder="请输入价格" type="number" bindinput="zhongGuMoney" placeholder-class="placeholder"></input>
+				<input placeholder="请输入价格" type="digit" bindinput="zhongGuMoney" placeholder-class="placeholder"></input>
 			</view>
 			<view>
 				<text class="fahuodate">装船日期</text>
@@ -168,7 +168,7 @@
 		<view wx:if='{{item.name=="信风"}}'>
 			<view class="priceEveTitle">
 				<text class="lineOne">{{item.name}}(万)</text>
-				<input placeholder="请输入价格" type="number" bindinput="xinFengMoney" placeholder-class="placeholder"></input>
+				<input placeholder="请输入价格" type="digit" bindinput="xinFengMoney" placeholder-class="placeholder"></input>
 			</view>
 			<view>
 				<text class="fahuodate">装船日期</text>
@@ -196,7 +196,7 @@
 		<view wx:if='{{item.name=="安通"}}'>
 			<view class="priceEveTitle">
 				<text class="lineOne">{{item.name}}(万)</text>
-				<input placeholder="请输入价格" type="number" bindinput="anTongMoney" placeholder-class="placeholder"></input>
+				<input placeholder="请输入价格" type="digit" bindinput="anTongMoney" placeholder-class="placeholder"></input>
 			</view>
 			<view>
 				<text class="fahuodate">装船日期</text>

@@ -14,18 +14,24 @@ Page({
     totalCount: '0',
     loginIf: '0',
     listTitle: '',
-    show:false
+    show:false,
+    toTopShow:false
   },
-  // 备用的去认证按钮
-  totalCount(e){
-    // wx.showModal({
-    //   title: '您还没有进行认证',
-    //   content: '发布订单需要先进行身份认证',
-    //   cancelColor: 'cancelColor',
-    //   confirmText:'去认证',
-    //   confirmColor:'#FF932E'
-    // })
-    
+  onPageScroll(e){
+    if(e.scrollTop>200){
+      this.setData({
+        toTopShow:true
+      })
+    }else{
+      this.setData({
+        toTopShow:false
+      })
+    }
+  },
+  toTop(e){
+    wx.pageScrollTo({
+      scrollTop: 0
+    })
   },
   // 关闭弹窗
   closePop(e){

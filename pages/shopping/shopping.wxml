@@ -61,3 +61,7 @@
 	<text class="loginTitle">点击登录获取信息</text>
 	<view class="gologinBtn" bindtap="gologinBtn">去登陆</view>
 </view>
+
+<view class="toTop" bindtap="toTop" wx:if='{{toTopShow}}'>
+	<image src="../img/toTop.svg"></image>
+</view>

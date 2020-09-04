@@ -21,6 +21,23 @@ Page({
     type2Id: '',
     kw: '',
     listTitle: '',
+    toTopShow:false
+  },
+  onPageScroll(e){
+    if(e.scrollTop>200){
+      this.setData({
+        toTopShow:true
+      })
+    }else{
+      this.setData({
+        toTopShow:false
+      })
+    }
+  },
+  toTop(e){
+    wx.pageScrollTo({
+      scrollTop: 0
+    })
   },
   // 商品详情
   goodsdetail(e) {

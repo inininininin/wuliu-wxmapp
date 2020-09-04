@@ -143,3 +143,6 @@
 		</view>
 	</view>
 </view>
+<view class="toTop" bindtap="toTop" wx:if='{{toTopShow}}'>
+	<image src="../img/toTop.svg"></image>
+</view>

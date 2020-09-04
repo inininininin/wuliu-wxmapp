@@ -31,8 +31,24 @@ Page({
     order: '',
     sort: '',
     change: 0,
+    toTopShow:false
   },
-
+  onPageScroll(e){
+    if(e.scrollTop>200){
+      this.setData({
+        toTopShow:true
+      })
+    }else{
+      this.setData({
+        toTopShow:false
+      })
+    }
+  },
+  toTop(e){
+    wx.pageScrollTo({
+      scrollTop: 0
+    })
+  },
   // 关闭弹窗
   closePop(e) {
     this.setData({
@@ -519,7 +535,10 @@ Page({
    */
   onShow: function () {
     console.log(this.data.change)
-    this.ifRenZ()
+    if(app.globalData.userInfoDetail.fuWuShangRenZhengIs!=1){
+      this.ifRenZ()
+    }
+   
     this.setData({
       loginIf: app.globalData.loginIf
     })

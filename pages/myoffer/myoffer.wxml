@@ -9,7 +9,7 @@
 <view class="orderList" wx:if='{{currentTab==0}}'>
 	<view class="orderItem" wx:for='{{orderList}}' bindtap="detail"  data-id='{{item.orderId}}'>
 		<view class="orderItemOne">
-			<text>发货日期：{{item.faHuoTime}}</text>
+			<text>发货日期：{{item.faHuoTime||''}}</text>
 			<text wx:if='{{item.chengJiaoIs==0}}'>待确认</text>
 			<text wx:if='{{item.chengJiaoIs==1}}'>订单已完成</text>
 		</view>
@@ -17,18 +17,18 @@
 			<view>
 				<view class="fahuo">
 					<image class="fashou" src="../img/fa.svg"></image>
-					<text class="lineOne">{{item.faHuoArea2Name}}{{item.faHuoArea3Name}}</text>
+					<text class="lineOne">{{item.faHuoArea2Name||''}}{{item.faHuoArea3Name||''}}</text>
 				</view>
 				<view class="pointLine"></view>
 				<view class="shouhuo">
 					<image class="fashou" src="../img/shou.svg"></image>
-					<text class="lineOne">{{item.shouHuoArea2Name}}{{item.shouHuoArea3Name}}</text>
+					<text class="lineOne">{{item.shouHuoArea2Name||''}}{{item.shouHuoArea3Name||''}}</text>
 				</view>
 			</view>
 			<view class="toPrice" wx:if='{{item.chengJiaoIs==0}}' catchtap="userphone" data-userphone='{{item.userPhone}}'>联系用户</view>
 		</view>
 		<view class="orderItemThree lineOne">
-			<text>货物：{{item.huoWuLeiXingName}}，{{item.xiangXingName}}</text>
+			<text>货物：{{item.huoWuLeiXingName||''}}，{{item.xiangXingName||''}}</text>
 				<text style="float:right">订单ID:{{item.orderIdEve}}</text>
 		</view>
 	</view>
@@ -41,7 +41,7 @@
 <view class="orderList" wx:if='{{currentTab==1}}'>
 	<view class="orderItem" wx:for='{{orderListFinish}}'  bindtap="detail" data-id='{{item.orderId}}'>
 		<view class="orderItemOne">
-			<text>发货日期：{{item.faHuoTime}}</text>
+			<text>发货日期：{{item.faHuoTime||''}}</text>
 			<text wx:if='{{item.chengJiaoIs==0}}'>待确认</text>
 			<text wx:if='{{item.chengJiaoIs==1}}'>订单已完成</text>
 		</view>
@@ -49,18 +49,18 @@
 			<view>
 				<view class="fahuo">
 					<image class="fashou" src="../img/fa.svg"></image>
-					<text class="lineOne">{{item.faHuoArea2Name}}{{item.faHuoArea3Name}}</text>
+					<text class="lineOne">{{item.faHuoArea2Name||''}}{{item.faHuoArea3Name||''}}</text>
 				</view>
 				<view class="pointLine"></view>
 				<view class="shouhuo">
 					<image class="fashou" src="../img/shou.svg"></image>
-					<text class="lineOne">{{item.shouHuoArea2Name}}{{item.shouHuoArea3Name}}</text>
+					<text class="lineOne">{{item.shouHuoArea2Name||''}}{{item.shouHuoArea3Name||''}}</text>
 				</view>
 			</view>
 			<view class="toPrice" wx:if='{{item.chengJiaoIs==0}}' catchtap="userphone" data-userphone='{{item.userPhone}}'>联系用户</view>
 		</view>
 		<view class="orderItemThree lineOne">
-			<text>货物：{{item.huoWuLeiXingName}}，{{item.xiangXingName}}</text>
+			<text>货物：{{item.huoWuLeiXingName||''}}，{{item.xiangXingName||''}}</text>
 				<text style="float:right">订单ID:{{item.orderIdEve}}</text>
 		</view>
 	</view>
@@ -107,4 +107,7 @@
 			<view class="makesure" bindtap="makesure">确定</view>
 		</view>
 	</view>
+</view>
+<view class="toTop" bindtap="toTop" wx:if='{{toTopShow}}'>
+	<image src="../img/toTop.svg"></image>
 </view>

@@ -67,3 +67,8 @@
 		<view class="popBot" bindtap="goRecognize">去认证</view>
 	</view>
 </view>
+
+
+<view class="toTop" bindtap="toTop" wx:if='{{toTopShow}}'>
+	<image src="../img/toTop.svg"></image>
+</view>
