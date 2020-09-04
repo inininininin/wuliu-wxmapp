@@ -347,3 +347,7 @@ canvas {
   margin-top: 14rpx;
   background: #2b77ef;
 }
+.detail image{
+  width: 100% !important;
+  /* height: auto !important; */
+}
