@@ -111,6 +111,43 @@ Page({
           } else {
             res.data.data.diyGuiPrice = ''
           }
+          if (res.data.data.jianPrice && res.data.data.jianPrice < 10000) {
+            res.data.data.jianPrice = res.data.data.jianPrice + '元'
+          } else if (res.data.data.jianPrice && res.data.data.jianPrice >= 10000) {
+            res.data.data.jianPrice = res.data.data.jianPrice / 10000 + '万元'
+          } else {
+            res.data.data.jianPrice = ''
+          }
+          if (res.data.data.jinPrice && res.data.data.jinPrice < 10000) {
+            res.data.data.jinPrice = res.data.data.jinPrice + '元'
+          } else if (res.data.data.jinPrice && res.data.data.jinPrice >= 10000) {
+            res.data.data.jinPrice = res.data.data.jinPrice / 10000 + '万元'
+          } else {
+            res.data.data.jinPrice = ''
+          }
+          
+          if (res.data.data.diyGuiWeight && res.data.data.diyGuiWeight < 1000) {
+            res.data.data.diyGuiWeight = res.data.data.diyGuiWeight + 'KG'
+          } else if (res.data.data.diyGuiWeight && res.data.data.diyGuiWeight >= 1000) {
+            res.data.data.diyGuiWeight = res.data.data.diyGuiWeight / 1000 + '吨'
+          } else {
+            res.data.data.diyGuiWeight = ''
+          }
+          if (res.data.data.xiaoGuiWeight && res.data.data.xiaoGuiWeight < 1000) {
+            res.data.data.xiaoGuiWeight = res.data.data.xiaoGuiWeight + 'KG'
+          } else if (res.data.data.xiaoGuiWeight && res.data.data.xiaoGuiWeight >= 1000) {
+            res.data.data.xiaoGuiWeight = res.data.data.xiaoGuiWeight / 1000 + '吨'
+          } else {
+            res.data.data.xiaoGuiWeight = ''
+          }
+
+          if (res.data.data.daGuiWeight && res.data.data.daGuiWeight < 1000) {
+            res.data.data.daGuiWeight = res.data.data.daGuiWeight + 'KG'
+          } else if (res.data.data.daGuiWeight && res.data.data.daGuiWeight >= 1000) {
+            res.data.data.daGuiWeight = res.data.data.daGuiWeight / 1000 + '吨'
+          } else {
+            res.data.data.daGuiWeight = ''
+          }
           that.setData({
             list: res.data.data,
             id: id,

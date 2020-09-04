@@ -17,10 +17,10 @@
 			<view wx:if='{{list.jianPrice}}'style="margin-right:40rpx"><text class="colorEve">¥{{list.jianPrice}}</text>/件 </view>
 			<view wx:if='{{list.jinPrice}}'><text  class="colorEve">¥{{list.jinPrice}}</text>/斤</view>
 		</view>
-		<view class="lineOne" wx:if='{{list.xiaoGuiPrice}}'>小柜-<text wx:if='{{list.daGuiWeight}}'>{{list.daGuiWeight/1000}}吨-</text><text wx:if='{{list.daGuiVolumn}}'>{{list.daGuiVolumn}}M³-</text><text class="colorEve">{{list.xiaoGuiPrice}}</text>
+		<view class="lineOne" wx:if='{{list.xiaoGuiPrice}}'>小柜-<text wx:if='{{list.xiaoGuiWeight}}'>{{list.xiaoGuiWeight}}-</text><text wx:if='{{list.xiaoGuiVolumn}}'>{{list.xiaoGuiVolumn}}M³-</text><text class="colorEve">{{list.xiaoGuiPrice}}</text>
 		</view>
-		<view class="lineOne" wx:if='{{list.daGuiPrice}}'>大柜-<text wx:if='{{list.diyGuiWeight}}'>{{list.diyGuiWeight/1000}}吨-</text><text wx:if='{{list.diyGuiVolumn}}'>{{list.diyGuiVolumn}}M³-</text><text class="colorEve">{{list.daGuiPrice}}</text></view>
-		<view class="lineOne" wx:if='{{list.diyGuiCount&&list.diyGuiPrice}}'>{{list.diyGuiCount}}柜-<text wx:if='{{list.diyGuiWeight}}'>{{list.diyGuiWeight/1000}}吨-</text><text wx:if='{{list.diyGuiVolumn}}'>{{list.diyGuiVolumn}}M³-</text><text class="colorEve">¥{{list.diyGuiPrice}}</text></view>
+		<view class="lineOne" wx:if='{{list.daGuiPrice}}'>大柜-<text wx:if='{{list.daGuiWeight}}'>{{list.daGuiWeight}}-</text><text wx:if='{{list.daGuiVolumn}}'>{{list.daGuiVolumn}}M³-</text><text class="colorEve">{{list.daGuiPrice}}</text></view>
+		<view class="lineOne" wx:if='{{list.diyGuiCount&&list.diyGuiPrice}}'>{{list.diyGuiCount}}柜-<text wx:if='{{list.diyGuiWeight}}'>{{list.diyGuiWeight}}-</text><text wx:if='{{list.diyGuiVolumn}}'>{{list.diyGuiVolumn}}M³-</text><text class="colorEve">¥{{list.diyGuiPrice}}</text></view>
 	</view>
 </view>
 
