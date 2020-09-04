@@ -128,7 +128,7 @@ Page({
   },
   baojia() {
     
-    wx.reLaunch({
+    wx.switchTab({
       url: '../orderList/orderList',
     })
   },
@@ -137,7 +137,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log(131231231)
     this.firstPage(1)
+    this.setData({
+      loginIf:app.globalData.loginIf
+    })
     // this.lastPage(1)
     // this.lastPageNumber()
   },
@@ -319,7 +323,10 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.loginRdfresh()
+    if( app.globalData.loginIf==0){
+      console.log(111111111111111111)
+      this.loginRdfresh()
+    }
   },
   loginRdfresh(){
     let that=this

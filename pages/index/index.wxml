@@ -53,12 +53,6 @@
 		<text class="loginTitle" wx:if='{{loginIf==0}}'>点击登录获取信息</text>
 		<view class="gologinBtn" bindtap="gologinBtn" wx:if='{{loginIf==0}}'>去登陆</view>
 	</view>
-	<!-- <view wx:if='{{totalCount==0}}' style="padding-bottom:100rpx">
-		<image src="../img/quexing.png" class="bgImg"></image>
-		<view class="loginTitle" wx:if='{{loginIf==1}}'>当前尚无行业信息</view>
-		<text class="loginTitle" wx:if='{{loginIf==0}}'>点击登录获取信息</text>
-		<view class="gologinBtn" bindtap="gologinBtn" wx:if='{{loginIf==0}}'>去登陆</view>
-	</view> -->
 
 
 </view>

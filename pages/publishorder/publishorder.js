@@ -520,7 +520,7 @@ Page({
             mask: true,
             complete: function complete(res) {
               setTimeout(function () {
-                wx.reLaunch({
+                wx.switchTab({
                   url: '../orderList/orderList',
                 })
               }, 100);
