@@ -249,26 +249,28 @@ Page({
                 })
               }
               if (res.data.code == 0) {
+                console.log(Math.ceil(3.5555),Math.floor(3.555))
                 for (var i in res.data.data.items) {
                   res.data.data.items[i].cover = app.cover(res.data.data.items[i].cover)
                   if (res.data.data.items[i].xiaoGuiPrice && res.data.data.items[i].xiaoGuiPrice < 10000) {
                     res.data.data.items[i].xiaoGuiPrice = res.data.data.items[i].xiaoGuiPrice + '元'
                   } else if (res.data.data.items[i].xiaoGuiPrice && res.data.data.items[i].xiaoGuiPrice >= 10000) {
-                    res.data.data.items[i].xiaoGuiPrice = res.data.data.items[i].xiaoGuiPrice / 10000 + '万元'
+                    res.data.data.items[i].xiaoGuiPrice = Math.floor(res.data.data.items[i].xiaoGuiPrice / 100)/100 + '万元'
+                    
                   } else {
                     res.data.data.items[i].xiaoGuiPrice = ''
                   }
                   if (res.data.data.items[i].daGuiPrice && res.data.data.items[i].daGuiPrice < 10000) {
                     res.data.data.items[i].daGuiPrice = res.data.data.items[i].daGuiPrice + '元'
                   } else if (res.data.data.items[i].daGuiPrice && res.data.data.items[i].daGuiPrice >= 10000) {
-                    res.data.data.items[i].daGuiPrice = res.data.data.items[i].daGuiPrice / 10000 + '万元'
+                    res.data.data.items[i].daGuiPrice =  Math.floor(res.data.data.items[i].daGuiPrice / 100)/100 + '万元'
                   } else {
                     res.data.data.items[i].daGuiPrice = ''
                   }
                   if (res.data.data.items[i].diyGuiPrice && res.data.data.items[i].diyGuiPrice < 10000) {
                     res.data.data.items[i].diyGuiPrice = res.data.data.items[i].diyGuiPrice + '元'
                   } else if (res.data.data.items[i].diyGuiPrice && res.data.data.items[i].diyGuiPrice >= 10000) {
-                    res.data.data.items[i].diyGuiPrice = res.data.data.items[i].diyGuiPrice / 10000 + '万元'
+                    res.data.data.items[i].diyGuiPrice =  Math.floor(res.data.data.items[i].diyGuiPrice / 100)/100 + '万元'
                   } else {
                     res.data.data.items[i].diyGuiPrice = ''
                   }
