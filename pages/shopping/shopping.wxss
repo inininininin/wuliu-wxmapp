@@ -182,7 +182,7 @@ page {
 }
 
 .shopItem .detail {
-  width: 460rpx;
+  width: 480rpx;
   height: 248rpx;
   float: left;
   margin-top: 24rpx;
@@ -233,7 +233,7 @@ page {
 }
 
 .shopItem .detail .position>view:nth-child(2) {
-  width: 382rpx;
+  width: 402rpx;
   height: 148rpx;
   display: inline-block;
   float: left;

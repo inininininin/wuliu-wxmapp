@@ -366,7 +366,7 @@ canvas {
 }
 
 .position>view:nth-child(2) {
-  width: 382rpx;
+  width: 580rpx;
   /* height: 148rpx; */
   display: inline-block;
   float: left;

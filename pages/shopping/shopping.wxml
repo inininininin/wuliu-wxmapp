@@ -35,8 +35,8 @@
 					<view>
 						<!-- <view class="lineThree">{{item.intro}}</view> -->
 						<view class="lineOne">
-							<view  wx:if='{{item.jianPrice}}'><text class="colorEve">{{item.jianPrice}}元</text>/件 </view>
-							<view wx:if='{{item.jinPrice}}'><text  class="colorEve">{{item.jinPrice}}元</text>/斤</view>
+							<view wx:if='{{item.jianPrice}}'style="margin-right:40rpx"><text class="colorEve">¥{{item.jianPrice}}</text>/件 </view>
+							<view wx:if='{{item.jinPrice}}' ><text  class="colorEve">¥{{item.jinPrice}}</text>/斤</view>
 						</view>
 						<view class="lineOne" wx:if='{{item.xiaoGuiPrice}}'>小柜-<text wx:if='{{item.daGuiWeight}}'>{{item.daGuiWeight/1000}}吨-</text><text wx:if='{{item.daGuiVolumn}}'>{{item.daGuiVolumn}}M³-</text><text class="colorEve">{{item.xiaoGuiPrice}}</text>
 						</view>

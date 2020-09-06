@@ -1,6 +1,6 @@
 //app.js
 App({
-  version:'1.0.2009040839',
+  version:'1.0.2009070044',
   versionNote:'修复了一些BUG, 优化了用户体验.',
   globalData: {
     userInfo: null,
@@ -8,7 +8,7 @@ App({
     statusBarHeight:'',
     titleBarHeight:'',
     loginIf:'0',
-    domain:'https://test.inininininin.com',
+    domain:'https://speedcbox.com',
     renzhengcover1:'',
     renzhengcover2:'',
     renzhengcover3:'',
