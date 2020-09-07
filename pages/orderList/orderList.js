@@ -104,24 +104,22 @@ Page({
   },
   // 自己订单三个操作
   toLookEve(e) {
-    this.renZpd('../orderDetailEve/orderDetailEve?id=' + e.currentTarget.dataset.orderid)
-    // wx.navigateTo({
-    //   url: '../orderDetailEve/orderDetailEve?id=' + e.currentTarget.dataset.orderid,
-    // })
-
-
+    // this.renZpd('../orderDetailEve/orderDetailEve?id=' + e.currentTarget.dataset.orderid)
+    wx.navigateTo({
+      url: '../orderDetailEve/orderDetailEve?id=' + e.currentTarget.dataset.orderid,
+    })
   },
   toChoice(e) {
-    this.renZpd('../selectprovider/selectprovider?id=' + e.currentTarget.dataset.orderid)
-    // wx.navigateTo({
-    //   url: '../selectprovider/selectprovider?id=' + e.currentTarget.dataset.orderid,
-    // })
+    // this.renZpd('../selectprovider/selectprovider?id=' + e.currentTarget.dataset.orderid)
+    wx.navigateTo({
+      url: '../selectprovider/selectprovider?id=' + e.currentTarget.dataset.orderid,
+    })
   },
   toChoiceEve(e) {
-    this.renZpd('../providerDetail/providerDetail?id=' + e.currentTarget.dataset.orderid)
-    // wx.navigateTo({
-    //   url: '../providerDetail/providerDetail?id=' + e.currentTarget.dataset.orderid,
-    // })
+    // this.renZpd('../providerDetail/providerDetail?id=' + e.currentTarget.dataset.orderid)
+    wx.navigateTo({
+      url: '../providerDetail/providerDetail?id=' + e.currentTarget.dataset.orderid,
+    })
   },
   // 去报价
   toPrice(e) {
@@ -543,9 +541,9 @@ Page({
    */
   onShow: function () {
     console.log(this.data.change)
-    if(app.globalData.userInfoDetail.fuWuShangRenZhengIs!=1){
-      this.ifRenZ()
-    }
+    // if(app.globalData.userInfoDetail.fuWuShangRenZhengIs!=1){
+    //   this.ifRenZ()
+    // }
    
     this.setData({
       loginIf: app.globalData.loginIf

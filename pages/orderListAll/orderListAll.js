@@ -171,9 +171,13 @@ Page({
                     res.data.data.items[i].huoWuLeiXingName = '食品'
                   }
                   if (res.data.data.items[i].xiangXing == 1) {
-                    res.data.data.items[i].xiangXingName = '木箱'
+                    res.data.data.items[i].xiangXingName = '20小箱'
                   } else if (res.data.data.items[i].xiangXing == 2) {
-                    res.data.data.items[i].xiangXingName = '纸箱'
+                    res.data.data.items[i].xiangXingName = '40大箱'
+                  }else if (res.data.data.items[i].xiangXing == 3) {
+                    res.data.data.items[i].xiangXingName = '40高箱'
+                  }else if (res.data.data.items[i].xiangXing == 4) {
+                    res.data.data.items[i].xiangXingName = '45高箱'
                   }
                 }
                 if (baoJiaIs == 0 && chengJiaoIs == 0) {

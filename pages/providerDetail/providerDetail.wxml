@@ -197,7 +197,9 @@
 			</view>
 		</view>
 		<view class="point">{{orderDetail.pingJiaScore||0}}分</view>
-		<view class="gopoint" bindtap="gopoint" wx:if='{{orderDetail.chengJiaoIs==1}}'>去评价</view>
+		<view class="gopoint" bindtap="gopoint" wx:if='{{orderDetail.chengJiaoIs==1&&orderDetail.pingJiaIs==0}}'>去评价</view>
+		<view style="clear:both"></view>
+		<view class='pingJiaContent'>{{pingJiaContent}}	</view>
 	</view>
 </view>
 
@@ -215,6 +217,9 @@
 					<image wx:if='{{item.show}}' src="../img/xing1.svg"></image>
 					<image wx:if='{{!item.show}}' src="../img/xing2.svg"></image>
 				</view>
+			</view>
+			<view class="textarea">
+				<textarea name="textarea" bindinput="pingJiaContent" id="textarea" cols="30" maxlength="100"  placeholder="请填写评价" rows="10"></textarea>
 			</view>
 		</view>
 		<view class="makesureThis" catchtap="makesureThis">确定</view>
