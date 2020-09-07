@@ -95,16 +95,25 @@ App({
     })
     wx.setStorageSync('searchKeys', '')
     updateManager.onUpdateReady(function () {
-      wx.showModal({
-        title: '更新提示',
-        content: '新版本已准备好, 请重新进入.',
-        success: function (res) {
-          if (res.confirm) {
-            // 新的版本已经下载好，调用 applyUpdate 应用新版本并重启
-            updateManager.applyUpdate()
-          }
-        }
-      })
+      updateManager.applyUpdate()
+      // wx.showLoading({
+      //   title: '新版本已准备好,请稍等',//'版本已更新',
+      //   mask: true
+      // })
+      // //等待提示‘版本更新’完以后倒计时执行重启小程序
+      // setTimeout(function() {
+      //   updateManager.applyUpdate()
+      // }, 1500);
+      // wx.showModal({
+      //   title: '更新提示',
+      //   content: '新版本已准备好, 请重新进入.',
+      //   success: function (res) {
+      //     if (res.confirm) {
+      //       // 新的版本已经下载好，调用 applyUpdate 应用新版本并重启
+      //       updateManager.applyUpdate()
+      //     }
+      //   }
+      // })
     })
 
     updateManager.onUpdateFailed(function () {
