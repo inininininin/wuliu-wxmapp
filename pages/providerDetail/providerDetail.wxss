@@ -306,7 +306,7 @@ page {
 }
 
 .starAll .star {
-  margin-right: 23rpx;
+  margin-right: 20rpx;
   width: 41rpx;
   height: 39rpx;
 }
@@ -352,7 +352,7 @@ page {
 
 
 .point {
-  line-height: 56rpx;
+  line-height: 40rpx;
   font-size: 28rpx;
   color: #333333;
   float: left;
