@@ -1,20 +1,20 @@
 //app.js
 App({
+  version:'1.0.2009070045',
+  versionNote:'修复了一些BUG, 优化了用户体验.',
   globalData: {
     userInfo: null,
     userInfoDetail:[],
     statusBarHeight:'',
     titleBarHeight:'',
     loginIf:'0',
-    domain:'https://test.inininininin.com',
-    version:'1.0.0.2008101759',
+    domain:'https://speedcbox.com',
     renzhengcover1:'',
     renzhengcover2:'',
     renzhengcover3:'',
     renzhengcover4:'',
   },
-  version:'20.0731.1804',
-  versionNote:'修复了一些BUG , 优化了用户体验 .',
+  
   onLaunch: function () {
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []

@@ -149,6 +149,10 @@ function html2json(html, bindName) {
                 }
                 imgUrl = wxDiscode.urlToHttpUrl(imgUrl, __placeImgeUrlHttps);
                 node.attr.src = imgUrl.replace(/[\r\n]/g, '');
+                console.log(node.attr.src)
+                if( node.attr.src.slice(0,1)=='/'){
+                    node.attr.src='https://speedcbox.com'+node.attr.src
+                }
                 node.from = bindName;
                 results.images.push(node);
                 results.imageUrls.push(imgUrl);
