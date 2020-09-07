@@ -7,7 +7,9 @@
 				<view style="height:{{titleBarHeight}}px;width:{{titleBarHeight+50}}px;" bindtap="backHistory">
 					<image src="../img/fanhui2.png"></image>
 				</view>
-				<text  style="width:calc(100% - {{titleBarHeight+titleBarHeight+100}}px);text-align:center;display:inline-block;margin-left:0" class='titleText'>{{navtitle}}</text>
+				<text
+					style="width:calc(100% - {{titleBarHeight+titleBarHeight+100}}px);text-align:center;display:inline-block;margin-left:0"
+					class='titleText'>{{navtitle}}</text>
 			</view>
 		</view>
 	</view>
@@ -15,12 +17,14 @@
 <view class="topMain">
 	<view>
 		<view class="type2">
-		<text style="float:left;width:65rpx;margin-left:25rpx">ID：</text>
-		<text class="type2Detail lineOne" style="float:left;text-align:left;">{{orderDetail.orderIdEve||''}}</text>
+			<text style="float:left;width:65rpx;margin-left:25rpx">ID：</text>
+			<text class="type2Detail lineOne" style="float:left;text-align:left;">{{orderDetail.orderIdEve||''}}</text>
 		</view>
 		<view class="type1">
 			<image class="faIcon" src="../img/fa.svg"></image>
-			<view class="lineOne">{{orderDetail.faHuoArea1Name||''}}{{orderDetail.faHuoArea2Name||''}}{{orderDetail.faHuoArea3Name||''}}{{orderDetail.faHuoAddress||''}}</view>
+			<view class="lineOne">
+				{{orderDetail.faHuoArea1Name||''}}{{orderDetail.faHuoArea2Name||''}}{{orderDetail.faHuoArea3Name||''}}{{orderDetail.faHuoAddress||''}}
+			</view>
 		</view>
 		<view class="type1">
 			<image class="faIcon1" src="../img/date.svg"></image>
@@ -31,7 +35,9 @@
 	<view wx:if='{{orderDetail.shouHuoArea1Id}}'>
 		<view class="type1">
 			<image class="faIcon" src="../img/shou.svg"></image>
-			<view class="lineOne">{{orderDetail.shouHuoArea1Name||''}}{{orderDetail.shouHuoArea2Name||''}}{{orderDetail.shouHuoArea3Name||''}}{{orderDetail.shouHuoAddress||''}}</view>
+			<view class="lineOne">
+				{{orderDetail.shouHuoArea1Name||''}}{{orderDetail.shouHuoArea2Name||''}}{{orderDetail.shouHuoArea3Name||''}}{{orderDetail.shouHuoAddress||''}}
+			</view>
 		</view>
 		<view class="type1">
 			<image class="faIcon1" src="../img/riqi2.svg"></image>
@@ -45,7 +51,9 @@
 	<view wx:if='{{orderDetail.shouHuo1Area1Id}}'>
 		<view class="type1">
 			<image class="faIcon" src="../img/shou.svg"></image>
-			<view class="lineOne">{{orderDetail.shouHuo1Area1Name||''}}{{orderDetail.shouHuo1Area2Name||''}}{{orderDetail.shouHuo1Area3Name||''}}{{orderDetail.shouHuo1Address||''}}</view>
+			<view class="lineOne">
+				{{orderDetail.shouHuo1Area1Name||''}}{{orderDetail.shouHuo1Area2Name||''}}{{orderDetail.shouHuo1Area3Name||''}}{{orderDetail.shouHuo1Address||''}}
+			</view>
 		</view>
 		<view class="type1">
 			<image class="faIcon1" src="../img/riqi2.svg"></image>
@@ -59,7 +67,9 @@
 	<view wx:if='{{orderDetail.shouHuo2Area1Id}}'>
 		<view class="type1">
 			<image class="faIcon" src="../img/shou.svg"></image>
-			<view class="lineOne">{{orderDetail.shouHuo2Area1Name||''}}{{orderDetail.shouHuo2Area2Name||''}}{{orderDetail.shouHuo2Area3Name||''}}{{orderDetail.shouHuo2Address||''}}</view>
+			<view class="lineOne">
+				{{orderDetail.shouHuo2Area1Name||''}}{{orderDetail.shouHuo2Area2Name||''}}{{orderDetail.shouHuo2Area3Name||''}}{{orderDetail.shouHuo2Address||''}}
+			</view>
 		</view>
 		<view class="type1">
 			<image class="faIcon1" src="../img/riqi2.svg"></image>
@@ -73,7 +83,9 @@
 	<view wx:if='{{orderDetail.shouHuo3Area1Id}}'>
 		<view class="type1">
 			<image class="faIcon" src="../img/shou.svg"></image>
-			<view class="lineOne">{{orderDetail.shouHuo3Area1Name||''}}{{orderDetail.shouHuo3Area2Name||''}}{{orderDetail.shouHuo3Area3Name||''}}{{orderDetail.shouHuo3Address||''}}</view>
+			<view class="lineOne">
+				{{orderDetail.shouHuo3Area1Name||''}}{{orderDetail.shouHuo3Area2Name||''}}{{orderDetail.shouHuo3Area3Name||''}}{{orderDetail.shouHuo3Address||''}}
+			</view>
 		</view>
 		<view class="type1">
 			<image class="faIcon1" src="../img/riqi2.svg"></image>
@@ -182,7 +194,7 @@
 	<view class="hisevalute">
 		<view class="titles">他的评价：</view>
 		<view class="starAll" style="width:300rpx;margin-left:24rpx">
-			<view style="display:flex;">
+			<!-- <view style="display:flex;">
 				<view class="star" wx:for='{{yellow_star}}'>
 					<view class="icon icon_yellow"></view>
 				</view>
@@ -194,10 +206,15 @@
 				<view class="star" wx:for='{{gray_star}}'>
 					<view class="icon icon_gray"></view>
 				</view>
-			</view>
+			</view> -->
+			<image wx:for='{{yellow_star}}' class="star" src="../img/xing2.svg"></image>
+			<image wx:for='{{gray_star}}' class="star" src="../img/xing1.svg"></image>
+
 		</view>
 		<view class="point">{{orderDetail.pingJiaScore||0}}分</view>
-		<view class="gopoint" bindtap="gopoint" wx:if='{{orderDetail.chengJiaoIs==1}}'>去评价</view>
+		<view class="gopoint" bindtap="gopoint" wx:if='{{orderDetail.chengJiaoIs==1&&orderDetail.pingJiaIs==0}}'>去评价</view>
+		<view style="clear:both"></view>
+		<view class='pingJiaContent'>{{pingJiaContent||''}} </view>
 	</view>
 </view>
 
@@ -215,6 +232,10 @@
 					<image wx:if='{{item.show}}' src="../img/xing1.svg"></image>
 					<image wx:if='{{!item.show}}' src="../img/xing2.svg"></image>
 				</view>
+			</view>
+			<view class="textarea">
+				<textarea name="textarea" bindinput="pingJiaContent" id="textarea" cols="30" maxlength="100"
+					placeholder="请填写评价(限100字符)" rows="10"></textarea>
 			</view>
 		</view>
 		<view class="makesureThis" catchtap="makesureThis">确定</view>

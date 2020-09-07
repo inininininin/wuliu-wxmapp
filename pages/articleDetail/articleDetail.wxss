@@ -351,3 +351,6 @@ canvas {
   width: 100% !important;
   /* height: auto !important; */
 }
+.detail>view>view{
+  font-size: 28rpx !important;
+}

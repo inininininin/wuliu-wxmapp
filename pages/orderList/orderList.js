@@ -73,7 +73,7 @@ Page({
   // 跳转e
   jumpThis(e) {
     console.log(e.currentTarget.dataset.userideve,e.currentTarget.dataset.chengjiao)
-    if (e.currentTarget.dataset.userideve == 2 && e.currentTarget.dataset.chengjiao == 0) {//别人订单未成交
+    if (e.currentTarget.dataset.userideve == 2 && e.currentTarget.dataset.chengjiao == 0&& e.currentTarget.dataset.selectbaojiais == 0) {//别人订单未成交
       console.log(12312)
       this.renZpd('../orderDetail/orderDetail?id=' + e.currentTarget.dataset.orderid)
     } else if (e.currentTarget.dataset.userideve == 2 && e.currentTarget.dataset.chengjiao == 1) {//别人订单已成交
@@ -96,28 +96,30 @@ Page({
       wx.navigateTo({
         url: '../providerDetail/providerDetail?id=' + e.currentTarget.dataset.orderid,
       })
+    } else if (e.currentTarget.dataset.userideve == 2 && e.currentTarget.dataset.selectbaojiais == 1) {
+      wx.navigateTo({
+        url: '../orderDetailEve/orderDetailEve?id=' + e.currentTarget.dataset.orderid,
+      })
     }
   },
   // 自己订单三个操作
   toLookEve(e) {
-    this.renZpd('../orderDetailEve/orderDetailEve?id=' + e.currentTarget.dataset.orderid)
-    // wx.navigateTo({
-    //   url: '../orderDetailEve/orderDetailEve?id=' + e.currentTarget.dataset.orderid,
-    // })
-
-
+    // this.renZpd('../orderDetailEve/orderDetailEve?id=' + e.currentTarget.dataset.orderid)
+    wx.navigateTo({
+      url: '../orderDetailEve/orderDetailEve?id=' + e.currentTarget.dataset.orderid,
+    })
   },
   toChoice(e) {
-    this.renZpd('../selectprovider/selectprovider?id=' + e.currentTarget.dataset.orderid)
-    // wx.navigateTo({
-    //   url: '../selectprovider/selectprovider?id=' + e.currentTarget.dataset.orderid,
-    // })
+    // this.renZpd('../selectprovider/selectprovider?id=' + e.currentTarget.dataset.orderid)
+    wx.navigateTo({
+      url: '../selectprovider/selectprovider?id=' + e.currentTarget.dataset.orderid,
+    })
   },
   toChoiceEve(e) {
-    this.renZpd('../providerDetail/providerDetail?id=' + e.currentTarget.dataset.orderid)
-    // wx.navigateTo({
-    //   url: '../providerDetail/providerDetail?id=' + e.currentTarget.dataset.orderid,
-    // })
+    // this.renZpd('../providerDetail/providerDetail?id=' + e.currentTarget.dataset.orderid)
+    wx.navigateTo({
+      url: '../providerDetail/providerDetail?id=' + e.currentTarget.dataset.orderid,
+    })
   },
   // 去报价
   toPrice(e) {
@@ -388,9 +390,13 @@ Page({
               res.data.data.itemList[i].huoWuLeiXingName = '食品'
             }
             if (res.data.data.itemList[i].xiangXing == 1) {
-              res.data.data.itemList[i].xiangXingName = '木箱'
+              res.data.data.itemList[i].xiangXingName = '20小箱'
             } else if (res.data.data.itemList[i].xiangXing == 2) {
-              res.data.data.itemList[i].xiangXingName = '纸箱'
+              res.data.data.itemList[i].xiangXingName = '40大箱'
+            } else if (res.data.data.itemList[i].xiangXing == 3) {
+              res.data.data.itemList[i].xiangXingName = '40高箱'
+            } else if (res.data.data.itemList[i].xiangXing == 4) {
+              res.data.data.itemList[i].xiangXingName = '45高箱'
             }
           }
           that.data.orderList.concat(res.data.data.itemList)
@@ -535,9 +541,9 @@ Page({
    */
   onShow: function () {
     console.log(this.data.change)
-    if(app.globalData.userInfoDetail.fuWuShangRenZhengIs!=1){
-      this.ifRenZ()
-    }
+    // if(app.globalData.userInfoDetail.fuWuShangRenZhengIs!=1){
+    //   this.ifRenZ()
+    // }
    
     this.setData({
       loginIf: app.globalData.loginIf

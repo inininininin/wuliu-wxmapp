@@ -73,7 +73,16 @@ function wxParse() {
 function wxParseImgTap(e) {
   var that = this;
   var nowImgUrl = e.target.dataset.src;
+  console.log(nowImgUrl)
   var tagFrom = e.target.dataset.from;
+  console.log(tagFrom)
+  console.log(that.data[tagFrom].imageUrls)
+  for(var i in that.data[tagFrom].imageUrls){
+    if (that.data[tagFrom].imageUrls[i].slice(0, 1) == '/') {
+      that.data[tagFrom].imageUrls[i] = 'https://speedcbox.com' + that.data[tagFrom].imageUrls[i]
+    }
+  }
+  
   if (typeof tagFrom != 'undefined' && tagFrom.length > 0) {
     wx.previewImage({
       current: nowImgUrl, // 当前显示图片的http链接
@@ -145,9 +154,9 @@ function calMoreImageInfo(e, idx, that, bindName) {
 function wxAutoImageCal(originalWidth, originalHeight, that, bindName) {
   //获取图片的原始长宽
   var windowWidth = 0,
-      windowHeight = 0;
+    windowHeight = 0;
   var autoWidth = 0,
-      autoHeight = 0;
+    autoHeight = 0;
   var results = {};
   var padding = that.data[bindName].view.imagePadding;
   windowWidth = realWindowWidth - 2 * padding;

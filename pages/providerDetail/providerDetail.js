@@ -17,7 +17,9 @@ Page({
     orderId: '',
     showPj: false,
     point: '',
-    starList: [{ show: true, point: 1 }, { show: true, point: 2 }, { show: true, point: 3 }, { show: true, point: 4 }, { show: true, point: 5 }]
+    starList: [{ show: true, point: 1 }, { show: true, point: 2 }, { show: true, point: 3 }, { show: true, point: 4 }, { show: true, point: 5 }],
+    pingJiaContentShuru:'',
+    pingJiaContent:'',
   },
   thisBUdong(e){
 
@@ -143,8 +145,12 @@ Page({
     })
 
   },
+  pingJiaContent(e){
+    this.setData({
+      pingJiaContentShuru:e.detail.value
+    })
+  },
   makesureThis(e) {
-    console.log(12312312)
     let that = this
     if (that.data.point == '') {
       wx.showToast({
@@ -157,7 +163,8 @@ Page({
       url: app.globalData.domain + '/wuliu/order/ping-jia-do',
       data: {
         orderId: that.data.orderId,
-        pingJiaScore:that.data.point
+        pingJiaScore:that.data.point,
+        pingJiaContent:that.data.pingJiaContentShuru
       },
       header: {
         "Content-Type": "application/x-www-form-urlencoded",
@@ -243,6 +250,7 @@ Page({
                 res.data.data.itemList[0].xinFengZhuangChuanTime = res.data.data.itemList[0].xinFengZhuangChuanTime?res.data.data.itemList[0].xinFengZhuangChuanTime.slice(0, 10):""
                 res.data.data.itemList[0].anTongZhuangChuanTime = res.data.data.itemList[0].anTongZhuangChuanTime?res.data.data.itemList[0].anTongZhuangChuanTime.slice(0, 10):""
                 res.data.data.itemList[0].anTongDaoGangTime = res.data.data.itemList[0].anTongDaoGangTime?res.data.data.itemList[0].anTongDaoGangTime.slice(0, 10):""
+                
                 that.setData({
                   baojiaDetail: res.data.data.itemList[0]
                 })
@@ -335,6 +343,7 @@ Page({
           }
           res.data.data.orderIdEve=res.data.data.orderId.slice(res.data.data.orderId.length-15,res.data.data.orderId.length)
           that.setData({
+            pingJiaContent:res.data.data.pingJiaContent,
             orderDetail: res.data.data
           })
         } else if (res.data.code == 20) {

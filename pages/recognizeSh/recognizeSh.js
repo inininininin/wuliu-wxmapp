@@ -75,8 +75,8 @@ Page({
           'cookie': wx.getStorageSync('cookie')
         },
         data: {
-          idCard: app.globalData.renzhengcover1,
-          yingYeZhiZhao: app.globalData.renzhengcover2,
+          yingYeZhiZhao: app.globalData.renzhengcover1,
+          idCard: app.globalData.renzhengcover2,
           realname: that.data.realname,
           fuWuShangIntro: that.data.fuWuShangIntro,
           company: that.data.company
@@ -154,7 +154,7 @@ Page({
           })
           return
         }
-        yingYeZhiZhao=app.globalData.renzhengcover2
+        yingYeZhiZhao=app.globalData.renzhengcover1
       }
       wx.showToast({
         title: '请稍等',
@@ -168,7 +168,7 @@ Page({
           'cookie': wx.getStorageSync('cookie')
         },
         data: {
-          idCard: app.globalData.renzhengcover1,
+          idCard: app.globalData.renzhengcover2,
           yingYeZhiZhao: yingYeZhiZhao,
           realname: that.data.realname,
           renZhengType: that.data.type,
@@ -238,10 +238,10 @@ Page({
     console.log(options.type)
     
     if (app.globalData.userInfoDetail.idCard) {
-      app.globalData.renzhengcover1 = app.globalData.userInfoDetail.idCard
+      app.globalData.renzhengcover2 = app.globalData.userInfoDetail.idCard
     }
     if (app.globalData.userInfoDetail.yingYeZhiZhao) {
-      app.globalData.renzhengcover2 = app.globalData.userInfoDetail.yingYeZhiZhao
+      app.globalData.renzhengcover1 = app.globalData.userInfoDetail.yingYeZhiZhao
     }
     this.setData({
       realname: app.globalData.userInfoDetail.realname || '',

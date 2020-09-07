@@ -49,10 +49,11 @@
 						<text class="lineOne">{{item.shouHuoArea2Name||''}}{{item.shouHuoArea3Name||''}}</text>
 					</view>
 				</view>
-				<view class="toPrice" bindtap="toPrice" data-orderid='{{item.orderId}}' wx:if='{{item.chengJiaoIs==0&&item.userIdEve==2}}'>去报价</view>
-				<view class="toPrice" bindtap="toChoice" data-orderid='{{item.orderId}}' wx:if='{{item.chengJiaoIs==0&&item.userIdEve==1&&item.baoJiaIs==1&&item.selectedBaoJiaIs==0}}'>去选择</view>
-				<view class="toPrice" data-orderid='{{item.orderId}}' bindtap="toChoiceEve" wx:if='{{item.chengJiaoIs==0&&item.userIdEve==1&&item.baoJiaIs==1&&item.selectedBaoJiaIs==1}}'>去确认</view>
-				<view class="toPrice" data-orderid='{{item.orderId}}' bindtap="toLookEve" wx:if='{{item.chengJiaoIs==0&&item.userIdEve==1&&item.baoJiaIs==0&&item.selectedBaoJiaIs==0}}'>去查看</view>
+				<view class="toPrice" catchtap="toPrice" data-orderid='{{item.orderId}}' wx:if='{{item.chengJiaoIs==0&&item.userIdEve==2&&item.selectedBaoJiaIs==0}}'>去报价</view>
+				<view class="toPrice" catchtap="toLookEve" data-orderid='{{item.orderId}}' wx:if='{{item.chengJiaoIs==0&&item.userIdEve==2&&item.selectedBaoJiaIs==1}}'>去查看</view>
+				<view class="toPrice" catchtap="toChoice" data-orderid='{{item.orderId}}' wx:if='{{item.chengJiaoIs==0&&item.userIdEve==1&&item.baoJiaIs==1&&item.selectedBaoJiaIs==0}}'>去选择</view>
+				<view class="toPrice" data-orderid='{{item.orderId}}' catchtap="toChoiceEve" wx:if='{{item.chengJiaoIs==0&&item.userIdEve==1&&item.baoJiaIs==1&&item.selectedBaoJiaIs==1}}'>去确认</view>
+				<view class="toPrice" data-orderid='{{item.orderId}}' catchtap="toLookEve" wx:if='{{item.chengJiaoIs==0&&item.userIdEve==1&&item.baoJiaIs==0&&item.selectedBaoJiaIs==0}}'>去查看</view>
 			</view>
 			<view class="orderItemThree lineOne">
 				<text>货物：{{item.huoWuLeiXingName}}，{{item.xiangXingName}}</text>
