@@ -219,7 +219,7 @@
 				</view>
 			</view>
 			<view class="textarea">
-				<textarea name="textarea" bindinput="pingJiaContent" id="textarea" cols="30" maxlength="100"  placeholder="请填写评价" rows="10"></textarea>
+				<textarea name="textarea" bindinput="pingJiaContent" id="textarea" cols="30" maxlength="100"  placeholder="请填写评价(限100字符)" rows="10"></textarea>
 			</view>
 		</view>
 		<view class="makesureThis" catchtap="makesureThis">确定</view>
