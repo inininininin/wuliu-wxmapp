@@ -26,7 +26,7 @@
 
 <view class="lineEve" wx:if='{{show1}}'>
 	<text>公司名</text>
-	<input type="number" value="{{company}}" bindinput="company" placeholder="请输入"></input>
+	<input type="text" value="{{company}}" bindinput="company" placeholder="请输入"></input>
 </view>
 <view class="lineEve" wx:if='{{show3}}'>
 	<text>公司电话</text>

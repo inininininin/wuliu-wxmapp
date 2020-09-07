@@ -73,7 +73,7 @@ Page({
   // 跳转e
   jumpThis(e) {
     console.log(e.currentTarget.dataset.userideve,e.currentTarget.dataset.chengjiao)
-    if (e.currentTarget.dataset.userideve == 2 && e.currentTarget.dataset.chengjiao == 0) {//别人订单未成交
+    if (e.currentTarget.dataset.userideve == 2 && e.currentTarget.dataset.chengjiao == 0&& e.currentTarget.dataset.selectbaojiais == 0) {//别人订单未成交
       console.log(12312)
       this.renZpd('../orderDetail/orderDetail?id=' + e.currentTarget.dataset.orderid)
     } else if (e.currentTarget.dataset.userideve == 2 && e.currentTarget.dataset.chengjiao == 1) {//别人订单已成交
@@ -95,6 +95,10 @@ Page({
     } else if (e.currentTarget.dataset.userideve == 1 &&e.currentTarget.dataset.chengjiao == 0 && e.currentTarget.dataset.baojiais == 1 && e.currentTarget.dataset.selectbaojiais == 1) {
       wx.navigateTo({
         url: '../providerDetail/providerDetail?id=' + e.currentTarget.dataset.orderid,
+      })
+    } else if (e.currentTarget.dataset.userideve == 2 && e.currentTarget.dataset.selectbaojiais == 1) {
+      wx.navigateTo({
+        url: '../orderDetailEve/orderDetailEve?id=' + e.currentTarget.dataset.orderid,
       })
     }
   },
@@ -388,9 +392,13 @@ Page({
               res.data.data.itemList[i].huoWuLeiXingName = '食品'
             }
             if (res.data.data.itemList[i].xiangXing == 1) {
-              res.data.data.itemList[i].xiangXingName = '木箱'
+              res.data.data.itemList[i].xiangXingName = '20小箱'
             } else if (res.data.data.itemList[i].xiangXing == 2) {
-              res.data.data.itemList[i].xiangXingName = '纸箱'
+              res.data.data.itemList[i].xiangXingName = '40大箱'
+            } else if (res.data.data.itemList[i].xiangXing == 3) {
+              res.data.data.itemList[i].xiangXingName = '40高箱'
+            } else if (res.data.data.itemList[i].xiangXing == 4) {
+              res.data.data.itemList[i].xiangXingName = '45高箱'
             }
           }
           that.data.orderList.concat(res.data.data.itemList)
