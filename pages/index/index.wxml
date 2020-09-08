@@ -72,3 +72,14 @@
 <view class="toTop" bindtap="toTop" wx:if='{{toTopShow}}'>
 	<image src="../img/toTop.svg"></image>
 </view>
+
+
+<view class="popWindowRz" bindtap="closePop" wx:if='{{show1}}'>
+	<view class="popBox" catchtap="clearThis">
+		<view class="popTop">
+			<text>您还没有进行认证</text>
+			<text>选择报价需要先进行资质认证</text>
+		</view>
+		<view class="popBot" bindtap="goRecognizeZZ">去认证</view>
+	</view>
+</view>

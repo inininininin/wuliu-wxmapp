@@ -12,30 +12,29 @@ Page({
     showIsIcon: false,
     orderList: [],
     totalCount: '0',
-    navbar: ['已报价订单', '已完成订单', '已完成订单', '已完成订单1', '已完成订单2', '已完成订单2'],
-    navbar: [{ 'name': '全部', 'type': '', 'value': [{ 'name': '全部', 'type': '' }] }, { 'name': '日用品', 'type': 1, 'value': [{ 'name': '全部', 'type': 11 }] }],
+    navbar: [{ 'name': '全部', 'typeId': '', 'value': [{ 'name': '全部', 'typeId': '' }] }],// [{ 'name': '全部', 'type': '', 'value': [{ 'name': '全部', 'type': '' }] }, { 'name': '日用品', 'type': 1, 'value': [{ 'name': '全部', 'type': 11 }] }],
     // navbar: [{ 'name': '全部', 'type': '', 'value': [{ 'name': '全部', 'type': '' }] }, { 'name': '日用品', 'type': 1, 'value': [{ 'name': '全部', 'type': 11 }, { 'name': '电灯', 'type': 12 }] }, { 'name': '进口', 'type': 2, 'value': [{ 'name': '全部', 'type': 21 }, { 'name': '冰棍', 'type': 22 }] }, { 'name': '服装', 'type': 3, 'value': [{ 'name': '全部', 'type': 31 }, { 'name': '男装', 'type': 32 }, { 'name': '女装', 'type': 33 }] }, { 'name': '食品', 'type': 4, 'value': [{ 'name': '全部', 'type': 41 }, { 'name': '牛奶', 'type': 42 }, { 'name': '酸奶', 'type': 43 }, { 'name': '坚果', 'type': 44 }, { 'name': '肉', 'type': 45 }, { 'name': '膨化食品', 'type': 46 }, { 'name': '脱水蔬菜', 'type': 47 }, { 'name': '水果', 'type': 48 }] }, { 'name': '医药', 'type': 5, 'value': [{ 'name': '全部', 'type': 51 }, { 'name': '日用品', 'type': 52 }, { 'name': '医疗器械', 'type': 53 }] }, { 'name': '母婴', 'type': 6, 'value': [{ 'name': '全部', 'type': 61 }, { 'name': '奶粉', 'type': 62 }, { 'name': '衣服', 'type': 63 }] }, { 'name': '电器', 'type': 7, 'value': [{ 'name': '全部', 'type': 71 }, { 'name': '手机', 'type': 72 }, { 'name': '电脑', 'type': 73 }] }, { 'name': '配件', 'type': 8, 'value': [{ 'name': '全部', 'type': 81 }, { 'name': '五金', 'type': 82 }, { 'name': '水管', 'type': 83 }] }],
     currentTab: 0,
     navbarEve: [],
     currentTabEve: 0,
+    typeId: '',
     type1Id: '',
-    type2Id: '',
     kw: '',
     listTitle: '',
-    toTopShow:false
+    toTopShow: false
   },
-  onPageScroll(e){
-    if(e.scrollTop>200){
+  onPageScroll(e) {
+    if (e.scrollTop > 200) {
       this.setData({
-        toTopShow:true
+        toTopShow: true
       })
-    }else{
+    } else {
       this.setData({
-        toTopShow:false
+        toTopShow: false
       })
     }
   },
-  toTop(e){
+  toTop(e) {
     wx.pageScrollTo({
       scrollTop: 0
     })
@@ -80,8 +79,8 @@ Page({
       currentTab: e.currentTarget.dataset.idx,
       navbarEve: this.data.navbar[e.currentTarget.dataset.idx].value,
       currentTabEve: 0,
-      type1Id: e.currentTarget.dataset.typeid,
-      type2Id: this.data.navbar[e.currentTarget.dataset.idx].value[0].type,
+      typeId: e.currentTarget.dataset.typeid,
+      type1Id: this.data.navbar[e.currentTarget.dataset.idx].value[0].typeId,
       orderList: [],
       // totalCount: 0,
       pageNo: 1,
@@ -93,7 +92,7 @@ Page({
   navbarTapEve: function (e) {
     this.setData({
       currentTabEve: e.currentTarget.dataset.idx,
-      type2Id: e.currentTarget.dataset.typeid,
+      type1Id: e.currentTarget.dataset.typeid,
       orderList: [],
       // totalCount: 0,
       pageNo: 1,
@@ -112,8 +111,59 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({
-      navbarEve: this.data.navbar[0].value
+    let that = this
+
+    wx.request({
+      url: app.globalData.domain + '/wuliu/goods/types',
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded",
+        'cookie': wx.getStorageSync('cookie')
+      },
+      data: {
+        sort: 'level',
+        order: 'asc',
+      },
+      method: 'post',
+      success: function (res) {
+        wx.hideToast()
+        if (res.data.code == 0) {
+          // app.globalData.userInfoDetail = res.data.data
+          // app.globalData.loginIf = 1
+          let navbar = [{ 'name': '全部', 'typeId': '', 'value': [{ 'name': '全部', 'typeId': '' }] }]
+          for (var i in res.data.data.items) {
+            if (res.data.data.items[i].level == 0) {
+              res.data.data.items[i].value = [{'name':'全部','typeId':''}]
+              navbar.push(res.data.data.items[i])
+            } else if (res.data.data.items[i].level == 1) {
+              console.log(navbar)
+              let upperId = res.data.data.items[i].upperId
+              for (var s in navbar) {
+                if (upperId == navbar[s].typeId) {
+                  navbar[s].value.push(res.data.data.items[i])
+                }
+                // console.log(navbar)
+              }
+            }
+            // console.log(navbar)
+          }
+          console.log(navbar)
+          that.setData({
+            navbar: navbar,
+            navbarEve: navbar[0].value,
+            typeId: navbar[0].typeId,
+            type1Id: navbar[0].value[0].typeId
+          })
+          console.log(that.data.typeId, that.data.type1Id)
+          that.firstPage(1)
+        } else if (res.data.code == 20) {
+          app.globalData.loginIf = 0
+        } else {
+          wx.showToast({
+            title: res.data.codeMsg,
+            icon: 'none'
+          })
+        }
+      }
     })
     if (app.globalData.loginIf == 0) {
       wx.request({
@@ -142,7 +192,7 @@ Page({
         }
       })
     }
-    this.firstPage(1)
+   
     // this.lastPageNumber()
   },
 
@@ -221,13 +271,15 @@ Page({
 
   },
   firstPage(pageNo) {
+
     let that = this
+    console.log(that.data.typeId, that.data.type1Id)
     wx.request({
       url: app.globalData.domain + '/wuliu/goods/goodses-sum',
       data: {
         kw: that.data.kw,
+        typeId: that.data.typeId,
         type1Id: that.data.type1Id,
-        type2Id: that.data.type2Id,
       },
       header: {
         "Content-Type": "application/x-www-form-urlencoded",
@@ -245,12 +297,13 @@ Page({
           that.setData({
             totalCount: res.data.data.itemCount
           })
+          console.log(res.data.data.itemCount)
           wx.request({
             url: app.globalData.domain + '/wuliu/goods/goodses',
             data: {
               kw: that.data.kw,
+              typeId: that.data.typeId,
               type1Id: that.data.type1Id,
-              type2Id: that.data.type2Id,
               pn: pageNo,
               ps: 15
             },
@@ -306,28 +359,28 @@ Page({
                   } else {
                     res.data.data.items[i].jinPrice = ''
                   }
-// 重量
-if (res.data.data.items[i].xiaoGuiWeight && res.data.data.items[i].xiaoGuiWeight < 1000) {
-  res.data.data.items[i].xiaoGuiWeight = res.data.data.items[i].xiaoGuiWeight + 'KG'
-} else if (res.data.data.items[i].xiaoGuiWeight && res.data.data.items[i].xiaoGuiWeight >= 1000) {
-  res.data.data.items[i].xiaoGuiWeight = (res.data.data.items[i].xiaoGuiWeight / 1000).toFixed(1) + '吨'
-} else {
-  res.data.data.items[i].xiaoGuiWeight = ''
-}
-if (res.data.data.items[i].diyGuiWeight && res.data.data.items[i].diyGuiWeight < 1000) {
-  res.data.data.items[i].diyGuiWeight = res.data.data.items[i].diyGuiWeight + 'KG'
-} else if (res.data.data.items[i].diyGuiWeight && res.data.data.items[i].diyGuiWeight >= 1000) {
-  res.data.data.items[i].diyGuiWeight = (res.data.data.items[i].diyGuiWeight / 1000).toFixed(1) + '吨'
-} else {
-  res.data.data.items[i].diyGuiWeight = ''
-}
-if (res.data.data.items[i].daGuiWeight && res.data.data.items[i].daGuiWeight < 1000) {
-  res.data.data.items[i].daGuiWeight = res.data.data.items[i].daGuiWeight + 'KG'
-} else if (res.data.data.items[i].daGuiWeight && res.data.data.items[i].daGuiWeight >= 1000) {
-  res.data.data.items[i].daGuiWeight = (res.data.data.items[i].daGuiWeight / 1000).toFixed(1) + '吨'
-} else {
-  res.data.data.items[i].daGuiWeight = ''
-}
+                  // 重量
+                  if (res.data.data.items[i].xiaoGuiWeight && res.data.data.items[i].xiaoGuiWeight < 1000) {
+                    res.data.data.items[i].xiaoGuiWeight = res.data.data.items[i].xiaoGuiWeight + 'KG'
+                  } else if (res.data.data.items[i].xiaoGuiWeight && res.data.data.items[i].xiaoGuiWeight >= 1000) {
+                    res.data.data.items[i].xiaoGuiWeight = (res.data.data.items[i].xiaoGuiWeight / 1000).toFixed(1) + '吨'
+                  } else {
+                    res.data.data.items[i].xiaoGuiWeight = ''
+                  }
+                  if (res.data.data.items[i].diyGuiWeight && res.data.data.items[i].diyGuiWeight < 1000) {
+                    res.data.data.items[i].diyGuiWeight = res.data.data.items[i].diyGuiWeight + 'KG'
+                  } else if (res.data.data.items[i].diyGuiWeight && res.data.data.items[i].diyGuiWeight >= 1000) {
+                    res.data.data.items[i].diyGuiWeight = (res.data.data.items[i].diyGuiWeight / 1000).toFixed(1) + '吨'
+                  } else {
+                    res.data.data.items[i].diyGuiWeight = ''
+                  }
+                  if (res.data.data.items[i].daGuiWeight && res.data.data.items[i].daGuiWeight < 1000) {
+                    res.data.data.items[i].daGuiWeight = res.data.data.items[i].daGuiWeight + 'KG'
+                  } else if (res.data.data.items[i].daGuiWeight && res.data.data.items[i].daGuiWeight >= 1000) {
+                    res.data.data.items[i].daGuiWeight = (res.data.data.items[i].daGuiWeight / 1000).toFixed(1) + '吨'
+                  } else {
+                    res.data.data.items[i].daGuiWeight = ''
+                  }
                 }
                 that.data.orderList.concat(res.data.data.items)
                 var orderListArr = that.data.orderList;
@@ -367,8 +420,8 @@ if (res.data.data.items[i].daGuiWeight && res.data.data.items[i].daGuiWeight < 1
       url: app.globalData.domain + '/wuliu/goods/goodses',
       data: {
         kw: that.data.kw,
+        typeId: that.data.typeId,
         type1Id: that.data.type1Id,
-        type2Id: that.data.type2Id,
         pn: pageNo,
         ps: 15
       },
@@ -450,8 +503,8 @@ if (res.data.data.items[i].daGuiWeight && res.data.data.items[i].daGuiWeight < 1
       url: app.globalData.domain + '/wuliu/goods/goodses-sum',
       data: {
         kw: that.data.kw,
+        typeId: that.data.typeId,
         type1Id: that.data.type1Id,
-        type2Id: that.data.type2Id,
       },
       header: {
         "Content-Type": "application/x-www-form-urlencoded",

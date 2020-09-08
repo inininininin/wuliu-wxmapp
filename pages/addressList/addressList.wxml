@@ -1,0 +1,7 @@
+<!--pages/addressList/addressList.wxml-->
+<view class="addressList">
+  <view class="addressItem" wx:for='{{fahuoAddressList}}' bindtap="selectThis" data-address='{{item}}'>
+    <view class="lineStart">{{item.faHuoArea1Name}}{{item.faHuoArea2Name}}{{item.faHuoArea3Name}}</view>
+    <view class="lineEnd">{{item.faHuoAddress}}</view>
+  </view>
+</view>

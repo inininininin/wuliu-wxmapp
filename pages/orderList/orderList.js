@@ -595,7 +595,32 @@ Page({
       this.lastPage('', this.data.chengJiaoIs, '', this.data.faHuoAreaId, this.data.shouHuoAreaId, this.data.sort, this.data.order, 1)
       this.lastPageNumber('', this.data.chengJiaoIs, '', this.data.faHuoAreaId, this.data.shouHuoAreaId)
     }
-
+    let that=this
+    wx.request({
+      url: app.globalData.domain + '/wuliu/login-refresh',
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded",
+        'cookie': wx.getStorageSync('cookie')
+      },
+      method: 'post',
+      success: function (res) {
+        wx.hideToast()
+        if (res.data.code == 0) {
+          app.globalData.userInfoDetail = res.data.data
+          app.globalData.loginIf = 1
+          that.setData({
+            loginIf: app.globalData.loginIf
+          })
+        } else if (res.data.code == 20) {
+          app.globalData.loginIf = 0
+        } else {
+          wx.showToast({
+            title: res.data.codeMsg,
+            icon: 'none'
+          })
+        }
+      }
+    })
     wx.stopPullDownRefresh()
   },
 

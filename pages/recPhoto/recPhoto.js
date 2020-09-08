@@ -45,10 +45,6 @@ Page({
             app.globalData.renzhengcover1=app.cover(url)
           }else  if(that.data.type==2){
             app.globalData.renzhengcover2=app.cover(url)
-          }else  if(that.data.type==3){
-            app.globalData.renzhengcover3=app.cover(url)
-          }else  if(that.data.type==4){
-            app.globalData.renzhengcover4=app.cover(url)
           }
           wx.showToast({
             title: '上传成功',
@@ -87,14 +83,6 @@ Page({
     }else if(options.typeId==2){
       this.setData({
         tempFilePaths:app.globalData.renzhengcover2
-      })
-    }else if(options.typeId==3){
-      this.setData({
-        tempFilePaths:app.globalData.renzhengcover3
-      })
-    }else if(options.typeId==4){
-      this.setData({
-        tempFilePaths:app.globalData.renzhengcover4
       })
     }
   },
