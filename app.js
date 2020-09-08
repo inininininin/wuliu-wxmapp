@@ -1,6 +1,6 @@
 //app.js
 App({
-  version:'1.0.2009072344',
+  version:'1.0.2009081702',
   versionNote:'修复了一些BUG, 优化了用户体验.',
   globalData: {
     userInfo: null,
