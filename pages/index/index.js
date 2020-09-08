@@ -15,6 +15,7 @@ Page({
     loginIf: '0',
     listTitle: '',
     show:false,
+    show1:false,
     toTopShow:false
   },
   onPageScroll(e){
@@ -36,16 +37,27 @@ Page({
   // 关闭弹窗
   closePop(e){
     this.setData({
-      show:false
+      show:false,
+      show1:false,
     })
   },
   // 去认证
   goRecognize(e){
     this.setData({
-      show:false
+      show:false,
+      show1:false
     })
     wx.navigateTo({
       url: '../recognize/recognize',
+    })
+  },
+  // 服务商认证
+  goRecognizeZZ(e){
+    this.setData({
+      show1: false
+    })
+    wx.navigateTo({
+      url: '../recognizeSh/recognizeSh?type=0',
     })
   },
   // 查看行业详情
@@ -133,10 +145,44 @@ Page({
 
   },
   baojia() {
-    
-    wx.switchTab({
-      url: '../orderList/orderList',
-    })
+    let that = this
+    if (app.globalData.userInfoDetail.fuWuShangRenZhengIs == 0 && app.globalData.userInfoDetail.fuWuShangRenZhengTiJiaoIs == 0) {
+      that.setData({
+        show1: true
+      })
+      return
+    } else if (app.globalData.userInfoDetail.fuWuShangRenZhengIs == 0 && app.globalData.userInfoDetail.fuWuShangRenZhengTiJiaoIs == 1) {
+      wx.showToast({
+        title: '认证已提交审核，请等待',
+        icon: 'none'
+      })
+      return
+    } else if (app.globalData.userInfoDetail.fuWuShangRenZhengIs == 2 && app.globalData.userInfoDetail.fuWuShangRenZhengTiJiaoIs == 1) {
+      wx.showToast({
+        title: '认证已提交审核，请等待',
+        icon: 'none'
+      })
+      return
+    } else if (app.globalData.userInfoDetail.fuWuShangRenZhengIs == 2 && app.globalData.userInfoDetail.fuWuShangRenZhengTiJiaoIs == 0) {
+      wx.showToast({
+        title: app.globalData.userInfoDetail.fuWuShangRenZhengNote + '，请重新提交认证！',
+        icon: 'none',
+        duration: 1000,
+        mask: true,
+        complete: function complete(res) {
+          setTimeout(function () {
+            that.setData({
+              show1: true
+            })
+            return
+          }, 1000);
+        }
+      });
+    } else {
+      wx.switchTab({
+        url: '../orderList/orderList',
+      })
+    }
   },
 
   /**
@@ -379,6 +425,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
+    
     if (app.globalData.loginIf == 1) {
       this.setData({
         articleList: [],
@@ -390,7 +437,7 @@ Page({
       // this.lastPageNumber()
       // this.lastPage(1)
     }
-
+    this.loginRdfresh()
     wx.stopPullDownRefresh()
   },
 

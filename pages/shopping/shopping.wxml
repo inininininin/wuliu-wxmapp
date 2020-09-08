@@ -16,10 +16,10 @@
 </view>
 <view class="navbarList" style="position:fixed;top:{{statusBarHeight+titleBarHeight}}px">
 	<scroll-view scroll-x='true' bindscroll="scroll" style="width: 100%" class="scroll-header navbar">
-		<view wx:for="{{navbar}}" data-idx="{{index}}" data-typeid='{{item.type}}' class="scroll-view-item item {{currentTab==index ? 'active' : ''}}" wx:key="unique" bindtap="navbarTap">{{item.name}}</view>
+		<view wx:for="{{navbar}}" data-idx="{{index}}" data-typeid='{{item.typeId}}' class="scroll-view-item item {{currentTab==index ? 'active' : ''}}" wx:key="unique" bindtap="navbarTap">{{item.name}}</view>
 	</scroll-view>
 	<scroll-view scroll-x='true' bindscroll="scroll" style="width: 100%" class="scroll-header-this navbarEve">
-		<view wx:for="{{navbarEve}}" data-idx="{{index}}" data-typeid='{{item.type}}' class="scroll-view-item item {{currentTabEve==index ? 'active' : ''}}" wx:key="unique" bindtap="navbarTapEve">{{item.name}}</view>
+		<view wx:for="{{navbarEve}}" data-idx="{{index}}" data-typeid='{{item.typeId}}' class="scroll-view-item item {{currentTabEve==index ? 'active' : ''}}" wx:key="unique" bindtap="navbarTapEve">{{item.name}}</view>
 	</scroll-view>
 </view>
 <view wx:if='{{loginIf==1}}'>

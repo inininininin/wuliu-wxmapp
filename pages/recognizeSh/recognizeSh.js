@@ -75,8 +75,8 @@ Page({
           'cookie': wx.getStorageSync('cookie')
         },
         data: {
-          yingYeZhiZhao: app.globalData.renzhengcover1,
           idCard: app.globalData.renzhengcover2,
+          yingYeZhiZhao: app.globalData.renzhengcover1,
           realname: that.data.realname,
           fuWuShangIntro: that.data.fuWuShangIntro,
           company: that.data.company
@@ -137,7 +137,7 @@ Page({
     }else{
       let yingYeZhiZhao=''
       if(that.data.type==1){
-        if (app.globalData.renzhengcover1 == ""  || that.data.realname == ""  || that.data.company == "") {
+        if (app.globalData.renzhengcover2 == ""  || that.data.realname == ""  || that.data.company == "") {
           wx.showToast({
             title: '请将信息填写完整',
             icon: 'none'
@@ -237,11 +237,11 @@ Page({
   onLoad: function (options) {
     console.log(options.type)
     
-    if (app.globalData.userInfoDetail.idCard) {
-      app.globalData.renzhengcover2 = app.globalData.userInfoDetail.idCard
-    }
     if (app.globalData.userInfoDetail.yingYeZhiZhao) {
       app.globalData.renzhengcover1 = app.globalData.userInfoDetail.yingYeZhiZhao
+    }
+    if (app.globalData.userInfoDetail.idCard) {
+      app.globalData.renzhengcover2 = app.globalData.userInfoDetail.idCard
     }
     this.setData({
       realname: app.globalData.userInfoDetail.realname || '',

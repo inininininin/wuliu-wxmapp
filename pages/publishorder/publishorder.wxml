@@ -3,7 +3,7 @@
 	<view class="faaddress">
 		<image src="../img/fa.svg"></image>
 		<view>
-			<view>
+			<view class="fahuodizhi">
 				<picker class="orderSelcet" wx:if='{{fahuoList.picker}}' mode="region" style="color:#999" bindchange="bindRegionChange" value="{{fahuoList.region}}" custom-item="{{customItem}}">
 					<view class="picker lineOne">
 						请选择发货地：省-市-区
@@ -14,6 +14,7 @@
 						{{fahuoList.faHuoArea1Name}}，{{fahuoList.faHuoArea2Name}}，{{fahuoList.faHuoArea3Name}}
 					</view>
 				</picker>
+				<view class="dizhibu" bindtap="dizhibu">地址簿</view>
 			</view>
 			<view>
 				<input class="faaddress2" placeholder-class="placeholder" placeholder="详细地址" bindinput="faHuoAddress" value="{{fahuoList.faHuoAddress}}"></input>

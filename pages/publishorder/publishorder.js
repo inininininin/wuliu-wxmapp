@@ -35,6 +35,15 @@ Page({
     huoWuWeight: '',
     baoZhuangFangShi: '',
     note:'',
+    fahuoAddressList:[],
+    fahuoAddressListEve:[],
+  },
+  // 地址簿
+  dizhibu(e){
+    console.log(this.data.fahuoList.faHuoTime)
+    wx.navigateTo({
+      url: '../addressList/addressList',
+    })
   },
   //  发货地址
   bindRegionChange: function (e) {
@@ -49,6 +58,7 @@ Page({
       this.setData({
         fahuoList: this.data.fahuoList
       })
+      console.log(that.data.fahuoList)
   },
   // 发货详细地址
   faHuoAddress(e) {
@@ -549,7 +559,49 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    let that=this
+    wx.request({
+      url: app.globalData.domain + '/wuliu/order/history-fa-huo-addresses',
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded",
+        'cookie': wx.getStorageSync('cookie')
+      },
+      method: 'post',
+      success: function (res) {
+        if(res.data.codeMsg&&res.data.code!=20){
+          wx.showToast({
+            title: res.data.codeMsg,
+            icon: 'none'
+          })
+        }
+        if (res.data.code == 0) {
+          if(res.data.data.items&&res.data.data.items.length>0){
+            that.data.fahuoList.region = [res.data.data.items[0].faHuoArea1Name,res.data.data.items[0].faHuoArea2Name,res.data.data.items[0].faHuoArea3Name],
+            that.data.fahuoList.picker = false,
+            that.data.fahuoList.faHuoArea1Id = res.data.data.items[0].faHuoArea1Id,
+            that.data.fahuoList.faHuoArea2Id = res.data.data.items[0].faHuoArea2Id,
+            that.data.fahuoList.faHuoArea3Id = res.data.data.items[0].faHuoArea3Id,
+            that.data.fahuoList.faHuoArea1Name = res.data.data.items[0].faHuoArea1Name,
+            that.data.fahuoList.faHuoArea2Name = res.data.data.items[0].faHuoArea2Name,
+            that.data.fahuoList.faHuoArea3Name = res.data.data.items[0].faHuoArea3Name,
+            that.data.fahuoList.faHuoAddress=res.data.data.items[0].faHuoAddress
+            that.setData({
+              fahuoAddressList:res.data.data.items,
+              fahuoAddressListEve:res.data.data.items[0],
+              fahuoList:that.data.fahuoList,
+            })
+          }
+         
+        } else if (res.data.code == 20) {
+          app.globalData.loginIf = 0
+        } else {
+          wx.showToast({
+            title: res.data.codeMsg,
+            icon: 'none'
+          })
+        }
+      }
+    })
   },
 
   /**
