@@ -43,16 +43,17 @@ Page({
         }
         if (res.data.code == 0) {
           if (res.data.data.items && res.data.data.items.length > 0) {
-
+            console.log(options.fahoTime)
             for (var i in res.data.data.items) {
               res.data.data.items[i].picker = false
               res.data.data.items[i].region = [res.data.data.items[i].faHuoArea1Name, res.data.data.items[i].faHuoArea2Name, res.data.data.items[i].faHuoArea3Name]
+              res.data.data.items[i].faHuoTime=options.faHuoTime
+              res.data.data.items[i].colorTime=options.colorTime
             }
             that.setData({
-              fahuoAddressList: res.data.data.items,
-              fahuoAddressListEve: res.data.data.items[0]
+              fahuoAddressList: res.data.data.items
             })
-
+            console.log(that.data.fahuoAddressList)
           }
 
         } else if (res.data.code == 20) {

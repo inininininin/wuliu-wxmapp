@@ -40,9 +40,9 @@ Page({
   },
   // 地址簿
   dizhibu(e){
-    console.log(this.data.fahuoList.faHuoTime)
+    // console.log(this.data.fahuoList.faHuoTime)
     wx.navigateTo({
-      url: '../addressList/addressList',
+      url: '../addressList/addressList?faHuoTime='+this.data.fahuoList.faHuoTime+"&colorTime="+this.data.fahuoList.colorTime,
     })
   },
   //  发货地址
