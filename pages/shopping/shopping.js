@@ -255,7 +255,7 @@ Page({
    */
   onReachBottom: function () {
     // if (app.globalData.loginIf == 1) {
-    var pageNo = this.data.pageNo + 1
+    var pageNo = parseInt(this.data.pageNo) + 1
     this.setData({
       listTitle: '正在载入更多.'
     })
@@ -387,7 +387,7 @@ Page({
                 var neworderListArr = orderListArr.concat(res.data.data.items)
                 that.setData({
                   orderList: neworderListArr,
-                  pageNo: pageNo,
+                  pageNo: parseInt(pageNo),
                 })
                 if (res.data.data.items && res.data.data.items.length < 15) {
                   that.setData({

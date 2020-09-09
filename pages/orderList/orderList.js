@@ -404,7 +404,7 @@ Page({
           var neworderListArr = orderListArr.concat(res.data.data.itemList)
           that.setData({
             orderList: neworderListArr,
-            pageNo: pageNo,
+            pageNo: parseInt(pageNo),
           })
           if (res.data.data.itemList && res.data.data.itemList.length < 15) {
             that.setData({
@@ -629,7 +629,7 @@ Page({
    */
   onReachBottom: function () {
     if (app.globalData.loginIf == 1) {
-      var pageNo = this.data.pageNo + 1
+      var pageNo = parseInt(this.data.pageNo) + 1
       this.setData({
         listTitle: '正在载入更多.'
       })
