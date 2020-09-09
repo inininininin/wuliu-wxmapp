@@ -1,20 +1,20 @@
 //app.js
 App({
-  version:'1.0.2009081720',
+  version:'1.0.2009091035',
   versionNote:'修复了一些BUG, 优化了用户体验.',
   globalData: {
     userInfo: null,
-    userInfoDetail:[],
-    statusBarHeight:'',
-    titleBarHeight:'',
-    loginIf:'0',
-    domain:'https://speedcbox.com',
-    renzhengcover1:'',
-    renzhengcover2:'',
-    renzhengcover3:'',
-    renzhengcover4:'',
+    userInfoDetail: [],
+    statusBarHeight: '',
+    titleBarHeight: '',
+    loginIf: '0',
+    domain: 'https://speedcbox.com',
+    renzhengcover1: '',
+    renzhengcover2: '',
+    renzhengcover3: '',
+    renzhengcover4: '',
   },
-  
+
   onLaunch: function () {
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
@@ -22,51 +22,52 @@ App({
     wx.setStorageSync('logs', logs)
     const vm = this
     // 登录
-    wx.login({
-      success: res => {
-        console.log(res.code)
-        // 发送 res.code 到后台换取 openId, sessionKey, unionId
-        // wx.request({
-        //   url: vm.globalData.url + '/refresh-wx-session-key',
-        //   header: {
-        //     "Content-Type": "application/x-www-form-urlencoded",
-        //     'cookie': wx.getStorageSync('cookie')
-        //   },
-        //   method: 'post',
-        //   data: {
-        //     jscode: res.code,
-        //   },
-        //   success: function (res) {
-        //     wx.hideToast()
-        //     if (res.data.code == 0) {
-        //       // wx.setStorageSync('cookie', res.header['Set-Cookie'])
-            
-        //     } else if (res.data.code == 20) {
-        //       wx.showToast({
-        //         title: '请先登录',
-        //         icon: 'none',
-        //         duration: 2000,
-        //         mask: true,
-        //         complete: function complete(res) {
-        //           setTimeout(function () {                          
-        //               wx.navigateTo({
-        //                 url: '../login/login',
-        //               })
-        //           }, 500);
-        //         }
-        //       })
-        //     }else{
-        //       wx.showToast({
-        //         title: res.data.codeMsg,
-        //         icon: 'none',
-        //         duration: 2000,
-               
-        //       })
-        //     }
-        //   }
-        // })
-      }
-    })
+    // wx.login({
+    //   success: res => {
+    //     console.log(res.code)
+
+    //     // 发送 res.code 到后台换取 openId, sessionKey, unionId
+    //     // wx.request({
+    //     //   url: vm.globalData.url + '/refresh-wx-session-key',
+    //     //   header: {
+    //     //     "Content-Type": "application/x-www-form-urlencoded",
+    //     //     'cookie': wx.getStorageSync('cookie')
+    //     //   },
+    //     //   method: 'post',
+    //     //   data: {
+    //     //     jscode: res.code,
+    //     //   },
+    //     //   success: function (res) {
+    //     //     wx.hideToast()
+    //     //     if (res.data.code == 0) {
+    //     //       // wx.setStorageSync('cookie', res.header['Set-Cookie'])
+
+    //     //     } else if (res.data.code == 20) {
+    //     //       wx.showToast({
+    //     //         title: '请先登录',
+    //     //         icon: 'none',
+    //     //         duration: 2000,
+    //     //         mask: true,
+    //     //         complete: function complete(res) {
+    //     //           setTimeout(function () {                          
+    //     //               wx.navigateTo({
+    //     //                 url: '../login/login',
+    //     //               })
+    //     //           }, 500);
+    //     //         }
+    //     //       })
+    //     //     }else{
+    //     //       wx.showToast({
+    //     //         title: res.data.codeMsg,
+    //     //         icon: 'none',
+    //     //         duration: 2000,
+
+    //     //       })
+    //     //     }
+    //     //   }
+    //     // })
+    //   }
+    // })
     // 获取用户信息
     wx.getSetting({
       success: res => {
@@ -119,9 +120,9 @@ App({
     updateManager.onUpdateFailed(function () {
       // 新版本下载失败
     })
-    
+
     wx.getSystemInfo({
-      success: function(res) {
+      success: function (res) {
         let titleBarHeight = 0
         if (res.model.indexOf('iPhone') !== -1) {
           titleBarHeight = 44
@@ -129,24 +130,24 @@ App({
           titleBarHeight = 48
         }
         // that.setData({
-          vm.globalData.statusBarHeight= res.statusBarHeight,
-          vm.globalData.titleBarHeight= titleBarHeight
+        vm.globalData.statusBarHeight = res.statusBarHeight,
+          vm.globalData.titleBarHeight = titleBarHeight
         // });
-       
+
       },
       failure() {
-        vm.globalData.statusBarHeight= res.statusBarHeight,
-          vm.globalData.titleBarHeight= titleBarHeight
+        vm.globalData.statusBarHeight = res.statusBarHeight,
+          vm.globalData.titleBarHeight = titleBarHeight
       }
-    
+
     })
   },
-  cover(_cover){
-    var that=this
-    if(_cover&&_cover.slice(0,1)!='h'){
-      _cover=this.globalData.domain+_cover
+  cover(_cover) {
+    var that = this
+    if (_cover && _cover.slice(0, 1) != 'h') {
+      _cover = this.globalData.domain + _cover
     }
     return _cover
   }
-  
+
 })

@@ -78,11 +78,13 @@ Page({
     console.log(options.typeId)
     if(options.typeId==1){
       this.setData({
-        tempFilePaths:app.globalData.renzhengcover1
+        tempFilePaths:app.globalData.renzhengcover1,
+        title:'验证您的营业执照',
       })
     }else if(options.typeId==2){
       this.setData({
-        tempFilePaths:app.globalData.renzhengcover2
+        tempFilePaths:app.globalData.renzhengcover2,
+        title:'验证您的身份证',
       })
     }
   },
