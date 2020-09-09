@@ -345,9 +345,9 @@ Page({
     })
 
 
-    wx.login({
-      success(res) {
-        var jscode = res.code
+    // wx.login({
+    //   success(res) {
+    //     var jscode = res.code
         if (e.detail.encryptedData != null && e.detail.encryptedData != '' && e.detail.encryptedData != undefined) {
           wx.request({
             url: app.globalData.domain + '/wuliu/update-my-phone',
@@ -355,7 +355,7 @@ Page({
               "Content-Type": "application/x-www-form-urlencoded",
               'cookie': wx.getStorageSync('cookie')
             },
-            data: 'wxMinAppEncryptedDataOfPhoneNumber=' + encodeURIComponent(e.detail.encryptedData) + '&wxMinappIv=' + encodeURIComponent(e.detail.iv) + '&jscode=' + jscode,
+            data: 'wxMinAppEncryptedDataOfPhoneNumber=' + encodeURIComponent(e.detail.encryptedData) + '&wxMinappIv=' + encodeURIComponent(e.detail.iv),// + '&jscode=' + jscode,
             method: 'post',
             success: function (res) {
               wx.hideToast()
@@ -387,7 +387,7 @@ Page({
             duration: 1000
           })
         }
-      }
-    })
+    //   }
+    // })
   }
 })
