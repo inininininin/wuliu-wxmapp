@@ -236,3 +236,7 @@ input{
   margin-left: 15rpx;
   transform: rotate(-45deg);
 }
+
+.lineOneEnd{
+  word-break:break-all;word-wrap:break-word
+}

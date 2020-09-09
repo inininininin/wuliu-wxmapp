@@ -27,68 +27,68 @@
 		</view>
 		<view class="type1">
 			<image class="faIcon" src="../img/fa.svg"></image>
-			<view class="lineOne">{{orderDetail.faHuoArea1Name||''}}{{orderDetail.faHuoArea2Name||''}}{{orderDetail.faHuoArea3Name||''}}{{orderDetail.faHuoAddress||''}}</view>
+			<view class="lineOneEnd">{{orderDetail.faHuoArea1Name||''}}{{orderDetail.faHuoArea2Name||''}}{{orderDetail.faHuoArea3Name||''}}{{orderDetail.faHuoAddress||''}}</view>
 		</view>
 		<view class="type1">
 			<image class="faIcon1" src="../img/date.svg"></image>
-			<view class="lineOne">{{orderDetail.faHuoTime||''}}</view>
+			<view class="lineOneEnd">{{orderDetail.faHuoTime||''}}</view>
 		</view>
 	</view>
 
 	<view wx:if='{{orderDetail.shouHuoArea1Id}}'>
 		<view class="type1">
 			<image class="faIcon" src="../img/shou.svg"></image>
-			<view class="lineOne">{{orderDetail.shouHuoArea1Name||''}}{{orderDetail.shouHuoArea2Name||''}}{{orderDetail.shouHuoArea3Name||''}}{{orderDetail.shouHuoAddress||''}}</view>
+			<view class="lineOneEnd">{{orderDetail.shouHuoArea1Name||''}}{{orderDetail.shouHuoArea2Name||''}}{{orderDetail.shouHuoArea3Name||''}}{{orderDetail.shouHuoAddress||''}}</view>
 		</view>
 		<view class="type1">
 			<image class="faIcon1" src="../img/riqi2.svg"></image>
-			<view class="lineOne ">{{orderDetail.shouHuoTime||''}}</view>
+			<view class="lineOneEnd ">{{orderDetail.shouHuoTime||''}}</view>
 		</view>
 		<view class="type1">
 			<image class="faIcon1" src="../img/zhongliang.svg"></image>
-			<view class="lineOne lineOne">{{orderDetail.shouHuoWeight||''}}KG；{{orderDetail.shouHuoVolume||''}}M³</view>
+			<view class="lineOneEnd ">{{orderDetail.shouHuoWeight||''}}KG；{{orderDetail.shouHuoVolume||''}}M³</view>
 		</view>
 	</view>
 	<view wx:if='{{orderDetail.shouHuo1Area1Id}}'>
 		<view class="type1">
 			<image class="faIcon" src="../img/shou.svg"></image>
-			<view class="lineOne">{{orderDetail.shouHuo1Area1Name||''}}{{orderDetail.shouHuo1Area2Name||''}}{{orderDetail.shouHuo1Area3Name||''}}{{orderDetail.shouHuo1Address||''}}</view>
+			<view class="lineOneEnd">{{orderDetail.shouHuo1Area1Name||''}}{{orderDetail.shouHuo1Area2Name||''}}{{orderDetail.shouHuo1Area3Name||''}}{{orderDetail.shouHuo1Address||''}}</view>
 		</view>
 		<view class="type1">
 			<image class="faIcon1" src="../img/riqi2.svg"></image>
-			<view class="lineOne ">{{orderDetail.shouHuo1Time||''}}</view>
+			<view class="lineOneEnd ">{{orderDetail.shouHuo1Time||''}}</view>
 		</view>
 		<view class="type1">
 			<image class="faIcon1" src="../img/zhongliang.svg"></image>
-			<view class="lineOne lineOne">{{orderDetail.shouHuo1Weight||''}}KG；{{orderDetail.shouHuo1Volume||''}}M³</view>
+			<view class="lineOneEnd ">{{orderDetail.shouHuo1Weight||''}}KG；{{orderDetail.shouHuo1Volume||''}}M³</view>
 		</view>
 	</view>
 	<view wx:if='{{orderDetail.shouHuo2Area1Id}}'>
 		<view class="type1">
 			<image class="faIcon" src="../img/shou.svg"></image>
-			<view class="lineOne">{{orderDetail.shouHuo2Area1Name||''}}{{orderDetail.shouHuo2Area2Name||''}}{{orderDetail.shouHuo2Area3Name||''}}{{orderDetail.shouHuo2Address||''}}</view>
+			<view class="lineOneEnd">{{orderDetail.shouHuo2Area1Name||''}}{{orderDetail.shouHuo2Area2Name||''}}{{orderDetail.shouHuo2Area3Name||''}}{{orderDetail.shouHuo2Address||''}}</view>
 		</view>
 		<view class="type1">
 			<image class="faIcon1" src="../img/riqi2.svg"></image>
-			<view class="lineOne ">{{orderDetail.shouHuo2Time||''}}</view>
+			<view class="lineOneEnd ">{{orderDetail.shouHuo2Time||''}}</view>
 		</view>
 		<view class="type1">
 			<image class="faIcon1" src="../img/zhongliang.svg"></image>
-			<view class="lineOne lineOne">{{orderDetail.shouHuo2Weight||''}}KG；{{orderDetail.shouHuo2Volume||''}}M³</view>
+			<view class="lineOneEnd ">{{orderDetail.shouHuo2Weight||''}}KG；{{orderDetail.shouHuo2Volume||''}}M³</view>
 		</view>
 	</view>
 	<view wx:if='{{orderDetail.shouHuo3Area1Id}}'>
 		<view class="type1">
 			<image class="faIcon" src="../img/shou.svg"></image>
-			<view class="lineOne">{{orderDetail.shouHuo3Area1Name||''}}{{orderDetail.shouHuo3Area2Name||''}}{{orderDetail.shouHuo3Area3Name||''}}{{orderDetail.shouHuo3Address||''}}</view>
+			<view class="lineOneEnd">{{orderDetail.shouHuo3Area1Name||''}}{{orderDetail.shouHuo3Area2Name||''}}{{orderDetail.shouHuo3Area3Name||''}}{{orderDetail.shouHuo3Address||''}}</view>
 		</view>
 		<view class="type1">
 			<image class="faIcon1" src="../img/riqi2.svg"></image>
-			<view class="lineOne ">{{orderDetail.shouHuo3Time||''}}</view>
+			<view class="lineOneEnd ">{{orderDetail.shouHuo3Time||''}}</view>
 		</view>
 		<view class="type1">
 			<image class="faIcon1" src="../img/zhongliang.svg"></image>
-			<view class="lineOne lineOne">{{orderDetail.shouHuo3Weight||''}}KG；{{orderDetail.shouHuo3Volume||''}}M³</view>
+			<view class="lineOneEnd ">{{orderDetail.shouHuo3Weight||''}}KG；{{orderDetail.shouHuo3Volume||''}}M³</view>
 		</view>
 	</view>
 
