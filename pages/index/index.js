@@ -257,7 +257,7 @@ Page({
                 }
                 that.setData({
                   articleList: newListArr,
-                  pageNo: pageNo,
+                  pageNo: parseInt(pageNo),
                 })
                 if (res.data.data.itemList && res.data.data.itemList.length < 15) {
                   that.setData({
@@ -320,7 +320,7 @@ Page({
           }
           that.setData({
             articleList: newListArr,
-            pageNo: pageNo,
+            pageNo: parseInt(pageNo),
           })
           if (res.data.data.itemList && res.data.data.itemList.length < 15) {
             that.setData({
