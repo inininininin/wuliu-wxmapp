@@ -107,6 +107,10 @@ Page({
       url: '../login/login?tabbarIs=1&route=' + getCurrentPages()[0].route,
     })
   },
+  // var arr=[{num:1},{num:3},{num:2}]
+ newSort:function(x,y) {
+  return x.upperId-y.upperId;
+ },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -120,8 +124,8 @@ Page({
         'cookie': wx.getStorageSync('cookie')
       },
       data: {
-        sort: 'level',
-        order: 'asc',
+        // sort: 'level',
+        // order: 'asc',
       },
       method: 'post',
       success: function (res) {
@@ -130,22 +134,37 @@ Page({
           // app.globalData.userInfoDetail = res.data.data
           // app.globalData.loginIf = 1
           let navbar = [{ 'name': '全部', 'typeId': '', 'value': [{ 'name': '全部', 'typeId': '' }] }]
+          // for (var i in res.data.data.items) {
+          //   if (res.data.data.items[i].level == 0) {
+          //     res.data.data.items[i].value = [{'name':'全部','typeId':''}]
+          //     navbar.push(res.data.data.items[i])
+          //   } else if (res.data.data.items[i].level == 1) {
+          //     console.log(navbar)
+          //     let upperId = res.data.data.items[i].upperId
+          //     for (var s in navbar) {
+          //       if (upperId == navbar[s].typeId) {
+          //         navbar[s].value.push(res.data.data.items[i])
+          //       }
+          //     }
+          //   }
+          // }
+          res.data.data.items.sort(that.newSort)
+          console.log(res.data.data.items)
           for (var i in res.data.data.items) {
-            if (res.data.data.items[i].level == 0) {
+            if (res.data.data.items[i].upperId == 0) {
               res.data.data.items[i].value = [{'name':'全部','typeId':''}]
               navbar.push(res.data.data.items[i])
-            } else if (res.data.data.items[i].level == 1) {
-              console.log(navbar)
+            } else {
               let upperId = res.data.data.items[i].upperId
               for (var s in navbar) {
                 if (upperId == navbar[s].typeId) {
                   navbar[s].value.push(res.data.data.items[i])
                 }
-                // console.log(navbar)
               }
             }
-            // console.log(navbar)
           }
+
+           
           console.log(navbar)
           that.setData({
             navbar: navbar,

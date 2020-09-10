@@ -375,7 +375,6 @@ Page({
    */
   onShow: function () {
     if( app.globalData.loginIf==0){
-      console.log(111111111111111111)
       this.loginRdfresh()
     }
   },
