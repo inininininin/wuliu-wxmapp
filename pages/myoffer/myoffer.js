@@ -138,7 +138,7 @@ Page({
                   var neworderListArr = orderListArr.concat(res.data.data.items)
                   that.setData({
                     orderList: neworderListArr,
-                    pageNo: pageNo,
+                    pageNo: parseInt(pageNo),
                   })
                   if(res.data.data.items&&res.data.data.items.length<15){
                     that.setData({
@@ -161,7 +161,7 @@ Page({
                   var neworderListArr = orderListArr.concat(res.data.data.items)
                   that.setData({
                     orderListFinish: neworderListArr,
-                    pageNoEve: pageNo,
+                    pageNoEve: parseInt(pageNo),
                   })
                   if(res.data.data.items&&res.data.data.items.length<15){
                     that.setData({
@@ -264,7 +264,7 @@ Page({
             var neworderListArr = orderListArr.concat(res.data.data.items)
             that.setData({
               orderList: neworderListArr,
-              pageNo: pageNo,
+              pageNo: parseInt(pageNo),
             })
             if(res.data.data.items&&res.data.data.items.length<15){
               that.setData({
@@ -287,7 +287,7 @@ Page({
             var neworderListArr = orderListArr.concat(res.data.data.items)
             that.setData({
               orderListFinish: neworderListArr,
-              pageNoEve: pageNo,
+              pageNoEve: parseInt(pageNo),
             })
             if(res.data.data.items&&res.data.data.items.length<15){
               that.setData({

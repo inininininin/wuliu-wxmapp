@@ -186,7 +186,7 @@ Page({
                   var neworderListArr = orderListArr.concat(res.data.data.items)
                   that.setData({
                     orderList: neworderListArr,
-                    pageNo: pageNo,
+                    pageNo: parseInt(pageNo),
                   })
                   if (res.data.data.items && res.data.data.items.length < 15) {
                     that.setData({
@@ -210,7 +210,7 @@ Page({
                   var neworderListArr = orderListArr.concat(res.data.data.items)
                   that.setData({
                     orderList1: neworderListArr,
-                    pageNo1: pageNo,
+                    pageNo1: parseInt(pageNo),
                   })
                   if (res.data.data.items && res.data.data.items.length < 15) {
                     that.setData({
@@ -234,7 +234,7 @@ Page({
                   var neworderListArr = orderListArr.concat(res.data.data.items)
                   that.setData({
                     orderList2: neworderListArr,
-                    pageNo2: pageNo,
+                    pageNo2: parseInt(pageNo),
                   })
                   if (res.data.data.items && res.data.data.items.length < 15) {
                     that.setData({
@@ -333,7 +333,7 @@ Page({
             var neworderListArr = orderListArr.concat(res.data.data.items)
             that.setData({
               orderList: neworderListArr,
-              pageNo: pageNo,
+              pageNo: parseInt(pageNo),
             })
             if (res.data.data.items && res.data.data.items.length < 15) {
               that.setData({
@@ -357,7 +357,7 @@ Page({
             var neworderListArr = orderListArr.concat(res.data.data.items)
             that.setData({
               orderList1: neworderListArr,
-              pageNo1: pageNo,
+              pageNo1: parseInt(pageNo),
             })
             if (res.data.data.items && res.data.data.items.length < 15) {
               that.setData({
@@ -381,7 +381,7 @@ Page({
             var neworderListArr = orderListArr.concat(res.data.data.items)
             that.setData({
               orderList2: neworderListArr,
-              pageNo2: pageNo,
+              pageNo2: parseInt(pageNo),
             })
             if (res.data.data.items && res.data.data.items.length < 15) {
               that.setData({
@@ -600,19 +600,19 @@ Page({
       this.setData({
         listTitle: '正在载入更多.'
       })
-      this.lastPage('', '', this.data.pageNo + 1)
+      this.lastPage('', '', parseInt(this.data.pageNo) + 1)
     }
     if (this.data.currentTab == 1) {
       this.setData({
         listTitleEve: '正在载入更多.'
       })
-      this.lastPage(0, 1, this.data.pageNo1 + 1)
+      this.lastPage(0, 1, parseInt(this.data.pageNo1) + 1)
     }
     if (this.data.currentTab == 2) {
       this.setData({
         listTitleEve: '正在载入更多.'
       })
-      this.lastPage(1, '', this.data.pageNo2 + 1)
+      this.lastPage(1, '', parseInt(this.data.pageNo2) + 1)
     }
   },
 
