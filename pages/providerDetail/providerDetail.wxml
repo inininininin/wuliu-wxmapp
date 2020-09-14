@@ -111,15 +111,15 @@
 		<text class="type2Detail lineOne">{{orderDetail.baoZhuangFangShiName||''}}</text>
 	</view>
 	<view class="type2">
-		<text class="type2title">箱型</text>
+		<text class="type2title">集装箱箱型</text>
 		<text class="type2Detail lineOne">{{orderDetail.xiangXingName||''}}</text>
 	</view>
 	<view class="type2">
-		<text class="type2title">功能</text>
+		<text class="type2title">集装箱功能</text>
 		<text class="type2Detail lineOne">{{orderDetail.gongNengName||''}}</text>
 	</view>
 	<view class="type2">
-		<text class="type2title">箱数</text>
+		<text class="type2title">集装箱箱数</text>
 		<text class="type2Detail lineOne">{{orderDetail.xiangShu||''}} （{{orderDetail.xiangShuUnit||''}}）</text>
 	</view>
 
