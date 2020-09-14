@@ -279,7 +279,7 @@ Page({
             res.data.data.insertTime = res.data.data.insertTime.slice(0, 10)
           }
           if (res.data.data.shouHuoTime) {
-            res.data.data.shouHuoTime = res.data.data.insertTime.slice(0, 10)
+            res.data.data.shouHuoTime = res.data.data.shouHuoTime.slice(0, 10)
           }
           if (res.data.data.shouHuo1Time) {
             res.data.data.shouHuo1Time = res.data.data.shouHuo1Time.slice(0, 10)
