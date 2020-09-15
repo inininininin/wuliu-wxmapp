@@ -1,7 +1,6 @@
 // pages/mine/mine.js
 var app = getApp()
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -107,7 +106,34 @@ Page({
   onReady: function () {
 
   },
-
+  loginRdfresh(){
+    let that=this
+    wx.request({
+      url: app.globalData.domain + '/wuliu/login-refresh',
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded",
+        'cookie': wx.getStorageSync('cookie')
+      },
+      method: 'post',
+      success: function (res) {
+        wx.hideToast()
+        if (res.data.code == 0) {
+          app.globalData.userInfoDetail = res.data.data
+          app.globalData.loginIf = 1
+          that.setData({
+            loginIf: app.globalData.loginIf
+          })
+        } else if (res.data.code == 20) {
+          app.globalData.loginIf = 0
+        } else {
+          wx.showToast({
+            title: res.data.codeMsg,
+            icon: 'none'
+          })
+        }
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面显示
    */
@@ -178,9 +204,9 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
+    this.loginRdfresh()
     wx.stopPullDownRefresh()
   },
-
   /**
    * 页面上拉触底事件的处理函数
    */

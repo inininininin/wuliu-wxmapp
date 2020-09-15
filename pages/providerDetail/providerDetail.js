@@ -279,7 +279,7 @@ Page({
             res.data.data.insertTime = res.data.data.insertTime.slice(0, 10)
           }
           if (res.data.data.shouHuoTime) {
-            res.data.data.shouHuoTime = res.data.data.insertTime.slice(0, 10)
+            res.data.data.shouHuoTime = res.data.data.shouHuoTime.slice(0, 10)
           }
           if (res.data.data.shouHuo1Time) {
             res.data.data.shouHuo1Time = res.data.data.shouHuo1Time.slice(0, 10)
@@ -295,10 +295,10 @@ Page({
           } else if (res.data.data.huoWuLeiXing == 2) {
             res.data.data.huoWuLeiXingName = '食品'
           }
-          if (res.data.data.baoZhuangFangShi == 1) {
-            res.data.data.baoZhuangFangShiName = '木箱'
-          } else if (res.data.data.baoZhuangFangShi == 2) {
-            res.data.data.baoZhuangFangShiName = '纸箱'
+          if(res.data.data.baoZhuangFangShi==1){
+            res.data.data.baoZhuangFangShiName='有托盘'
+          }else if(res.data.data.baoZhuangFangShi==2){
+            res.data.data.baoZhuangFangShiName='无托盘'
           }
           if(res.data.data.xiangXing==1){
             res.data.data.xiangXingName='20小箱'

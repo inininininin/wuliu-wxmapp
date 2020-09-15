@@ -28,7 +28,7 @@
 			<view class="toPrice" wx:if='{{item.chengJiaoIs==0}}' catchtap="userphone" data-userphone='{{item.userPhone}}'>联系用户</view>
 		</view>
 		<view class="orderItemThree lineOne">
-			<text>货物：{{item.huoWuLeiXingName||''}}，{{item.xiangXingName||''}}</text>
+			<text>货物：{{item.huoWuLeiXingName||''}}，{{item.baoZhuangFangShiName||''}}</text>
 				<text style="float:right">订单ID:{{item.orderIdEve}}</text>
 		</view>
 	</view>
@@ -60,7 +60,7 @@
 			<view class="toPrice" wx:if='{{item.chengJiaoIs==0}}' catchtap="userphone" data-userphone='{{item.userPhone}}'>联系用户</view>
 		</view>
 		<view class="orderItemThree lineOne">
-			<text>货物：{{item.huoWuLeiXingName||''}}，{{item.xiangXingName||''}}</text>
+			<text>货物：{{item.huoWuLeiXingName||''}}，{{item.baoZhuangFangShiName||''}}</text>
 				<text style="float:right">订单ID:{{item.orderIdEve}}</text>
 		</view>
 	</view>

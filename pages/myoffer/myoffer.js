@@ -126,10 +126,10 @@ Page({
                   } else if (res.data.data.items[i].huoWuLeiXing == 2) {
                     res.data.data.items[i].huoWuLeiXingName = '食品'
                   }
-                  if (res.data.data.items[i].xiangXing == 1) {
-                    res.data.data.items[i].xiangXingName = '木箱'
-                  } else if (res.data.data.items[i].xiangXing == 2) {
-                    res.data.data.items[i].xiangXingName = '纸箱'
+                  if (res.data.data.items[i].baoZhuangFangShi == 1) {
+                    res.data.data.items[i].baoZhuangFangShiName = '有托盘'
+                  } else if (res.data.data.items[i].baoZhuangFangShi == 2) {
+                    res.data.data.items[i].baoZhuangFangShiName = '无托盘'
                   }
                 }
                 that.data.orderList.concat(res.data.data.items)
@@ -252,10 +252,10 @@ Page({
             } else if (res.data.data.items[i].huoWuLeiXing == 2) {
               res.data.data.items[i].huoWuLeiXingName = '食品'
             }
-            if (res.data.data.items[i].xiangXing == 1) {
-              res.data.data.items[i].xiangXingName = '木箱'
-            } else if (res.data.data.items[i].xiangXing == 2) {
-              res.data.data.items[i].xiangXingName = '纸箱'
+            if (res.data.data.items[i].baoZhuangFangShi == 1) {
+              res.data.data.items[i].baoZhuangFangShiName = '有托盘'
+            } else if (res.data.data.items[i].baoZhuangFangShi == 2) {
+              res.data.data.items[i].baoZhuangFangShiName = '无托盘'
             }
           }
           that.data.orderList.concat(res.data.data.items)

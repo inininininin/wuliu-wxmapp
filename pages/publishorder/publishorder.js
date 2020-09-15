@@ -23,7 +23,7 @@ Page({
     index3: 0,
     huoWuLeiXingList: ['请选择', '服装', '食品'],
     huoWuLeiXingIndex: 0,
-    baoZhuangFangShiList: ['请选择', '木箱', '纸箱'],
+    baoZhuangFangShiList: ['请选择', '有托盘', '无托盘'],
     baoZhuangFangShiIndex: 0,
     xiangXing: '',
     gongNeng: '',

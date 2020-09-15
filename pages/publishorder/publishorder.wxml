@@ -318,7 +318,7 @@
 </view> -->
 <view class="xxrequire">
 	<view class="xxrequireItem">
-		<text>箱型</text>
+		<text>集装箱箱型</text>
 		<view >
 			<picker bindchange="xiangXing" value="{{index1}}" range="{{array1}}">
 				<view class="picker" wx:if='{{index1==0}}' style="color:#999999">
@@ -332,7 +332,7 @@
 		</view>
 	</view>
 	<view class="xxrequireItem">
-		<text>功能</text>
+		<text>集装箱功能</text>
 		<view>
 			<picker bindchange="gongNeng" value="{{index2}}" range="{{array2}}">
 				<view class="picker" wx:if='{{index2==0}}' style="color:#999999">
@@ -346,7 +346,7 @@
 		</view>
 	</view>
 	<view class="xxrequireItem">
-		<text>箱数</text>
+		<text>集装箱箱数</text>
 		<view  style="border-bottom:0">
 			<view class="xxrequireItemEve">
 				<input type="number" bindinput="xiangShuUnit" placeholder="请输入"></input>
