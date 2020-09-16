@@ -28,15 +28,17 @@
 			<image mode='aspectFill' src="{{item.cover}}"></image>
 			<view class="detail">
 				<view class="title lineOne">{{item.name||''}}</view>
-				<view class="address "><text>装货地：</text><text class="lineOne" style="width:350rpx">{{item.area1Name||''}}-{{item.area2Name||''}}</text></view>
+				<view class="address " wx:if='{{item.area1Name&&item.area2Name}}'><text>装货地：</text><text class="lineOne" style="width:350rpx">{{item.area1Name||''}}-{{item.area2Name||''}}</text></view>
+				<view class="address " wx:if='{{item.area1Name&&!item.area2Name}}'><text>装货地：</text><text class="lineOne" style="width:350rpx">{{item.area1Name||''}}</text></view>
+				<view class="address " wx:if='{{!item.area1Name&&item.area2Name}}'><text>装货地：</text><text class="lineOne" style="width:350rpx">{{item.area2Name||''}}</text></view>
 				<!-- <view class="address "><text>规格：</text><text class="lineOne" style="width:350rpx">{{item.unitName}}</text></view> -->
 				<view class="position">
 					<view>规格：</view>
 					<view>
 						<!-- <view class="lineThree">{{item.intro}}</view> -->
 						<view class="lineOne">
-							<view wx:if='{{item.jianPrice}}'style="margin-right:40rpx"><text class="colorEve">¥{{item.jianPrice}}</text>/件 </view>
-							<view wx:if='{{item.jinPrice}}' ><text  class="colorEve">¥{{item.jinPrice}}</text>/斤</view>
+							<view wx:if='{{item.jianPrice}}' style="margin-right:40rpx"><text class="colorEve">¥{{item.jianPrice}}</text>/件 </view>
+							<view wx:if='{{item.jinPrice}}'><text  class="colorEve">¥{{item.jinPrice}}</text>/斤</view>
 						</view>
 						<view class="lineOne" wx:if='{{item.xiaoGuiPrice}}'>小柜-<text wx:if='{{item.xiaoGuiWeight}}'>{{item.xiaoGuiWeight}}-</text><text wx:if='{{item.xiaoGuiVolumn}}'>{{item.xiaoGuiVolumn}}M³-</text><text class="colorEve">{{item.xiaoGuiPrice}}</text>
 						</view>
