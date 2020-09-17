@@ -151,6 +151,13 @@ Page({
           res.data.data.areaAddress= (res.data.data.area1Name||'') + '-'+ (res.data.data.area2Name||'') + '-'+(res.data.data.area3Name||'' )+ '-'+(res.data.data.address||'' )
           console.log( res.data.data.areaAddress)
           res.data.data.areaAddress=res.data.data.areaAddress.replace('---','-').replace('--','-')
+          if(res.data.data.areaAddress){
+            if(res.data.data.areaAddress.slice(0,1)=='-'){
+              res.data.data.areaAddress=res.data.data.areaAddress.slice(1,res.data.data.areaAddress.length)
+            }else if(res.data.data.areaAddress.slice(res.data.data.areaAddress.length-1,res.data.data.areaAddress.length)=='-'){
+              res.data.data.areaAddress=res.data.data.areaAddress.slice(0,res.data.data.areaAddress.length-1)
+            }
+          }
           console.log( res.data.data.areaAddress)
          
           that.setData({
