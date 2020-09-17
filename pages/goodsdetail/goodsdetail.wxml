@@ -3,9 +3,10 @@
 <view class='topImg' wx:if='{{list.cover}}' style='background:url({{list.cover}}) no-repeat;background-size:cover;background-position: center;'></view>
 <!-- <image  mode="aspectFill"  class='topImg' src='{{list.cover}}'></image> -->
 <text class='title '>{{list.name}}</text>
-<text style="font-size:28rpx;color:#666;margin:0 32rpx 22rpx;display: block">发货地：{{list.area1Name||''}}-{{list.area2Name||''}}-{{list.area3Name||''}}-{{list.address||''}}</text>
+<text style="font-size:28rpx;color:#666;margin:0 32rpx 22rpx;display: block">发货地：{{list.areaAddress}}</text>
+<!-- <text style="font-size:28rpx;color:#666;margin:0 32rpx 22rpx;display: block">发货地：{{list.area1Name||''}}-{{list.area2Name||''}}-{{list.area3Name||''}}-{{list.address||''}}</text> -->
 <text style="font-size:28rpx;color:#666;margin:0 32rpx 22rpx;display: block">上传时间：{{list.insertTime||''}}</text>
-<text class=' ' style="font-size:28rpx;color:#666;line-height:40rpx;margin:25rpx 32rpx 32rpx;width:718rpx;display:block">简介：{{list.intro||''}}</text>
+<text class=' ' style="font-size:28rpx;color:#666;line-height:40rpx;margin:25rpx 32rpx 32rpx;display:block">简介：{{list.intro||''}}</text>
 <!-- <view class="readShare">
 	<text>浏览量：{{list.viewCount||0}}</text>
 	<text>分享数：{{list.shareCount||0}}</text>

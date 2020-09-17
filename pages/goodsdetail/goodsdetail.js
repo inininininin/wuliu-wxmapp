@@ -19,15 +19,15 @@ Page({
     id: '',
     display: 'none',
     pyqewm: '',
-    ids:'',
-    canvasShow:false,
+    ids: '',
+    canvasShow: false,
   },
-  changefont: function(e) {
+  changefont: function (e) {
     this.setData({
       display: 'block'
     })
   },
-  closeFont: function(e) {
+  closeFont: function (e) {
     this.setData({
       display: 'none'
     })
@@ -41,13 +41,13 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
+  onLoad: function (options) {
     var id = options.id
     var that = this
     that.sys();
-    if (app.globalData.lastClient==1){
+    if (app.globalData.lastClient == 1) {
       var param = encodeURIComponent('pages/out/articleDetail/articleDetail?id=' + id + '&ids=1')
-    }else{
+    } else {
       var param = encodeURIComponent('pages/out/articleDetail/articleDetail?id=' + id + '&ids=2')
     }
     // var param = encodeURIComponent('pages/out/articleDetail/articleDetail?id=' + id+'&isfrom=1' )
@@ -85,11 +85,11 @@ Page({
         'cookie': wx.getStorageSync('cookie')
       },
       async: true,
-      success: function(res) {
+      success: function (res) {
         if (res.data.code == 0) {
-          res.data.data.cover=app.cover(res.data.data.cover)
-          res.data.data.updateTime = res.data.data.updateTime .slice(2,16)
-          res.data.data.insertTime = res.data.data.insertTime .slice(2,16)
+          res.data.data.cover = app.cover(res.data.data.cover)
+          res.data.data.updateTime = res.data.data.updateTime.slice(2, 16)
+          res.data.data.insertTime = res.data.data.insertTime.slice(2, 16)
           if (res.data.data.xiaoGuiPrice && res.data.data.xiaoGuiPrice < 10000) {
             res.data.data.xiaoGuiPrice = res.data.data.xiaoGuiPrice + '元'
           } else if (res.data.data.xiaoGuiPrice && res.data.data.xiaoGuiPrice >= 10000) {
@@ -125,7 +125,7 @@ Page({
           } else {
             res.data.data.jinPrice = ''
           }
-          
+
           if (res.data.data.diyGuiWeight && res.data.data.diyGuiWeight < 1000) {
             res.data.data.diyGuiWeight = res.data.data.diyGuiWeight + 'KG'
           } else if (res.data.data.diyGuiWeight && res.data.data.diyGuiWeight >= 1000) {
@@ -148,6 +148,11 @@ Page({
           } else {
             res.data.data.daGuiWeight = ''
           }
+          res.data.data.areaAddress= (res.data.data.area1Name||'') + '-'+ (res.data.data.area2Name||'') + '-'+(res.data.data.area3Name||'' )+ '-'+(res.data.data.address||'' )
+          console.log( res.data.data.areaAddress)
+          res.data.data.areaAddress=res.data.data.areaAddress.replace('---','-').replace('--','-')
+          console.log( res.data.data.areaAddress)
+         
           that.setData({
             list: res.data.data,
             id: id,
@@ -156,13 +161,13 @@ Page({
           var contentUrl = res.data.data.contentUrl
 
           wx.request({
-            url: app.globalData.domain +contentUrl,
+            url: app.globalData.domain + contentUrl,
             method: 'get',
             header: {
               "Content-Type": "application/x-www-form-urlencoded",
               'cookie': wx.getStorageSync('cookie')
             },
-            success: function(res) {
+            success: function (res) {
               var article = res.data
               WxParse.wxParse('article', 'html', article, that, 5);
 
@@ -185,12 +190,12 @@ Page({
           //   })
           // });
           // let promise2 = new Promise(function(resolve, reject) {
-            // wx.getImageInfo({
-            //   src: app.globalData.domain + '/wxminqrcode?path=pages/articleDetail/articleDetail?id=' + that.data.id + '&width=200',
-            //   success: function(res) {
-            //     resolve(res);
-            //   }
-            // })
+          // wx.getImageInfo({
+          //   src: app.globalData.domain + '/wxminqrcode?path=pages/articleDetail/articleDetail?id=' + that.data.id + '&width=200',
+          //   success: function(res) {
+          //     resolve(res);
+          //   }
+          // })
           // });
           // let promise3 = new Promise(function(resolve, reject) {
           //   wx.getImageInfo({
@@ -257,12 +262,12 @@ Page({
   },
 
   // 方法
-  share: function(e) {
+  share: function (e) {
     this.setData({
       close: 'block'
     })
   },
-  close: function(e) {
+  close: function (e) {
     this.setData({
       close: 'none'
     })
@@ -270,20 +275,20 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function() {
-    
+  onReady: function () {
+
 
   },
-  backHistory: function(e) {
-    if (this.data.ids == '' || this.data.ids == null || this.data.ids ==undefined){
+  backHistory: function (e) {
+    if (this.data.ids == '' || this.data.ids == null || this.data.ids == undefined) {
       wx.navigateBack({
         delta: 1
       })
-    } else if (this.data.ids == 1){
+    } else if (this.data.ids == 1) {
       wx.navigateTo({
         url: '../../index/index',
       })
-    }else{
+    } else {
       wx.switchTab({
         url: '../index/index',
       })
@@ -293,48 +298,48 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {
+  onShow: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function() {
+  onHide: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function() {
+  onUnload: function () {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function() {
+  onPullDownRefresh: function () {
     wx.stopPullDownRefresh({
-      complete: (res) => {},
+      complete: (res) => { },
     })
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function() {
+  onReachBottom: function () {
 
   },
   sharepyq(e) {
     var that = this
-    if(that.data.imglist){
+    if (that.data.imglist) {
       wx.showToast({
         title: '请稍等',
-        icon:'none'
+        icon: 'none'
       })
       wx.request({
-        url: app.globalData.domain +'/c2/share?articleId=' + that.data.id,
+        url: app.globalData.domain + '/c2/share?articleId=' + that.data.id,
         method: 'get',
         header: {
           "Content-Type": "application/x-www-form-urlencoded",
@@ -347,25 +352,25 @@ Page({
       //   pyqewm: app.globalData.domain + '/wxminqrcode?path=pages/articleDetail/articleDetail?id=' + that.data.id + '&width=200'
       // })
       // if(!that.data.avatorShare){
-        that.setData({
-          canvasShow:true
-        })
-        that.lookCode()
+      that.setData({
+        canvasShow: true
+      })
+      that.lookCode()
       // }else{
       //   wx.previewImage({
       //     urls: [that.data.urls],
       //   })
       // }
-    
-    }else{
+
+    } else {
       wx.showToast({
         title: '请稍等',
-        icon:'none'
+        icon: 'none'
       })
-      setTimeout(function(){
-        if(that.data.imglist){
+      setTimeout(function () {
+        if (that.data.imglist) {
           wx.request({
-            url: app.globalData.domain +'/c2/share?articleId=' + that.data.id,
+            url: app.globalData.domain + '/c2/share?articleId=' + that.data.id,
             method: 'get',
             header: {
               "Content-Type": "application/x-www-form-urlencoded",
@@ -375,19 +380,19 @@ Page({
               wx.hideToast({})
             }
           })
-            that.setData({
-              canvasShow:true
-            })
-            that.lookCode()
-        }else{
+          that.setData({
+            canvasShow: true
+          })
+          that.lookCode()
+        } else {
           wx.showToast({
             title: '生成失败,请稍后重试',
-            icon:'none'
+            icon: 'none'
           })
         }
-      },1500)
+      }, 1500)
     }
-   
+
     // var param = encodeURIComponent('pages/evaNowShare/evaNowShare?type=' + app.globalData.userInfoDetail.type + '&isfrom=1&id=' + (app.globalData.userInfoDetail.type1DoctorId || app.globalData.userInfoDetail.type2NurseId)+'&hospitalid='+(wx.getStorageSync('loginHospitalId')||''))
     // imglist.push(res.path)
     //     that.setData({
@@ -397,7 +402,7 @@ Page({
     // if(!that.data.avatorShare){
     //   that.lookCode()
     // }
-    
+
     // console.log(that.data.pyqewm)
     // wx.request({
     //   url: app.globalData.domain + '/wxminqrcode?path=pages/articleDetail/articleDetail?id=' + that.data.id+'&width=200',
@@ -417,10 +422,10 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  
-  onShareAppMessage: function (res) { 
+
+  onShareAppMessage: function (res) {
     wx.request({
-      url: app.globalData.domain +'/c2/share?articleId=' + this.data.id,
+      url: app.globalData.domain + '/c2/share?articleId=' + this.data.id,
       method: 'get',
       header: {
         "Content-Type": "application/x-www-form-urlencoded",
@@ -429,13 +434,13 @@ Page({
       success: function (res) {
       }
     })
-    if (app.globalData.lastClient==1){
+    if (app.globalData.lastClient == 1) {
       var path = 'pages/out/articleDetail/articleDetail?id=' + this.data.id + "&ids=1"
-    }else{
+    } else {
       var path = 'pages/out/articleDetail/articleDetail?id=' + this.data.id + "&ids=2"
     }
     // var path = 'pages/out/articleDetail/articleDetail?id=' + this.data.id+"&ids=1"
-    return {     
+    return {
       title: this.data.list.title, //分享内容
       path: path, //分享地址
       imageUrl: this.data.list.cover, //分享图片
@@ -461,7 +466,7 @@ Page({
   },
 
 
-  shareIs: function() {
+  shareIs: function () {
     var that = this
     wx.showLoading({
       title: '努力生成中...'
@@ -477,14 +482,14 @@ Page({
       destWidth: 705,
       destHeight: 639,
       canvasId: 'canvas',
-      success: function(res) {
+      success: function (res) {
         that.setData({
           prurl: res.tempFilePath,
           hidden: false
         })
         wx.hideLoading()
       },
-      fail: function(res) {
+      fail: function (res) {
         console.log(res)
       }
     })
@@ -493,7 +498,7 @@ Page({
   /**
    * 保存到相册
    */
-  saveIs: function() {
+  saveIs: function () {
     var that = this
     //生产环境时 记得这里要加入获取相册授权的代码
     wx.saveImageToPhotosAlbum({
@@ -504,7 +509,7 @@ Page({
           showCancel: false,
           confirmText: '好哒',
           confirmColor: '#72B9C3',
-          success: function(res) {
+          success: function (res) {
             if (res.confirm) {
               that.setData({
                 hidden: true
@@ -515,7 +520,7 @@ Page({
       }
     })
   },
-  drawText: function(ctx, str, leftWidth, initHeight, titleHeight, canvasWidth, lineHeight, lineMax) {
+  drawText: function (ctx, str, leftWidth, initHeight, titleHeight, canvasWidth, lineHeight, lineMax) {
     var lineWidth = 0;
     var lastSubStrIndex = 0; //每次开始截取的字符串的索引
     for (let i = 0; i < str.length; i++) {
@@ -535,7 +540,7 @@ Page({
     titleHeight = titleHeight + 10;
     return titleHeight
   },
-  dealWords: function(options) {
+  dealWords: function (options) {
     options.ctx.setFontSize(options.fontSize); //设置字体大小
     var allRow = Math.ceil(options.ctx.measureText(options.word).width / options.maxWidth); //实际总共能分多少行
     var count = allRow >= options.maxLine ? options.maxLine : allRow; //实际能分多少行与设置的最大显示行数比，谁小就用谁做循环次数
@@ -564,38 +569,38 @@ Page({
   },
 
 
-// canvas绘图部分
-sys: function () {
-  var that = this;
-  wx.getSystemInfo({
-    success: function (res) {
-      that.setData({
-        windowW: res.windowWidth,
-        windowH:res.windowHeight,
-        windowTop:(res.windowHeight-res.windowWidth)/2
-      })
-    },
-  })
-},
-getImageInfo() {
-  var  that=this
-  wx.getImageInfo({
-    src: this.data.avatorShare,
-    complete: (res) => {
-      var windowW = that.data.windowW;
-      var nbei=res.width/windowW
-      var avatorShareHeight=parseInt(res.height/nbei)
-      that.setData({
-        avatorShareHeight:avatorShareHeight,
-        avatorShareWidth: windowW
-      })
-    }
-  })
-},
+  // canvas绘图部分
+  sys: function () {
+    var that = this;
+    wx.getSystemInfo({
+      success: function (res) {
+        that.setData({
+          windowW: res.windowWidth,
+          windowH: res.windowHeight,
+          windowTop: (res.windowHeight - res.windowWidth) / 2
+        })
+      },
+    })
+  },
+  getImageInfo() {
+    var that = this
+    wx.getImageInfo({
+      src: this.data.avatorShare,
+      complete: (res) => {
+        var windowW = that.data.windowW;
+        var nbei = res.width / windowW
+        var avatorShareHeight = parseInt(res.height / nbei)
+        that.setData({
+          avatorShareHeight: avatorShareHeight,
+          avatorShareWidth: windowW
+        })
+      }
+    })
+  },
   canvasdraw: function (canvas) {
     var that = this;
-       that.setData({
-      canvasShow:true
+    that.setData({
+      canvasShow: true
     })
     wx.downloadFile({
       url: that.data.list.cover,//注意公众平台是否配置相应的域名
@@ -603,7 +608,7 @@ getImageInfo() {
         that.setData({
           avatorShare: res.tempFilePath
         })
-        var leftW=(that.data.windowW-140)
+        var leftW = (that.data.windowW - 140)
         var windowW = that.data.windowW;
         var windowH = that.data.windowH;
         // that.getImageInfo()
@@ -611,62 +616,62 @@ getImageInfo() {
           src: that.data.avatorShare,
           complete: (res) => {
             var windowW = that.data.windowW;
-            var nbei=res.height/200
-            var avatorShareHeight=parseInt(windowW/nbei)
+            var nbei = res.height / 200
+            var avatorShareHeight = parseInt(windowW / nbei)
 
             that.setData({
-              avatorShareHeight:res.height,
+              avatorShareHeight: res.height,
               avatorShareWidth: res.width
             })
             canvas.drawImage('../../img/fang.png', 0, 0, windowW, windowW);
-            canvas.drawImage(that.data.avatorShare, 0, 0,  that.data.avatorShareWidth, that.data.avatorShareHeight,0, 0, windowW, 200);
-            canvas.drawImage(that.data.imglist[0], leftW,230, 120, 120);
+            canvas.drawImage(that.data.avatorShare, 0, 0, that.data.avatorShareWidth, that.data.avatorShareHeight, 0, 0, windowW, 200);
+            canvas.drawImage(that.data.imglist[0], leftW, 230, 120, 120);
             // canvas.setFontSize(50)
-            canvas.font="18px Georgia";
-            canvas.width=windowW-100
+            canvas.font = "18px Georgia";
+            canvas.width = windowW - 100
             // if(that.data.detail.type2NurseName){
             //   canvas.fillText('护士：'+that.data.detail.type1DoctorName, 70, 50)
             // }else if(that.data.detail.type1DoctorName){
-              if(that.data.list.title.length>16){
-                var titles=that.data.list.title.substring(0,16)+'...'
-              }else{
-                var titles=that.data.list.title
-              }
-              canvas.fillText(titles, 20, 230,200)
+            if (that.data.list.title.length > 16) {
+              var titles = that.data.list.title.substring(0, 16) + '...'
+            } else {
+              var titles = that.data.list.title
+            }
+            canvas.fillText(titles, 20, 230, 200)
             // }
-            canvas.font="16px Georgia";
-            canvas.fillText( that.data.list.hosptialName, 20, 260)
-            canvas.font="14px Georgia";
-            canvas.fillText('浏览量：'+ that.data.list.viewCount, 20, 290)
-            canvas.font="14px Georgia";
-            canvas.fillText('分享数：'+ that.data.list.shareCount, 20, 320)
-            canvas.draw(true,setTimeout(function(){
-              
+            canvas.font = "16px Georgia";
+            canvas.fillText(that.data.list.hosptialName, 20, 260)
+            canvas.font = "14px Georgia";
+            canvas.fillText('浏览量：' + that.data.list.viewCount, 20, 290)
+            canvas.font = "14px Georgia";
+            canvas.fillText('分享数：' + that.data.list.shareCount, 20, 320)
+            canvas.draw(true, setTimeout(function () {
+
               that.saveCanvas()
-             
+
               // setTimeout(function(){
-                
+
               // },200)
-            },100));
+            }, 100));
 
           }
         })
-        
+
       }
     })
-     
-   
-   
+
+
+
     // canvas.draw();
   },
   saveCanvas: function () {
-  
+
     var that = this;
-   
+
     var windowW = that.data.windowW;
     var windowH = that.data.windowH;
     that.setData({
-      canvasShow:true
+      canvasShow: true
     })
     wx.canvasToTempFilePath({
       x: 0,
@@ -682,13 +687,13 @@ getImageInfo() {
           // canvasShow:false
         })
         that.setData({
-          urls:res.tempFilePath
+          urls: res.tempFilePath
         })
       },
-      error:function(res){
+      error: function (res) {
         console.log(res)
       },
-      fail:function(res){
+      fail: function (res) {
         console.log(res)
       }
     })
@@ -701,8 +706,8 @@ getImageInfo() {
     //   canvasShow:true
     // })
   },
-  lookCodeShow(){
-    var that=this
+  lookCodeShow() {
+    var that = this
     wx.previewImage({
       urls: [that.data.urls],
     })
@@ -711,7 +716,7 @@ getImageInfo() {
   closeCanvas: function () {
     var that = this;
     that.setData({
-      canvasShow:false
+      canvasShow: false
     })
   },
 })
