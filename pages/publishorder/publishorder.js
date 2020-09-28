@@ -30,35 +30,35 @@ Page({
     xiangShu: '',
     xiangShuUnit: '',
     huoWuLeiXing: '',
-    huoWuLeiXingDetail:'',
+    huoWuLeiXingDetail: '',
     huoWuVolume: '',
     huoWuWeight: '',
     baoZhuangFangShi: '',
-    note:'',
-    fahuoAddressList:[],
-    fahuoAddressListEve:[],
+    note: '',
+    fahuoAddressList: [],
+    fahuoAddressListEve: [],
   },
   // 地址簿
-  dizhibu(e){
+  dizhibu(e) {
     // console.log(this.data.fahuoList.faHuoTime)
     wx.navigateTo({
-      url: '../addressList/addressList?faHuoTime='+this.data.fahuoList.faHuoTime+"&colorTime="+this.data.fahuoList.colorTime,
+      url: '../addressList/addressList?faHuoTime=' + this.data.fahuoList.faHuoTime + "&colorTime=" + this.data.fahuoList.colorTime,
     })
   },
   //  发货地址
   bindRegionChange: function (e) {
-    this.data.fahuoList.region = e.detail.value,
-      this.data.fahuoList.picker = false,
-      this.data.fahuoList.faHuoArea1Id = e.detail.code[2].substring(0, 2),
-      this.data.fahuoList.faHuoArea2Id = e.detail.code[2].substring(0, 4),
-      this.data.fahuoList.faHuoArea3Id = e.detail.code[2],
-      this.data.fahuoList.faHuoArea1Name = e.detail.value[0],
-      this.data.fahuoList.faHuoArea2Name = e.detail.value[1],
-      this.data.fahuoList.faHuoArea3Name = e.detail.value[2],
-      this.setData({
-        fahuoList: this.data.fahuoList
-      })
-      console.log(that.data.fahuoList)
+    this.data.fahuoList.region = e.detail.value;
+    this.data.fahuoList.picker = false;
+    this.data.fahuoList.faHuoArea1Id = e.detail.code[2].substring(0, 2);
+    this.data.fahuoList.faHuoArea2Id = e.detail.code[2].substring(0, 4);
+    this.data.fahuoList.faHuoArea3Id = e.detail.code[2];
+    this.data.fahuoList.faHuoArea1Name = e.detail.value[0];
+    this.data.fahuoList.faHuoArea2Name = e.detail.value[1];
+    this.data.fahuoList.faHuoArea3Name = e.detail.value[2];
+    this.setData({
+      fahuoList: this.data.fahuoList
+    })
+    console.log(that.data.fahuoList)
   },
   // 发货详细地址
   faHuoAddress(e) {
@@ -69,8 +69,8 @@ Page({
   },
   // 发货日期
   faHuoTime: function (e) {
-    this.data.fahuoList.faHuoTime = e.detail.value,
-      this.data.fahuoList.colorTime = '#333333'
+    this.data.fahuoList.faHuoTime = e.detail.value;
+    this.data.fahuoList.colorTime = '#333333'
     this.setData({
       fahuoList: this.data.fahuoList
     })
@@ -140,7 +140,7 @@ Page({
     let gongNeng = ''
     for (var i in this.data.array2) {
       if (i == e.detail.value) {
-        gongNeng = this.data.array1[i]
+        gongNeng = this.data.array2[i]
       }
     }
     this.setData({
@@ -153,7 +153,7 @@ Page({
     let xiangShu = ''
     for (var i in this.data.array3) {
       if (i == e.detail.value) {
-        xiangShu = this.data.array1[i]
+        xiangShu = this.data.array3[i]
       }
     }
     this.setData({
@@ -176,135 +176,135 @@ Page({
 
   // 收货日期
   shouHuoTime: function (e) {
-    this.data.getAddressList[0].shouHuoTime = e.detail.value||'',
-      this.data.getAddressList[0].colorTime = '#333333'
+    this.data.getAddressList[0].shouHuoTime = e.detail.value || '';
+    this.data.getAddressList[0].colorTime = '#333333';
     this.setData({
       getAddressList: this.data.getAddressList
     })
   },
   shouHuo1Time: function (e) {
-    this.data.getAddressList[1].shouHuo1Time = e.detail.value||'',
-      this.data.getAddressList[1].colorTime = '#333333'
+    this.data.getAddressList[1].shouHuo1Time = e.detail.value || '';
+    this.data.getAddressList[1].colorTime = '#333333';
     this.setData({
       getAddressList: this.data.getAddressList
     })
   },
   shouHuo2Time: function (e) {
-    this.data.getAddressList[2].shouHuo2Time = e.detail.value||'',
-      this.data.getAddressList[2].colorTime = '#333333'
+    this.data.getAddressList[2].shouHuo2Time = e.detail.value || '';
+    this.data.getAddressList[2].colorTime = '#333333';
     this.setData({
       getAddressList: this.data.getAddressList
     })
   },
   shouHuo3Time: function (e) {
-    this.data.getAddressList[3].shouHuo3Time = e.detail.value||'',
-      this.data.getAddressList[3].colorTime = '#333333'
+    this.data.getAddressList[3].shouHuo3Time = e.detail.value || '';
+    this.data.getAddressList[3].colorTime = '#333333';
     this.setData({
       getAddressList: this.data.getAddressList
     })
   },
   // 收货重量
   shouHuoWeight: function (e) {
-    this.data.getAddressList[0].shouHuoWeight = e.detail.value,
-      this.setData({
-        getAddressList: this.data.getAddressList
-      })
+    this.data.getAddressList[0].shouHuoWeight = e.detail.value;
+    this.setData({
+      getAddressList: this.data.getAddressList
+    })
   },
   shouHuo1Weight: function (e) {
-    this.data.getAddressList[1].shouHuo1Weight = e.detail.value,
-      this.setData({
-        getAddressList: this.data.getAddressList
-      })
+    this.data.getAddressList[1].shouHuo1Weight = e.detail.value;
+    this.setData({
+      getAddressList: this.data.getAddressList
+    })
   },
   shouHuo2Weight: function (e) {
-    this.data.getAddressList[2].shouHuo2Weight = e.detail.value,
-      this.setData({
-        getAddressList: this.data.getAddressList
-      })
+    this.data.getAddressList[2].shouHuo2Weight = e.detail.value;
+    this.setData({
+      getAddressList: this.data.getAddressList
+    })
   },
   shouHuo3Weight: function (e) {
-    this.data.getAddressList[3].shouHuo3Weight = e.detail.value,
-      this.setData({
-        getAddressList: this.data.getAddressList
-      })
+    this.data.getAddressList[3].shouHuo3Weight = e.detail.value;
+    this.setData({
+      getAddressList: this.data.getAddressList
+    })
   },
   // 收货体积
   shouHuoVolume: function (e) {
-    this.data.getAddressList[0].shouHuoVolume = e.detail.value,
-      this.setData({
-        getAddressList: this.data.getAddressList
-      })
+    this.data.getAddressList[0].shouHuoVolume = e.detail.value;
+    this.setData({
+      getAddressList: this.data.getAddressList
+    })
   },
   shouHuo1Volume: function (e) {
-    this.data.getAddressList[1].shouHuo1Volume = e.detail.value,
-      this.setData({
-        getAddressList: this.data.getAddressList
-      })
+    this.data.getAddressList[1].shouHuo1Volume = e.detail.value;
+    this.setData({
+      getAddressList: this.data.getAddressList
+    })
   },
   shouHuo2Volume: function (e) {
-    this.data.getAddressList[2].shouHuo2Volume = e.detail.value,
-      this.setData({
-        getAddressList: this.data.getAddressList
-      })
+    this.data.getAddressList[2].shouHuo2Volume = e.detail.value;
+    this.setData({
+      getAddressList: this.data.getAddressList
+    })
   },
   shouHuo3Volume: function (e) {
-    this.data.getAddressList[3].shouHuo3Volume = e.detail.value,
-      this.setData({
-        getAddressList: this.data.getAddressList
-      })
+    this.data.getAddressList[3].shouHuo3Volume = e.detail.value;
+    this.setData({
+      getAddressList: this.data.getAddressList
+    })
   },
   // 收货地址
   faaddress: function (e) {
-    this.data.getAddressList[0].region = e.detail.value,
-      this.data.getAddressList[0].picker = false,
-      this.data.getAddressList[0].shouHuoArea1Id = e.detail.code[2].substring(0, 2),
-      this.data.getAddressList[0].shouHuoArea2Id = e.detail.code[2].substring(0, 4),
-      this.data.getAddressList[0].shouHuoArea3Id = e.detail.code[2],
-      this.data.getAddressList[0].shouHuoArea1Name = e.detail.value[0],
-      this.data.getAddressList[0].shouHuoArea2Name = e.detail.value[1],
-      this.data.getAddressList[0].shouHuoArea3Name = e.detail.value[2],
-      this.setData({
-        getAddressList: this.data.getAddressList
-      })
+    this.data.getAddressList[0].region = e.detail.value;
+    this.data.getAddressList[0].picker = false;
+    this.data.getAddressList[0].shouHuoArea1Id = e.detail.code[2].substring(0, 2);
+    this.data.getAddressList[0].shouHuoArea2Id = e.detail.code[2].substring(0, 4);
+    this.data.getAddressList[0].shouHuoArea3Id = e.detail.code[2];
+    this.data.getAddressList[0].shouHuoArea1Name = e.detail.value[0];
+    this.data.getAddressList[0].shouHuoArea2Name = e.detail.value[1];
+    this.data.getAddressList[0].shouHuoArea3Name = e.detail.value[2];
+    this.setData({
+      getAddressList: this.data.getAddressList
+    })
   },
   faaddress1: function (e) {
-    this.data.getAddressList[1].region = e.detail.value,
-      this.data.getAddressList[1].picker = false,
-      this.data.getAddressList[1].shouHuo1Area1Id = e.detail.code[2].substring(0, 2),
-      this.data.getAddressList[1].shouHuo1Area2Id = e.detail.code[2].substring(0, 4),
-      this.data.getAddressList[1].shouHuo1Area3Id = e.detail.code[2],
-      this.data.getAddressList[1].shouHuo1Area1Name = e.detail.value[0],
-      this.data.getAddressList[1].shouHuo1Area2Name = e.detail.value[1],
-      this.data.getAddressList[1].shouHuo1Area3Name = e.detail.value[2],
-      this.setData({
-        getAddressList: this.data.getAddressList
-      })
+    this.data.getAddressList[1].region = e.detail.value;
+    this.data.getAddressList[1].picker = false;
+    this.data.getAddressList[1].shouHuo1Area1Id = e.detail.code[2].substring(0, 2);
+    this.data.getAddressList[1].shouHuo1Area2Id = e.detail.code[2].substring(0, 4);
+    this.data.getAddressList[1].shouHuo1Area3Id = e.detail.code[2];
+    this.data.getAddressList[1].shouHuo1Area1Name = e.detail.value[0];
+    this.data.getAddressList[1].shouHuo1Area2Name = e.detail.value[1];
+    this.data.getAddressList[1].shouHuo1Area3Name = e.detail.value[2];
+    this.setData({
+      getAddressList: this.data.getAddressList
+    })
   },
   faaddress2: function (e) {
-    this.data.getAddressList[2].region = e.detail.value,
-      this.data.getAddressList[2].picker = false,
-      this.data.getAddressList[2].shouHuo2Area1Id = e.detail.code[2].substring(0, 2),
-      this.data.getAddressList[2].shouHuo2Area2Id = e.detail.code[2].substring(0, 4),
-      this.data.getAddressList[2].shouHuo2Area3Id = e.detail.code[2],
-      this.data.getAddressList[2].shouHuo2Area1Name = e.detail.value[0],
-      this.data.getAddressList[2].shouHuo2Area2Name = e.detail.value[1],
-      this.data.getAddressList[2].shouHuo2Area3Name = e.detail.value[2],
-      this.setData({
-        getAddressList: this.data.getAddressList
-      })
+    this.data.getAddressList[2].region = e.detail.value;
+    this.data.getAddressList[2].picker = false;
+    this.data.getAddressList[2].shouHuo2Area1Id = e.detail.code[2].substring(0, 2);
+    this.data.getAddressList[2].shouHuo2Area2Id = e.detail.code[2].substring(0, 4);
+    this.data.getAddressList[2].shouHuo2Area3Id = e.detail.code[2];
+    this.data.getAddressList[2].shouHuo2Area1Name = e.detail.value[0];
+    this.data.getAddressList[2].shouHuo2Area2Name = e.detail.value[1];
+    this.data.getAddressList[2].shouHuo2Area3Name = e.detail.value[2];
+    this.setData({
+      getAddressList: this.data.getAddressList
+    })
   },
   faaddress3: function (e) {
-    this.data.getAddressList[3].region = e.detail.value,
-      this.data.getAddressList[3].picker = false,
-      this.data.getAddressList[3].shouHuo3Area1Id = e.detail.code[2].substring(0, 2),
-      this.data.getAddressList[3].shouHuo3Area2Id = e.detail.code[2].substring(0, 4),
-      this.data.getAddressList[3].shouHuo3Area3Id = e.detail.code[2],
-      this.data.getAddressList[3].shouHuo3Area1Name = e.detail.value[0],
-      this.data.getAddressList[3].shouHuo3Area2Name = e.detail.value[1],
-      this.data.getAddressList[3].shouHuo3Area3Name = e.detail.value[2],
-      this.setData({
-        getAddressList: this.data.getAddressList
-      })
+    this.data.getAddressList[3].region = e.detail.value;
+    this.data.getAddressList[3].picker = false;
+    this.data.getAddressList[3].shouHuo3Area1Id = e.detail.code[2].substring(0, 2);
+    this.data.getAddressList[3].shouHuo3Area2Id = e.detail.code[2].substring(0, 4);
+    this.data.getAddressList[3].shouHuo3Area3Id = e.detail.code[2];
+    this.data.getAddressList[3].shouHuo3Area1Name = e.detail.value[0];
+    this.data.getAddressList[3].shouHuo3Area2Name = e.detail.value[1];
+    this.data.getAddressList[3].shouHuo3Area3Name = e.detail.value[2];
+    this.setData({
+      getAddressList: this.data.getAddressList
+    })
   },
   // 收货地址详情
   shouHuoAddress(e) {
@@ -380,7 +380,7 @@ Page({
       return
     }
 
-    if (that.data.huoWuLeiXing == '' ||  that.data.baoZhuangFangShi == ''||that.data.huoWuLeiXingDetail=='') {
+    if (that.data.huoWuLeiXing == '' || that.data.baoZhuangFangShi == '' || that.data.huoWuLeiXingDetail == '') {
       wx.showToast({
         title: '请填写完整货物详情',
         icon: 'none',
@@ -505,7 +505,7 @@ Page({
         faHuoAddress: that.data.fahuoList.faHuoAddress,
         faHuoTime: util.formatTimecuo(that.data.fahuoList.faHuoTime),
         huoWuLeiXing: that.data.huoWuLeiXing,
-        huoWuLeiXingDetail:that.data.huoWuLeiXingDetail,
+        huoWuLeiXingDetail: that.data.huoWuLeiXingDetail,
         // huoWuWeight: that.data.huoWuWeight,
         // huoWuVolume: that.data.huoWuVolume,
         baoZhuangFangShi: that.data.baoZhuangFangShi,
@@ -559,7 +559,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let that=this
+    let that = this
     wx.request({
       url: app.globalData.domain + '/wuliu/order/history-fa-huo-addresses',
       header: {
@@ -568,30 +568,30 @@ Page({
       },
       method: 'post',
       success: function (res) {
-        if(res.data.codeMsg&&res.data.code!=20){
+        if (res.data.codeMsg && res.data.code != 20) {
           wx.showToast({
             title: res.data.codeMsg,
             icon: 'none'
           })
         }
         if (res.data.code == 0) {
-          if(res.data.data.items&&res.data.data.items.length>0){
-            that.data.fahuoList.region = [res.data.data.items[0].faHuoArea1Name,res.data.data.items[0].faHuoArea2Name,res.data.data.items[0].faHuoArea3Name],
-            that.data.fahuoList.picker = false,
-            that.data.fahuoList.faHuoArea1Id = res.data.data.items[0].faHuoArea1Id,
-            that.data.fahuoList.faHuoArea2Id = res.data.data.items[0].faHuoArea2Id,
-            that.data.fahuoList.faHuoArea3Id = res.data.data.items[0].faHuoArea3Id,
-            that.data.fahuoList.faHuoArea1Name = res.data.data.items[0].faHuoArea1Name,
-            that.data.fahuoList.faHuoArea2Name = res.data.data.items[0].faHuoArea2Name,
-            that.data.fahuoList.faHuoArea3Name = res.data.data.items[0].faHuoArea3Name,
-            that.data.fahuoList.faHuoAddress=res.data.data.items[0].faHuoAddress
+          if (res.data.data.items && res.data.data.items.length > 0) {
+            that.data.fahuoList.region = [res.data.data.items[0].faHuoArea1Name, res.data.data.items[0].faHuoArea2Name, res.data.data.items[0].faHuoArea3Name];
+            that.data.fahuoList.picker = false;
+            that.data.fahuoList.faHuoArea1Id = res.data.data.items[0].faHuoArea1Id;
+            that.data.fahuoList.faHuoArea2Id = res.data.data.items[0].faHuoArea2Id;
+            that.data.fahuoList.faHuoArea3Id = res.data.data.items[0].faHuoArea3Id;
+            that.data.fahuoList.faHuoArea1Name = res.data.data.items[0].faHuoArea1Name;
+            that.data.fahuoList.faHuoArea2Name = res.data.data.items[0].faHuoArea2Name;
+            that.data.fahuoList.faHuoArea3Name = res.data.data.items[0].faHuoArea3Name;
+            that.data.fahuoList.faHuoAddress = res.data.data.items[0].faHuoAddress
             that.setData({
-              fahuoAddressList:res.data.data.items,
-              fahuoAddressListEve:res.data.data.items[0],
-              fahuoList:that.data.fahuoList,
+              fahuoAddressList: res.data.data.items,
+              fahuoAddressListEve: res.data.data.items[0],
+              fahuoList: that.data.fahuoList,
             })
           }
-         
+
         } else if (res.data.code == 20) {
           app.globalData.loginIf = 0
         } else {
@@ -636,7 +636,9 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    wx.stopPullDownRefresh({
+      complete: (res) => {},
+    })
   },
 
   /**

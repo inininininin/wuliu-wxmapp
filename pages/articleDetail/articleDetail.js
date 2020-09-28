@@ -108,9 +108,8 @@ Page({
             },
             success: function(res) {
               var article = res.data
-
+console.log(article)
               WxParse.wxParse('article', 'html', article, that, 5);
-
               // that.setData({
               //   res: res.data,
               // })

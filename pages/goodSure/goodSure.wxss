@@ -1,0 +1,249 @@
+/* pages/goodSure/goodSure.wxss */
+page {
+  background: #f5f5f5;
+}
+
+.shopItem {
+  margin-top: 20rpx;
+  width: 750rpx;
+  height: 296rpx;
+  background: #ffffff;
+  /* float: left; */
+}
+
+.shopItem>image {
+  width: 218rpx;
+  height: 248rpx;
+  margin: 24rpx 20rpx;
+  float: left;
+}
+
+.shopItem .detail {
+  width: 480rpx;
+  height: 248rpx;
+  float: left;
+  margin-top: 24rpx;
+}
+
+.shopItem .detail .title {
+  height: 42rpx;
+  font-size: 30rpx;
+  font-family: PingFangSC, PingFangSC-Regular;
+  font-weight: 400;
+  text-align: left;
+  color: #333333;
+  line-height: 42rpx;
+  margin-bottom: 14rpx;
+}
+
+.shopItem .detail .address {
+  height: 37rpx;
+  font-size: 26rpx;
+  font-family: PingFangSC, PingFangSC-Regular;
+  font-weight: 400;
+  text-align: left;
+  color: #999999;
+  line-height: 37px;
+  margin-bottom: 8rpx;
+  width: 100%;
+}
+
+.shopItem .detail .address text {
+  float: left;
+  line-height: 37rpx;
+}
+
+.shopItem .detail .address text:last-child {
+  color: #333333;
+}
+
+.shopItem .detail .position>view:nth-child(1) {
+  width: 78rpx;
+  display: inline-block;
+  float: left;
+  font-size: 26rpx;
+  font-family: PingFangSC, PingFangSC-Regular;
+  font-weight: 400;
+  text-align: left;
+  color: #999999;
+  line-height: 37rpx;
+}
+
+.shopItem .detail .position>view:nth-child(2) {
+  width: 402rpx;
+  height: 148rpx;
+  display: inline-block;
+  float: left;
+}
+
+.position>view {
+  height: 148rpx;
+  font-size: 26rpx;
+  font-family: PingFangSC, PingFangSC-Regular;
+  font-weight: 400;
+  text-align: left;
+  color: #333333;
+  line-height: 37rpx;
+}
+
+.position>view>view>view {
+  display: inline-block;
+}
+
+.position>view>view>view>text,
+.colorEve {
+  color: #ED2828;
+}
+
+.myOrder {
+  width: 750rpx;
+  margin-top: 20rpx;
+  background: #ffffff;
+  height: auto;
+}
+
+.myOrderTitle {
+  font-size: 28rpx;
+  color: #FF932E;
+  height: 81rpx;
+  /* padding: 0 0 0 24rpx; */
+  width: 726rpx;
+  margin-left: 24rpx;
+  border-bottom: 1rpx solid #e2e2e2;
+  box-sizing: border-box;
+  line-height: 81rpx;
+}
+
+.myOrderTitle>text {
+  color: #ED2828;
+}
+
+.faaddress {
+  width: 100%;
+  height: 180rpx;
+}
+
+.faaddress>image {
+  width: 36rpx;
+  height: 44rpx;
+  float: left;
+  margin: 23rpx 29rpx 23rpx 25rpx;
+}
+
+.faaddress>view {
+  width: 660rpx;
+  height: 180rpx;
+  float: right;
+}
+
+.faaddress>view>view {
+  height: 90rpx;
+  border-bottom: 1rpx solid #e2e2e2;
+}
+
+.faaddress2 {
+  height: 90rpx;
+  border: 0;
+  outline: none;
+  font-size: 28rpx;
+  font-family: PingFangSC, PingFangSC-Regular;
+  font-weight: 400;
+  text-align: left;
+  color: #333333;
+  line-height: 90rpx;
+}
+
+.orderSelcet {
+  width: 540rpx;
+  height: 90rpx;
+  background: #ffffff;
+  font-size: 28rpx;
+  color: #333333;
+  line-height: 90rpx;
+  text-align: left;
+  float: left;
+}
+
+.xxrequireItem {
+  width: 100%;
+  height: 90rpx;
+  line-height: 90rpx;
+}
+
+.xxrequireItem>text {
+  width: 186rpx;
+  float: left;
+  font-size: 28rpx;
+  font-family: PingFangSC, PingFangSC-Medium;
+  font-weight: 500;
+  text-align: left;
+  color: #333333;
+  padding-left: 24rpx;
+  box-sizing: border-box;
+}
+
+.xxrequireItem>view {
+  width: 564rpx;
+  height: 90rpx;
+  border-bottom: 1rpx solid #e2e2e2;
+  float: left;
+  position: relative;
+  font-size: 28rpx;
+}
+
+.xxrequireItem>view picker {
+  width: 100%;
+  height: 90rpx;
+}
+
+.xxrequireItem>view image {
+  width: 14rpx;
+  height: 8rpx;
+  /* float: right; */
+  position: absolute;
+  top: 41rpx;
+  right: 24rpx;
+  /* margin: 41rpx 24rpx 41rpx 0; */
+}
+
+.xxrequireItemEve {
+  width: 50%;
+  float: left;
+  position: relative;
+  font-size: 28rpx;
+  line-height: 90rpx;
+}
+
+.xxrequireItemEve>input {
+  width: 230rpx;
+  height: 34rpx !important;
+  min-height: 34rpx !important;
+  line-height: 34rpx !important;
+  margin-top: 28rpx;
+  border-right: 2rpx solid #999999;
+  padding-left: 24rpx;
+  padding-right: 12rpx;
+  float: left;
+  box-sizing: border-box;
+  text-align: right;
+}
+
+input {
+  font-size: 28rpx;
+}
+
+.makesure {
+  width: 670rpx;
+  height: 90rpx;
+  position: fixed;
+  bottom: 90rpx;
+  left: 40rpx;
+  background: #0e4090;
+  color: #ffffff;
+  border-radius: 50rpx;
+  font-size: 38rpx;
+  font-family: PingFangSC, PingFangSC-Regular;
+  font-weight: 400;
+  text-align: center;
+  line-height: 90rpx;
+}

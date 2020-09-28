@@ -1,6 +1,5 @@
 {
   "pages": [
-   
     "pages/index/index",
     "pages/recognizeEnd/recognizeEnd",
     "pages/recognizeSh/recognizeSh",
@@ -21,8 +20,8 @@
     "pages/articleDetail/articleDetail",
     "pages/goodsdetail/goodsdetail",
     "pages/addressList/addressList",
-    "pages/orderDetailEve/orderDetailEve"
-  
+    "pages/orderDetailEve/orderDetailEve",
+    "pages/goodSure/goodSure"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -34,7 +34,6 @@ page {
   height: 90rpx;
   border-bottom: 1rpx solid #e2e2e2;
 }
-
 .fadate>image {
   width: 30rpx;
   height: 30rpx;

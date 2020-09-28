@@ -100,3 +100,6 @@
 	<image mode="aspectFill" src='{{prurl}}' mode='widthFix'></image>
 	<button type='primary' size='mini' bindtap='saveIs'>保存分享图</button>
 </view>
+
+
+<view class="order" bindtap="order">下单</view>
