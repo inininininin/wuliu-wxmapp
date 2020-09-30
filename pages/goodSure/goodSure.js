@@ -31,7 +31,7 @@ Page({
     let xiangShu = ''
     for (var i in this.data.array3) {
       if (i == e.detail.value) {
-        xiangShu = this.data.array1[i]
+        xiangShu = this.data.array3[i]
       }
     }
     this.setData({
