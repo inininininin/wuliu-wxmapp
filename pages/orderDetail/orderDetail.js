@@ -102,11 +102,11 @@ sendPrice(e){
           duration: 2000,
           mask: true,
           complete: function complete(res) {
-            setTimeout(function () {
+            // setTimeout(function () {
               wx.redirectTo({
                 url: '../myoffer/myoffer',
               })
-            }, 100);
+            // }, 100);
           }
         });
       } else if (res.data.code == 20) {

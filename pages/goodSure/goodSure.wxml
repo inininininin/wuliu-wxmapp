@@ -37,7 +37,7 @@
 				</picker>
 				<picker class="orderSelcet" wx:if='{{!picker}}' mode="region" style="color:#333" bindchange="faaddress1" custom-item="{{customItem}}">
 					<view class="picker lineOne">
-						{{getAddressList.shouHuo1Area1Name}}，{{getAddressList.shouHuo1Area2Name}}，{{getAddressList.shouHuo1Area3Name}}
+						{{getAddressList.shouHuoArea1Name}}，{{getAddressList.shouHuoArea2Name}}，{{getAddressList.shouHuoArea3Name}}
 					</view>
 				</picker>
 				<!-- <text class="addNewaddress" bindtap="addNewaddress" wx:if='{{getAddressList.length==2}}'>添加地址</text> -->
@@ -51,16 +51,16 @@
 		<text>商品规格</text>
 		<view style="border-bottom:0">
 			<view class="xxrequireItemEve">
-				<input type="number" bindinput="xiangShuUnit" placeholder="请输入"></input>
+				<input type="number" bindinput="shangpinguige" placeholder="请输入"></input>
 				<!-- <text>个</text> -->
 			</view>
 			<view class="xxrequireItemEve">
-				<picker bindchange="goodgg" value="{{index3}}" range="{{array3}}">
+				<picker bindchange="goodgg" value="{{index3}}" range="{{array2}}">
 					<view class="picker" wx:if='{{index3==0}}' style="color:#999999">
-						{{array3[index3]}}
+						{{array3[index3].name}}
 					</view>
 					<view class="picker" wx:if='{{index3!=0}}' style="color:#333333">
-						{{array3[index3]}}
+						{{array3[index3].name}}
 					</view>
 				</picker>
 				<image src="../img/xiala.svg"></image>
@@ -69,4 +69,5 @@
 	</view>
 </view>
 
-<view bindtap="makesure" class="makesure">确认下单</view>
+<view bindtap="makesure" wx:if='{{makesureIf}}' class="makesure">确认下单</view>
+<view  wx:if='{{!makesureIf}}' class="makesure">确认下单</view>
