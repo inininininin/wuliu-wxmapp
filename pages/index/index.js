@@ -193,6 +193,7 @@ Page({
     this.setData({
       loginIf:app.globalData.loginIf
     })
+    // console.log(getApp().globalData.statusBarHeight)
     // this.lastPage(1)
     // this.lastPageNumber()
   },
@@ -205,6 +206,7 @@ Page({
   },
   firstPage(pageNo){
     let that = this
+  
     wx.request({
       url: app.globalData.domain + '/wuliu/article/article-list-sum',
       data: {},
@@ -444,6 +446,7 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
+    console.log(app.globalData.loginIf)
     if(app.globalData.loginIf==1){
       var pageNo=parseInt(this.data.pageNo)+1
       this.setData({

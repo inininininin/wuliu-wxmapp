@@ -1,0 +1,76 @@
+<!--pages/goodSure/goodSure.wxml-->
+<view class="shopItem">
+	<image mode='aspectFill' src="{{list.cover}}"></image>
+	<view class="detail">
+		<view class="title lineOne">{{list.name||''}}</view>
+		<view class="address " wx:if='{{list.area1Name&&list.area2Name}}'><text>装货地：</text><text class="lineOne" style="width:350rpx">{{list.area1Name||''}}-{{list.area2Name||''}}</text></view>
+		<view class="address " wx:if='{{list.area1Name&&!list.area2Name}}'><text>装货地：</text><text class="lineOne" style="width:350rpx">{{list.area1Name||''}}</text></view>
+		<view class="address " wx:if='{{!list.area1Name&&list.area2Name}}'><text>装货地：</text><text class="lineOne" style="width:350rpx">{{list.area2Name||''}}</text></view>
+		<!-- <view class="address "><text>规格：</text><text class="lineOne" style="width:350rpx">{{list.unitName}}</text></view> -->
+		<view class="position">
+			<view>规格：</view>
+			<view>
+				<!-- <view class="lineThree">{{list.intro}}</view> -->
+				<view class="lineOne">
+					<view wx:if='{{list.jianPrice}}' style="margin-right:40rpx"><text class="colorEve">¥{{list.jianPrice}}</text>/件 </view>
+					<view wx:if='{{list.jinPrice}}'><text  class="colorEve">¥{{list.jinPrice}}</text>/斤</view>
+				</view>
+				<view class="lineOne" wx:if='{{list.xiaoGuiPrice}}'>小柜-<text wx:if='{{list.xiaoGuiWeight}}'>{{list.xiaoGuiWeight}}-</text><text wx:if='{{list.xiaoGuiVolumn}}'>{{list.xiaoGuiVolumn}}M³-</text><text class="colorEve">{{list.xiaoGuiPrice}}</text>
+				</view>
+				<view class="lineOne" wx:if='{{list.daGuiPrice}}'>大柜-<text wx:if='{{list.daGuiWeight}}'>{{list.daGuiWeight}}-</text><text wx:if='{{list.daGuiVolumn}}'>{{list.daGuiVolumn}}M³-</text><text class="colorEve">{{list.daGuiPrice}}</text></view>
+				<view class="lineOne" wx:if='{{list.diyGuiCount&&list.diyGuiPrice}}'>{{list.diyGuiCount}}柜-<text wx:if='{{list.diyGuiWeight}}'>{{list.diyGuiWeight}}-</text><text wx:if='{{list.diyGuiVolumn}}'>{{list.diyGuiVolumn}}M³-</text><text class="colorEve">¥{{list.diyGuiPrice}}</text></view>
+			</view>
+		</view>
+	</view>
+</view>
+
+<view class="myOrder">
+	<view class="myOrderTitle">我的订单<text>(必填)</text></view>
+	<view class="faaddress">
+		<image src="../img/shou.svg"></image>
+		<view>
+			<view>
+				<picker class="orderSelcet" wx:if='{{picker}}' mode="region" style="color:#999" bindchange="faaddress1" custom-item="{{customItem}}">
+					<view class="picker lineOne">
+						请选择收货地：省-市-区
+					</view>
+				</picker>
+				<picker class="orderSelcet" wx:if='{{!picker}}' mode="region" style="color:#333" bindchange="faaddress1" custom-item="{{customItem}}">
+					<view class="picker lineOne">
+						{{getAddressList.shouHuoArea1Name}}，{{getAddressList.shouHuoArea2Name}}，{{getAddressList.shouHuoArea3Name}}
+					</view>
+				</picker>
+				<!-- <text class="addNewaddress" bindtap="addNewaddress" wx:if='{{getAddressList.length==2}}'>添加地址</text> -->
+			</view>
+			<view>
+				<input class="faaddress2" placeholder-class="placeholder" placeholder="详细地址" bindinput="shouHuo1Address" value="{{shouHuo1Address}}"></input>
+			</view>
+		</view>
+	</view>
+	<view class="xxrequireItem">
+		<!-- <text>商品规格</text> -->
+		<view style="border-bottom:0">
+			<text class="texttitle">数量</text>
+			<view class="xxrequireItemEve">
+				<text></text>
+				<input type="number" bindinput="shangpinguige" placeholder="请输入"></input>
+				
+			</view>
+			<text class="texttitle">规格</text>
+			<view class="xxrequireItemEve">
+				<picker bindchange="goodgg" value="{{index3}}" range="{{array2}}">
+					<view class="picker" wx:if='{{index3==0}}' style="color:#999999">
+						{{array3[index3].name}}
+					</view>
+					<view class="picker" wx:if='{{index3!=0}}' style="color:#333333">
+						{{array3[index3].name}}
+					</view>
+				</picker>
+				<image src="../img/xiala.svg"></image>
+			</view>
+		</view>
+	</view>
+</view>
+
+<view bindtap="makesure" wx:if='{{makesureIf}}' class="makesure">确认下单</view>
+<view  wx:if='{{!makesureIf}}' class="makesure">确认下单</view>

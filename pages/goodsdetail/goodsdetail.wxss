@@ -46,7 +46,7 @@
 .detail {
   width: 686rpx;
   margin: 40rpx 32rpx 60rpx;
-  padding-bottom: 80rpx;
+  padding-bottom: 100rpx;
   /* line-height: 36rpx !important; */
   font-size: 24rpx !important;
   color: rgb(51, 51, 51) !important;
@@ -216,9 +216,11 @@ button::after {
   margin: 0;
   height: 108rpx !important;
 }
-button::after{
+
+button::after {
   padding: 0;
 }
+
 button {
 
   background-color: #fff;
@@ -348,7 +350,7 @@ canvas {
   background: #2b77ef;
 }
 
-.detail image{
+.detail image {
   width: 100% !important;
   /* height: auto !important; */
 }
@@ -381,11 +383,28 @@ canvas {
   color: #333333;
   line-height: 37rpx;
 }
-.position>view>view>view{
+
+.position>view>view>view {
   display: inline-block;
 }
-.position>view>view>view>text ,.colorEve{
+
+.position>view>view>view>text,
+.colorEve {
   color: #ED2828;
 }
 
-
+.order {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  /* width: 670rpx; */
+  width: 750rpx;
+  line-height: 90rpx;
+  text-align: center;
+  font-size: 38rpx;
+  height: 90rpx;
+  background: #0e4090;
+  /* border-radius: 50rpx; */
+  color: #fff;
+}

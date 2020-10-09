@@ -22,6 +22,11 @@ Page({
     ids: '',
     canvasShow: false,
   },
+  order(e){
+    wx.navigateTo({
+      url: '../goodSure/goodSure?id='+this.data.id,
+    })
+  },
   changefont: function (e) {
     this.setData({
       display: 'block'
