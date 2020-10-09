@@ -319,7 +319,7 @@ Page({
         }
         if (res.data.code == 0) {
           wx.showToast({
-            title: '已下单',
+            title: '您的订单已提交, 请等待客服与您联系.',
             icon: 'none',
             duration: 2000,
             mask: true,

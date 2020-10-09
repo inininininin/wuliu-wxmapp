@@ -59,7 +59,7 @@ page {
 
 .shopItem .detail .position>view:nth-child(1) {
   width: 78rpx;
-  display: inline-block;
+  /* display: inline-block; */
   float: left;
   font-size: 26rpx;
   font-family: PingFangSC, PingFangSC-Regular;
@@ -72,7 +72,7 @@ page {
 .shopItem .detail .position>view:nth-child(2) {
   width: 402rpx;
   height: 148rpx;
-  display: inline-block;
+  /* display: inline-block; */
   float: left;
 }
 

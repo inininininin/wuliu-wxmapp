@@ -295,3 +295,18 @@ page {
   text-align: center;
   line-height: 80rpx;
 }
+
+.myorderList{
+  position: fixed;
+  height: 70rpx;
+  width: 220rpx;
+  font-size: 28rpx;
+  text-align: center;
+  line-height: 70rpx;
+  border: 1rpx solid #999999;
+  border-radius: 35rpx;
+  right: 25rpx;
+  bottom: 40rpx;
+  z-index: 2;
+  background-color: rgba(255,255,255,0.5);
+}

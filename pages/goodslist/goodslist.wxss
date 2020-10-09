@@ -1,7 +1,5 @@
 /* page/index/index.wxss */
 @import '../common/common.wxss';
-
-/* @import '../../../all/all.wxss'; */
 page {
   background: #f5f5f5;
   padding-bottom: 120rpx;
@@ -75,9 +73,12 @@ page {
 }
 
 .articleEve {
-  width: 654rpx;
+  background: #ffffff;
+  width: 702rpx;
   margin: 20rpx 24rpx 0;
-  height: 180rpx;
+  padding: 20rpx 0 0 0;
+  /* height: 180rpx; */
+  height: 268rpx;
   border-bottom: 1rpx solid #d8d8d8;
 }
 .articleEve>view{
@@ -89,7 +90,7 @@ page {
 }
 .articleLfItem{
   width: 100%;
-  height: 180rpx;
+  height: 268rpx;
   float: left;
 }
 .articleLfItem>view:nth-child(1) {
@@ -121,14 +122,17 @@ page {
 
 
 .articleLf {
-  width: 416rpx;
-  height: 180rpx;
+  width: 444rpx;
+  height: 268rpx;
   float: left;
+  position: relative;
 }
 
 .articleLf>view:nth-child(1) {
-  width: 416rpx;
-  height: 80rpx;
+  padding-left: 16rpx;
+  box-sizing: border-box;
+  width: 444rpx;
+  max-height: 80rpx;
   font-size: 28rpx;
   font-family: PingFangSC, PingFangSC-Regular;
   font-weight: 400;
@@ -136,8 +140,23 @@ page {
   color: #333333;
   line-height: 40rpx;
 }
-
-.articleLf>view:nth-child(2) {
+.articleLf>view:nth-child(2),.articleLf>view:nth-child(3){
+  padding-left: 16rpx;
+  box-sizing: border-box;
+  width: 444rpx;
+  /* height: 80rpx; */
+  max-height: 80rpx;
+  font-size: 28rpx;
+  font-family: PingFangSC, PingFangSC-Regular;
+  font-weight: 400;
+  text-align: left;
+  color: #666666;
+  line-height: 40rpx;
+}
+.articleLf>view:nth-child(3){
+  height: 40rpx;
+}
+.articleLf>view:nth-child(4) {
   height: 33rpx;
   font-size: 24rpx;
   font-family: PingFangSC, PingFangSC-Regular;
@@ -145,20 +164,26 @@ page {
   text-align: left;
   color: #999999;
   line-height: 33rpx;
-  margin-top: 47rpx;
+  /* margin-top: 47rpx; */
+  position: absolute;
+  bottom: 20rpx;
+  left: 0;
+  /* left: 16rpx; */
 }
 
-.articleLf>view:nth-child(2)>image {
+.articleLf>view:nth-child(4)>image {
   width: 22rpx;
   height: 22rpx;
   margin-right: 10rpx;
+  margin-left: 16rpx;
 }
 
 .articleEve>view>image {
   float: left;
-  width: 216rpx;
-  height: 160rpx;
-  margin-left: 22rpx;
+  width: 218rpx;
+  height: 248rpx;
+  /* height: 160rpx; */
+  margin-left: 20rpx;
 }
 
 /* 行业信息后补 */
@@ -202,7 +227,7 @@ page {
 
 
 
-/* .articleList::after{
+.articleList::after{
   clear: both;
   content: '';
-} */
+}

@@ -23,9 +23,24 @@ Page({
     canvasShow: false,
   },
   order(e){
-    wx.navigateTo({
-      url: '../goodSure/goodSure?id='+this.data.id,
-    })
+    if(app.globalData.loginIf==1){
+      wx.navigateTo({
+        url: '../goodSure/goodSure?id='+this.data.id,
+      })
+    }else{
+      wx.showToast({
+        title: '请登录',
+        duration:2000,
+        icon:'none',
+        success:function(res){
+          console.log(getCurrentPages()[1].route,getCurrentPages())
+          wx.navigateTo({
+            url: '../login/login?tabbarIs=0&route=' + getCurrentPages()[1].route+"&id="+getCurrentPages()[1].options.id,
+          })
+        }
+      })
+    }
+    
   },
   changefont: function (e) {
     this.setData({
@@ -263,7 +278,7 @@ Page({
         } else if (res.data.code == 20 || res.data.code == 26) {
           wx.hideToast()
           wx.navigateTo({
-            url: '../../login/login',
+            url: '../login/login?tabbarIs=0&route=' + getCurrentPages()[0].route+"&id="+getCurrentPages()[1].options.id,
           })
         }
       }

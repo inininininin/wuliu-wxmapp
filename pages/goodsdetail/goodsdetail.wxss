@@ -398,6 +398,7 @@ canvas {
   bottom: 0;
   left: 0;
   z-index: 1;
+  font-weight: 500;
   /* width: 670rpx; */
   width: 750rpx;
   line-height: 90rpx;
