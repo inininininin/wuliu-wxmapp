@@ -16,11 +16,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log(options)
     if(options.route){
       options.route='../'+options.route.split('pages/')[1]
       this.setData({
         route:options.route,
-        tabbarIs:options.tabbarIs
+        tabbarIs:options.tabbarIs,
+        id:options.id,
       })
     }
   },
@@ -87,9 +89,17 @@ Page({
                                     url: that.data.route,
                                   }) 
                                 }else if(that.data.tabbarIs==0&&that.data.route!=''){
-                                  wx.redirectTo({
-                                    url: that.data.route,
-                                  }) 
+                                  if(that.data.id){
+                                    wx.navigateBack()
+                                    // wx.redirectTo({
+                                    //   url: that.data.route+'?id='+that.data.id,
+                                    // }) 
+                                  }else{
+                                    wx.redirectTo({
+                                      url: that.data.route,
+                                    }) 
+                                  }
+                                 
                                 }else{
                                   wx.reLaunch({
                                     url: '../index/index',

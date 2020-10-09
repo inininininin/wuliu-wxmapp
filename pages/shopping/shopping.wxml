@@ -22,7 +22,7 @@
 		<view wx:for="{{navbarEve}}" data-idx="{{index}}" data-typeid='{{item.typeId}}' class="scroll-view-item item {{currentTabEve==index ? 'active' : ''}}" wx:key="unique" bindtap="navbarTapEve">{{item.name}}</view>
 	</scroll-view>
 </view>
-<view wx:if='{{loginIf==1}}'>
+<view >
 	<view class="shopList" style="margin-top:176rpx;">
 		<view class="shopItem" wx:for='{{orderList}}' bindtap="goodsdetail" data-id='{{item.goodsId}}'>
 			<image mode='aspectFill' src="{{item.cover}}"></image>
@@ -58,12 +58,16 @@
 </view>
 
 
-<view wx:if='{{loginIf!=1}}'>
+<!-- <view wx:if='{{loginIf!=1}}'>
 	<image src="../img/quexing.png" class="bgImg"></image>
 	<text class="loginTitle">点击登录获取信息</text>
 	<view class="gologinBtn" bindtap="gologinBtn">去登陆</view>
-</view>
+</view> -->
 
 <view class="toTop" bindtap="toTop" wx:if='{{toTopShow}}'>
 	<image src="../img/toTop.svg"></image>
 </view>
+
+
+
+<view class="myorderList" bindtap="myorderList">订单列表</view>

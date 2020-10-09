@@ -21,7 +21,8 @@
     "pages/goodsdetail/goodsdetail",
     "pages/addressList/addressList",
     "pages/orderDetailEve/orderDetailEve",
-    "pages/goodSure/goodSure"
+    "pages/goodSure/goodSure",
+    "pages/goodslist/goodslist"
   ],
   "window": {
     "backgroundTextStyle": "light",
