@@ -48,12 +48,15 @@
 		</view>
 	</view>
 	<view class="xxrequireItem">
-		<text>商品规格</text>
+		<!-- <text>商品规格</text> -->
 		<view style="border-bottom:0">
+			<text class="texttitle">数量</text>
 			<view class="xxrequireItemEve">
+				<text></text>
 				<input type="number" bindinput="shangpinguige" placeholder="请输入"></input>
-				<!-- <text>个</text> -->
+				
 			</view>
+			<text class="texttitle">规格</text>
 			<view class="xxrequireItemEve">
 				<picker bindchange="goodgg" value="{{index3}}" range="{{array2}}">
 					<view class="picker" wx:if='{{index3==0}}' style="color:#999999">

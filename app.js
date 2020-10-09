@@ -1,6 +1,6 @@
 //app.js
 App({
-  version: '1.0.2009281643',
+  version: '1.0.2010091102',
   versionNote: '修复了一些BUG, 优化了用户体验.',
   globalData: {
     userInfo: null,
@@ -21,6 +21,26 @@ App({
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
     const vm = this
+    wx.getSystemInfo({
+      success: function (res) {
+        let titleBarHeight = 0
+        if (res.model.indexOf('iPhone') !== -1) {
+          titleBarHeight = 44
+        } else {
+          titleBarHeight = 48
+        }
+        // that.setData({
+        vm.globalData.statusBarHeight = res.statusBarHeight,
+          vm.globalData.titleBarHeight = titleBarHeight
+          console.log(vm.globalData.statusBarHeight)
+          
+        // });
+      },
+      failure() {
+        vm.globalData.statusBarHeight = res.statusBarHeight,
+          vm.globalData.titleBarHeight = titleBarHeight
+      }
+    })
     // 登录
     // wx.login({
     //   success: res => {
@@ -121,26 +141,7 @@ App({
       // 新版本下载失败
     })
 
-    wx.getSystemInfo({
-      success: function (res) {
-        let titleBarHeight = 0
-        if (res.model.indexOf('iPhone') !== -1) {
-          titleBarHeight = 44
-        } else {
-          titleBarHeight = 48
-        }
-        // that.setData({
-        vm.globalData.statusBarHeight = res.statusBarHeight,
-          vm.globalData.titleBarHeight = titleBarHeight
-        // });
-
-      },
-      failure() {
-        vm.globalData.statusBarHeight = res.statusBarHeight,
-          vm.globalData.titleBarHeight = titleBarHeight
-      }
-
-    })
+    
   },
   cover(_cover) {
     var that = this

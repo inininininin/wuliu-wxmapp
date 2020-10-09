@@ -161,7 +161,7 @@ Page({
 
             array3.push({
               'type': 1,
-              'name': jinPriceName
+              'name': '斤'//jinPriceName
             })
             console.log(array3)
           }
@@ -172,7 +172,7 @@ Page({
             }
             array3.push({
               'type': 2,
-              'name': jianPriceName
+              'name': '件'//jianPriceName
             })
             console.log(array3)
           }
@@ -187,7 +187,7 @@ Page({
             }
             array3.push({
               'type': 3,
-              'name': '小柜-' + xiaoGuiWeightName + xiaoGuiVolumnName + res.data.data.xiaoGuiPrice
+              'name':'小柜' //'小柜-' + xiaoGuiWeightName + xiaoGuiVolumnName + res.data.data.xiaoGuiPrice
             })
           }
           if (res.data.data.daGuiPrice) {
@@ -201,7 +201,7 @@ Page({
             }
             array3.push({
               'type': 4,
-              'name': '大柜-' + daGuiWeightName + daGuiVolumnName + res.data.data.daGuiPrice
+              'name': '大柜'//'大柜-' + daGuiWeightName + daGuiVolumnName + res.data.data.daGuiPrice
             })
           }
           if (res.data.data.diyGuiPrice && res.data.data.diyGuiCount) {
@@ -215,7 +215,7 @@ Page({
             }
             array3.push({
               'type': 5,
-              'name': res.data.data.diyGuiCount + '柜-' + diyGuiWeightName + diyGuiVolumnName + res.data.data.diyGuiPrice
+              'name': res.data.data.diyGuiCount + '柜'//res.data.data.diyGuiCount + '柜-' + diyGuiWeightName + diyGuiVolumnName + res.data.data.diyGuiPrice
             })
           }
           console.log(array3)
